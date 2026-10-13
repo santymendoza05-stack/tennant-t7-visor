@@ -146,6 +146,16 @@
       "data": "data/battery_group.json",
       "hotspot": { "x": 44, "y": 56 },
       "labelSide": "left"
+    },
+    {
+      "id": "elevacion-racleta",
+      "name": "Mecanismo de Elevación de Racleta",
+      "description": "Rear Squeegee Lift Group, Disk Scrub Head",
+      "figure": "Fig. 34",
+      "status": "available",
+      "data": "data/squeegee_lift.json",
+      "hotspot": { "x": 80, "y": 77 },
+      "labelSide": "left"
     }
   ]
 }

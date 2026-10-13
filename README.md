@@ -23,6 +23,7 @@ Visor web interactivo de repuestos para la fregadora Tennant T7, basado en los d
 | Motor de Aspiración y Silenciador | Fig. 28 · Vacuum Fan Group | `data/vacuum_fan.json` |
 | Sistema de Drenaje de Tanques | Fig. 31 · Tanks Drain Group | `data/tanks_drain.json` |
 | Sistema de Baterías y Alimentación | Fig. 32 · Battery Group, 235Ah (S/N 10523206-) | `data/battery_group.json` |
+| Mecanismo de Elevación de Racleta | Fig. 34 · Rear Squeegee Lift Group, Disk Scrub Head | `data/squeegee_lift.json` |
 
 ## Uso local
 
