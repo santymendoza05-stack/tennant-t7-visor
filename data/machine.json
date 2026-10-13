@@ -47,6 +47,15 @@
       "status": "available",
       "data": "data/front_drive_wheel.json",
       "hotspot": { "x": 25.7, "y": 92.3 }
+    },
+    {
+      "id": "panel-instrumentos",
+      "name": "Panel de Instrumentos / Consola",
+      "description": "Instrument Panel Group",
+      "figure": "Fig. 10",
+      "status": "available",
+      "data": "data/instrument_panel.json",
+      "hotspot": { "x": 24, "y": 38 }
     }
   ]
 }

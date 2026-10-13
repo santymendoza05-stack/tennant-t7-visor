@@ -1,0 +1,243 @@
+{
+  "machine": "Tennant T7",
+  "group": "Instrument Panel Group",
+  "figure": "Fig. 10",
+  "image": "assets/instrument_panel.png",
+  "categories": [
+    "Paneles",
+    "Llave e interruptores",
+    "Columna",
+    "Tornillería"
+  ],
+  "parts": [
+    {
+      "item": 1,
+      "partNumber": "1076470",
+      "description": "Panel, Instmt, LH, Afmkt [T7]",
+      "category": "Paneles",
+      "qty": 1,
+      "note": "T7 estándar",
+      "hotspots": [
+        { "x": 10, "y": 20.7 }
+      ]
+    },
+    {
+      "item": 1,
+      "partNumber": "1076471",
+      "description": "Panel, Instmt, LH, Afmkt [ec-H2O T7]",
+      "category": "Paneles",
+      "qty": 1,
+      "note": "T7 ec-H2O",
+      "hotspots": []
+    },
+    {
+      "item": 2,
+      "partNumber": "1012197",
+      "description": "Cover, Panl, Instmt",
+      "category": "Paneles",
+      "qty": 1,
+      "hotspots": [
+        { "x": 14.5, "y": 12 }
+      ]
+    },
+    {
+      "item": 3,
+      "partNumber": "1011952",
+      "description": "Block, Pivot, Cover",
+      "category": "Paneles",
+      "qty": 2,
+      "hotspots": [
+        { "x": 39.4, "y": 7.9 }
+      ]
+    },
+    {
+      "item": 4,
+      "partNumber": "1052607",
+      "description": "Gasket, Panl, Instmt, LH, .13, Foam, Adh",
+      "category": "Paneles",
+      "qty": 1,
+      "hotspots": [
+        { "x": 7.6, "y": 25.6 }
+      ]
+    },
+    {
+      "item": 5,
+      "partNumber": "1046313",
+      "description": "Panel, Instmt, RH",
+      "category": "Paneles",
+      "qty": 1,
+      "note": "S/N 10403819-",
+      "hotspots": [
+        { "x": 85.6, "y": 15.6 }
+      ]
+    },
+    {
+      "item": 5,
+      "partNumber": "9004968",
+      "description": "Switch Kit, Key, [T7/SSR/R14/Strv Rdr]",
+      "category": "Llave e interruptores",
+      "qty": 1,
+      "note": "S/N 10000000-10403818",
+      "hotspots": []
+    },
+    {
+      "item": 6,
+      "partNumber": "1014080",
+      "description": "Gasket, Panl, Instmt, RH",
+      "category": "Paneles",
+      "qty": 1,
+      "hotspots": [
+        { "x": 83, "y": 20.5 }
+      ]
+    },
+    {
+      "item": 7,
+      "partNumber": "72969",
+      "description": "Rivet, Plstc, .181d x 0.720",
+      "category": "Tornillería",
+      "qty": 10,
+      "hotspots": [
+        { "x": 14.7, "y": 16.2 },
+        { "x": 79.2, "y": 11.8 }
+      ]
+    },
+    {
+      "item": 8,
+      "partNumber": "1011402",
+      "description": "Switch, Key",
+      "category": "Llave e interruptores",
+      "qty": 1,
+      "note": "S/N 10403819-",
+      "hotspots": [
+        { "x": 87.9, "y": 7.2 }
+      ]
+    },
+    {
+      "item": 9,
+      "partNumber": "1017696",
+      "description": "Key Set, Replmt [F/ Keyswitch 1011402]",
+      "category": "Llave e interruptores",
+      "qty": 1,
+      "note": "Componente del interruptor 1011402 · S/N 10403819-",
+      "hotspots": [
+        { "x": 88.7, "y": 3.1 }
+      ]
+    },
+    {
+      "item": 8,
+      "partNumber": "9004968",
+      "description": "Switch Kit, Key, [T7/SSR/R14/Strv Rdr]",
+      "category": "Llave e interruptores",
+      "qty": 1,
+      "note": "S/N 10000000-10403818",
+      "hotspots": []
+    },
+    {
+      "item": 9,
+      "partNumber": "361144",
+      "description": "Key, Ignition",
+      "category": "Llave e interruptores",
+      "qty": 1,
+      "note": "Componente del kit 9004968 · S/N 10000000-10403818",
+      "hotspots": []
+    },
+    {
+      "item": 10,
+      "partNumber": "1072040",
+      "description": "Switch, Rocker, SPST, Paddle",
+      "category": "Llave e interruptores",
+      "qty": 1,
+      "hotspots": [
+        { "x": 61.4, "y": 11 }
+      ]
+    },
+    {
+      "item": 11,
+      "partNumber": "1011735",
+      "description": "Switch, Safety, Shutoff",
+      "category": "Llave e interruptores",
+      "qty": 1,
+      "hotspots": [
+        { "x": 52.8, "y": 2.9 }
+      ]
+    },
+    {
+      "item": 12,
+      "partNumber": "1015415",
+      "description": "Column, Steering, W/Label [T7] (Teal)",
+      "category": "Columna",
+      "qty": 1,
+      "note": "T7 estándar · Teal",
+      "hotspots": [
+        { "x": 9.7, "y": 56.4 }
+      ]
+    },
+    {
+      "item": 12,
+      "partNumber": "1023928",
+      "description": "Column, Steering, W/ Label [T7] RM-NLG (Gray)",
+      "category": "Columna",
+      "qty": 1,
+      "note": "T7 estándar · Gray",
+      "hotspots": []
+    },
+    {
+      "item": 12,
+      "partNumber": "1036372",
+      "description": "Column, Steering, Afmkt, TJ (Japan)",
+      "category": "Columna",
+      "qty": 1,
+      "note": "Versión Japón",
+      "hotspots": []
+    },
+    {
+      "item": 12,
+      "partNumber": "9006188",
+      "description": "Column, Steering, Teal [T7 ec-H2O]",
+      "category": "Columna",
+      "qty": 1,
+      "note": "T7 ec-H2O · Teal",
+      "hotspots": []
+    },
+    {
+      "item": 12,
+      "partNumber": "9006189",
+      "description": "Column, Steering, Gray [T7 ec-H2O]",
+      "category": "Columna",
+      "qty": 1,
+      "note": "T7 ec-H2O · Gray",
+      "hotspots": []
+    },
+    {
+      "item": 13,
+      "partNumber": "1072628",
+      "description": "Screw, Hex, M8 x 1.25 x 25, SS, Sems",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 66.6, "y": 48.3 }
+      ]
+    },
+    {
+      "item": 14,
+      "partNumber": "1041822",
+      "description": "Light, LED, .312d, 2 Volt [Tri-Color]",
+      "category": "Llave e interruptores",
+      "qty": 1,
+      "note": "Modelo ec-H2O",
+      "hotspots": [
+        { "x": 43.2, "y": 4.4 }
+      ]
+    },
+    {
+      "item": 15,
+      "partNumber": "1014832",
+      "description": "Switch, Horn",
+      "category": "Llave e interruptores",
+      "qty": 1,
+      "hotspots": [
+        { "x": 64.7, "y": 1.6 }
+      ]
+    }
+  ]
+}
