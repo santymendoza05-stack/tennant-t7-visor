@@ -102,6 +102,16 @@
         }
       ],
       "hotspot": { "x": 58.8, "y": 67.1 }
+    },
+    {
+      "id": "elevacion-cabezal",
+      "name": "Mecanismo de Elevación del Cabezal",
+      "description": "Disk Scrub Head Lift Group",
+      "figure": "Fig. 16",
+      "status": "available",
+      "data": "data/scrub_head_lift.json",
+      "hotspot": { "x": 46, "y": 76 },
+      "labelSide": "left"
     }
   ]
 }

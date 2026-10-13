@@ -26,7 +26,8 @@
         { id: "panel-instrumentos", name: "Panel de Instrumentos / Consola", description: "Instrument Panel & Circuit Board Group", figure: "Fig. 10 / 38", status: "available", figures: [{ label: "Fig. 10 · Panel de instrumentos", data: "data/instrument_panel.json" }, { label: "Fig. 38 · Tarjeta controladora", data: "data/circuit_board.json" }], hotspot: { x: 24, y: 38 } },
         { id: "columna-direccion", name: "Columna de Dirección / Volante", description: "Steering Group", figure: "Fig. 9", status: "available", data: "data/steering_group.json", hotspot: { x: 34.6, y: 30.2 } },
         { id: "asiento-cubierta", name: "Asiento y Cubierta de Baterías", description: "Seat Group", figure: "Fig. 8", status: "available", data: "data/seat_group.json", hotspot: { x: 55.9, y: 37.6 }, labelSide: "right" },
-        { id: "chasis-bastidor", name: "Chasis y Bastidor Principal", description: "Main Frame Group", figure: "Fig. 4 / 7", status: "available", figures: [{ label: "Fig. 4 · Cabezal de disco", data: "data/main_frame_disk.json" }, { label: "Fig. 7 · Cilíndrico (S/N hasta 10448498)", data: "data/main_frame.json" }], hotspot: { x: 58.8, y: 67.1 } }
+        { id: "chasis-bastidor", name: "Chasis y Bastidor Principal", description: "Main Frame Group", figure: "Fig. 4 / 7", status: "available", figures: [{ label: "Fig. 4 · Cabezal de disco", data: "data/main_frame_disk.json" }, { label: "Fig. 7 · Cilíndrico (S/N hasta 10448498)", data: "data/main_frame.json" }], hotspot: { x: 58.8, y: 67.1 } },
+        { id: "elevacion-cabezal", name: "Mecanismo de Elevación del Cabezal", description: "Disk Scrub Head Lift Group", figure: "Fig. 16", status: "available", data: "data/scrub_head_lift.json", hotspot: { x: 46, y: 76 }, labelSide: "left" }
       ]
     },
     "data/squeegee_parts.json": {
@@ -443,6 +444,34 @@
         { item: 27, partNumber: "51528", description: "Pin, Clevis, 0.50d x 4.00L", category: "Rodillos paragolpes", qty: 2, note: "Cabezal cilíndrico 800 mm", hotspots: [{ x: 7.6, y: 48.4 }, { x: 81.9, y: 82.6 }] },
         { item: 28, partNumber: "41619", description: "Washer, Flat, 0.56b 1.38d .11, SS", category: "Tornillería", qty: 2, note: "Cabezal cilíndrico 800 mm", hotspots: [{ x: 5.2, y: 71.8 }, { x: 68.6, y: 94.8 }] },
         { item: 29, partNumber: "08346", description: "Pin, Cotter, .125 x 0.75", category: "Rodillos paragolpes", qty: 2, note: "Cabezal cilíndrico 800 mm", hotspots: [{ x: 5.9, y: 51.1 }, { x: 75.2, y: 78.4 }] }
+      ]
+    },
+    "data/scrub_head_lift.json": {
+      machine: "Tennant T7",
+      group: "Disk Scrub Head Lift Group",
+      figure: "Fig. 16",
+      image: "assets/scrub_head_lift.png",
+      categories: ["Actuador", "Brazos y soportes", "Pasadores y bujes", "Tornillería"],
+      parts: [
+        { item: 1, partNumber: "1056622", description: "Actuator, 24VDC, 04.5strk, 0600lb", category: "Actuador", qty: 1, hotspots: [{ x: 52.6, y: 24.7 }] },
+        { item: 2, partNumber: "1009356", description: "Pin, Clevis, 10mm x 40L", category: "Pasadores y bujes", qty: 1, hotspots: [{ x: 22.4, y: 10.1 }] },
+        { item: 3, partNumber: "86866", description: "Pin, Hair Cotter, 0.38 D .072 Wir", category: "Pasadores y bujes", qty: 2, hotspots: [{ x: 26, y: 2.7 }, { x: 84.3, y: 58.8 }] },
+        { item: 4, partNumber: "1013278", description: "Plate, Arm, Cntr, Lift, Scb Head", category: "Brazos y soportes", qty: 2, hotspots: [{ x: 32.1, y: 37.1 }, { x: 65.1, y: 50.3 }] },
+        { item: 5, partNumber: "1010401", description: "Pin, Clevis, 16d x 150L", category: "Pasadores y bujes", qty: 1, hotspots: [{ x: 96.5, y: 69.8 }] },
+        { item: 6, partNumber: "02942", description: "Pin, Hair Cotter, 0.62 D .120 Wir", category: "Pasadores y bujes", qty: 5, hotspots: [{ x: 92, y: 64.4 }, { x: 40.1, y: 63.3 }, { x: 59.1, y: 84.7 }] },
+        { item: 7, partNumber: "1014076", description: "Bracket, Lift", category: "Brazos y soportes", qty: 1, hotspots: [{ x: 64.7, y: 71.7 }] },
+        { item: 8, partNumber: "363087", description: "Bushing, Flng, 0.44b 1.25d 0.25L", category: "Pasadores y bujes", qty: 2, hotspots: [{ x: 26, y: 36.4 }, { x: 67.9, y: 52.5 }] },
+        { item: 9, partNumber: "09770", description: "Screw, Hex, M10 x 1.5 x 25, SS, NL", category: "Tornillería", qty: 2, hotspots: [{ x: 21.8, y: 35.6 }, { x: 70.8, y: 54 }] },
+        { item: 10, partNumber: "01686", description: "Washer, Flat, 0.44b 1.00 .08, SS", category: "Tornillería", qty: 6, hotspots: [{ x: 65, y: 69.2 }, { x: 48.8, y: 68.9 }, { x: 41.4, y: 74.5 }, { x: 64.8, y: 74.1 }, { x: 6.3, y: 48.4 }] },
+        { item: 11, partNumber: "09028", description: "Screw, Hex, M10 x 1.5 x 25, SS", category: "Tornillería", qty: 2, hotspots: [{ x: 49.2, y: 65.9 }] },
+        { item: 12, partNumber: "1015413", description: "Spring, Lift, Head, Scb", category: "Brazos y soportes", qty: 1, hotspots: [{ x: 48, y: 45.9 }] },
+        { item: 13, partNumber: "1013281", description: "Sleeve, P/M, 18.5d 10.5b 34L 430 SS", category: "Pasadores y bujes", qty: 2, hotspots: [{ x: 26.7, y: 55.8 }] },
+        { item: 14, partNumber: "09746", description: "Screw, Hex, M10 x 1.5 x 90, SS", category: "Tornillería", qty: 1, hotspots: [{ x: 69.4, y: 72.4 }] },
+        { item: 15, partNumber: "08714", description: "Nut, Hex, Lock, M10 x 1.5, NL, SS", category: "Tornillería", qty: 1, hotspots: [{ x: 2.8, y: 46.8 }] },
+        { item: 16, partNumber: "1013356", description: "Pin, Clevis, 12mm D x 90mm L", category: "Pasadores y bujes", qty: 1, hotspots: [{ x: 85.4, y: 60.6 }] },
+        { item: 17, partNumber: "57048", description: "Washer, Flat, 0.53b 2.13d .11, Stl, Pl", category: "Tornillería", qty: 2, hotspots: [{ x: 18.6, y: 33.1 }, { x: 75.5, y: 55.1 }] },
+        { item: 18, partNumber: "222027", description: "Arm, Lift, Head", category: "Brazos y soportes", qty: 2, hotspots: [{ x: 11.9, y: 93 }, { x: 27.9, y: 91.7 }] },
+        { item: 19, partNumber: "222210", description: "Pin, Clevis, 0.62 D x 2.12L", category: "Pasadores y bujes", qty: 4, hotspots: [{ x: 28.2, y: 59.4 }, { x: 72.5, y: 97.9 }, { x: 28.3, y: 74.6 }] }
       ]
     }
   };
