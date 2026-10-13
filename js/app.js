@@ -28,7 +28,8 @@
         { id: "asiento-cubierta", name: "Asiento y Cubierta de Baterías", description: "Seat Group", figure: "Fig. 8", status: "available", data: "data/seat_group.json", hotspot: { x: 55.9, y: 37.6 }, labelSide: "right" },
         { id: "chasis-bastidor", name: "Chasis y Bastidor Principal", description: "Main Frame Group", figure: "Fig. 4 / 7", status: "available", figures: [{ label: "Fig. 4 · Cabezal de disco", data: "data/main_frame_disk.json" }, { label: "Fig. 7 · Cilíndrico (S/N hasta 10448498)", data: "data/main_frame.json" }], hotspot: { x: 58.8, y: 67.1 } },
         { id: "elevacion-cabezal", name: "Mecanismo de Elevación del Cabezal", description: "Disk Scrub Head Lift Group", figure: "Fig. 16", status: "available", data: "data/scrub_head_lift.json", hotspot: { x: 46, y: 76 }, labelSide: "left" },
-        { id: "motor-aspiracion", name: "Motor de Aspiración y Silenciador", description: "Vacuum Fan Group", figure: "Fig. 28", status: "available", data: "data/vacuum_fan.json", hotspot: { x: 86, y: 33 }, labelSide: "left" }
+        { id: "motor-aspiracion", name: "Motor de Aspiración y Silenciador", description: "Vacuum Fan Group", figure: "Fig. 28", status: "available", data: "data/vacuum_fan.json", hotspot: { x: 86, y: 33 }, labelSide: "left" },
+        { id: "drenaje-tanques", name: "Sistema de Drenaje de Tanques", description: "Tanks Drain Group", figure: "Fig. 31", status: "available", data: "data/tanks_drain.json", hotspot: { x: 86, y: 50 }, labelSide: "left" }
       ]
     },
     "data/squeegee_parts.json": {
@@ -527,6 +528,27 @@
         { item: 34, partNumber: "140154", description: "Sleeve, P/M, 0.25b 0.38d 0.3L, Pl", category: "Soporte del tanque", qty: 1, note: "S/N 10261379-", hotspots: [{ x: 35.1, y: 77.8 }] },
         { item: 35, partNumber: "140053", description: "Washer, Flat, 0.28b 0.88d .12, SS", category: "Tornillería", qty: 1, note: "S/N 10261379-", hotspots: [{ x: 38.2, y: 78.5 }] },
         { item: 36, partNumber: "06946", description: "Screw, Hex, M6 x 1.00 x 35, 8.8", category: "Tornillería", qty: 1, note: "S/N 10764501-", hotspots: [{ x: 44.9, y: 80.3 }] }
+      ]
+    },
+    "data/tanks_drain.json": {
+      machine: "Tennant T7",
+      group: "Tanks Drain Group",
+      figure: "Fig. 31",
+      image: "assets/tanks_drain.png",
+      categories: ["Mangueras", "Tapones y sellos", "Abrazaderas y soportes", "Tornillería"],
+      parts: [
+        { item: 1, partNumber: "1014274", description: "Hose Assy, Drain, 27.8L (Recovery Tank)", category: "Mangueras", qty: 1, note: "Tanque de recuperación · incluye ítems 2-4", hotspots: [{ x: 81, y: 74.4 }] },
+        { item: 2, partNumber: "1008639", description: "Cap, Drain Assembly", category: "Tapones y sellos", qty: 1, note: "Tanque de recuperación · incluido en 1014274 · incluye ítems 3-4", hotspots: [{ x: 95.7, y: 79.5 }] },
+        { item: 3, partNumber: "1019563", description: "Strap, Drain Cap", category: "Tapones y sellos", qty: 1, note: "Tanque de recuperación · incluido en 1008639", hotspots: [{ x: 85, y: 75.2 }] },
+        { item: 4, partNumber: "1008637", description: "O Ring, 1.48\" ID, 1.76\" OD", category: "Tapones y sellos", qty: 1, note: "Tanque de recuperación · incluido en 1008639", hotspots: [{ x: 93.1, y: 67.1 }] },
+        { item: 5, partNumber: "14432", description: "Clamp, Hose, Wormdrive, 1.81-2.75d, .56w", category: "Abrazaderas y soportes", qty: 2, note: "Tanque de recuperación", hotspots: [{ x: 49.7, y: 45.5 }] },
+        { item: 6, partNumber: "1014268", description: "Hose Assy, Drain, 27.0L (Solution Tank)", category: "Mangueras", qty: 1, note: "Tanque de solución · incluye ítems 7-9", hotspots: [{ x: 51.1, y: 93.2 }] },
+        { item: 7, partNumber: "1008639", description: "Cap, Drain Assembly", category: "Tapones y sellos", qty: 5, note: "Tanque de solución · incluido en 1014268 · incluye ítems 8-9 · cantidad tal como figura en el manual", hotspots: [{ x: 66, y: 98.5 }] },
+        { item: 8, partNumber: "1019563", description: "Strap, Drain Cap", category: "Tapones y sellos", qty: 1, note: "Tanque de solución · incluido en 1008639", hotspots: [{ x: 55.1, y: 94 }] },
+        { item: 9, partNumber: "1008637", description: "O Ring, 1.48\" ID, 1.76\" OD", category: "Tapones y sellos", qty: 1, note: "Tanque de solución · incluido en 1008639", hotspots: [{ x: 63.2, y: 85.9 }] },
+        { item: 10, partNumber: "79381", description: "Clamp, Hose, Wormdrive, 1.25-2.00d, .50w", category: "Abrazaderas y soportes", qty: 1, note: "Tanque de solución", hotspots: [{ x: 14.9, y: 76.9 }] },
+        { item: 11, partNumber: "222793", description: "Clip, Hanger, Hose, .38d Hole, SS", category: "Abrazaderas y soportes", qty: 2, hotspots: [{ x: 57.2, y: 22.6 }, { x: 41.6, y: 66.4 }] },
+        { item: 12, partNumber: "09740", description: "Screw, Hex, M8 x 1.25 x 20, SS", category: "Tornillería", qty: 2, hotspots: [{ x: 62, y: 26 }, { x: 46.7, y: 67.2 }] }
       ]
     }
   };

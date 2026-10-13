@@ -1,0 +1,146 @@
+{
+  "machine": "Tennant T7",
+  "group": "Tanks Drain Group",
+  "figure": "Fig. 31",
+  "image": "assets/tanks_drain.png",
+  "categories": [
+    "Mangueras",
+    "Tapones y sellos",
+    "Abrazaderas y soportes",
+    "Tornillería"
+  ],
+  "parts": [
+    {
+      "item": 1,
+      "partNumber": "1014274",
+      "description": "Hose Assy, Drain, 27.8L (Recovery Tank)",
+      "category": "Mangueras",
+      "qty": 1,
+      "note": "Tanque de recuperación · incluye ítems 2-4",
+      "hotspots": [
+        { "x": 81, "y": 74.4 }
+      ]
+    },
+    {
+      "item": 2,
+      "partNumber": "1008639",
+      "description": "Cap, Drain Assembly",
+      "category": "Tapones y sellos",
+      "qty": 1,
+      "note": "Tanque de recuperación · incluido en 1014274 · incluye ítems 3-4",
+      "hotspots": [
+        { "x": 95.7, "y": 79.5 }
+      ]
+    },
+    {
+      "item": 3,
+      "partNumber": "1019563",
+      "description": "Strap, Drain Cap",
+      "category": "Tapones y sellos",
+      "qty": 1,
+      "note": "Tanque de recuperación · incluido en 1008639",
+      "hotspots": [
+        { "x": 85, "y": 75.2 }
+      ]
+    },
+    {
+      "item": 4,
+      "partNumber": "1008637",
+      "description": "O Ring, 1.48\" ID, 1.76\" OD",
+      "category": "Tapones y sellos",
+      "qty": 1,
+      "note": "Tanque de recuperación · incluido en 1008639",
+      "hotspots": [
+        { "x": 93.1, "y": 67.1 }
+      ]
+    },
+    {
+      "item": 5,
+      "partNumber": "14432",
+      "description": "Clamp, Hose, Wormdrive, 1.81-2.75d, .56w",
+      "category": "Abrazaderas y soportes",
+      "qty": 2,
+      "note": "Tanque de recuperación",
+      "hotspots": [
+        { "x": 49.7, "y": 45.5 }
+      ]
+    },
+    {
+      "item": 6,
+      "partNumber": "1014268",
+      "description": "Hose Assy, Drain, 27.0L (Solution Tank)",
+      "category": "Mangueras",
+      "qty": 1,
+      "note": "Tanque de solución · incluye ítems 7-9",
+      "hotspots": [
+        { "x": 51.1, "y": 93.2 }
+      ]
+    },
+    {
+      "item": 7,
+      "partNumber": "1008639",
+      "description": "Cap, Drain Assembly",
+      "category": "Tapones y sellos",
+      "qty": 5,
+      "note": "Tanque de solución · incluido en 1014268 · incluye ítems 8-9 · cantidad tal como figura en el manual",
+      "hotspots": [
+        { "x": 66, "y": 98.5 }
+      ]
+    },
+    {
+      "item": 8,
+      "partNumber": "1019563",
+      "description": "Strap, Drain Cap",
+      "category": "Tapones y sellos",
+      "qty": 1,
+      "note": "Tanque de solución · incluido en 1008639",
+      "hotspots": [
+        { "x": 55.1, "y": 94 }
+      ]
+    },
+    {
+      "item": 9,
+      "partNumber": "1008637",
+      "description": "O Ring, 1.48\" ID, 1.76\" OD",
+      "category": "Tapones y sellos",
+      "qty": 1,
+      "note": "Tanque de solución · incluido en 1008639",
+      "hotspots": [
+        { "x": 63.2, "y": 85.9 }
+      ]
+    },
+    {
+      "item": 10,
+      "partNumber": "79381",
+      "description": "Clamp, Hose, Wormdrive, 1.25-2.00d, .50w",
+      "category": "Abrazaderas y soportes",
+      "qty": 1,
+      "note": "Tanque de solución",
+      "hotspots": [
+        { "x": 14.9, "y": 76.9 }
+      ]
+    },
+    {
+      "item": 11,
+      "partNumber": "222793",
+      "description": "Clip, Hanger, Hose, .38d Hole, SS",
+      "category": "Abrazaderas y soportes",
+      "qty": 2,
+      "hotspots": [
+        { "x": 57.2, "y": 22.6 },
+        { "x": 41.6, "y": 66.4 }
+      ]
+    },
+    {
+      "item": 12,
+      "partNumber": "09740",
+      "description": "Screw, Hex, M8 x 1.25 x 20, SS",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 62, "y": 26 },
+        { "x": 46.7, "y": 67.2 }
+      ]
+    }
+  ]
+}

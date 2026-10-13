@@ -122,6 +122,16 @@
       "data": "data/vacuum_fan.json",
       "hotspot": { "x": 86, "y": 33 },
       "labelSide": "left"
+    },
+    {
+      "id": "drenaje-tanques",
+      "name": "Sistema de Drenaje de Tanques",
+      "description": "Tanks Drain Group",
+      "figure": "Fig. 31",
+      "status": "available",
+      "data": "data/tanks_drain.json",
+      "hotspot": { "x": 86, "y": 50 },
+      "labelSide": "left"
     }
   ]
 }
