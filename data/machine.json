@@ -65,6 +65,15 @@
         }
       ],
       "hotspot": { "x": 24, "y": 38 }
+    },
+    {
+      "id": "columna-direccion",
+      "name": "Columna de Dirección / Volante",
+      "description": "Steering Group",
+      "figure": "Fig. 9",
+      "status": "available",
+      "data": "data/steering_group.json",
+      "hotspot": { "x": 34.6, "y": 30.2 }
     }
   ]
 }

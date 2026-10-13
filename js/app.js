@@ -23,7 +23,8 @@
         { id: "cabeza-cepillos", name: "Cabeza de Cepillos", description: "Disk Scrub Head Drive Motor Group, 800 mm", figure: "Fig. 18", status: "available", data: "data/scrub_head_disk_800.json", hotspot: { x: 61.8, y: 85.9 } },
         { id: "tanques", name: "Tanques de Solución y Recuperación", description: "Recovery & Solution Tank Group", figure: "Fig. 27 / 29", status: "available", figures: [{ label: "Fig. 27 · Tanque de recuperación", data: "data/recovery_tank.json" }, { label: "Fig. 29 · Tanque de solución", data: "data/solution_tank_disk.json" }], hotspot: { x: 76.5, y: 20.1 } },
         { id: "rueda-motriz", name: "Rueda Motriz / Tracción", description: "Front Drive Wheel Group (S/N 10518139-)", figure: "Fig. 11", status: "available", data: "data/front_drive_wheel.json", hotspot: { x: 25.7, y: 92.3 } },
-        { id: "panel-instrumentos", name: "Panel de Instrumentos / Consola", description: "Instrument Panel & Circuit Board Group", figure: "Fig. 10 / 38", status: "available", figures: [{ label: "Fig. 10 · Panel de instrumentos", data: "data/instrument_panel.json" }, { label: "Fig. 38 · Tarjeta controladora", data: "data/circuit_board.json" }], hotspot: { x: 24, y: 38 } }
+        { id: "panel-instrumentos", name: "Panel de Instrumentos / Consola", description: "Instrument Panel & Circuit Board Group", figure: "Fig. 10 / 38", status: "available", figures: [{ label: "Fig. 10 · Panel de instrumentos", data: "data/instrument_panel.json" }, { label: "Fig. 38 · Tarjeta controladora", data: "data/circuit_board.json" }], hotspot: { x: 24, y: 38 } },
+        { id: "columna-direccion", name: "Columna de Dirección / Volante", description: "Steering Group", figure: "Fig. 9", status: "available", data: "data/steering_group.json", hotspot: { x: 34.6, y: 30.2 } }
       ]
     },
     "data/squeegee_parts.json": {
@@ -288,6 +289,34 @@
         { item: 20, partNumber: "41141", description: "Washer, Lock, Int-Ext, 0.31", category: "Tornillería", qty: 1, hotspots: [{ x: 53.6, y: 18.4 }] },
         { item: 21, partNumber: "1019083", description: "Seal, Cut", category: "Gabinete", qty: 1, hotspots: [{ x: 13, y: 58.4 }] },
         { item: 22, partNumber: "09740", description: "Screw, Hex, M8 x 1.25 x 20, SS", category: "Tornillería", qty: 1, hotspots: [{ x: 73.4, y: 37.5 }] }
+      ]
+    },
+    "data/steering_group.json": {
+      machine: "Tennant T7",
+      group: "Steering Group",
+      figure: "Fig. 9",
+      image: "assets/steering_group.png",
+      categories: ["Volante", "Transmisión", "Columna y soportes", "Tornillería"],
+      parts: [
+        { item: 1, partNumber: "1072829", description: "Support Wldt, Steering", category: "Columna y soportes", qty: 1, hotspots: [{ x: 5, y: 25.4 }] },
+        { item: 2, partNumber: "04417", description: "Screw, Hex, M10 x 1.5 x 60, SS", category: "Tornillería", qty: 4, hotspots: [{ x: 36.6, y: 54.4 }] },
+        { item: 3, partNumber: "01686", description: "Washer, Flat, 0.44b 1.00 .08, SS", category: "Tornillería", qty: 4, hotspots: [{ x: 35.9, y: 58.7 }] },
+        { item: 4, partNumber: "69234", description: "Clamp, Cable, Stl, 1.00d x 0.62w, 1h", category: "Columna y soportes", qty: 3, hotspots: [{ x: 33.4, y: 28.9 }, { x: 28.3, y: 44.6 }, { x: 25.3, y: 51.3 }] },
+        { item: 5, partNumber: "39349", description: "Washer, Flat, 0.31 SAE", category: "Tornillería", qty: 3, hotspots: [{ x: 39.1, y: 28.6 }, { x: 33, y: 43.8 }, { x: 32.1, y: 50.4 }] },
+        { item: 6, partNumber: "08709", description: "Nut, Hex, Lock, M8 x 1.25, NL", category: "Tornillería", qty: 3, hotspots: [{ x: 43.6, y: 28 }, { x: 36.6, y: 42.8 }, { x: 37, y: 49 }] },
+        { item: 7, partNumber: "1040295", description: "Joint, U, 0.75id", category: "Transmisión", qty: 1, hotspots: [{ x: 43.2, y: 64.3 }] },
+        { item: 8, partNumber: "46820", description: "Screw, Set, .31-18 x 0.38, NL", category: "Tornillería", qty: 4, hotspots: [{ x: 53, y: 54.3 }, { x: 50, y: 61.2 }] },
+        { item: 9, partNumber: "00912", description: "Key, Sq, 0.19 x 0.19, 1.00L", category: "Transmisión", qty: 1, hotspots: [{ x: 55.8, y: 50.3 }] },
+        { item: 10, partNumber: "223065", description: "Bearing, Flng, 2-Hole, 0.75b [Nyl]", category: "Transmisión", qty: 1, hotspots: [{ x: 49.4, y: 7 }] },
+        { item: 11, partNumber: "09740", description: "Screw, Hex, M8 x 1.25 x 20, SS", category: "Tornillería", qty: 2, hotspots: [{ x: 51.8, y: 3.5 }] },
+        { item: 12, partNumber: "1013164", description: "Shaft, Steering, Wheel", category: "Transmisión", qty: 1, hotspots: [{ x: 46.8, y: 18.6 }] },
+        { item: 13, partNumber: "1012002", description: "Wheel, Steering, 300mm", category: "Volante", qty: 1, hotspots: [{ x: 72.2, y: 21.7 }] },
+        { item: 14, partNumber: "1019706", description: "Cap, Steering Wheel", category: "Volante", qty: 1, hotspots: [{ x: 95.7, y: 20.3 }] },
+        { item: 15, partNumber: "1014328", description: "Key, Sq, 05mm x 05mm, 25L", category: "Transmisión", qty: 1, hotspots: [{ x: 62.4, y: 15.7 }] },
+        { item: 16, partNumber: "64154", description: "Washer, Flat, 0.53b 1.12d .11, Stl, Pl", category: "Volante", qty: 1, hotspots: [{ x: 91, y: 27.9 }] },
+        { item: 17, partNumber: "08711", description: "Nut, Hex, Lock, M12 x 1.75, NL", category: "Volante", qty: 1, hotspots: [{ x: 91.8, y: 24.2 }] },
+        { item: 18, partNumber: "1012437", description: "Bellows, Shaft, Steering", category: "Volante", qty: 1, hotspots: [{ x: 87.3, y: 44.6 }] },
+        { item: 19, partNumber: "41142", description: "Washer, Lock, Int-Ext, 0.38", category: "Tornillería", qty: 1, hotspots: [{ x: 56.9, y: 62.9 }] }
       ]
     }
   };
