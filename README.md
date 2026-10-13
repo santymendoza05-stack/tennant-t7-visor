@@ -6,7 +6,7 @@ Visor web interactivo de repuestos para la fregadora Tennant T7, basado en los d
 
 ## Navegación
 
-1. **Nivel 1 · T7 completa:** vista general de la máquina con las zonas clave.
+1. **Nivel 1 · T7 completa:** vista general de la máquina con las zonas clave y un **buscador global** que busca en todas las zonas. Al elegir un resultado se abre la zona, se selecciona el repuesto y se ilumina su punto en el diagrama.
 2. **Nivel 2 · Despiece:** diagrama con puntos numerados, buscador y tabla de repuestos con "Copiar Ref".
 
 | Zona | Figura del manual | Datos |

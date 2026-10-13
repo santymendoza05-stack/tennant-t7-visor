@@ -238,6 +238,10 @@
     crumbAssembly: $("#crumb-assembly"),
     // Nivel 1
     machineView: $("#view-machine"),
+    globalSearch: $("#global-search"),
+    globalDropdown: $("#global-dropdown"),
+    globalSummary: $("#global-summary"),
+    globalResults: $("#global-results"),
     machineDiagram: $("#machine-diagram"),
     machineImg: $("#machine-img"),
     zoneHotspots: $("#zone-hotspots"),
@@ -508,7 +512,7 @@
 
       els.body.innerHTML = rows
         .map(
-          (p) => `<tr data-item="${p.item}" tabindex="0" class="${p.item === this.state.activeItem ? "is-active" : ""}">
+          (p) => `<tr data-item="${p.item}" data-pn="${escapeHtml(p.partNumber)}" tabindex="0" class="${p.item === this.state.activeItem ? "is-active" : ""}">
             <td><span class="item-num">${p.item}</span></td>
             <td class="pn">${highlight(p.partNumber, q)}</td>
             <td>${highlight(p.description, q)}<span class="desc-cat">${escapeHtml(p.category)}${p.note ? ` · ${highlight(p.note, q)}` : ""}</span></td>
@@ -536,7 +540,8 @@
       );
     },
 
-    selectItem(item, { scroll = false } = {}) {
+    // partNumber: cuando un ítem tiene varias filas (variantes), indica a cuál desplazarse
+    selectItem(item, { scroll = false, partNumber = null } = {}) {
       const s = this.state;
       s.activeItem = s.activeItem === item && !scroll ? null : item;
 
@@ -544,21 +549,27 @@
         h.classList.toggle("is-active", Number(h.dataset.item) === s.activeItem)
       );
 
-      let row = els.body.querySelector(`tr[data-item="${item}"]`);
+      const findRow = () =>
+        (partNumber && els.body.querySelector(`tr[data-item="${item}"][data-pn="${CSS.escape(partNumber)}"]`)) ||
+        els.body.querySelector(`tr[data-item="${item}"]`);
+      let row = findRow();
 
       // Si la fila está oculta por un filtro, se limpia para poder mostrarla
-      if (!row && scroll) {
+      if ((!row || (partNumber && row.dataset.pn !== partNumber)) && scroll) {
         s.query = "";
         s.category = ALL;
         els.search.value = "";
         this.renderFilters();
         this.renderTable();
-        row = els.body.querySelector(`tr[data-item="${item}"]`);
+        row = findRow();
       }
 
-      els.body.querySelectorAll("tr").forEach((tr) =>
-        tr.classList.toggle("is-active", Number(tr.dataset.item) === s.activeItem)
-      );
+      els.body.querySelectorAll("tr").forEach((tr) => {
+        tr.classList.toggle("is-active", Number(tr.dataset.item) === s.activeItem);
+        tr.classList.remove("is-target");
+      });
+      // Fila exacta pedida (p. ej. desde el buscador global) cuando el ítem tiene variantes
+      if (row && partNumber && row.dataset.pn === partNumber) row.classList.add("is-target");
 
       if (row && scroll) {
         row.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -685,10 +696,180 @@
       .join("");
   }
 
+  /* ==========================================================
+     Buscador global (Nivel 1): busca en los repuestos de todas las zonas
+     ========================================================== */
+  const MAX_RESULTS = 50;
+
+  const GlobalSearch = {
+    index: [],     // { zone, figureIndex, figure, part, haystack }
+    ready: null,   // promesa de construcción del índice
+    results: [],
+    active: -1,
+
+    init() {
+      this.ready = this.buildIndex();
+      this.bindEvents();
+    },
+
+    async buildIndex() {
+      const jobs = MachineView.data.zones
+        .filter((z) => z.status === "available")
+        .flatMap((zone) =>
+          figuresOf(zone).map(async (figure, figureIndex) => {
+            const data = await loadJSON(figure.data);
+            return data.parts.map((part) => ({
+              zone,
+              figureIndex,
+              figure: data.figure || figure.label || "",
+              part,
+              haystack: normalize([part.partNumber, part.description, part.note || "", zone.name, data.figure || ""].join(" "))
+            }));
+          })
+        );
+      const settled = await Promise.allSettled(jobs);
+      settled.forEach((r) => (r.status === "fulfilled" ? this.index.push(...r.value) : console.error(r.reason)));
+    },
+
+    // Todas las palabras deben aparecer. Orden: Part Number exacto, Part Number que empieza igual, resto.
+    search(query) {
+      const q = normalize(query.trim());
+      const tokens = q.split(/\s+/).filter(Boolean);
+      if (!tokens.length) return [];
+      const score = (e) => {
+        const pn = normalize(e.part.partNumber);
+        if (pn === q) return 0;
+        if (pn.startsWith(q)) return 1;
+        if (pn.includes(q)) return 2;
+        return 3;
+      };
+      return this.index
+        .filter((e) => tokens.every((t) => e.haystack.includes(t)))
+        .map((e) => ({ e, s: score(e) }))
+        .sort((a, b) => a.s - b.s)
+        .map(({ e }) => e);
+    },
+
+    async update() {
+      const query = els.globalSearch.value;
+      if (!query.trim()) return this.close();
+      await this.ready;
+      if (els.globalSearch.value !== query) return; // el usuario siguió escribiendo
+
+      this.results = this.search(query);
+      this.active = this.results.length ? 0 : -1;
+      // Resalta la palabra más larga de la búsqueda
+      const mark = query.trim().split(/\s+/).sort((a, b) => b.length - a.length)[0];
+
+      const shown = this.results.slice(0, MAX_RESULTS);
+      els.globalSummary.textContent = !this.results.length
+        ? `Sin resultados para «${query.trim()}»`
+        : this.results.length > MAX_RESULTS
+          ? `Mostrando ${MAX_RESULTS} de ${this.results.length} resultados · sigue escribiendo para afinar`
+          : `${this.results.length} resultado${this.results.length === 1 ? "" : "s"}`;
+
+      els.globalResults.innerHTML = shown
+        .map(({ zone, figure, part }, i) => `<li role="option" id="gr-${i}" class="gr-item" data-index="${i}" aria-selected="${i === this.active}">
+            <span class="item-num" title="Ítem ${part.item}">${part.item}</span>
+            <span class="gr-main">
+              <span class="gr-line"><span class="pn">${highlight(part.partNumber, mark)}</span> <span class="gr-desc">${highlight(part.description, mark)}</span></span>
+              ${part.note ? `<span class="gr-note">${highlight(part.note, mark)}</span>` : ""}
+            </span>
+            <span class="gr-zone">${escapeHtml(zone.name)}<small>${escapeHtml(figure)}</small></span>
+          </li>`)
+        .join("");
+
+      this.open();
+      this.syncActive();
+    },
+
+    open() {
+      els.globalDropdown.hidden = false;
+      els.globalSearch.setAttribute("aria-expanded", "true");
+    },
+
+    close() {
+      els.globalDropdown.hidden = true;
+      els.globalSearch.setAttribute("aria-expanded", "false");
+      els.globalSearch.removeAttribute("aria-activedescendant");
+    },
+
+    syncActive() {
+      els.globalResults.querySelectorAll(".gr-item").forEach((li) => {
+        const on = Number(li.dataset.index) === this.active;
+        li.setAttribute("aria-selected", String(on));
+        if (on) li.scrollIntoView({ block: "nearest" });
+      });
+      if (this.active >= 0) els.globalSearch.setAttribute("aria-activedescendant", `gr-${this.active}`);
+    },
+
+    // Navega a la zona/figura del repuesto; route() selecciona la fila e ilumina el hotspot
+    go(i) {
+      const r = this.results[i];
+      if (!r) return;
+      const params = new URLSearchParams({ item: r.part.item, pn: r.part.partNumber });
+      this.close();
+      els.globalSearch.value = "";
+      location.hash = `#/zona/${r.zone.id}/${r.figureIndex + 1}?${params}`;
+    },
+
+    bindEvents() {
+      els.globalSearch.addEventListener("input", () => this.update());
+      els.globalSearch.addEventListener("focus", () => els.globalSearch.value.trim() && this.update());
+
+      els.globalSearch.addEventListener("keydown", (e) => {
+        const shown = Math.min(this.results.length, MAX_RESULTS);
+        if (e.key === "ArrowDown" && shown) {
+          e.preventDefault();
+          this.active = (this.active + 1) % shown;
+          this.syncActive();
+        } else if (e.key === "ArrowUp" && shown) {
+          e.preventDefault();
+          this.active = (this.active - 1 + shown) % shown;
+          this.syncActive();
+        } else if (e.key === "Enter" && !els.globalDropdown.hidden && this.active >= 0) {
+          e.preventDefault();
+          this.go(this.active);
+        } else if (e.key === "Escape") {
+          if (!els.globalDropdown.hidden) this.close();
+          else els.globalSearch.value = "";
+        }
+      });
+
+      els.globalResults.addEventListener("click", (e) => {
+        const li = e.target.closest(".gr-item");
+        if (li) this.go(Number(li.dataset.index));
+      });
+      els.globalResults.addEventListener("mousemove", (e) => {
+        const li = e.target.closest(".gr-item");
+        if (li && Number(li.dataset.index) !== this.active) {
+          this.active = Number(li.dataset.index);
+          els.globalResults.querySelectorAll(".gr-item").forEach((x) =>
+            x.setAttribute("aria-selected", String(x === li))
+          );
+        }
+      });
+
+      // Cierra al hacer clic fuera
+      document.addEventListener("click", (e) => {
+        if (!e.target.closest(".global-search")) this.close();
+      });
+
+      // "/" enfoca el buscador global en el Nivel 1
+      document.addEventListener("keydown", (e) => {
+        if (els.machineView.hidden || e.key !== "/" || document.activeElement === els.globalSearch) return;
+        e.preventDefault();
+        els.globalSearch.focus();
+      });
+    }
+  };
+
   async function route() {
     // #/zona/<id>  o  #/zona/<id>/<n.º de figura, desde 1>
+    // Opcional: ?item=<n>&pn=<part number> selecciona ese repuesto (lo usa el buscador global)
     const match = location.hash.match(/^#\/zona\/([\w-]+)(?:\/(\d+))?/);
     const zone = match && MachineView.zone(match[1]);
+    const params = new URLSearchParams(location.hash.split("?")[1] || "");
 
     if (zone && zone.status === "available") {
       const figures = figuresOf(zone);
@@ -710,6 +891,12 @@
         els.assemblyView.classList.remove("view-enter");
         void els.assemblyView.offsetWidth;
         els.assemblyView.classList.add("view-enter");
+      }
+      if (params.has("item")) {
+        // Espera a que la vista se pinte para que el desplazamiento llegue a la fila
+        requestAnimationFrame(() =>
+          AssemblyView.selectItem(Number(params.get("item")), { scroll: true, partNumber: params.get("pn") })
+        );
       }
     } else {
       if (match) history.replaceState(null, "", "#/"); // zona inexistente o no disponible
@@ -743,6 +930,7 @@
     // Ambas vistas arrancan ocultas para que la primera tenga animación de entrada
     els.machineView.hidden = true;
     await MachineView.init();
+    GlobalSearch.init();
     window.addEventListener("hashchange", route);
     route();
   }

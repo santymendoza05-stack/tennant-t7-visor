@@ -27,6 +27,21 @@
 
   <!-- ===================== NIVEL 1: Máquina completa ===================== -->
   <main id="view-machine" class="view layout" data-level="1">
+    <!-- Buscador global: busca en los repuestos de todas las zonas -->
+    <section class="global-search" aria-label="Buscador global de repuestos">
+      <div class="global-search-box">
+        <span class="search-icon" aria-hidden="true">⌕</span>
+        <input id="global-search" type="search" autocomplete="off" spellcheck="false"
+               placeholder="Buscar Part Number, descripción o referencia..."
+               role="combobox" aria-expanded="false" aria-controls="global-results" aria-autocomplete="list" />
+        <kbd class="global-search-kbd" aria-hidden="true">/</kbd>
+      </div>
+      <div id="global-dropdown" class="global-dropdown" hidden>
+        <p id="global-summary" class="global-summary"></p>
+        <ul id="global-results" class="global-results" role="listbox" aria-label="Resultados"></ul>
+      </div>
+    </section>
+
     <section class="panel diagram-panel" aria-label="Vista general de la máquina">
       <div class="panel-header">
         <h2>Vista general</h2>

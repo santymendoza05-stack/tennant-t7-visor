@@ -331,6 +331,10 @@ kbd {
   box-shadow: inset 4px 0 0 var(--accent);
 }
 .parts-table tbody tr.flash { animation: flash 0.9s ease; }
+.parts-table tbody tr.is-target {
+  background: rgba(242, 169, 0, 0.38);
+  box-shadow: inset 6px 0 0 var(--accent), inset 0 0 0 1px var(--accent);
+}
 
 @keyframes flash {
   0%, 100% { background: var(--accent-soft); }
@@ -408,6 +412,104 @@ mark { background: var(--accent); color: #111; border-radius: 2px; padding: 0 1p
   transition: border-color 0.15s, background 0.15s;
 }
 .back-btn:hover, .back-btn:focus-visible { border-color: var(--accent); background: var(--accent-soft); outline: none; }
+
+/* ---------- Buscador global (Nivel 1) ---------- */
+.global-search {
+  grid-column: 1 / -1;
+  position: relative;
+  z-index: 15;
+}
+
+.global-search-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 18px;
+  border-radius: 14px;
+  border: 2px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.global-search-box:focus-within { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft), var(--shadow); }
+.global-search-box .search-icon { font-size: 1.5rem; color: var(--accent); }
+
+.global-search-box input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--text);
+  font: 500 1.05rem var(--font);
+  padding: 16px 0;
+}
+.global-search-kbd { flex-shrink: 0; }
+
+.global-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+.global-dropdown[hidden] { display: none; }
+
+.global-summary {
+  margin: 0;
+  padding: 10px 16px;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-2);
+}
+
+.global-results {
+  list-style: none;
+  margin: 0;
+  padding: 6px;
+  max-height: min(60vh, 460px);
+  overflow-y: auto;
+}
+
+.gr-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.gr-item[aria-selected="true"] { background: var(--accent-soft); }
+.gr-item[aria-selected="true"] .item-num { background: var(--accent); color: #111; }
+.gr-item .item-num { flex-shrink: 0; }
+
+.gr-main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.gr-line { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.gr-desc { font-size: 0.9rem; }
+.gr-note { font-size: 0.75rem; color: var(--text-muted); }
+
+.gr-zone {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  font: 600 0.8rem var(--font);
+  max-width: 40%;
+}
+.gr-zone small { font-weight: 500; color: var(--text-muted); }
+
+@media (max-width: 560px) {
+  .global-search-kbd { display: none; }
+  .gr-item { flex-wrap: wrap; }
+  .gr-zone { max-width: none; width: 100%; align-items: flex-start; text-align: left; padding-left: 38px; }
+  .gr-line { white-space: normal; }
+}
 
 /* Pestañas cuando una zona tiene varias figuras (p. ej. Tanques: Fig. 27 / Fig. 29) */
 .figure-tabs {
