@@ -25,7 +25,8 @@
         { id: "rueda-motriz", name: "Rueda Motriz / Tracción", description: "Front Drive Wheel Group (S/N 10518139-)", figure: "Fig. 11", status: "available", data: "data/front_drive_wheel.json", hotspot: { x: 25.7, y: 92.3 } },
         { id: "panel-instrumentos", name: "Panel de Instrumentos / Consola", description: "Instrument Panel & Circuit Board Group", figure: "Fig. 10 / 38", status: "available", figures: [{ label: "Fig. 10 · Panel de instrumentos", data: "data/instrument_panel.json" }, { label: "Fig. 38 · Tarjeta controladora", data: "data/circuit_board.json" }], hotspot: { x: 24, y: 38 } },
         { id: "columna-direccion", name: "Columna de Dirección / Volante", description: "Steering Group", figure: "Fig. 9", status: "available", data: "data/steering_group.json", hotspot: { x: 34.6, y: 30.2 } },
-        { id: "asiento-cubierta", name: "Asiento y Cubierta de Baterías", description: "Seat Group", figure: "Fig. 8", status: "available", data: "data/seat_group.json", hotspot: { x: 55.9, y: 37.6 }, labelSide: "right" }
+        { id: "asiento-cubierta", name: "Asiento y Cubierta de Baterías", description: "Seat Group", figure: "Fig. 8", status: "available", data: "data/seat_group.json", hotspot: { x: 55.9, y: 37.6 }, labelSide: "right" },
+        { id: "chasis-bastidor", name: "Chasis y Bastidor Principal", description: "Main Frame Group", figure: "Fig. 4 / 7", status: "available", figures: [{ label: "Fig. 4 · Cabezal de disco", data: "data/main_frame_disk.json" }, { label: "Fig. 7 · Cilíndrico (S/N hasta 10448498)", data: "data/main_frame.json" }], hotspot: { x: 58.8, y: 67.1 } }
       ]
     },
     "data/squeegee_parts.json": {
@@ -374,6 +375,74 @@
         { item: 38, partNumber: "1017218", description: "Washer, Flat, 0.32b 1.00d .12, SS", category: "Tornillería", qty: 4, note: "Modelos estándar y ec-H2O", hotspots: [{ x: 7.6, y: 69 }, { x: 17.9, y: 85.2 }] },
         { item: 39, partNumber: "09740", description: "Screw, Hex, M8 x 1.25 x 20, SS", category: "Tornillería", qty: 2, note: "Modelos estándar y ec-H2O", hotspots: [{ x: 21.8, y: 85.7 }] },
         { item: 40, partNumber: "1051138", description: "Bracket, Cover, Fast Open [T7 ec-H2O]", category: "Cubierta y tapa", qty: 1, note: "Modelos estándar y ec-H2O", hotspots: [{ x: 5.8, y: 90.6 }] }
+      ]
+    },
+    "data/main_frame_disk.json": {
+      machine: "Tennant T7",
+      group: "Main Frame Group, Disk Scrub Head",
+      figure: "Fig. 4",
+      image: "assets/main_frame_disk.png",
+      categories: ["Chasis", "Ruedas", "Defensas y estabilizadores", "Correa estática", "Tapones y sujeción", "Tornillería"],
+      parts: [
+        { item: 1, partNumber: "1054028", description: "Frame Wldt, Main, Disk [T7]", category: "Chasis", qty: 1, note: "S/N 10441903-", hotspots: [{ x: 28.2, y: 24.2 }, { x: 6.9, y: 67.4 }] },
+        { item: 1, partNumber: "1010160", description: "Frame Wldt [T7] (Replaced By 1054028)", category: "Chasis", qty: 1, note: "S/N 10000000-10441902", hotspots: [] },
+        { item: 2, partNumber: "1010556", description: "Stabilizer Wldt (Replaced By 1054028)", category: "Defensas y estabilizadores", qty: 2, note: "S/N 10000000-10441902", hotspots: [{ x: 30.4, y: 91.4 }] },
+        { item: 3, partNumber: "1072816", description: "Screw, Hex, M8 x 1.25 x 30, SS, Sems", category: "Tornillería", qty: 3, note: "S/N 10441903-", hotspots: [{ x: 66.6, y: 41.2 }, { x: 21.2, y: 57.2 }, { x: 6.7, y: 50.2 }, { x: 48.3, y: 81 }, { x: 16.5, y: 88.3 }] },
+        { item: 3, partNumber: "09010", description: "Screw, Hex, M8 x 1.25 x 25, SS", category: "Tornillería", qty: 9, note: "S/N 10000000-10441902", hotspots: [] },
+        { item: 4, partNumber: "01685", description: "Washer, Flat, 0.31 SS", category: "Tornillería", qty: 1, note: "S/N 10441903-", hotspots: [{ x: 45.7, y: 79.7 }, { x: 16.2, y: 85.5 }] },
+        { item: 4, partNumber: "01685", description: "Washer, Flat, 0.31 SS", category: "Tornillería", qty: 7, note: "S/N 10000000-10441902", hotspots: [] },
+        { item: 5, partNumber: "10632-13", description: "Grommet, Rbr, 1.50id, F/ 1.8h, .19matl", category: "Tapones y sujeción", qty: 5, hotspots: [{ x: 96.3, y: 17.9 }, { x: 62.4, y: 5.2 }, { x: 73.3, y: 29 }] },
+        { item: 6, partNumber: "1014318", description: "Strap, Static", category: "Correa estática", qty: 1, hotspots: [{ x: 80.1, y: 40.4 }] },
+        { item: 7, partNumber: "1038560", description: "Tire Assy, Solid, 250mm x 80mm, 25mm ID", category: "Ruedas", qty: 2, hotspots: [{ x: 28.5, y: 16.6 }, { x: 71.4, y: 66.6 }] },
+        { item: 8, partNumber: "09005", description: "Ring, Retaining, Ext, 1.00D, Basic", category: "Ruedas", qty: 2, hotspots: [{ x: 25.8, y: 7.8 }, { x: 84.3, y: 64.7 }] },
+        { item: 9, partNumber: "1016957", description: "Cap, Vyl, 70mm ID x 25mm L", category: "Ruedas", qty: 2, hotspots: [{ x: 20.7, y: 7.4 }, { x: 88.1, y: 68.1 }] },
+        { item: 10, partNumber: "1017688", description: "Bracket Wldt, Stand, Jack", category: "Chasis", qty: 2, hotspots: [{ x: 32.8, y: 58.4 }, { x: 3.1, y: 45.4 }] },
+        { item: 11, partNumber: "1034731", description: "Screw, Hex, M6 x 1.00 x 16, Sems, SS", category: "Tornillería", qty: 1, hotspots: [{ x: 38.3, y: 18.2 }] },
+        { item: 12, partNumber: "140300", description: "Clamp, Cable, Stl, 0.50d [Insulated]", category: "Tapones y sujeción", qty: 1, note: "S/N 10518139-", hotspots: [{ x: 49.5, y: 36.1 }] },
+        { item: 12, partNumber: "26395-1", description: "Clamp, Cable, Stl, 0.56D x 0.38W, 1H", category: "Tapones y sujeción", qty: 1, note: "S/N 10000000-10518138", hotspots: [] },
+        { item: 13, partNumber: "08716", description: "Screw, Hex, M6 x 1.0 x 20, SS", category: "Tornillería", qty: 1, hotspots: [{ x: 53.1, y: 36.4 }] },
+        { item: 14, partNumber: "01684", description: "Washer, Flat, 0.25 SS", category: "Tornillería", qty: 1, hotspots: [{ x: 21.6, y: 49.5 }] },
+        { item: 15, partNumber: "08712", description: "Nut, Hex, Lock, M6 x 1.0, SS, NL", category: "Tornillería", qty: 1, hotspots: [{ x: 18, y: 49.9 }] },
+        { item: 16, partNumber: "1018505", description: "Horn, 12-48VDC", category: "Chasis", qty: 1, hotspots: [{ x: 57.3, y: 46 }] },
+        { item: 17, partNumber: "01684", description: "Washer, Flat, 0.25 SS", category: "Tornillería", qty: 1, hotspots: [{ x: 40.6, y: 20.9 }] }
+      ]
+    },
+    "data/main_frame.json": {
+      machine: "Tennant T7",
+      group: "Main Frame Group, Cylindrical Scrub Head (S/N 10000000-10448498)",
+      figure: "Fig. 7",
+      image: "assets/main_frame.png",
+      categories: ["Chasis", "Ruedas", "Defensas y estabilizadores", "Rodillos paragolpes", "Correa estática", "Tapones y sujeción", "Tornillería"],
+      parts: [
+        { item: 1, partNumber: "1023551", description: "Frame, Wldt (Replaced By 1056133 for 700 mm & 800 mm)", category: "Chasis", qty: 1, hotspots: [{ x: 20.5, y: 27.2 }] },
+        { item: 2, partNumber: "1025473", description: "Stabilizer Wldt (Replaced By 1054035)", category: "Defensas y estabilizadores", qty: 2, note: "Cabezal cilíndrico 700 mm", hotspots: [{ x: 53.8, y: 52.7 }, { x: 19.7, y: 51 }] },
+        { item: 3, partNumber: "09740", description: "Screw, Hex, M8 x 1.25 x 20, SS", category: "Tornillería", qty: 7, hotspots: [{ x: 38.6, y: 52.8 }, { x: 22.5, y: 46 }, { x: 70.3, y: 24.9 }] },
+        { item: 4, partNumber: "01685", description: "Washer, Flat, 0.31 SS", category: "Tornillería", qty: 7, hotspots: [{ x: 39.4, y: 43.5 }, { x: 25.3, y: 47.3 }, { x: 75.6, y: 20.1 }] },
+        { item: 5, partNumber: "10632-13", description: "Grommet, Rbr, 1.50id, F/ 1.8h, .19matl", category: "Tapones y sujeción", qty: 1, hotspots: [{ x: 79.8, y: 4.2 }] },
+        { item: 6, partNumber: "71579", description: "Strap, Static, .19 1.1w 25.0L W/ Grommet", category: "Correa estática", qty: 1, hotspots: [{ x: 81.6, y: 31.4 }] },
+        { item: 7, partNumber: "1038560", description: "Tire Assy, Solid, 250mm x 80mm, 25mm ID", category: "Ruedas", qty: 2, hotspots: [{ x: 31.7, y: 16 }, { x: 73.3, y: 63.8 }] },
+        { item: 8, partNumber: "09005", description: "Ring, Retaining, Ext, 1.00D, Basic", category: "Ruedas", qty: 2, hotspots: [{ x: 29.3, y: 7.7 }, { x: 86, y: 62.1 }] },
+        { item: 9, partNumber: "1016957", description: "Cap, Vyl, 70mm ID x 25mm L", category: "Ruedas", qty: 2, hotspots: [{ x: 23.6, y: 6.8 }, { x: 89.9, y: 65.4 }] },
+        { item: 10, partNumber: "49263", description: "Tie, Cable, Nyl, 11.4L .19w 3.0 Max D", category: "Tapones y sujeción", qty: 4, hotspots: [{ x: 55.8, y: 7 }, { x: 40.5, y: 16.8 }] },
+        { item: 11, partNumber: "26395-1", description: "Clamp, Cable, Stl, 0.56D x 0.38W, 1H", category: "Tapones y sujeción", qty: 1, hotspots: [{ x: 60.1, y: 56.8 }] },
+        { item: 12, partNumber: "08716", description: "Screw, Hex, M6 x 1.0 x 20, SS", category: "Tornillería", qty: 1, hotspots: [{ x: 64.6, y: 57.5 }] },
+        { item: 13, partNumber: "01684", description: "Washer, Flat, 0.25 SS", category: "Tornillería", qty: 1, hotspots: [{ x: 42.9, y: 67.8 }] },
+        { item: 14, partNumber: "08712", description: "Nut, Hex, Lock, M6 x 1.0, SS, NL", category: "Tornillería", qty: 1, hotspots: [{ x: 38, y: 67 }] },
+        { item: 15, partNumber: "1018505", description: "Horn, 12-48VDC", category: "Chasis", qty: 1, hotspots: [{ x: 54.7, y: 35.8 }] },
+        { item: 16, partNumber: "15678", description: "Screw, Hex, M6 x 1.0 x 16, SS", category: "Tornillería", qty: 1, hotspots: [{ x: 72.8, y: 32.7 }] },
+        { item: 17, partNumber: "07515", description: "Washer, Lock, Int, .25, SS", category: "Tornillería", qty: 1, hotspots: [{ x: 70.6, y: 31.7 }] },
+        { item: 18, partNumber: "01684", description: "Washer, Flat, 0.25 SS", category: "Tornillería", qty: 2, hotspots: [{ x: 59.5, y: 35.6 }] },
+        { item: 19, partNumber: "1025354", description: "Plate, Mtg, Horn", category: "Chasis", qty: 1, hotspots: [{ x: 66.6, y: 26.8 }] },
+        { item: 20, partNumber: "1032947", description: "Stabilizer Wldt, W/ Rlr (Replaced By 1056133)", category: "Defensas y estabilizadores", qty: 2, note: "Cabezal cilíndrico 800 mm", hotspots: [{ x: 13, y: 77.7 }, { x: 61.7, y: 76.8 }] },
+        { item: 21, partNumber: "1033355", description: "Bracket, Guard, LH", category: "Rodillos paragolpes", qty: 1, note: "Cabezal cilíndrico 800 mm", hotspots: [{ x: 63.2, y: 81.2 }] },
+        { item: 22, partNumber: "1032971", description: "Bracket, Guard, RH", category: "Rodillos paragolpes", qty: 1, note: "Cabezal cilíndrico 800 mm", hotspots: [{ x: 5, y: 67.2 }] },
+        { item: 23, partNumber: "08716", description: "Screw, Hex, M6 x 1.0 x 20, SS", category: "Tornillería", qty: 4, note: "Cabezal cilíndrico 800 mm", hotspots: [{ x: 15.6, y: 56.1 }, { x: 70.4, y: 79.7 }] },
+        { item: 24, partNumber: "01684", description: "Washer, Flat, 0.25, SS", category: "Tornillería", qty: 8, note: "Cabezal cilíndrico 800 mm", hotspots: [{ x: 18.7, y: 57 }, { x: 21.8, y: 79.8 }, { x: 49.3, y: 92.9 }, { x: 67.1, y: 79.8 }] },
+        { item: 25, partNumber: "08712", description: "Nut, Hex, Lock, M6 x 1.00, SS, NL", category: "Tornillería", qty: 4, note: "Cabezal cilíndrico 800 mm", hotspots: [{ x: 25, y: 81.9 }, { x: 45.2, y: 92.3 }] },
+        { item: 26, partNumber: "222178", description: "Roller, PYU, 1.88d 0.53b 3.05L", category: "Rodillos paragolpes", qty: 2, note: "Cabezal cilíndrico 800 mm", hotspots: [{ x: 2.2, y: 50.3 }, { x: 89.3, y: 89.5 }] },
+        { item: 27, partNumber: "51528", description: "Pin, Clevis, 0.50d x 4.00L", category: "Rodillos paragolpes", qty: 2, note: "Cabezal cilíndrico 800 mm", hotspots: [{ x: 7.6, y: 48.4 }, { x: 81.9, y: 82.6 }] },
+        { item: 28, partNumber: "41619", description: "Washer, Flat, 0.56b 1.38d .11, SS", category: "Tornillería", qty: 2, note: "Cabezal cilíndrico 800 mm", hotspots: [{ x: 5.2, y: 71.8 }, { x: 68.6, y: 94.8 }] },
+        { item: 29, partNumber: "08346", description: "Pin, Cotter, .125 x 0.75", category: "Rodillos paragolpes", qty: 2, note: "Cabezal cilíndrico 800 mm", hotspots: [{ x: 5.9, y: 51.1 }, { x: 75.2, y: 78.4 }] }
       ]
     }
   };
@@ -905,12 +974,15 @@
       const q = normalize(query.trim());
       const tokens = q.split(/\s+/).filter(Boolean);
       if (!tokens.length) return [];
+      // Palabras completas antes que fragmentos: "roller" debe priorizar "Roller" sobre "Controller"
+      const wordStart = tokens.map((t) => new RegExp(`(^|[^a-z0-9])${t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}`));
       const score = (e) => {
         const pn = normalize(e.part.partNumber);
         if (pn === q) return 0;
         if (pn.startsWith(q)) return 1;
         if (pn.includes(q)) return 2;
-        return 3;
+        if (wordStart.every((re) => re.test(e.haystack))) return 3;
+        return 4;
       };
       return this.index
         .filter((e) => tokens.every((t) => e.haystack.includes(t)))

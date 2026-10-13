@@ -84,6 +84,24 @@
       "data": "data/seat_group.json",
       "hotspot": { "x": 55.9, "y": 37.6 },
       "labelSide": "right"
+    },
+    {
+      "id": "chasis-bastidor",
+      "name": "Chasis y Bastidor Principal",
+      "description": "Main Frame Group",
+      "figure": "Fig. 4 / 7",
+      "status": "available",
+      "figures": [
+        {
+          "label": "Fig. 4 · Cabezal de disco",
+          "data": "data/main_frame_disk.json"
+        },
+        {
+          "label": "Fig. 7 · Cilíndrico (S/N hasta 10448498)",
+          "data": "data/main_frame.json"
+        }
+      ],
+      "hotspot": { "x": 58.8, "y": 67.1 }
     }
   ]
 }

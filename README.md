@@ -18,6 +18,7 @@ Visor web interactivo de repuestos para la fregadora Tennant T7, basado en los d
 | Panel de Instrumentos / Consola | Fig. 10 · Instrument Panel Group<br>Fig. 38 · Circuit Board Group | `data/instrument_panel.json`<br>`data/circuit_board.json` |
 | Columna de Dirección / Volante | Fig. 9 · Steering Group | `data/steering_group.json` |
 | Asiento y Cubierta de Baterías | Fig. 8 · Seat Group | `data/seat_group.json` |
+| Chasis y Bastidor Principal | Fig. 4 · Main Frame Group, Disk Scrub Head<br>Fig. 7 · Main Frame Group, Cylindrical (S/N 10000000-10448498) | `data/main_frame_disk.json`<br>`data/main_frame.json` |
 
 ## Uso local
 

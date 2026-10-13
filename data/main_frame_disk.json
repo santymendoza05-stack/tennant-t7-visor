@@ -1,0 +1,239 @@
+{
+  "machine": "Tennant T7",
+  "group": "Main Frame Group, Disk Scrub Head",
+  "figure": "Fig. 4",
+  "image": "assets/main_frame_disk.png",
+  "categories": [
+    "Chasis",
+    "Ruedas",
+    "Defensas y estabilizadores",
+    "Correa estática",
+    "Tapones y sujeción",
+    "Tornillería"
+  ],
+  "parts": [
+    {
+      "item": 1,
+      "partNumber": "1054028",
+      "description": "Frame Wldt, Main, Disk [T7]",
+      "category": "Chasis",
+      "qty": 1,
+      "note": "S/N 10441903-",
+      "hotspots": [
+        { "x": 28.2, "y": 24.2 },
+        { "x": 6.9, "y": 67.4 }
+      ]
+    },
+    {
+      "item": 1,
+      "partNumber": "1010160",
+      "description": "Frame Wldt [T7] (Replaced By 1054028)",
+      "category": "Chasis",
+      "qty": 1,
+      "note": "S/N 10000000-10441902",
+      "hotspots": []
+    },
+    {
+      "item": 2,
+      "partNumber": "1010556",
+      "description": "Stabilizer Wldt (Replaced By 1054028)",
+      "category": "Defensas y estabilizadores",
+      "qty": 2,
+      "note": "S/N 10000000-10441902",
+      "hotspots": [
+        { "x": 30.4, "y": 91.4 }
+      ]
+    },
+    {
+      "item": 3,
+      "partNumber": "1072816",
+      "description": "Screw, Hex, M8 x 1.25 x 30, SS, Sems",
+      "category": "Tornillería",
+      "qty": 3,
+      "note": "S/N 10441903-",
+      "hotspots": [
+        { "x": 66.6, "y": 41.2 },
+        { "x": 21.2, "y": 57.2 },
+        { "x": 6.7, "y": 50.2 },
+        { "x": 48.3, "y": 81 },
+        { "x": 16.5, "y": 88.3 }
+      ]
+    },
+    {
+      "item": 3,
+      "partNumber": "09010",
+      "description": "Screw, Hex, M8 x 1.25 x 25, SS",
+      "category": "Tornillería",
+      "qty": 9,
+      "note": "S/N 10000000-10441902",
+      "hotspots": []
+    },
+    {
+      "item": 4,
+      "partNumber": "01685",
+      "description": "Washer, Flat, 0.31 SS",
+      "category": "Tornillería",
+      "qty": 1,
+      "note": "S/N 10441903-",
+      "hotspots": [
+        { "x": 45.7, "y": 79.7 },
+        { "x": 16.2, "y": 85.5 }
+      ]
+    },
+    {
+      "item": 4,
+      "partNumber": "01685",
+      "description": "Washer, Flat, 0.31 SS",
+      "category": "Tornillería",
+      "qty": 7,
+      "note": "S/N 10000000-10441902",
+      "hotspots": []
+    },
+    {
+      "item": 5,
+      "partNumber": "10632-13",
+      "description": "Grommet, Rbr, 1.50id, F/ 1.8h, .19matl",
+      "category": "Tapones y sujeción",
+      "qty": 5,
+      "hotspots": [
+        { "x": 96.3, "y": 17.9 },
+        { "x": 62.4, "y": 5.2 },
+        { "x": 73.3, "y": 29 }
+      ]
+    },
+    {
+      "item": 6,
+      "partNumber": "1014318",
+      "description": "Strap, Static",
+      "category": "Correa estática",
+      "qty": 1,
+      "hotspots": [
+        { "x": 80.1, "y": 40.4 }
+      ]
+    },
+    {
+      "item": 7,
+      "partNumber": "1038560",
+      "description": "Tire Assy, Solid, 250mm x 80mm, 25mm ID",
+      "category": "Ruedas",
+      "qty": 2,
+      "hotspots": [
+        { "x": 28.5, "y": 16.6 },
+        { "x": 71.4, "y": 66.6 }
+      ]
+    },
+    {
+      "item": 8,
+      "partNumber": "09005",
+      "description": "Ring, Retaining, Ext, 1.00D, Basic",
+      "category": "Ruedas",
+      "qty": 2,
+      "hotspots": [
+        { "x": 25.8, "y": 7.8 },
+        { "x": 84.3, "y": 64.7 }
+      ]
+    },
+    {
+      "item": 9,
+      "partNumber": "1016957",
+      "description": "Cap, Vyl, 70mm ID x 25mm L",
+      "category": "Ruedas",
+      "qty": 2,
+      "hotspots": [
+        { "x": 20.7, "y": 7.4 },
+        { "x": 88.1, "y": 68.1 }
+      ]
+    },
+    {
+      "item": 10,
+      "partNumber": "1017688",
+      "description": "Bracket Wldt, Stand, Jack",
+      "category": "Chasis",
+      "qty": 2,
+      "hotspots": [
+        { "x": 32.8, "y": 58.4 },
+        { "x": 3.1, "y": 45.4 }
+      ]
+    },
+    {
+      "item": 11,
+      "partNumber": "1034731",
+      "description": "Screw, Hex, M6 x 1.00 x 16, Sems, SS",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 38.3, "y": 18.2 }
+      ]
+    },
+    {
+      "item": 12,
+      "partNumber": "140300",
+      "description": "Clamp, Cable, Stl, 0.50d [Insulated]",
+      "category": "Tapones y sujeción",
+      "qty": 1,
+      "note": "S/N 10518139-",
+      "hotspots": [
+        { "x": 49.5, "y": 36.1 }
+      ]
+    },
+    {
+      "item": 12,
+      "partNumber": "26395-1",
+      "description": "Clamp, Cable, Stl, 0.56D x 0.38W, 1H",
+      "category": "Tapones y sujeción",
+      "qty": 1,
+      "note": "S/N 10000000-10518138",
+      "hotspots": []
+    },
+    {
+      "item": 13,
+      "partNumber": "08716",
+      "description": "Screw, Hex, M6 x 1.0 x 20, SS",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 53.1, "y": 36.4 }
+      ]
+    },
+    {
+      "item": 14,
+      "partNumber": "01684",
+      "description": "Washer, Flat, 0.25 SS",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 21.6, "y": 49.5 }
+      ]
+    },
+    {
+      "item": 15,
+      "partNumber": "08712",
+      "description": "Nut, Hex, Lock, M6 x 1.0, SS, NL",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 18, "y": 49.9 }
+      ]
+    },
+    {
+      "item": 16,
+      "partNumber": "1018505",
+      "description": "Horn, 12-48VDC",
+      "category": "Chasis",
+      "qty": 1,
+      "hotspots": [
+        { "x": 57.3, "y": 46 }
+      ]
+    },
+    {
+      "item": 17,
+      "partNumber": "01684",
+      "description": "Washer, Flat, 0.25 SS",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 40.6, "y": 20.9 }
+      ]
+    }
+  ]
+}
