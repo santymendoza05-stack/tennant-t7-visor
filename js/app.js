@@ -408,10 +408,11 @@
         .join("");
 
       els.zoneList.innerHTML = zones
-        .map((z) => {
+        .map((z, i) => {
           const soon = z.status !== "available";
           return `<li>
             <button type="button" class="zone-card ${soon ? "is-soon" : ""}" data-zone="${z.id}">
+              <span class="zone-index" aria-hidden="true">${String(i + 1).padStart(2, "0")}</span>
               <span class="zone-card-text">
                 <strong>${escapeHtml(z.name)}</strong>
                 <span>${escapeHtml(z.description || "")}${z.figure ? ` · ${escapeHtml(z.figure)}` : ""}</span>
@@ -850,9 +851,18 @@
         }
       });
 
+      // Botones de ejemplo bajo el buscador
+      document.querySelectorAll("[data-example]").forEach((btn) =>
+        btn.addEventListener("click", () => {
+          els.globalSearch.value = btn.dataset.example;
+          els.globalSearch.focus();
+          this.update();
+        })
+      );
+
       // Cierra al hacer clic fuera
       document.addEventListener("click", (e) => {
-        if (!e.target.closest(".global-search")) this.close();
+        if (!e.target.closest(".global-search, [data-example]")) this.close();
       });
 
       // "/" enfoca el buscador global en el Nivel 1
