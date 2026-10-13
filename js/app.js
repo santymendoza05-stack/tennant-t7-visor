@@ -29,7 +29,8 @@
         { id: "chasis-bastidor", name: "Chasis y Bastidor Principal", description: "Main Frame Group", figure: "Fig. 4 / 7", status: "available", figures: [{ label: "Fig. 4 · Cabezal de disco", data: "data/main_frame_disk.json" }, { label: "Fig. 7 · Cilíndrico (S/N hasta 10448498)", data: "data/main_frame.json" }], hotspot: { x: 58.8, y: 67.1 } },
         { id: "elevacion-cabezal", name: "Mecanismo de Elevación del Cabezal", description: "Disk Scrub Head Lift Group", figure: "Fig. 16", status: "available", data: "data/scrub_head_lift.json", hotspot: { x: 46, y: 76 }, labelSide: "left" },
         { id: "motor-aspiracion", name: "Motor de Aspiración y Silenciador", description: "Vacuum Fan Group", figure: "Fig. 28", status: "available", data: "data/vacuum_fan.json", hotspot: { x: 86, y: 33 }, labelSide: "left" },
-        { id: "drenaje-tanques", name: "Sistema de Drenaje de Tanques", description: "Tanks Drain Group", figure: "Fig. 31", status: "available", data: "data/tanks_drain.json", hotspot: { x: 86, y: 50 }, labelSide: "left" }
+        { id: "drenaje-tanques", name: "Sistema de Drenaje de Tanques", description: "Tanks Drain Group", figure: "Fig. 31", status: "available", data: "data/tanks_drain.json", hotspot: { x: 86, y: 50 }, labelSide: "left" },
+        { id: "baterias", name: "Sistema de Baterías y Alimentación", description: "Battery Group, 235Ah (S/N 10523206-)", figure: "Fig. 32", status: "available", data: "data/battery_group.json", hotspot: { x: 44, y: 56 }, labelSide: "left" }
       ]
     },
     "data/squeegee_parts.json": {
@@ -596,6 +597,35 @@
         { item: 10, partNumber: "79381", description: "Clamp, Hose, Wormdrive, 1.25-2.00d, .50w", category: "Abrazaderas y soportes", qty: 1, note: "Tanque de solución", hotspots: [{ x: 14.9, y: 76.9 }] },
         { item: 11, partNumber: "222793", description: "Clip, Hanger, Hose, .38d Hole, SS", category: "Abrazaderas y soportes", qty: 2, hotspots: [{ x: 57.2, y: 22.6 }, { x: 41.6, y: 66.4 }] },
         { item: 12, partNumber: "09740", description: "Screw, Hex, M8 x 1.25 x 20, SS", category: "Tornillería", qty: 2, hotspots: [{ x: 62, y: 26 }, { x: 46.7, y: 67.2 }] }
+      ]
+    },
+    "data/battery_group.json": {
+      machine: "Tennant T7",
+      group: "Battery Group, 235Ah (S/N 10523206-)",
+      figure: "Fig. 32",
+      image: "assets/battery_group.png",
+      categories: ["Baterías", "Cables y conectores", "Protectores y tapas", "Sujeción", "Soportes y espaciadores", "Tornillería"],
+      parts: [
+        { item: 1, partNumber: "222280", description: "Battery, 06vdc, 235ah, Wet", category: "Baterías", qty: 4, note: "Batería de 6 V, 235 Ah, de ácido (Wet) · 4 en serie = 24 V", hotspots: [{ x: 20.6, y: 2.1 }, { x: 63.8, y: 43.5 }] },
+        { item: 2, partNumber: "1042532", description: "Bracket, Battery [T7, 220ah Agm]", category: "Soportes y espaciadores", qty: 1, note: "S/N 10523206-", hotspots: [{ x: 21.6, y: 60.1 }] },
+        { item: 3, partNumber: "1025155", description: "Tray, Battery, 605x370x25", category: "Soportes y espaciadores", qty: 1, note: "Bandeja de baterías", hotspots: [{ x: 13.7, y: 29.4 }] },
+        { item: 4, partNumber: "09740", description: "Screw, Hex, M8 X 1.25 X 20, Ss", category: "Tornillería", qty: 2, hotspots: [{ x: 74.4, y: 44.9 }] },
+        { item: 5, partNumber: "1017218", description: "Washer, Flat, 0.321b 1.00d .12, Ss", category: "Tornillería", qty: 4, hotspots: [{ x: 37.7, y: 55.5 }, { x: 74.7, y: 48.4 }] },
+        { item: 6, partNumber: "222682", description: "Strap", category: "Sujeción", qty: 1, note: "Correa de sujeción de las baterías", hotspots: [{ x: 14.8, y: 21.5 }] },
+        { item: 7, partNumber: "223356", description: "Wire, 04ga 12.0l Blk .34ring /.34ring", category: "Cables y conectores", qty: 3, note: "Puente entre baterías", hotspots: [{ x: 70.9, y: 2.5 }, { x: 56.8, y: 2.5 }, { x: 31.6, y: 1.3 }] },
+        { item: 8, partNumber: "611221", description: "Boot, Terminal, Battery, 25.4Mm, Blk", category: "Protectores y tapas", qty: 8, note: "Capuchón aislante de borne", hotspots: [{ x: 83.4, y: 4.1 }] },
+        { item: 9, partNumber: "630375", description: "Spacer, Battery, Foam, 1.25 X 3.3 X 13.7", category: "Soportes y espaciadores", qty: 2, note: "Espaciador de espuma · S/N 10523206-", hotspots: [{ x: 9.5, y: 7.2 }, { x: 87.1, y: 41.9 }] },
+        { item: 10, partNumber: "87435", description: "Nut, Hex, Flexlock, .31- 18", category: "Tornillería", qty: 8, hotspots: [{ x: 83.5, y: 8.9 }] },
+        { item: 11, partNumber: "1010771", description: "Angle, Sppt, Battery", category: "Soportes y espaciadores", qty: 1, note: "Guía metálica de la bandeja", hotspots: [{ x: 49.9, y: 56.5 }] },
+        { item: 12, partNumber: "397907", description: "Wire Assy, Cable, 4ga, Red", category: "Cables y conectores", qty: 1, note: "Cable de alimentación con conector", hotspots: [{ x: 16.9, y: 44.2 }] },
+        { item: 13, partNumber: "397908", description: "Wire Assy, Cable, 4ga, Red", category: "Cables y conectores", qty: 1, note: "Cable de alimentación con conector Anderson · incluye 1020446 y 1020447", hotspots: [{ x: 30.1, y: 40.2 }] },
+        { item: 13, partNumber: "1020446", description: "Connector, Anderson, 1321 Series", category: "Cables y conectores", qty: 1, note: "Componente del cable 397908", hotspots: [] },
+        { item: 13, partNumber: "1020447", description: "Terminal, Contact, Anderson, 1319g4, 4ga", category: "Cables y conectores", qty: 1, note: "Componente del cable 397908", hotspots: [] },
+        { item: 14, partNumber: "223364", description: "Wire, 04ga 16.0l Blk .34ring /.34ring", category: "Cables y conectores", qty: 1, note: "Cable negativo de alimentación", hotspots: [{ x: 13, y: 38 }] },
+        { item: 15, partNumber: "1020105", description: "Sleeve, Afmkt, Nyl, #13, 1ft", category: "Cables y conectores", qty: 1, note: "Funda de los cables de alimentación", hotspots: [{ x: 14, y: 67.7 }] },
+        { item: 16, partNumber: "49263", description: "Tie, Cable, Nyl, 11.4l .19w 3.0 Max D", category: "Cables y conectores", qty: 3, hotspots: [{ x: 13.7, y: 62 }] },
+        { item: 17, partNumber: "15675", description: "Screw, Hex, M8 X 1.25 X 16, Ss", category: "Tornillería", qty: 2, hotspots: [{ x: 38.6, y: 53.3 }] },
+        { item: 18, partNumber: "1041030", description: "Cap, Battery", category: "Protectores y tapas", qty: 8, note: "Tapa de batería", hotspots: [{ x: 84.6, y: 18.3 }] }
       ]
     }
   };

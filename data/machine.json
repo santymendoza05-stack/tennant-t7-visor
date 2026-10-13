@@ -136,6 +136,16 @@
       "data": "data/tanks_drain.json",
       "hotspot": { "x": 86, "y": 50 },
       "labelSide": "left"
+    },
+    {
+      "id": "baterias",
+      "name": "Sistema de Baterías y Alimentación",
+      "description": "Battery Group, 235Ah (S/N 10523206-)",
+      "figure": "Fig. 32",
+      "status": "available",
+      "data": "data/battery_group.json",
+      "hotspot": { "x": 44, "y": 56 },
+      "labelSide": "left"
     }
   ]
 }
