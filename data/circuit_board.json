@@ -1,0 +1,267 @@
+{
+  "machine": "Tennant T7",
+  "group": "Circuit Board Group",
+  "figure": "Fig. 38",
+  "image": "assets/circuit_board.png",
+  "categories": [
+    "Controlador",
+    "Gabinete",
+    "Tornillería"
+  ],
+  "parts": [
+    {
+      "item": 1,
+      "partNumber": "9012711",
+      "description": "Controller Kit, Replmt, CI [T7 Disk]",
+      "category": "Controlador",
+      "qty": 1,
+      "note": "Cabezal de disco · incluye ítems 2-14",
+      "hotspots": [
+        { "x": 51.3, "y": 51.1 }
+      ]
+    },
+    {
+      "item": 1,
+      "partNumber": "9012712",
+      "description": "Controller Kit, Replmt, CI [T7 Cyl]",
+      "category": "Controlador",
+      "qty": 1,
+      "note": "Cabezal cilíndrico · incluye ítems 2-14",
+      "hotspots": []
+    },
+    {
+      "item": 2,
+      "partNumber": "06922",
+      "description": "Screw, Pan, M3 x 0.5 x 20, 4.8",
+      "category": "Tornillería",
+      "qty": 4,
+      "note": "Incluido en los kits controladores 9012711 y 9012712",
+      "hotspots": [
+        { "x": 93.8, "y": 18.8 }
+      ]
+    },
+    {
+      "item": 3,
+      "partNumber": "1019218",
+      "description": "Washer, Flat, 0.14b 0.31d, Nyl",
+      "category": "Tornillería",
+      "qty": 3,
+      "note": "Incluido en los kits controladores 9012711 y 9012712",
+      "hotspots": [
+        { "x": 53, "y": 68.7 }
+      ]
+    },
+    {
+      "item": 4,
+      "partNumber": "579211",
+      "description": "Nut, Hex, Lock, M3 x .5, SS",
+      "category": "Tornillería",
+      "qty": 3,
+      "note": "Incluido en los kits controladores 9012711 y 9012712",
+      "hotspots": [
+        { "x": 50.9, "y": 69.6 }
+      ]
+    },
+    {
+      "item": 5,
+      "partNumber": "1016825",
+      "description": "Support, Circuitboard",
+      "category": "Gabinete",
+      "qty": 2,
+      "note": "Incluido en los kits controladores 9012711 y 9012712",
+      "hotspots": [
+        { "x": 66.6, "y": 42.4 },
+        { "x": 85.1, "y": 51.6 }
+      ]
+    },
+    {
+      "item": 6,
+      "partNumber": "3701.6",
+      "description": "Screw, Pan, #06-32 x 0.38, Phl SS Shtmtl",
+      "category": "Tornillería",
+      "qty": 2,
+      "note": "Incluido en los kits controladores 9012711 y 9012712 · Part Number tal como figura en el manual; verificar al pedir",
+      "hotspots": [
+        { "x": 81.4, "y": 2.2 },
+        { "x": 92.1, "y": 5.7 }
+      ]
+    },
+    {
+      "item": 7,
+      "partNumber": "07785",
+      "description": "Nut, Hex, Std, M6 x 1.0, A2, SS",
+      "category": "Tornillería",
+      "qty": 4,
+      "note": "Incluido en los kits controladores 9012711 y 9012712",
+      "hotspots": [
+        { "x": 58.2, "y": 89.1 },
+        { "x": 21, "y": 85.9 },
+        { "x": 42.2, "y": 76.1 },
+        { "x": 41, "y": 97.2 }
+      ]
+    },
+    {
+      "item": 8,
+      "partNumber": "1057560",
+      "description": "Washer, Flat, M6.4b x 16d x 1 SS",
+      "category": "Tornillería",
+      "qty": 6,
+      "note": "Incluido en los kits controladores 9012711 y 9012712",
+      "hotspots": [
+        { "x": 53.8, "y": 91.2 },
+        { "x": 62.1, "y": 87.6 },
+        { "x": 24.5, "y": 84.2 },
+        { "x": 34.9, "y": 78.7 },
+        { "x": 45.2, "y": 74 },
+        { "x": 44.9, "y": 95.8 }
+      ]
+    },
+    {
+      "item": 9,
+      "partNumber": "32982",
+      "description": "Washer, Lock, Int, 0.25",
+      "category": "Tornillería",
+      "qty": 2,
+      "note": "Incluido en los kits controladores 9012711 y 9012712",
+      "hotspots": [
+        { "x": 28.5, "y": 82.5 },
+        { "x": 44.1, "y": 83.8 }
+      ]
+    },
+    {
+      "item": 10,
+      "partNumber": "55248",
+      "description": "Mount, Cable Tie",
+      "category": "Gabinete",
+      "qty": 1,
+      "note": "Incluido en los kits controladores 9012711 y 9012712",
+      "hotspots": [
+        { "x": 71.4, "y": 10.5 }
+      ]
+    },
+    {
+      "item": 11,
+      "partNumber": "1017754",
+      "description": "Panel, Wldt, Cntrl",
+      "category": "Gabinete",
+      "qty": 1,
+      "note": "Incluido en los kits controladores 9012711 y 9012712",
+      "hotspots": [
+        { "x": 57.2, "y": 14.5 }
+      ]
+    },
+    {
+      "item": 12,
+      "partNumber": "1020284",
+      "description": "Seal, Afmkt, Rbr, Clsd, Adh, 03ft (C410217)",
+      "category": "Gabinete",
+      "qty": 1,
+      "note": "Incluido en los kits controladores 9012711 y 9012712",
+      "hotspots": [
+        { "x": 33.3, "y": 4.2 }
+      ]
+    },
+    {
+      "item": 13,
+      "partNumber": "1016816",
+      "description": "Pad, Thermal, Heat Sink",
+      "category": "Controlador",
+      "qty": 1,
+      "note": "Incluido en los kits controladores 9012711 y 9012712",
+      "hotspots": [
+        { "x": 78.1, "y": 20.2 }
+      ]
+    },
+    {
+      "item": 14,
+      "partNumber": "1030692",
+      "description": "Vr, Fuse, 15A, Replmt",
+      "category": "Controlador",
+      "qty": 1,
+      "note": "Incluido en los kits controladores 9012711 y 9012712",
+      "hotspots": [
+        { "x": 72.2, "y": 63.4 }
+      ]
+    },
+    {
+      "item": 15,
+      "partNumber": "01685",
+      "description": "Washer, Flat, 0.31 SS",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 68.8, "y": 36.4 }
+      ]
+    },
+    {
+      "item": 16,
+      "partNumber": "76426",
+      "description": "Washer, Sealing, 0.28b 0.75d SS/Neo",
+      "category": "Tornillería",
+      "qty": 6,
+      "hotspots": [
+        { "x": 9.5, "y": 14.8 }
+      ]
+    },
+    {
+      "item": 17,
+      "partNumber": "1036368",
+      "description": "Cover, Panl, Ele, Afmkt, NA, CE, TJ",
+      "category": "Gabinete",
+      "qty": 1,
+      "hotspots": [
+        { "x": 8, "y": 40.5 }
+      ]
+    },
+    {
+      "item": 18,
+      "partNumber": "24199",
+      "description": "Screw, Hex, M5 x 0.8 x 16, SS",
+      "category": "Tornillería",
+      "qty": 6,
+      "hotspots": [
+        { "x": 5.2, "y": 17 }
+      ]
+    },
+    {
+      "item": 19,
+      "partNumber": "1016865",
+      "description": "Cable, Ribbon",
+      "category": "Controlador",
+      "qty": 1,
+      "hotspots": [
+        { "x": 44.2, "y": 54.6 }
+      ]
+    },
+    {
+      "item": 20,
+      "partNumber": "41141",
+      "description": "Washer, Lock, Int-Ext, 0.31",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 53.6, "y": 18.4 }
+      ]
+    },
+    {
+      "item": 21,
+      "partNumber": "1019083",
+      "description": "Seal, Cut",
+      "category": "Gabinete",
+      "qty": 1,
+      "hotspots": [
+        { "x": 13, "y": 58.4 }
+      ]
+    },
+    {
+      "item": 22,
+      "partNumber": "09740",
+      "description": "Screw, Hex, M8 x 1.25 x 20, SS",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 73.4, "y": 37.5 }
+      ]
+    }
+  ]
+}

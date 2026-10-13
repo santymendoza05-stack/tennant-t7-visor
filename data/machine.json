@@ -51,10 +51,19 @@
     {
       "id": "panel-instrumentos",
       "name": "Panel de Instrumentos / Consola",
-      "description": "Instrument Panel Group",
-      "figure": "Fig. 10",
+      "description": "Instrument Panel & Circuit Board Group",
+      "figure": "Fig. 10 / 38",
       "status": "available",
-      "data": "data/instrument_panel.json",
+      "figures": [
+        {
+          "label": "Fig. 10 · Panel de instrumentos",
+          "data": "data/instrument_panel.json"
+        },
+        {
+          "label": "Fig. 38 · Tarjeta controladora",
+          "data": "data/circuit_board.json"
+        }
+      ],
       "hotspot": { "x": 24, "y": 38 }
     }
   ]
