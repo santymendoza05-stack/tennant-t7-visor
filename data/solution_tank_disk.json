@@ -1,0 +1,382 @@
+{
+  "machine": "Tennant T7",
+  "group": "Solution Tank Group, Disk Scrub Head",
+  "figure": "Fig. 29",
+  "image": "assets/solution_tank_disk.png",
+  "categories": [
+    "Tanque",
+    "Fluido",
+    "Soportes",
+    "Eléctrico",
+    "Tornillería"
+  ],
+  "parts": [
+    {
+      "item": 1,
+      "partNumber": "1015405",
+      "description": "Tank, Soltn, W/ Label [T7]",
+      "category": "Tanque",
+      "qty": 1,
+      "hotspots": [
+        { "x": 8.1, "y": 58.8 }
+      ]
+    },
+    {
+      "item": 1,
+      "partNumber": "1036374",
+      "description": "Tank, Soltn, Disk, HG, Afmkt, TJ (Japan)",
+      "category": "Tanque",
+      "qty": 1,
+      "note": "Versión Japón",
+      "hotspots": []
+    },
+    {
+      "item": 2,
+      "partNumber": "1012505",
+      "description": "Cover, Tank, Soltn [T7]",
+      "category": "Tanque",
+      "qty": 1,
+      "hotspots": [
+        { "x": 13.8, "y": 25.9 }
+      ]
+    },
+    {
+      "item": 3,
+      "partNumber": "1020317",
+      "description": "Catch, Cover [T7]",
+      "category": "Tanque",
+      "qty": 2,
+      "hotspots": [
+        { "x": 21.6, "y": 17.9 },
+        { "x": 33.2, "y": 22.5 }
+      ]
+    },
+    {
+      "item": 4,
+      "partNumber": "1020292",
+      "description": "Plate, Cover, Tab [T7]",
+      "category": "Tanque",
+      "qty": 2,
+      "hotspots": [
+        { "x": 34.8, "y": 29.9 },
+        { "x": 47.4, "y": 34 }
+      ]
+    },
+    {
+      "item": 5,
+      "partNumber": "1020727",
+      "description": "Seal, Afmkt, Bulb, Clsd Cell, Adh, 8ft",
+      "category": "Tanque",
+      "qty": 1,
+      "hotspots": [
+        { "x": 16.3, "y": 39.5 }
+      ]
+    },
+    {
+      "item": 6,
+      "partNumber": "1020719",
+      "description": "Seal, Afmkt, Bulb, Clsd Cell, Adh, 8ft",
+      "category": "Tanque",
+      "qty": 1,
+      "hotspots": [
+        { "x": 25.5, "y": 30.7 }
+      ]
+    },
+    {
+      "item": 7,
+      "partNumber": "1021677",
+      "description": "Rivet, Blind, .156D x 0.55 x .38D, SS",
+      "category": "Tornillería",
+      "qty": 10,
+      "hotspots": [
+        { "x": 20, "y": 22.1 },
+        { "x": 39, "y": 36.5 },
+        { "x": 6.4, "y": 35.6 }
+      ]
+    },
+    {
+      "item": 8,
+      "partNumber": "1014072",
+      "description": "Bracket, Mtg, Tank",
+      "category": "Soportes",
+      "qty": 3,
+      "hotspots": [
+        { "x": 61.7, "y": 64.3 },
+        { "x": 40.2, "y": 65.9 }
+      ]
+    },
+    {
+      "item": 9,
+      "partNumber": "09740",
+      "description": "Screw, Hex, M8 x 1.25 x 20, SS",
+      "category": "Tornillería",
+      "qty": 6,
+      "hotspots": [
+        { "x": 42, "y": 71.5 },
+        { "x": 57.3, "y": 53 }
+      ]
+    },
+    {
+      "item": 10,
+      "partNumber": "1017218",
+      "description": "Washer, Flat, 0.321b 1.00d .12, SS",
+      "category": "Tornillería",
+      "qty": 6,
+      "hotspots": [
+        { "x": 61.1, "y": 58.3 },
+        { "x": 39.4, "y": 70.7 }
+      ]
+    },
+    {
+      "item": 11,
+      "partNumber": "1011885",
+      "description": "Cap, Tank",
+      "category": "Tanque",
+      "qty": 1,
+      "hotspots": [
+        { "x": 53.6, "y": 23.7 }
+      ]
+    },
+    {
+      "item": 12,
+      "partNumber": "1011852",
+      "description": "Arm, Tank, Retaining",
+      "category": "Soportes",
+      "qty": 1,
+      "hotspots": [
+        { "x": 63.3, "y": 23.7 }
+      ]
+    },
+    {
+      "item": 13,
+      "partNumber": "222516",
+      "description": "Sleeve, P/M, 0.496d 0.318b 0.31l 430SS",
+      "category": "Soportes",
+      "qty": 5,
+      "hotspots": [
+        { "x": 47.6, "y": 23.8 },
+        { "x": 39.8, "y": 16.8 },
+        { "x": 72.9, "y": 19.4 }
+      ]
+    },
+    {
+      "item": 14,
+      "partNumber": "1016430",
+      "description": "Screw, Btn, M8 x 1.25 x 25, 10.9, Blk",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 42.9, "y": 22 },
+        { "x": 38.6, "y": 10.4 },
+        { "x": 62.1, "y": 17.7 }
+      ]
+    },
+    {
+      "item": 15,
+      "partNumber": "1016435",
+      "description": "Washer, Flat, 0.52b 0.75d .06, Stl, Blk",
+      "category": "Tornillería",
+      "qty": 3,
+      "hotspots": [
+        { "x": 45.2, "y": 23.2 },
+        { "x": 59.8, "y": 16 }
+      ]
+    },
+    {
+      "item": 16,
+      "partNumber": "398770",
+      "description": "Strainer, Soltn, 80mesh Cyl 1.3d 3.5l",
+      "category": "Fluido",
+      "qty": 1,
+      "hotspots": [
+        { "x": 71.8, "y": 26.4 }
+      ]
+    },
+    {
+      "item": 17,
+      "partNumber": "377349",
+      "description": "Fitting, Plstc, PF12/PF12, BH",
+      "category": "Fluido",
+      "qty": 1,
+      "hotspots": [
+        { "x": 78.1, "y": 53.5 }
+      ]
+    },
+    {
+      "item": 18,
+      "partNumber": "73468",
+      "description": "Fitting, Plstc, E90, BM10/PM12",
+      "category": "Fluido",
+      "qty": 1,
+      "hotspots": [
+        { "x": 77.3, "y": 59.3 }
+      ]
+    },
+    {
+      "item": 19,
+      "partNumber": "82829",
+      "description": "Clamp, Cable, Stl, 0.63d x 0.75w, 1hole",
+      "category": "Eléctrico",
+      "qty": 2,
+      "hotspots": [
+        { "x": 89.5, "y": 47.7 }
+      ]
+    },
+    {
+      "item": 20,
+      "partNumber": "67767",
+      "description": "Clamp, Cable, Stl, 0.69d x 0.62w, 1h",
+      "category": "Eléctrico",
+      "qty": 1,
+      "hotspots": [
+        { "x": 88.9, "y": 42.3 }
+      ]
+    },
+    {
+      "item": 21,
+      "partNumber": "1019879",
+      "description": "Conduit, Nylon, .50d 3.0l",
+      "category": "Eléctrico",
+      "qty": 1,
+      "hotspots": [
+        { "x": 91.4, "y": 40.2 }
+      ]
+    },
+    {
+      "item": 22,
+      "partNumber": "15675",
+      "description": "Screw, Hex, M8 x 1.25 x 16, SS",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 90.9, "y": 32.5 },
+        { "x": 88.6, "y": 45.1 }
+      ]
+    },
+    {
+      "item": 23,
+      "partNumber": "385685",
+      "description": "Sensor, Level, Liquid, 14vdc 01a .62-11",
+      "category": "Eléctrico",
+      "qty": 1,
+      "hotspots": [
+        { "x": 86.8, "y": 27.4 }
+      ]
+    },
+    {
+      "item": 24,
+      "partNumber": "1014825",
+      "description": "Hose, Mold",
+      "category": "Fluido",
+      "qty": 1,
+      "hotspots": [
+        { "x": 47, "y": 98.6 }
+      ]
+    },
+    {
+      "item": 25,
+      "partNumber": "54333",
+      "description": "Clamp, Hose, Wormdrive, 0.31-0.88d, .31w",
+      "category": "Fluido",
+      "qty": 2,
+      "hotspots": [
+        { "x": 42.2, "y": 97.2 },
+        { "x": 77.4, "y": 89.2 }
+      ]
+    },
+    {
+      "item": 26,
+      "partNumber": "49800",
+      "description": "Latch, Draw, Soft, Rbr W/ Keeper",
+      "category": "Tanque",
+      "qty": 2,
+      "hotspots": [
+        { "x": 16.2, "y": 41.8 },
+        { "x": 37.8, "y": 64.6 }
+      ]
+    },
+    {
+      "item": 27,
+      "partNumber": "607006",
+      "description": "Screw, Trs, M4 x 0.70 x 12, Phl, Pl",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 6.3, "y": 49.8 }
+      ]
+    },
+    {
+      "item": 28,
+      "partNumber": "1035394",
+      "description": "Washer, Flat, 0.17b 0.38d .04, SS",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 11.9, "y": 35.9 }
+      ]
+    },
+    {
+      "item": 29,
+      "partNumber": "01685",
+      "description": "Washer, Flat, 0.31 SS",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 40.6, "y": 13.5 },
+        { "x": 75.9, "y": 20.1 }
+      ]
+    },
+    {
+      "item": 30,
+      "partNumber": "08713",
+      "description": "Nut, Hex, Lock, M8 x 1.25, NL, SS",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 77.2, "y": 22 }
+      ]
+    },
+    {
+      "item": 31,
+      "partNumber": "1011853",
+      "description": "Arm, Tank, Retaining",
+      "category": "Soportes",
+      "qty": 1,
+      "hotspots": [
+        { "x": 41.8, "y": 19.1 }
+      ]
+    },
+    {
+      "item": 32,
+      "partNumber": "1072628",
+      "description": "Screw, Hex, M8 x 1.25 x 25, SS, Sems",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 10.3, "y": 91.3 },
+        { "x": 20.8, "y": 96.1 }
+      ]
+    },
+    {
+      "item": 33,
+      "partNumber": "1020341",
+      "description": "Screw, Hex, M8 x 1.25 x 20, SS, Sems",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 34.8, "y": 19.2 },
+        { "x": 24, "y": 14.3 }
+      ]
+    },
+    {
+      "item": 34,
+      "partNumber": "69234",
+      "description": "Clamp, Cable, Stl, 1.00d x 0.75w, 1hole",
+      "category": "Eléctrico",
+      "qty": 1,
+      "hotspots": [
+        { "x": 60.2, "y": 56.4 }
+      ]
+    }
+  ]
+}

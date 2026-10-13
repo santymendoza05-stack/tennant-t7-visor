@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tennant T7 · Visor de despiece</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-badge">T7</span>
+      <div>
+        <h1>Visor de despiece · Tennant T7</h1>
+        <nav class="breadcrumb" aria-label="Ruta de navegación">
+          <a href="#/" id="crumb-machine">T7 Completa</a>
+          <span id="crumb-sep" class="crumb-sep" hidden>›</span>
+          <span id="crumb-assembly" hidden></span>
+        </nav>
+      </div>
+    </div>
+    <button id="theme-toggle" class="icon-btn" type="button" aria-label="Cambiar tema" title="Cambiar tema claro/oscuro">
+      <span class="icon-sun" aria-hidden="true">☀</span>
+      <span class="icon-moon" aria-hidden="true">☾</span>
+    </button>
+  </header>
+
+  <!-- ===================== NIVEL 1: Máquina completa ===================== -->
+  <main id="view-machine" class="view layout" data-level="1">
+    <section class="panel diagram-panel" aria-label="Vista general de la máquina">
+      <div class="panel-header">
+        <h2>Vista general</h2>
+        <span class="hint">Selecciona una zona de la máquina</span>
+      </div>
+      <div class="diagram-wrapper">
+        <div id="machine-diagram" class="diagram">
+          <img id="machine-img" src="assets/t7_full.png" alt="Fregadora Tennant T7, vista general" />
+          <div class="diagram-placeholder" hidden>
+            <strong>Imagen no encontrada</strong>
+            <span>Coloca la vista general en <code>assets/t7_full.png</code></span>
+          </div>
+          <div id="zone-hotspots" class="hotspots"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" aria-label="Zonas de la máquina">
+      <div class="panel-header">
+        <h2>Zonas clave</h2>
+        <span id="zone-count" class="count-badge"></span>
+      </div>
+      <ul id="zone-list" class="zone-list"></ul>
+    </section>
+  </main>
+
+  <!-- ================ NIVEL 2: Despiece por subensamble ================ -->
+  <main id="view-assembly" class="view layout" data-level="2" hidden>
+    <div class="view-toolbar">
+      <a href="#/" id="back-btn" class="back-btn">← Volver a la T7 Completa</a>
+      <p class="subtitle"><span id="figure-label"></span> — <span id="group-label"></span></p>
+      <nav id="figure-tabs" class="figure-tabs" role="tablist" aria-label="Figuras de esta zona" hidden></nav>
+    </div>
+
+    <!-- Columna izquierda: diagrama con hotspots -->
+    <section class="panel diagram-panel" aria-label="Diagrama de despiece">
+      <div class="panel-header">
+        <h2>Diagrama</h2>
+        <span class="hint">Haz clic en un número para ubicar el repuesto · <kbd>Alt</kbd>+clic muestra coordenadas</span>
+      </div>
+      <div class="diagram-wrapper">
+        <div id="diagram" class="diagram">
+          <img id="diagram-img" alt="" />
+          <div class="diagram-placeholder" hidden>
+            <strong>Imagen no encontrada</strong>
+            <span>Revisa la ruta de la imagen en el JSON del subensamble</span>
+          </div>
+          <div id="hotspots" class="hotspots"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Columna derecha: buscador, filtros y tabla -->
+    <section class="panel parts-panel" aria-label="Lista de repuestos">
+      <div class="panel-header">
+        <h2>Repuestos</h2>
+        <span id="result-count" class="count-badge">0</span>
+      </div>
+
+      <div class="controls">
+        <label class="search">
+          <span class="search-icon" aria-hidden="true">⌕</span>
+          <input id="search" type="search" placeholder="Buscar por descripción o Part Number…" autocomplete="off" />
+        </label>
+        <div id="filters" class="filters" role="group" aria-label="Filtrar por categoría"></div>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="parts-table">
+          <thead>
+            <tr>
+              <th scope="col">Ítem</th>
+              <th scope="col">Part Number</th>
+              <th scope="col">Descripción</th>
+              <th scope="col" class="num">Cant.</th>
+              <th scope="col"><span class="sr-only">Acciones</span></th>
+            </tr>
+          </thead>
+          <tbody id="parts-body"></tbody>
+        </table>
+        <p id="empty-state" class="empty-state" hidden>No hay repuestos que coincidan con la búsqueda.</p>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

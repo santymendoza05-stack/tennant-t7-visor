@@ -1,0 +1,197 @@
+{
+  "machine": "Tennant T7",
+  "group": "Front Drive Wheel Group (S/N 10518139-)",
+  "figure": "Fig. 11",
+  "image": "assets/front_drive_wheel.png",
+  "categories": [
+    "Tracción",
+    "Eléctrico",
+    "Soportes",
+    "Tornillería"
+  ],
+  "parts": [
+    {
+      "item": 1,
+      "partNumber": "1019724",
+      "description": "Steer-Control Assy, Wheel Drive (See Breakdown)",
+      "category": "Tracción",
+      "qty": 1,
+      "hotspots": [
+        { "x": 58.1, "y": 39 }
+      ]
+    },
+    {
+      "item": 2,
+      "partNumber": "1019224",
+      "description": "Strap, Nyl",
+      "category": "Soportes",
+      "qty": 1,
+      "hotspots": [
+        { "x": 85.7, "y": 75.8 }
+      ]
+    },
+    {
+      "item": 3,
+      "partNumber": "09010",
+      "description": "Screw, Hex, M8 x 1.25 x 25, SS (Disk Brush)",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 32.3, "y": 40.2 }
+      ]
+    },
+    {
+      "item": 3,
+      "partNumber": "09026",
+      "description": "Screw, Hex, M8 x 1.25 x 40, SS (Cylindrical Brush)",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": []
+    },
+    {
+      "item": 4,
+      "partNumber": "01685",
+      "description": "Washer, Flat, 0.31 SS",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 31.2, "y": 44.3 }
+      ]
+    },
+    {
+      "item": 5,
+      "partNumber": "00912",
+      "description": "Key, Sq, 0.19 x 0.19, 1.00L",
+      "category": "Tracción",
+      "qty": 1,
+      "hotspots": [
+        { "x": 52, "y": 38.6 }
+      ]
+    },
+    {
+      "item": 6,
+      "partNumber": "1065808",
+      "description": "Harness, Motor, Brake [T7/SSR]",
+      "category": "Eléctrico",
+      "qty": 1,
+      "hotspots": [
+        { "x": 62.4, "y": 93.2 }
+      ]
+    },
+    {
+      "item": 7,
+      "partNumber": "1028873",
+      "description": "Plate, Spacer, Drive (Cylindrical Brush)",
+      "category": "Soportes",
+      "qty": 2,
+      "hotspots": [
+        { "x": 75.3, "y": 58.4 },
+        { "x": 29.6, "y": 58.4 }
+      ]
+    },
+    {
+      "item": 8,
+      "partNumber": "140300",
+      "description": "Clamp, Cable, Stl, 0.50D [Insulated]",
+      "category": "Eléctrico",
+      "qty": 2,
+      "hotspots": [
+        { "x": 24.3, "y": 84.2 },
+        { "x": 10.5, "y": 74.2 }
+      ]
+    },
+    {
+      "item": 9,
+      "partNumber": "361339",
+      "description": "Screw, Hex, M6 x 1.0 x 16, Fmg",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 25, "y": 92.7 },
+        { "x": 11.3, "y": 83.1 }
+      ]
+    },
+    {
+      "item": 10,
+      "partNumber": "19066",
+      "description": "Washer, Flat, #10",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 76.7, "y": 92.9 }
+      ]
+    },
+    {
+      "item": 11,
+      "partNumber": "130773",
+      "description": "Tie, Cable, Nyl, 11.0L, .14W, 3.0 Max. D",
+      "category": "Eléctrico",
+      "qty": 4,
+      "hotspots": [
+        { "x": 94.8, "y": 96.8 }
+      ]
+    },
+    {
+      "item": 12,
+      "partNumber": "9008999",
+      "description": "Gearbox Kit, Wheel, 250mm, W/ Connector (Does NOT Include Motor Brake Harness) (See Breakdown)",
+      "category": "Tracción",
+      "qty": 1,
+      "hotspots": [
+        { "x": 78.2, "y": 65.5 }
+      ]
+    },
+    {
+      "item": 13,
+      "partNumber": "1047186",
+      "description": "Connector, Fem, 3 Recept [MP630]",
+      "category": "Eléctrico",
+      "qty": 1,
+      "hotspots": [
+        { "x": 92.6, "y": 79.4 }
+      ]
+    },
+    {
+      "item": 14,
+      "partNumber": "130161",
+      "description": "Plug, Hole, Rnd, 0.88D, Blk",
+      "category": "Soportes",
+      "qty": 1,
+      "hotspots": [
+        { "x": 15.9, "y": 68.6 }
+      ]
+    },
+    {
+      "item": 15,
+      "partNumber": "1064972",
+      "description": "Bracket, Cord",
+      "category": "Soportes",
+      "qty": 2,
+      "hotspots": [
+        { "x": 8.3, "y": 63.8 },
+        { "x": 24, "y": 44.1 }
+      ]
+    },
+    {
+      "item": 16,
+      "partNumber": "02938",
+      "description": "Washer, Lock, Int, 08, SS",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 19, "y": 43.3 },
+        { "x": 4.9, "y": 60.7 }
+      ]
+    },
+    {
+      "item": 17,
+      "partNumber": "33931",
+      "description": "Screw, Pan, Phl, M4 x 0.70 x 30, SS",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 5, "y": 46.2 }
+      ]
+    }
+  ]
+}

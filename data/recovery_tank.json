@@ -1,0 +1,447 @@
+{
+  "machine": "Tennant T7",
+  "group": "Recovery Tank Group",
+  "figure": "Fig. 27",
+  "image": "assets/recovery_tank.png",
+  "categories": [
+    "Tanque",
+    "Bisagras",
+    "Vacío y filtro",
+    "Eléctrico",
+    "Tornillería"
+  ],
+  "parts": [
+    {
+      "item": 1,
+      "partNumber": "1018032",
+      "description": "Tank, Recvy, W/Label [T7] (Teal)",
+      "category": "Tanque",
+      "qty": 1,
+      "note": "T7 estándar · Teal",
+      "hotspots": [
+        { "x": 23.7, "y": 39 }
+      ]
+    },
+    {
+      "item": 1,
+      "partNumber": "1023942",
+      "description": "Tank, Recvy, W/ Label [T7] RM-NLG (Gray)",
+      "category": "Tanque",
+      "qty": 1,
+      "note": "T7 estándar · Gray",
+      "hotspots": []
+    },
+    {
+      "item": 1,
+      "partNumber": "1018034",
+      "description": "Tank, Recvy, W/Label [T7 FaST] (Teal)",
+      "category": "Tanque",
+      "qty": 1,
+      "note": "T7 FaST · Teal",
+      "hotspots": []
+    },
+    {
+      "item": 1,
+      "partNumber": "1023944",
+      "description": "Tank, Recvy, RM-CPHG, W/ Label [T7 FaST] (Gray)",
+      "category": "Tanque",
+      "qty": 1,
+      "note": "T7 FaST · Gray",
+      "hotspots": []
+    },
+    {
+      "item": 1,
+      "partNumber": "9006186",
+      "description": "Tank, Recvy, Afmkt, Teal [T7 ec-H2O]",
+      "category": "Tanque",
+      "qty": 1,
+      "note": "T7 ec-H2O · Teal",
+      "hotspots": []
+    },
+    {
+      "item": 1,
+      "partNumber": "9006187",
+      "description": "Tank, Recvy, Afmkt, Gray [T7 ec-H2O]",
+      "category": "Tanque",
+      "qty": 1,
+      "note": "T7 ec-H2O · Gray",
+      "hotspots": []
+    },
+    {
+      "item": 2,
+      "partNumber": "1033973",
+      "description": "Cover, Tank, Recvy, Afmkt, HG [T7]",
+      "category": "Tanque",
+      "qty": 1,
+      "hotspots": [
+        { "x": 28.6, "y": 5 }
+      ]
+    },
+    {
+      "item": 3,
+      "partNumber": "222529",
+      "description": "Hinge, Leaf",
+      "category": "Bisagras",
+      "qty": 2,
+      "hotspots": [
+        { "x": 44, "y": 25.1 },
+        { "x": 27.5, "y": 11.9 }
+      ]
+    },
+    {
+      "item": 4,
+      "partNumber": "222463",
+      "description": "Screw, Flt, M8 x 1.25 x 20, Blk",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 41.9, "y": 24.9 },
+        { "x": 24.1, "y": 13.3 }
+      ]
+    },
+    {
+      "item": 5,
+      "partNumber": "1012055",
+      "description": "Hinge Wldt, Cover",
+      "category": "Bisagras",
+      "qty": 2,
+      "hotspots": [
+        { "x": 56.9, "y": 28 },
+        { "x": 36.9, "y": 24.1 }
+      ]
+    },
+    {
+      "item": 6,
+      "partNumber": "09740",
+      "description": "Screw, Hex, M8 x 1.25 x 20, SS",
+      "category": "Tornillería",
+      "qty": 8,
+      "hotspots": [
+        { "x": 12.7, "y": 73.2 },
+        { "x": 30.7, "y": 74.2 },
+        { "x": 2.9, "y": 53.5 },
+        { "x": 4, "y": 89.5 },
+        { "x": 13, "y": 93.7 }
+      ]
+    },
+    {
+      "item": 7,
+      "partNumber": "1017218",
+      "description": "Washer, Flat, 0.321b 1.00d .12, SS",
+      "category": "Tornillería",
+      "qty": 8,
+      "hotspots": [
+        { "x": 16.7, "y": 71.6 },
+        { "x": 33.3, "y": 73.8 },
+        { "x": 3.5, "y": 64.7 },
+        { "x": 4, "y": 91.9 },
+        { "x": 13, "y": 96 }
+      ]
+    },
+    {
+      "item": 8,
+      "partNumber": "1018304",
+      "description": "Hinge, 10mm Pin, Crs, Blk [T7]",
+      "category": "Bisagras",
+      "qty": 2,
+      "note": "S/N 10346364-",
+      "hotspots": [
+        { "x": 91.8, "y": 87.3 },
+        { "x": 74, "y": 70.5 }
+      ]
+    },
+    {
+      "item": 9,
+      "partNumber": "393135",
+      "description": "Screw, Btn, M8 x 1.25 x 20, Blk",
+      "category": "Tornillería",
+      "qty": 4,
+      "note": "S/N 10346364-",
+      "hotspots": [
+        { "x": 95.6, "y": 80.1 },
+        { "x": 86, "y": 76.1 }
+      ]
+    },
+    {
+      "item": 10,
+      "partNumber": "1016435",
+      "description": "Washer, Flat, 0.52b 0.75d .06, Stl, Blk",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 94.3, "y": 81.7 },
+        { "x": 83.9, "y": 77.4 },
+        { "x": 24.4, "y": 80.1 }
+      ]
+    },
+    {
+      "item": 11,
+      "partNumber": "1016430",
+      "description": "Screw, Btn, M8 x 1.25 x 25, 10.9, Blk",
+      "category": "Tornillería",
+      "qty": 4,
+      "note": "S/N 10000000-10346363",
+      "hotspots": [
+        { "x": 26.6, "y": 78.8 }
+      ]
+    },
+    {
+      "item": 12,
+      "partNumber": "82829",
+      "description": "Clamp, Cable, Stl, 0.63d x 0.75w, 1hole",
+      "category": "Eléctrico",
+      "qty": 2,
+      "hotspots": [
+        { "x": 51.3, "y": 74.1 },
+        { "x": 65.3, "y": 66.5 }
+      ]
+    },
+    {
+      "item": 13,
+      "partNumber": "15675",
+      "description": "Screw, Hex, M8 x 1.25 x 16, SS",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 46, "y": 66.9 },
+        { "x": 63.3, "y": 68.2 }
+      ]
+    },
+    {
+      "item": 14,
+      "partNumber": "1016855",
+      "description": "Plate Wldt, Seal, Tank",
+      "category": "Tanque",
+      "qty": 1,
+      "hotspots": [
+        { "x": 62.9, "y": 91.3 }
+      ]
+    },
+    {
+      "item": 15,
+      "partNumber": "1020301",
+      "description": "Seal, Afmkt, Bulb, Clsd Cell, Adh, 8ft",
+      "category": "Tanque",
+      "qty": 1,
+      "hotspots": [
+        { "x": 61, "y": 94.7 }
+      ]
+    },
+    {
+      "item": 16,
+      "partNumber": "1016871",
+      "description": "Spacer, Seal, Tank",
+      "category": "Tanque",
+      "qty": 2,
+      "hotspots": [
+        { "x": 37.7, "y": 71.3 },
+        { "x": 63.9, "y": 75.1 }
+      ]
+    },
+    {
+      "item": 17,
+      "partNumber": "397255",
+      "description": "Spring, Cmpr, 0.85od .08wir 2.0l",
+      "category": "Tanque",
+      "qty": 2,
+      "hotspots": [
+        { "x": 38.6, "y": 69.4 },
+        { "x": 63.4, "y": 73.6 }
+      ]
+    },
+    {
+      "item": 18,
+      "partNumber": "605385",
+      "description": "Washer, Flat, 0.69b 1.50d .05, SS",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 36.3, "y": 73.9 },
+        { "x": 37.9, "y": 65 },
+        { "x": 64.5, "y": 77.3 },
+        { "x": 60.9, "y": 69.3 }
+      ]
+    },
+    {
+      "item": 19,
+      "partNumber": "1017218",
+      "description": "Washer, Flat, 0.321b 1.00d .12, SS",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 37.7, "y": 90.5 },
+        { "x": 48, "y": 95.2 }
+      ]
+    },
+    {
+      "item": 20,
+      "partNumber": "77270",
+      "description": "Screw, Hex, M8 x 1.25 x 60, SS",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 38.2, "y": 94.1 },
+        { "x": 48.6, "y": 98.6 }
+      ]
+    },
+    {
+      "item": 21,
+      "partNumber": "1017705",
+      "description": "Pad, Rbr",
+      "category": "Tanque",
+      "qty": 1,
+      "hotspots": [
+        { "x": 8.4, "y": 43.7 }
+      ]
+    },
+    {
+      "item": 22,
+      "partNumber": "1011752",
+      "description": "Hinge Wldt, Tank",
+      "category": "Bisagras",
+      "qty": 1,
+      "note": "S/N 10000000-10346363",
+      "hotspots": [
+        { "x": 4.7, "y": 95.6 }
+      ]
+    },
+    {
+      "item": 23,
+      "partNumber": "1011753",
+      "description": "Hinge Wldt, Tank",
+      "category": "Bisagras",
+      "qty": 1,
+      "note": "S/N 10000000-10346363",
+      "hotspots": [
+        { "x": 11.2, "y": 98.4 }
+      ]
+    },
+    {
+      "item": 24,
+      "partNumber": "1017670",
+      "description": "Angle, Sppt, Tank",
+      "category": "Tanque",
+      "qty": 1,
+      "hotspots": [
+        { "x": 23, "y": 72.4 }
+      ]
+    },
+    {
+      "item": 25,
+      "partNumber": "1017607",
+      "description": "Bracket Wldt, Tank, Sppt",
+      "category": "Tanque",
+      "qty": 1,
+      "hotspots": [
+        { "x": 4.9, "y": 69.7 }
+      ]
+    },
+    {
+      "item": 26,
+      "partNumber": "1037821",
+      "description": "Filter, Panl, Dust, 2.3 x 4.5 x 6.4",
+      "category": "Vacío y filtro",
+      "qty": 1,
+      "hotspots": [
+        { "x": 9.1, "y": 31.4 }
+      ]
+    },
+    {
+      "item": 27,
+      "partNumber": "1016392",
+      "description": "Gasket, Fltr, Tank",
+      "category": "Vacío y filtro",
+      "qty": 1,
+      "hotspots": [
+        { "x": 8.2, "y": 27.6 }
+      ]
+    },
+    {
+      "item": 28,
+      "partNumber": "1014026",
+      "description": "Hose, Vacuum, 1.50id x 057.1l, 2cuff, Blk",
+      "category": "Vacío y filtro",
+      "qty": 1,
+      "hotspots": [
+        { "x": 93.5, "y": 23.1 }
+      ]
+    },
+    {
+      "item": 29,
+      "partNumber": "1001992",
+      "description": "Clip, Hose, Gripper, 1.75id, Blk Ny",
+      "category": "Vacío y filtro",
+      "qty": 2,
+      "hotspots": [
+        { "x": 76.1, "y": 39.7 }
+      ]
+    },
+    {
+      "item": 30,
+      "partNumber": "607006",
+      "description": "Screw, Trs, M4 x 0.70 x 12, Phl, Pl",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 81.3, "y": 37 }
+      ]
+    },
+    {
+      "item": 31,
+      "partNumber": "385685",
+      "description": "Sensor, Level, Liquid, 14vdc 01a .62-11",
+      "category": "Eléctrico",
+      "qty": 1,
+      "hotspots": [
+        { "x": 21, "y": 42.7 }
+      ]
+    },
+    {
+      "item": 32,
+      "partNumber": "1014079",
+      "description": "Clip, Grip, Hose, 1.50id, Dbl, Blk Pyp",
+      "category": "Vacío y filtro",
+      "qty": 1,
+      "hotspots": [
+        { "x": 93.3, "y": 64.3 }
+      ]
+    },
+    {
+      "item": 33,
+      "partNumber": "1020341",
+      "description": "Screw, Hex, M8 x 1.25 x 20, SS, Sems",
+      "category": "Tornillería",
+      "qty": 8,
+      "hotspots": [
+        { "x": 31.3, "y": 22.6 },
+        { "x": 76.5, "y": 84.8 },
+        { "x": 44.7, "y": 28.5 },
+        { "x": 67, "y": 80.5 }
+      ]
+    },
+    {
+      "item": 34,
+      "partNumber": "1017590",
+      "description": "Plate, Hinge",
+      "category": "Bisagras",
+      "qty": 2,
+      "note": "S/N 10000000-10346363",
+      "hotspots": [
+        { "x": 6.6, "y": 77.7 },
+        { "x": 27.5, "y": 93.6 }
+      ]
+    },
+    {
+      "item": 35,
+      "partNumber": "1011536",
+      "description": "Hinge, Tank",
+      "category": "Bisagras",
+      "qty": 2,
+      "note": "S/N 10000000-10346363",
+      "hotspots": [
+        { "x": 9.2, "y": 76.2 },
+        { "x": 30.6, "y": 92 }
+      ]
+    }
+  ]
+}

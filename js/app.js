@@ -1,0 +1,751 @@
+/* ==========================================================
+   Tennant T7 · Visor de despiece jerárquico
+   Nivel 1: Máquina completa (zonas)  ->  Nivel 2: Despiece por subensamble
+
+   Rutas (hash):
+     #/                  -> Nivel 1
+     #/zona/<id-zona>    -> Nivel 2 (p. ej. #/zona/racleta-trasera)
+   ========================================================== */
+(() => {
+  "use strict";
+
+  const MACHINE_URL = "data/machine.json";
+
+  // Copias de respaldo usadas solo si fetch() falla (p. ej. al abrir index.html
+  // con doble clic vía file://). Mantener sincronizadas con los JSON de data/.
+  const FALLBACK = {
+    "data/machine.json": {
+      machine: "Tennant T7",
+      title: "Fregadora de conductor sentado",
+      image: "assets/t7_full.png",
+      zones: [
+        { id: "racleta-trasera", name: "Racleta Trasera", description: "Rear Squeegee Group, 800 mm", figure: "Fig. 37", status: "available", data: "data/squeegee_parts.json", hotspot: { x: 91.9, y: 69.1 } },
+        { id: "cabeza-cepillos", name: "Cabeza de Cepillos", description: "Disk Scrub Head Drive Motor Group, 800 mm", figure: "Fig. 18", status: "available", data: "data/scrub_head_disk_800.json", hotspot: { x: 61.8, y: 85.9 } },
+        { id: "tanques", name: "Tanques de Solución y Recuperación", description: "Recovery & Solution Tank Group", figure: "Fig. 27 / 29", status: "available", figures: [{ label: "Fig. 27 · Tanque de recuperación", data: "data/recovery_tank.json" }, { label: "Fig. 29 · Tanque de solución", data: "data/solution_tank_disk.json" }], hotspot: { x: 76.5, y: 20.1 } },
+        { id: "rueda-motriz", name: "Rueda Motriz / Tracción", description: "Front Drive Wheel Group (S/N 10518139-)", figure: "Fig. 11", status: "available", data: "data/front_drive_wheel.json", hotspot: { x: 25.7, y: 92.3 } }
+      ]
+    },
+    "data/squeegee_parts.json": {
+      machine: "Tennant T7",
+      group: "Rear Squeegee Group - 800 mm",
+      figure: "Fig. 37",
+      image: "assets/rear_squeegee.png",
+      categories: ["Estructura", "Gomas", "Fijación", "Tornillería", "Ruedas"],
+      parts: [
+        { item: 1, partNumber: "1012964", description: "Frame, Squeegee 800mm", category: "Estructura", qty: 1, hotspots: [{ x: 33.5, y: 43.4 }] },
+        { item: 2, partNumber: "1033102", description: "Strap Assy, Squeegee 800mm", category: "Fijación", qty: 1, hotspots: [{ x: 79, y: 98 }] },
+        { item: 3, partNumber: "1074204", description: "Knob, Star M8x1.25", category: "Fijación", qty: 4, hotspots: [{ x: 38.6, y: 3.4 }, { x: 71, y: 10.6 }, { x: 34.2, y: 27.4 }, { x: 70.4, y: 38.7 }] },
+        { item: 4, partNumber: "390923", description: "Blade, Sqge, Front 41.50L Linatex", category: "Gomas", qty: 1, hotspots: [{ x: 50, y: 82.8 }] },
+        { item: 5, partNumber: "390922", description: "Blade, Sqge, Rear 44.00L Linatex", category: "Gomas", qty: 1, hotspots: [{ x: 86.4, y: 93.6 }] },
+        { item: 6, partNumber: "1012975", description: "Retainer, Sqge, Front 800mm", category: "Estructura", qty: 1, hotspots: [{ x: 54.8, y: 54.1 }] },
+        { item: 7, partNumber: "1012981", description: "Retainer, Sqge, Rear 800mm", category: "Estructura", qty: 1, hotspots: [{ x: 30.9, y: 49 }] },
+        { item: 8, partNumber: "09011", description: "Screw, Hex M8x1.25x30 SS", category: "Tornillería", qty: 2, hotspots: [{ x: 12.3, y: 37.8 }, { x: 83.3, y: 68.1 }] },
+        { item: 9, partNumber: "140027", description: "Washer, Flat 0.35b 0.75d .06 SS", category: "Tornillería", qty: 2, hotspots: [{ x: 11.9, y: 17.4 }, { x: 83.3, y: 47.6 }] },
+        { item: 10, partNumber: "1011221", description: "Bushing, Flange", category: "Tornillería", qty: 2, hotspots: [{ x: 11.9, y: 25.5 }, { x: 83.8, y: 55.4 }] },
+        { item: 11, partNumber: "08713", description: "Nut, Hex, Lock M8x1.25 SS", category: "Tornillería", qty: 2, hotspots: [{ x: 11.9, y: 14.7 }, { x: 83.8, y: 44.6 }] },
+        { item: 12, partNumber: "140058", description: "Washer, Flat 0.54b 0.88d .06 SS", category: "Tornillería", qty: 2, hotspots: [{ x: 11.4, y: 28 }, { x: 84.4, y: 57.9 }] },
+        { item: 13, partNumber: "1010560", description: "Wheel, Bumper 80d x 25w Non-Marking", category: "Ruedas", qty: 2, hotspots: [{ x: 8.3, y: 21.8 }, { x: 86.8, y: 50.8 }] },
+        { item: 14, partNumber: "390925", description: "Blade, Sqge, Front 41.50L Protection/Gum", category: "Gomas", qty: 1, hotspots: [{ x: 53.3, y: 84.8 }] },
+        { item: 15, partNumber: "390924", description: "Blade, Sqge, Rear 44.00L Protection/Gum", category: "Gomas", qty: 1, hotspots: [{ x: 87.1, y: 96.5 }] },
+        { item: 16, partNumber: "390927", description: "Blade, Sqge, Front 41.50L Urethane", category: "Gomas", qty: 1, hotspots: [{ x: 56.4, y: 86.1 }] },
+        { item: 17, partNumber: "390926", description: "Blade, Sqge, Rear 44.00L Urethane", category: "Gomas", qty: 1, hotspots: [{ x: 87.1, y: 98.6 }] }
+      ]
+    },
+    "data/scrub_head_disk_800.json": {
+      machine: "Tennant T7",
+      group: "Disk Scrub Head Drive Motor Group, 800 mm (32 in)",
+      figure: "Fig. 18",
+      image: "assets/scrub_head_disk_800.png",
+      categories: ["Cabezal", "Motores", "Solución", "Ruedas", "Tornillería"],
+      parts: [
+        { item: 1, partNumber: "1012630", description: "Head, Scb, 800mm", category: "Cabezal", qty: 1, hotspots: [{ x: 39.3, y: 42.6 }] },
+        { item: 2, partNumber: "1210864", description: "Motor, Ele, 24vdc 0260rpm", category: "Motores", qty: 2, note: "S/N 10827968-", hotspots: [{ x: 5.3, y: 13.5 }, { x: 43.3, y: 24.7 }, { x: 96, y: 4.9 }] },
+        { item: 2, partNumber: "372878", description: "Brush Kit, Motor, Ele", category: "Motores", qty: 1, note: "Componente del motor 1210864 · S/N 10827968-", hotspots: [] },
+        { item: 2, partNumber: "372879", description: "Hook, Safety", category: "Motores", qty: 1, note: "Componente del motor 1210864 · S/N 10827968-", hotspots: [] },
+        { item: 2, partNumber: "372880", description: "Cover, Brush, Ele Motor", category: "Motores", qty: 1, note: "Componente del motor 1210864 · S/N 10827968-", hotspots: [] },
+        { item: 3, partNumber: "1212130", description: "Shaft, Drive, Brush", category: "Motores", qty: 1, note: "Componente del motor 1210864 · S/N 10827968-", hotspots: [{ x: 48.2, y: 34.1 }, { x: 74.7, y: 23.3 }] },
+        { item: 4, partNumber: "1212132", description: "Cap, Motor", category: "Motores", qty: 1, note: "Componente del motor 1210864 · S/N 10827968-", hotspots: [{ x: 58.9, y: 10.1 }, { x: 88.9, y: 1.4 }] },
+        { item: 5, partNumber: "363503", description: "Screw, Pan, Phl, M6 x 1.00 x 12, SS", category: "Tornillería", qty: 4, note: "Componente del motor 1210864 · S/N 10827968-", hotspots: [{ x: 44.9, y: 12.1 }, { x: 71.8, y: 1.3 }] },
+        { item: 6, partNumber: "1212131", description: "Key, Sq, 06mm x 06mm, 60mmL", category: "Motores", qty: 1, note: "Componente del motor 1210864 · S/N 10827968-", hotspots: [{ x: 63.9, y: 31.7 }, { x: 90.7, y: 21.4 }] },
+        { item: 7, partNumber: "09740", description: "Screw, Hex, M8 x 1.25 x 20, SS", category: "Tornillería", qty: 1, note: "Componente del motor 1210864 · S/N 10827968-", hotspots: [{ x: 47.5, y: 17.1 }, { x: 73.8, y: 6.9 }] },
+        { item: 8, partNumber: "1017218", description: "Washer, Flat, 0.32b 1.00d .12, SS", category: "Tornillería", qty: 1, note: "Componente del motor 1210864 · S/N 10827968-", hotspots: [{ x: 47, y: 20 }, { x: 73.3, y: 9.8 }] },
+        { item: 2, partNumber: "1048884", description: "Motor, Ele, 24 Vdc 0285rpm (Replaced By 1210864)", category: "Motores", qty: 2, note: "S/N 10409228-10827967", hotspots: [] },
+        { item: 2, partNumber: "1048888", description: "Vr, Brush Kit, Motor, 1048884", category: "Motores", qty: 1, note: "Componente del motor 1048884 · S/N 10409228-10827967", hotspots: [] },
+        { item: 2, partNumber: "1000083", description: "Motor, Ele, 24 Vdc 0285rpm (Replaced By 1048884)", category: "Motores", qty: 2, note: "S/N 10000000-10409227", hotspots: [] },
+        { item: 2, partNumber: "372878", description: "Brush Kit, Motor, Ele", category: "Motores", qty: 1, note: "Componente del motor 1000083 · S/N 10000000-10409227", hotspots: [] },
+        { item: 2, partNumber: "372879", description: "Hook, Safety", category: "Motores", qty: 1, note: "Componente del motor 1000083 · S/N 10000000-10409227", hotspots: [] },
+        { item: 2, partNumber: "372880", description: "Cover, Brush, Ele Motor", category: "Motores", qty: 1, note: "Componente del motor 1000083 · S/N 10000000-10409227", hotspots: [] },
+        { item: 3, partNumber: "1008758", description: "Shaft, Drive, Brush", category: "Motores", qty: 2, note: "Componente del motor 1000083 · S/N 10000000-10409227", hotspots: [] },
+        { item: 4, partNumber: "1017553", description: "Cap, Motor", category: "Motores", qty: 2, note: "Componente del motor 1000083 · S/N 10000000-10409227", hotspots: [] },
+        { item: 5, partNumber: "363503", description: "Screw, Pan, Phl, M6 x 1.00 x 12, SS", category: "Tornillería", qty: 4, note: "Componente del motor 1000083 · S/N 10000000-10409227", hotspots: [] },
+        { item: 6, partNumber: "1014303", description: "Key, Sq, 06mm x 06mm, 60mm L", category: "Motores", qty: 2, note: "Componente del motor 1000083 · S/N 10000000-10409227", hotspots: [] },
+        { item: 9, partNumber: "1014776", description: "Manifold, Soltn, 800mm", category: "Solución", qty: 1, hotspots: [{ x: 68.2, y: 39.3 }] },
+        { item: 10, partNumber: "1016520", description: "Screw, Hex, M4 x 0.7 x 16 Fmg, SS", category: "Tornillería", qty: 3, hotspots: [{ x: 94, y: 32.8 }, { x: 70.9, y: 35.6 }] },
+        { item: 11, partNumber: "1214973", description: "Valve, Water, Solenoid, 24vdc, BM10/BM10", category: "Solución", qty: 1, hotspots: [{ x: 94.1, y: 34.9 }] },
+        { item: 12, partNumber: "1071636", description: "Hub, Drive, Brush, Disk, 0.75b [6T]", category: "Cabezal", qty: 2, note: "S/N 10624413-", hotspots: [{ x: 43.8, y: 84.6 }, { x: 71.2, y: 74.3 }, { x: 6.1, y: 87.9 }] },
+        { item: 12, partNumber: "377367", description: "Hub, Drive, Brush, Disk, 0.75b 6T (Replaced By 1071636)", category: "Cabezal", qty: 2, note: "S/N 10000000-10624412", hotspots: [] },
+        { item: 13, partNumber: "00928", description: "Key, Sq, 0.25 x 0.25, 1.00L", category: "Cabezal", qty: 2, hotspots: [{ x: 23.7, y: 21.5 }, { x: 63.9, y: 35.5 }, { x: 91.2, y: 25.3 }] },
+        { item: 14, partNumber: "1020341", description: "Screw, Hex, M8 x 1.25 x 20, SS, Sems", category: "Tornillería", qty: 2, hotspots: [{ x: 47.4, y: 94.8 }, { x: 74.3, y: 84.5 }] },
+        { item: 15, partNumber: "01684", description: "Washer, Flat, 0.27b 0.69d .05, SS", category: "Tornillería", qty: 2, note: "Modelo ec-H2O", hotspots: [{ x: 91.6, y: 74.6 }, { x: 65, y: 83.9 }] },
+        { item: 16, partNumber: "1017218", description: "Washer, Flat, 0.32b 1.00d .12, SS", category: "Tornillería", qty: 2, hotspots: [{ x: 47.8, y: 92 }, { x: 74.2, y: 81.6 }] },
+        { item: 17, partNumber: "1011376", description: "Skirt, Spray, 800mm", category: "Cabezal", qty: 1, hotspots: [{ x: 24.7, y: 50.3 }] },
+        { item: 18, partNumber: "1012359", description: "Retainer, Skirt, 800mm", category: "Cabezal", qty: 1, hotspots: [{ x: 17.6, y: 53.6 }] },
+        { item: 19, partNumber: "1072816", description: "Screw, Hex, M8 x 1.25 x 30, SS, Sems", category: "Tornillería", qty: 6, hotspots: [{ x: 8.5, y: 76.7 }] },
+        { item: 20, partNumber: "08713", description: "Nut, Hex, Lock, M8 x 1.25, NL, SS", category: "Tornillería", qty: 6, hotspots: [{ x: 8.3, y: 50.5 }, { x: 48, y: 61 }] },
+        { item: 21, partNumber: "1052393", description: "Bracket, Wheel, Guide", category: "Ruedas", qty: 1, hotspots: [{ x: 13.2, y: 73.6 }] },
+        { item: 22, partNumber: "1010560", description: "Wheel, Bumper, 80d x 25w, Non-Marking", category: "Ruedas", qty: 1, hotspots: [{ x: 12.8, y: 56 }] },
+        { item: 23, partNumber: "222460", description: "Sleeve, P/, 0.49D 0.318B 0.50L 430SS", category: "Ruedas", qty: 1, hotspots: [{ x: 10.7, y: 59.6 }] },
+        { item: 24, partNumber: "140027", description: "Washer, Flat, 0.35b 0.75d .04, SS", category: "Tornillería", qty: 1, hotspots: [{ x: 10.1, y: 53.4 }] },
+        { item: 25, partNumber: "1014295", description: "Clip, Grip, Hose, 0.75-1.12, Stl, Blk Vyl", category: "Solución", qty: 1, note: "Modelo ec-H2O", hotspots: [{ x: 28.2, y: 73.5 }] },
+        { item: 26, partNumber: "140011", description: "Washer, Flat, 0.21b 0.45d .03, SS", category: "Tornillería", qty: 1, note: "Modelo ec-H2O", hotspots: [{ x: 29.8, y: 70.7 }] },
+        { item: 27, partNumber: "607006", description: "Screw, Trs, M4 x 0.70 x 12, Phl, Pl", category: "Tornillería", qty: 1, note: "Modelo ec-H2O", hotspots: [{ x: 30.8, y: 68.4 }] },
+        { item: 28, partNumber: "33932", description: "Nut, Hex, Lock, M4 x 0.70, NL, SS", category: "Tornillería", qty: 1, note: "Modelo ec-H2O", hotspots: [{ x: 19, y: 75.6 }] },
+        { item: 29, partNumber: "08712", description: "Nut, Hex, Lock, M6 x 1.0, SS, NL", category: "Tornillería", qty: 8, hotspots: [{ x: 90.4, y: 77.7 }, { x: 64, y: 86.8 }] },
+        { item: 30, partNumber: "1052298", description: "Bracket, Support, Hose [T7]", category: "Solución", qty: 2, note: "Modelo ec-H2O", hotspots: [{ x: 72.3, y: 71 }, { x: 64.7, y: 79.7 }] },
+        { item: 31, partNumber: "1013821", description: "Plate, Sppt", category: "Cabezal", qty: 2, hotspots: [{ x: 45.8, y: 74.6 }, { x: 91.1, y: 67.3 }] }
+      ]
+    },
+    "data/recovery_tank.json": {
+      machine: "Tennant T7",
+      group: "Recovery Tank Group",
+      figure: "Fig. 27",
+      image: "assets/recovery_tank.png",
+      categories: ["Tanque", "Bisagras", "Vacío y filtro", "Eléctrico", "Tornillería"],
+      parts: [
+        { item: 1, partNumber: "1018032", description: "Tank, Recvy, W/Label [T7] (Teal)", category: "Tanque", qty: 1, note: "T7 estándar · Teal", hotspots: [{ x: 23.7, y: 39 }] },
+        { item: 1, partNumber: "1023942", description: "Tank, Recvy, W/ Label [T7] RM-NLG (Gray)", category: "Tanque", qty: 1, note: "T7 estándar · Gray", hotspots: [] },
+        { item: 1, partNumber: "1018034", description: "Tank, Recvy, W/Label [T7 FaST] (Teal)", category: "Tanque", qty: 1, note: "T7 FaST · Teal", hotspots: [] },
+        { item: 1, partNumber: "1023944", description: "Tank, Recvy, RM-CPHG, W/ Label [T7 FaST] (Gray)", category: "Tanque", qty: 1, note: "T7 FaST · Gray", hotspots: [] },
+        { item: 1, partNumber: "9006186", description: "Tank, Recvy, Afmkt, Teal [T7 ec-H2O]", category: "Tanque", qty: 1, note: "T7 ec-H2O · Teal", hotspots: [] },
+        { item: 1, partNumber: "9006187", description: "Tank, Recvy, Afmkt, Gray [T7 ec-H2O]", category: "Tanque", qty: 1, note: "T7 ec-H2O · Gray", hotspots: [] },
+        { item: 2, partNumber: "1033973", description: "Cover, Tank, Recvy, Afmkt, HG [T7]", category: "Tanque", qty: 1, hotspots: [{ x: 28.6, y: 5 }] },
+        { item: 3, partNumber: "222529", description: "Hinge, Leaf", category: "Bisagras", qty: 2, hotspots: [{ x: 44, y: 25.1 }, { x: 27.5, y: 11.9 }] },
+        { item: 4, partNumber: "222463", description: "Screw, Flt, M8 x 1.25 x 20, Blk", category: "Tornillería", qty: 2, hotspots: [{ x: 41.9, y: 24.9 }, { x: 24.1, y: 13.3 }] },
+        { item: 5, partNumber: "1012055", description: "Hinge Wldt, Cover", category: "Bisagras", qty: 2, hotspots: [{ x: 56.9, y: 28 }, { x: 36.9, y: 24.1 }] },
+        { item: 6, partNumber: "09740", description: "Screw, Hex, M8 x 1.25 x 20, SS", category: "Tornillería", qty: 8, hotspots: [{ x: 12.7, y: 73.2 }, { x: 30.7, y: 74.2 }, { x: 2.9, y: 53.5 }, { x: 4, y: 89.5 }, { x: 13, y: 93.7 }] },
+        { item: 7, partNumber: "1017218", description: "Washer, Flat, 0.321b 1.00d .12, SS", category: "Tornillería", qty: 8, hotspots: [{ x: 16.7, y: 71.6 }, { x: 33.3, y: 73.8 }, { x: 3.5, y: 64.7 }, { x: 4, y: 91.9 }, { x: 13, y: 96 }] },
+        { item: 8, partNumber: "1018304", description: "Hinge, 10mm Pin, Crs, Blk [T7]", category: "Bisagras", qty: 2, note: "S/N 10346364-", hotspots: [{ x: 91.8, y: 87.3 }, { x: 74, y: 70.5 }] },
+        { item: 9, partNumber: "393135", description: "Screw, Btn, M8 x 1.25 x 20, Blk", category: "Tornillería", qty: 4, note: "S/N 10346364-", hotspots: [{ x: 95.6, y: 80.1 }, { x: 86, y: 76.1 }] },
+        { item: 10, partNumber: "1016435", description: "Washer, Flat, 0.52b 0.75d .06, Stl, Blk", category: "Tornillería", qty: 4, hotspots: [{ x: 94.3, y: 81.7 }, { x: 83.9, y: 77.4 }, { x: 24.4, y: 80.1 }] },
+        { item: 11, partNumber: "1016430", description: "Screw, Btn, M8 x 1.25 x 25, 10.9, Blk", category: "Tornillería", qty: 4, note: "S/N 10000000-10346363", hotspots: [{ x: 26.6, y: 78.8 }] },
+        { item: 12, partNumber: "82829", description: "Clamp, Cable, Stl, 0.63d x 0.75w, 1hole", category: "Eléctrico", qty: 2, hotspots: [{ x: 51.3, y: 74.1 }, { x: 65.3, y: 66.5 }] },
+        { item: 13, partNumber: "15675", description: "Screw, Hex, M8 x 1.25 x 16, SS", category: "Tornillería", qty: 2, hotspots: [{ x: 46, y: 66.9 }, { x: 63.3, y: 68.2 }] },
+        { item: 14, partNumber: "1016855", description: "Plate Wldt, Seal, Tank", category: "Tanque", qty: 1, hotspots: [{ x: 62.9, y: 91.3 }] },
+        { item: 15, partNumber: "1020301", description: "Seal, Afmkt, Bulb, Clsd Cell, Adh, 8ft", category: "Tanque", qty: 1, hotspots: [{ x: 61, y: 94.7 }] },
+        { item: 16, partNumber: "1016871", description: "Spacer, Seal, Tank", category: "Tanque", qty: 2, hotspots: [{ x: 37.7, y: 71.3 }, { x: 63.9, y: 75.1 }] },
+        { item: 17, partNumber: "397255", description: "Spring, Cmpr, 0.85od .08wir 2.0l", category: "Tanque", qty: 2, hotspots: [{ x: 38.6, y: 69.4 }, { x: 63.4, y: 73.6 }] },
+        { item: 18, partNumber: "605385", description: "Washer, Flat, 0.69b 1.50d .05, SS", category: "Tornillería", qty: 4, hotspots: [{ x: 36.3, y: 73.9 }, { x: 37.9, y: 65 }, { x: 64.5, y: 77.3 }, { x: 60.9, y: 69.3 }] },
+        { item: 19, partNumber: "1017218", description: "Washer, Flat, 0.321b 1.00d .12, SS", category: "Tornillería", qty: 2, hotspots: [{ x: 37.7, y: 90.5 }, { x: 48, y: 95.2 }] },
+        { item: 20, partNumber: "77270", description: "Screw, Hex, M8 x 1.25 x 60, SS", category: "Tornillería", qty: 2, hotspots: [{ x: 38.2, y: 94.1 }, { x: 48.6, y: 98.6 }] },
+        { item: 21, partNumber: "1017705", description: "Pad, Rbr", category: "Tanque", qty: 1, hotspots: [{ x: 8.4, y: 43.7 }] },
+        { item: 22, partNumber: "1011752", description: "Hinge Wldt, Tank", category: "Bisagras", qty: 1, note: "S/N 10000000-10346363", hotspots: [{ x: 4.7, y: 95.6 }] },
+        { item: 23, partNumber: "1011753", description: "Hinge Wldt, Tank", category: "Bisagras", qty: 1, note: "S/N 10000000-10346363", hotspots: [{ x: 11.2, y: 98.4 }] },
+        { item: 24, partNumber: "1017670", description: "Angle, Sppt, Tank", category: "Tanque", qty: 1, hotspots: [{ x: 23, y: 72.4 }] },
+        { item: 25, partNumber: "1017607", description: "Bracket Wldt, Tank, Sppt", category: "Tanque", qty: 1, hotspots: [{ x: 4.9, y: 69.7 }] },
+        { item: 26, partNumber: "1037821", description: "Filter, Panl, Dust, 2.3 x 4.5 x 6.4", category: "Vacío y filtro", qty: 1, hotspots: [{ x: 9.1, y: 31.4 }] },
+        { item: 27, partNumber: "1016392", description: "Gasket, Fltr, Tank", category: "Vacío y filtro", qty: 1, hotspots: [{ x: 8.2, y: 27.6 }] },
+        { item: 28, partNumber: "1014026", description: "Hose, Vacuum, 1.50id x 057.1l, 2cuff, Blk", category: "Vacío y filtro", qty: 1, hotspots: [{ x: 93.5, y: 23.1 }] },
+        { item: 29, partNumber: "1001992", description: "Clip, Hose, Gripper, 1.75id, Blk Ny", category: "Vacío y filtro", qty: 2, hotspots: [{ x: 76.1, y: 39.7 }] },
+        { item: 30, partNumber: "607006", description: "Screw, Trs, M4 x 0.70 x 12, Phl, Pl", category: "Tornillería", qty: 4, hotspots: [{ x: 81.3, y: 37 }] },
+        { item: 31, partNumber: "385685", description: "Sensor, Level, Liquid, 14vdc 01a .62-11", category: "Eléctrico", qty: 1, hotspots: [{ x: 21, y: 42.7 }] },
+        { item: 32, partNumber: "1014079", description: "Clip, Grip, Hose, 1.50id, Dbl, Blk Pyp", category: "Vacío y filtro", qty: 1, hotspots: [{ x: 93.3, y: 64.3 }] },
+        { item: 33, partNumber: "1020341", description: "Screw, Hex, M8 x 1.25 x 20, SS, Sems", category: "Tornillería", qty: 8, hotspots: [{ x: 31.3, y: 22.6 }, { x: 76.5, y: 84.8 }, { x: 44.7, y: 28.5 }, { x: 67, y: 80.5 }] },
+        { item: 34, partNumber: "1017590", description: "Plate, Hinge", category: "Bisagras", qty: 2, note: "S/N 10000000-10346363", hotspots: [{ x: 6.6, y: 77.7 }, { x: 27.5, y: 93.6 }] },
+        { item: 35, partNumber: "1011536", description: "Hinge, Tank", category: "Bisagras", qty: 2, note: "S/N 10000000-10346363", hotspots: [{ x: 9.2, y: 76.2 }, { x: 30.6, y: 92 }] }
+      ]
+    },
+    "data/solution_tank_disk.json": {
+      machine: "Tennant T7",
+      group: "Solution Tank Group, Disk Scrub Head",
+      figure: "Fig. 29",
+      image: "assets/solution_tank_disk.png",
+      categories: ["Tanque", "Fluido", "Soportes", "Eléctrico", "Tornillería"],
+      parts: [
+        { item: 1, partNumber: "1015405", description: "Tank, Soltn, W/ Label [T7]", category: "Tanque", qty: 1, hotspots: [{ x: 8.1, y: 58.8 }] },
+        { item: 1, partNumber: "1036374", description: "Tank, Soltn, Disk, HG, Afmkt, TJ (Japan)", category: "Tanque", qty: 1, note: "Versión Japón", hotspots: [] },
+        { item: 2, partNumber: "1012505", description: "Cover, Tank, Soltn [T7]", category: "Tanque", qty: 1, hotspots: [{ x: 13.8, y: 25.9 }] },
+        { item: 3, partNumber: "1020317", description: "Catch, Cover [T7]", category: "Tanque", qty: 2, hotspots: [{ x: 21.6, y: 17.9 }, { x: 33.2, y: 22.5 }] },
+        { item: 4, partNumber: "1020292", description: "Plate, Cover, Tab [T7]", category: "Tanque", qty: 2, hotspots: [{ x: 34.8, y: 29.9 }, { x: 47.4, y: 34 }] },
+        { item: 5, partNumber: "1020727", description: "Seal, Afmkt, Bulb, Clsd Cell, Adh, 8ft", category: "Tanque", qty: 1, hotspots: [{ x: 16.3, y: 39.5 }] },
+        { item: 6, partNumber: "1020719", description: "Seal, Afmkt, Bulb, Clsd Cell, Adh, 8ft", category: "Tanque", qty: 1, hotspots: [{ x: 25.5, y: 30.7 }] },
+        { item: 7, partNumber: "1021677", description: "Rivet, Blind, .156D x 0.55 x .38D, SS", category: "Tornillería", qty: 10, hotspots: [{ x: 20, y: 22.1 }, { x: 39, y: 36.5 }, { x: 6.4, y: 35.6 }] },
+        { item: 8, partNumber: "1014072", description: "Bracket, Mtg, Tank", category: "Soportes", qty: 3, hotspots: [{ x: 61.7, y: 64.3 }, { x: 40.2, y: 65.9 }] },
+        { item: 9, partNumber: "09740", description: "Screw, Hex, M8 x 1.25 x 20, SS", category: "Tornillería", qty: 6, hotspots: [{ x: 42, y: 71.5 }, { x: 57.3, y: 53 }] },
+        { item: 10, partNumber: "1017218", description: "Washer, Flat, 0.321b 1.00d .12, SS", category: "Tornillería", qty: 6, hotspots: [{ x: 61.1, y: 58.3 }, { x: 39.4, y: 70.7 }] },
+        { item: 11, partNumber: "1011885", description: "Cap, Tank", category: "Tanque", qty: 1, hotspots: [{ x: 53.6, y: 23.7 }] },
+        { item: 12, partNumber: "1011852", description: "Arm, Tank, Retaining", category: "Soportes", qty: 1, hotspots: [{ x: 63.3, y: 23.7 }] },
+        { item: 13, partNumber: "222516", description: "Sleeve, P/M, 0.496d 0.318b 0.31l 430SS", category: "Soportes", qty: 5, hotspots: [{ x: 47.6, y: 23.8 }, { x: 39.8, y: 16.8 }, { x: 72.9, y: 19.4 }] },
+        { item: 14, partNumber: "1016430", description: "Screw, Btn, M8 x 1.25 x 25, 10.9, Blk", category: "Tornillería", qty: 4, hotspots: [{ x: 42.9, y: 22 }, { x: 38.6, y: 10.4 }, { x: 62.1, y: 17.7 }] },
+        { item: 15, partNumber: "1016435", description: "Washer, Flat, 0.52b 0.75d .06, Stl, Blk", category: "Tornillería", qty: 3, hotspots: [{ x: 45.2, y: 23.2 }, { x: 59.8, y: 16 }] },
+        { item: 16, partNumber: "398770", description: "Strainer, Soltn, 80mesh Cyl 1.3d 3.5l", category: "Fluido", qty: 1, hotspots: [{ x: 71.8, y: 26.4 }] },
+        { item: 17, partNumber: "377349", description: "Fitting, Plstc, PF12/PF12, BH", category: "Fluido", qty: 1, hotspots: [{ x: 78.1, y: 53.5 }] },
+        { item: 18, partNumber: "73468", description: "Fitting, Plstc, E90, BM10/PM12", category: "Fluido", qty: 1, hotspots: [{ x: 77.3, y: 59.3 }] },
+        { item: 19, partNumber: "82829", description: "Clamp, Cable, Stl, 0.63d x 0.75w, 1hole", category: "Eléctrico", qty: 2, hotspots: [{ x: 89.5, y: 47.7 }] },
+        { item: 20, partNumber: "67767", description: "Clamp, Cable, Stl, 0.69d x 0.62w, 1h", category: "Eléctrico", qty: 1, hotspots: [{ x: 88.9, y: 42.3 }] },
+        { item: 21, partNumber: "1019879", description: "Conduit, Nylon, .50d 3.0l", category: "Eléctrico", qty: 1, hotspots: [{ x: 91.4, y: 40.2 }] },
+        { item: 22, partNumber: "15675", description: "Screw, Hex, M8 x 1.25 x 16, SS", category: "Tornillería", qty: 2, hotspots: [{ x: 90.9, y: 32.5 }, { x: 88.6, y: 45.1 }] },
+        { item: 23, partNumber: "385685", description: "Sensor, Level, Liquid, 14vdc 01a .62-11", category: "Eléctrico", qty: 1, hotspots: [{ x: 86.8, y: 27.4 }] },
+        { item: 24, partNumber: "1014825", description: "Hose, Mold", category: "Fluido", qty: 1, hotspots: [{ x: 47, y: 98.6 }] },
+        { item: 25, partNumber: "54333", description: "Clamp, Hose, Wormdrive, 0.31-0.88d, .31w", category: "Fluido", qty: 2, hotspots: [{ x: 42.2, y: 97.2 }, { x: 77.4, y: 89.2 }] },
+        { item: 26, partNumber: "49800", description: "Latch, Draw, Soft, Rbr W/ Keeper", category: "Tanque", qty: 2, hotspots: [{ x: 16.2, y: 41.8 }, { x: 37.8, y: 64.6 }] },
+        { item: 27, partNumber: "607006", description: "Screw, Trs, M4 x 0.70 x 12, Phl, Pl", category: "Tornillería", qty: 4, hotspots: [{ x: 6.3, y: 49.8 }] },
+        { item: 28, partNumber: "1035394", description: "Washer, Flat, 0.17b 0.38d .04, SS", category: "Tornillería", qty: 4, hotspots: [{ x: 11.9, y: 35.9 }] },
+        { item: 29, partNumber: "01685", description: "Washer, Flat, 0.31 SS", category: "Tornillería", qty: 2, hotspots: [{ x: 40.6, y: 13.5 }, { x: 75.9, y: 20.1 }] },
+        { item: 30, partNumber: "08713", description: "Nut, Hex, Lock, M8 x 1.25, NL, SS", category: "Tornillería", qty: 1, hotspots: [{ x: 77.2, y: 22 }] },
+        { item: 31, partNumber: "1011853", description: "Arm, Tank, Retaining", category: "Soportes", qty: 1, hotspots: [{ x: 41.8, y: 19.1 }] },
+        { item: 32, partNumber: "1072628", description: "Screw, Hex, M8 x 1.25 x 25, SS, Sems", category: "Tornillería", qty: 2, hotspots: [{ x: 10.3, y: 91.3 }, { x: 20.8, y: 96.1 }] },
+        { item: 33, partNumber: "1020341", description: "Screw, Hex, M8 x 1.25 x 20, SS, Sems", category: "Tornillería", qty: 4, hotspots: [{ x: 34.8, y: 19.2 }, { x: 24, y: 14.3 }] },
+        { item: 34, partNumber: "69234", description: "Clamp, Cable, Stl, 1.00d x 0.75w, 1hole", category: "Eléctrico", qty: 1, hotspots: [{ x: 60.2, y: 56.4 }] }
+      ]
+    },
+    "data/front_drive_wheel.json": {
+      machine: "Tennant T7",
+      group: "Front Drive Wheel Group (S/N 10518139-)",
+      figure: "Fig. 11",
+      image: "assets/front_drive_wheel.png",
+      categories: ["Tracción", "Eléctrico", "Soportes", "Tornillería"],
+      parts: [
+        { item: 1, partNumber: "1019724", description: "Steer-Control Assy, Wheel Drive (See Breakdown)", category: "Tracción", qty: 1, hotspots: [{ x: 58.1, y: 39 }] },
+        { item: 2, partNumber: "1019224", description: "Strap, Nyl", category: "Soportes", qty: 1, hotspots: [{ x: 85.7, y: 75.8 }] },
+        { item: 3, partNumber: "09010", description: "Screw, Hex, M8 x 1.25 x 25, SS (Disk Brush)", category: "Tornillería", qty: 4, hotspots: [{ x: 32.3, y: 40.2 }] },
+        { item: 3, partNumber: "09026", description: "Screw, Hex, M8 x 1.25 x 40, SS (Cylindrical Brush)", category: "Tornillería", qty: 4, hotspots: [] },
+        { item: 4, partNumber: "01685", description: "Washer, Flat, 0.31 SS", category: "Tornillería", qty: 4, hotspots: [{ x: 31.2, y: 44.3 }] },
+        { item: 5, partNumber: "00912", description: "Key, Sq, 0.19 x 0.19, 1.00L", category: "Tracción", qty: 1, hotspots: [{ x: 52, y: 38.6 }] },
+        { item: 6, partNumber: "1065808", description: "Harness, Motor, Brake [T7/SSR]", category: "Eléctrico", qty: 1, hotspots: [{ x: 62.4, y: 93.2 }] },
+        { item: 7, partNumber: "1028873", description: "Plate, Spacer, Drive (Cylindrical Brush)", category: "Soportes", qty: 2, hotspots: [{ x: 75.3, y: 58.4 }, { x: 29.6, y: 58.4 }] },
+        { item: 8, partNumber: "140300", description: "Clamp, Cable, Stl, 0.50D [Insulated]", category: "Eléctrico", qty: 2, hotspots: [{ x: 24.3, y: 84.2 }, { x: 10.5, y: 74.2 }] },
+        { item: 9, partNumber: "361339", description: "Screw, Hex, M6 x 1.0 x 16, Fmg", category: "Tornillería", qty: 2, hotspots: [{ x: 25, y: 92.7 }, { x: 11.3, y: 83.1 }] },
+        { item: 10, partNumber: "19066", description: "Washer, Flat, #10", category: "Tornillería", qty: 2, hotspots: [{ x: 76.7, y: 92.9 }] },
+        { item: 11, partNumber: "130773", description: "Tie, Cable, Nyl, 11.0L, .14W, 3.0 Max. D", category: "Eléctrico", qty: 4, hotspots: [{ x: 94.8, y: 96.8 }] },
+        { item: 12, partNumber: "9008999", description: "Gearbox Kit, Wheel, 250mm, W/ Connector (Does NOT Include Motor Brake Harness) (See Breakdown)", category: "Tracción", qty: 1, hotspots: [{ x: 78.2, y: 65.5 }] },
+        { item: 13, partNumber: "1047186", description: "Connector, Fem, 3 Recept [MP630]", category: "Eléctrico", qty: 1, hotspots: [{ x: 92.6, y: 79.4 }] },
+        { item: 14, partNumber: "130161", description: "Plug, Hole, Rnd, 0.88D, Blk", category: "Soportes", qty: 1, hotspots: [{ x: 15.9, y: 68.6 }] },
+        { item: 15, partNumber: "1064972", description: "Bracket, Cord", category: "Soportes", qty: 2, hotspots: [{ x: 8.3, y: 63.8 }, { x: 24, y: 44.1 }] },
+        { item: 16, partNumber: "02938", description: "Washer, Lock, Int, 08, SS", category: "Tornillería", qty: 2, hotspots: [{ x: 19, y: 43.3 }, { x: 4.9, y: 60.7 }] },
+        { item: 17, partNumber: "33931", description: "Screw, Pan, Phl, M4 x 0.70 x 30, SS", category: "Tornillería", qty: 2, hotspots: [{ x: 5, y: 46.2 }] }
+      ]
+    }
+  };
+
+  const ALL = "Todas";
+
+  const $ = (sel) => document.querySelector(sel);
+  const els = {
+    // Comunes
+    toast: $("#toast"),
+    themeToggle: $("#theme-toggle"),
+    crumbSep: $("#crumb-sep"),
+    crumbAssembly: $("#crumb-assembly"),
+    // Nivel 1
+    machineView: $("#view-machine"),
+    machineDiagram: $("#machine-diagram"),
+    machineImg: $("#machine-img"),
+    zoneHotspots: $("#zone-hotspots"),
+    zoneList: $("#zone-list"),
+    zoneCount: $("#zone-count"),
+    // Nivel 2
+    assemblyView: $("#view-assembly"),
+    diagram: $("#diagram"),
+    img: $("#diagram-img"),
+    hotspots: $("#hotspots"),
+    search: $("#search"),
+    filters: $("#filters"),
+    body: $("#parts-body"),
+    empty: $("#empty-state"),
+    count: $("#result-count"),
+    figureTabs: $("#figure-tabs"),
+    figureLabel: $("#figure-label"),
+    groupLabel: $("#group-label")
+  };
+
+  // ---------- Utilidades ----------
+  const normalize = (s) =>
+    String(s).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+
+  const escapeHtml = (s) =>
+    String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+  // Resalta la coincidencia de búsqueda dentro de un texto (sin romper el HTML).
+  function highlight(text, query) {
+    if (!query) return escapeHtml(text);
+    const idx = normalize(text).indexOf(normalize(query));
+    if (idx === -1) return escapeHtml(text);
+    const end = idx + query.length;
+    return escapeHtml(text.slice(0, idx)) + "<mark>" + escapeHtml(text.slice(idx, end)) + "</mark>" + escapeHtml(text.slice(end));
+  }
+
+  let toastTimer;
+  function showToast(msg) {
+    els.toast.textContent = msg;
+    els.toast.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => els.toast.classList.remove("show"), 2200);
+  }
+
+  async function copyText(text) {
+    try {
+      await navigator.clipboard.writeText(text);
+      return true;
+    } catch {
+      // Respaldo para contextos sin Clipboard API (file://, http no seguro)
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      const ok = document.execCommand("copy");
+      ta.remove();
+      return ok;
+    }
+  }
+
+  const jsonCache = new Map();
+  async function loadJSON(url) {
+    if (jsonCache.has(url)) return jsonCache.get(url);
+    let data;
+    try {
+      const res = await fetch(url, { cache: "no-cache" });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      data = await res.json();
+    } catch (err) {
+      if (!FALLBACK[url]) throw err;
+      console.warn(`No se pudo cargar ${url} (${err.message}). Usando datos de respaldo embebidos.`);
+      data = FALLBACK[url];
+    }
+    jsonCache.set(url, data);
+    return data;
+  }
+
+  // Muestra un aviso si la imagen de un diagrama no existe
+  function bindImageFallback(img) {
+    const placeholder = img.parentElement.querySelector(".diagram-placeholder");
+    img.addEventListener("error", () => {
+      img.hidden = true;
+      placeholder.hidden = false;
+    });
+    img.addEventListener("load", () => {
+      img.hidden = false;
+      placeholder.hidden = true;
+    });
+    if (img.complete && img.getAttribute("src") && img.naturalWidth === 0) {
+      img.hidden = true;
+      placeholder.hidden = false;
+    }
+  }
+
+  // Alt + clic sobre un diagrama: copia coordenadas (%) para calibrar hotspots
+  function bindCoordinatePicker(container) {
+    container.addEventListener("click", (e) => {
+      if (!e.altKey) return;
+      const r = container.getBoundingClientRect();
+      const x = (((e.clientX - r.left) / r.width) * 100).toFixed(1);
+      const y = (((e.clientY - r.top) / r.height) * 100).toFixed(1);
+      const snippet = `{ "x": ${x}, "y": ${y} }`;
+      console.log(snippet);
+      copyText(snippet);
+      showToast(`Coordenadas copiadas: x=${x}%, y=${y}%`);
+    });
+  }
+
+  /* ==========================================================
+     NIVEL 1 · Máquina completa
+     ========================================================== */
+  const MachineView = {
+    data: null,
+
+    async init() {
+      this.data = await loadJSON(MACHINE_URL);
+      if (this.data.image) els.machineImg.src = this.data.image;
+      this.render();
+
+      const onZone = (e) => {
+        const el = e.target.closest("[data-zone]");
+        if (el) this.openZone(el.dataset.zone);
+      };
+      els.zoneHotspots.addEventListener("click", onZone);
+      els.zoneList.addEventListener("click", onZone);
+
+      // Hover sincronizado entre tarjeta y zona en la imagen
+      const syncHover = (e, on) => {
+        const el = e.target.closest("[data-zone]");
+        if (!el || (!on && el.contains(e.relatedTarget))) return;
+        document
+          .querySelectorAll(`[data-zone="${el.dataset.zone}"]`)
+          .forEach((n) => n.classList.toggle("is-active", on));
+      };
+      [els.zoneHotspots, els.zoneList].forEach((c) => {
+        c.addEventListener("mouseover", (e) => syncHover(e, true));
+        c.addEventListener("mouseout", (e) => syncHover(e, false));
+      });
+    },
+
+    zone(id) {
+      return this.data.zones.find((z) => z.id === id);
+    },
+
+    render() {
+      const zones = this.data.zones;
+      const available = zones.filter((z) => z.status === "available").length;
+      els.zoneCount.textContent = `${available} / ${zones.length} disponibles`;
+
+      els.zoneHotspots.innerHTML = zones
+        .map((z) => {
+          const soon = z.status !== "available";
+          // Evita que la etiqueta se salga del diagrama en los bordes
+          const side = z.hotspot.x > 70 ? "label-left" : z.hotspot.x < 30 ? "label-right" : "";
+          return `<button type="button" class="zone-hotspot ${side} ${soon ? "is-soon" : ""}" data-zone="${z.id}"
+                    style="left:${z.hotspot.x}%;top:${z.hotspot.y}%"
+                    aria-label="${escapeHtml(z.name)}${soon ? " (próximamente)" : ""}">
+                    <span class="zone-dot" aria-hidden="true"></span>
+                    <span class="zone-label">${escapeHtml(z.name)}${soon ? " · Próximamente" : ""}</span>
+                  </button>`;
+        })
+        .join("");
+
+      els.zoneList.innerHTML = zones
+        .map((z) => {
+          const soon = z.status !== "available";
+          return `<li>
+            <button type="button" class="zone-card ${soon ? "is-soon" : ""}" data-zone="${z.id}">
+              <span class="zone-card-text">
+                <strong>${escapeHtml(z.name)}</strong>
+                <span>${escapeHtml(z.description || "")}${z.figure ? ` · ${escapeHtml(z.figure)}` : ""}</span>
+              </span>
+              ${soon ? `<span class="tag tag-soon">Próximamente</span>` : `<span class="tag tag-ok">Ver despiece →</span>`}
+            </button>
+          </li>`;
+        })
+        .join("");
+    },
+
+    openZone(id) {
+      const z = this.zone(id);
+      if (!z) return;
+      if (z.status !== "available") {
+        showToast(`${z.name}: despiece próximamente`);
+        return;
+      }
+      location.hash = `#/zona/${z.id}`;
+    }
+  };
+
+  /* ==========================================================
+     NIVEL 2 · Despiece por subensamble
+     ========================================================== */
+  const AssemblyView = {
+    state: { parts: [], categories: [], query: "", category: ALL, activeItem: null },
+    loadedUrl: null,
+
+    init() {
+      bindImageFallback(els.img);
+      bindCoordinatePicker(els.diagram);
+      this.bindEvents();
+    },
+
+    async load(zone, figure) {
+      if (this.loadedUrl === figure.data) return; // ya cargado: se conserva búsqueda/selección
+      const data = await loadJSON(figure.data);
+
+      this.loadedUrl = figure.data;
+      Object.assign(this.state, {
+        parts: [...data.parts].sort((a, b) => a.item - b.item),
+        categories: data.categories || [...new Set(data.parts.map((p) => p.category))],
+        query: "",
+        category: ALL,
+        activeItem: null
+      });
+      els.search.value = "";
+      els.img.src = data.image;
+      els.img.alt = `${data.figure || ""} - ${data.group || zone.name}`;
+      els.figureLabel.textContent = data.figure || zone.figure || "";
+      els.groupLabel.textContent = data.group || zone.description || zone.name;
+
+      this.renderFilters();
+      this.renderHotspots();
+      this.renderTable();
+    },
+
+    filteredParts() {
+      const { parts, query, category } = this.state;
+      const q = normalize(query.trim());
+      return parts.filter((p) => {
+        const matchCat = category === ALL || p.category === category;
+        const matchQuery =
+          !q ||
+          normalize(p.description).includes(q) ||
+          normalize(p.partNumber).includes(q) ||
+          (p.note && normalize(p.note).includes(q)) ||
+          String(p.item) === q;
+        return matchCat && matchQuery;
+      });
+    },
+
+    renderFilters() {
+      const all = [ALL, ...this.state.categories];
+      els.filters.innerHTML = all
+        .map((c) => `<button type="button" class="chip" data-category="${escapeHtml(c)}" aria-pressed="${c === this.state.category}">${escapeHtml(c)}</button>`)
+        .join("");
+    },
+
+    // Un ítem puede aparecer varias veces en el diagrama (p. ej. las 4 perillas del ítem 3)
+    renderHotspots() {
+      els.hotspots.innerHTML = this.state.parts
+        .flatMap((p) =>
+          (p.hotspots || [p.hotspot]).filter(Boolean).map(
+            (h) => `<button type="button" class="hotspot" data-item="${p.item}"
+                    style="left:${h.x}%;top:${h.y}%"
+                    aria-label="Ítem ${p.item}: ${escapeHtml(p.description)}"
+                    title="${p.item} · ${escapeHtml(p.description)}">${p.item}</button>`
+          )
+        )
+        .join("");
+    },
+
+    renderTable() {
+      const rows = this.filteredParts();
+      const q = this.state.query.trim();
+
+      els.body.innerHTML = rows
+        .map(
+          (p) => `<tr data-item="${p.item}" tabindex="0" class="${p.item === this.state.activeItem ? "is-active" : ""}">
+            <td><span class="item-num">${p.item}</span></td>
+            <td class="pn">${highlight(p.partNumber, q)}</td>
+            <td>${highlight(p.description, q)}<span class="desc-cat">${escapeHtml(p.category)}${p.note ? ` · ${highlight(p.note, q)}` : ""}</span></td>
+            <td class="num">${p.qty}</td>
+            <td><button type="button" class="copy-btn" data-copy="${escapeHtml(p.partNumber)}">Copiar Ref</button></td>
+          </tr>`
+        )
+        .join("");
+
+      els.empty.hidden = rows.length > 0;
+      els.count.textContent = `${rows.length} / ${this.state.parts.length}`;
+
+      // Atenúa en el diagrama los ítems que no están en el resultado filtrado
+      const visible = new Set(rows.map((p) => p.item));
+      const filtering = rows.length !== this.state.parts.length;
+      els.hotspots.querySelectorAll(".hotspot").forEach((h) => {
+        h.classList.toggle("is-dimmed", filtering && !visible.has(Number(h.dataset.item)));
+      });
+    },
+
+    // ---------- Sincronización hotspot <-> fila ----------
+    setHotspotHighlight(item, on) {
+      els.hotspots.querySelectorAll(`.hotspot[data-item="${item}"]`).forEach((h) =>
+        h.classList.toggle("is-active", on || item === this.state.activeItem)
+      );
+    },
+
+    selectItem(item, { scroll = false } = {}) {
+      const s = this.state;
+      s.activeItem = s.activeItem === item && !scroll ? null : item;
+
+      els.hotspots.querySelectorAll(".hotspot").forEach((h) =>
+        h.classList.toggle("is-active", Number(h.dataset.item) === s.activeItem)
+      );
+
+      let row = els.body.querySelector(`tr[data-item="${item}"]`);
+
+      // Si la fila está oculta por un filtro, se limpia para poder mostrarla
+      if (!row && scroll) {
+        s.query = "";
+        s.category = ALL;
+        els.search.value = "";
+        this.renderFilters();
+        this.renderTable();
+        row = els.body.querySelector(`tr[data-item="${item}"]`);
+      }
+
+      els.body.querySelectorAll("tr").forEach((tr) =>
+        tr.classList.toggle("is-active", Number(tr.dataset.item) === s.activeItem)
+      );
+
+      if (row && scroll) {
+        row.scrollIntoView({ behavior: "smooth", block: "center" });
+        row.classList.remove("flash");
+        void row.offsetWidth; // reinicia la animación
+        row.classList.add("flash");
+      }
+    },
+
+    bindEvents() {
+      // Hotspot -> fila
+      els.hotspots.addEventListener("click", (e) => {
+        const h = e.target.closest(".hotspot");
+        if (!h) return;
+        e.stopPropagation();
+        this.selectItem(Number(h.dataset.item), { scroll: true });
+      });
+
+      // Fila -> hotspot (hover)
+      els.body.addEventListener("mouseover", (e) => {
+        const tr = e.target.closest("tr[data-item]");
+        if (tr) this.setHotspotHighlight(Number(tr.dataset.item), true);
+      });
+      els.body.addEventListener("mouseout", (e) => {
+        const tr = e.target.closest("tr[data-item]");
+        if (tr && !tr.contains(e.relatedTarget)) this.setHotspotHighlight(Number(tr.dataset.item), false);
+      });
+
+      // Fila -> hotspot (selección por clic o teclado) y botón "Copiar Ref"
+      els.body.addEventListener("click", async (e) => {
+        const btn = e.target.closest(".copy-btn");
+        if (btn) {
+          const ref = btn.dataset.copy;
+          if (await copyText(ref)) {
+            btn.textContent = "¡Copiado!";
+            btn.classList.add("copied");
+            showToast(`Ref ${ref} copiada al portapapeles`);
+            setTimeout(() => {
+              btn.textContent = "Copiar Ref";
+              btn.classList.remove("copied");
+            }, 1500);
+          } else {
+            showToast("No se pudo copiar la referencia");
+          }
+          return;
+        }
+        const tr = e.target.closest("tr[data-item]");
+        if (tr) this.selectItem(Number(tr.dataset.item));
+      });
+      els.body.addEventListener("keydown", (e) => {
+        if (e.key !== "Enter" && e.key !== " ") return;
+        const tr = e.target.closest("tr[data-item]");
+        if (tr && e.target === tr) {
+          e.preventDefault();
+          this.selectItem(Number(tr.dataset.item));
+        }
+      });
+
+      // Buscador en tiempo real
+      els.search.addEventListener("input", () => {
+        this.state.query = els.search.value;
+        this.renderTable();
+      });
+
+      // Filtros por categoría
+      els.filters.addEventListener("click", (e) => {
+        const chip = e.target.closest(".chip");
+        if (!chip) return;
+        this.state.category = chip.dataset.category;
+        els.filters.querySelectorAll(".chip").forEach((c) =>
+          c.setAttribute("aria-pressed", String(c === chip))
+        );
+        this.renderTable();
+      });
+
+      // Atajos: "/" enfoca el buscador, Esc lo limpia (solo en el Nivel 2)
+      document.addEventListener("keydown", (e) => {
+        if (els.assemblyView.hidden) return;
+        if (e.key === "/" && document.activeElement !== els.search) {
+          e.preventDefault();
+          els.search.focus();
+        } else if (e.key === "Escape" && document.activeElement === els.search) {
+          els.search.value = "";
+          this.state.query = "";
+          this.renderTable();
+        }
+      });
+    }
+  };
+
+  /* ==========================================================
+     Navegación entre niveles
+     ========================================================== */
+  function showView(view) {
+    const views = [els.machineView, els.assemblyView];
+    if (!view.hidden) return;
+    views.forEach((v) => {
+      v.hidden = v !== view;
+      v.classList.remove("view-enter");
+    });
+    void view.offsetWidth; // reinicia la animación de entrada
+    view.classList.add("view-enter");
+    window.scrollTo({ top: 0 });
+  }
+
+  function setBreadcrumb(zone) {
+    els.crumbSep.hidden = !zone;
+    els.crumbAssembly.hidden = !zone;
+    els.crumbAssembly.textContent = zone ? zone.name : "";
+    document.title = zone ? `Tennant T7 · ${zone.name}` : "Tennant T7 · Visor de despiece";
+  }
+
+  // Una zona puede tener una sola figura ("data") o varias ("figures"), p. ej. Tanques: Fig. 27 y Fig. 29
+  const figuresOf = (zone) => zone.figures || [{ label: zone.figure, data: zone.data }];
+
+  function renderFigureTabs(zone, index) {
+    const figures = figuresOf(zone);
+    els.figureTabs.hidden = figures.length < 2;
+    els.figureTabs.innerHTML = figures
+      .map(
+        (f, i) => `<a role="tab" class="figure-tab" href="#/zona/${zone.id}/${i + 1}"
+                     aria-selected="${i === index}">${escapeHtml(f.label || `Figura ${i + 1}`)}</a>`
+      )
+      .join("");
+  }
+
+  async function route() {
+    // #/zona/<id>  o  #/zona/<id>/<n.º de figura, desde 1>
+    const match = location.hash.match(/^#\/zona\/([\w-]+)(?:\/(\d+))?/);
+    const zone = match && MachineView.zone(match[1]);
+
+    if (zone && zone.status === "available") {
+      const figures = figuresOf(zone);
+      const index = Math.min(Math.max(Number(match[2] || 1) - 1, 0), figures.length - 1);
+      const changingFigure = !els.assemblyView.hidden && AssemblyView.loadedUrl !== figures[index].data;
+      try {
+        await AssemblyView.load(zone, figures[index]);
+      } catch (err) {
+        console.error(err);
+        showToast(`No se pudo cargar el despiece de ${zone.name}`);
+        location.hash = "#/";
+        return;
+      }
+      renderFigureTabs(zone, index);
+      setBreadcrumb(zone);
+      showView(els.assemblyView);
+      if (changingFigure) {
+        // Cambio de pestaña dentro de la misma zona: repite la animación de entrada
+        els.assemblyView.classList.remove("view-enter");
+        void els.assemblyView.offsetWidth;
+        els.assemblyView.classList.add("view-enter");
+      }
+    } else {
+      if (match) history.replaceState(null, "", "#/"); // zona inexistente o no disponible
+      setBreadcrumb(null);
+      showView(els.machineView);
+    }
+  }
+
+  // ---------- Tema claro/oscuro ----------
+  function initTheme() {
+    const root = document.documentElement;
+    let saved = null;
+    try { saved = localStorage.getItem("t7-theme"); } catch {}
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    root.dataset.theme = saved || (prefersDark ? "dark" : "light");
+
+    els.themeToggle.addEventListener("click", () => {
+      const next = root.dataset.theme === "dark" ? "light" : "dark";
+      root.dataset.theme = next;
+      try { localStorage.setItem("t7-theme", next); } catch {}
+    });
+  }
+
+  // ---------- Inicio ----------
+  async function init() {
+    initTheme();
+    bindImageFallback(els.machineImg);
+    bindCoordinatePicker(els.machineDiagram);
+    AssemblyView.init();
+
+    // Ambas vistas arrancan ocultas para que la primera tenga animación de entrada
+    els.machineView.hidden = true;
+    await MachineView.init();
+    window.addEventListener("hashchange", route);
+    route();
+  }
+
+  init();
+})();

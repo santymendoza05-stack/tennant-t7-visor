@@ -1,0 +1,52 @@
+{
+  "machine": "Tennant T7",
+  "title": "Fregadora de conductor sentado",
+  "image": "assets/t7_full.png",
+  "zones": [
+    {
+      "id": "racleta-trasera",
+      "name": "Racleta Trasera",
+      "description": "Rear Squeegee Group, 800 mm",
+      "figure": "Fig. 37",
+      "status": "available",
+      "data": "data/squeegee_parts.json",
+      "hotspot": { "x": 91.9, "y": 69.1 }
+    },
+    {
+      "id": "cabeza-cepillos",
+      "name": "Cabeza de Cepillos",
+      "description": "Disk Scrub Head Drive Motor Group, 800 mm",
+      "figure": "Fig. 18",
+      "status": "available",
+      "data": "data/scrub_head_disk_800.json",
+      "hotspot": { "x": 61.8, "y": 85.9 }
+    },
+    {
+      "id": "tanques",
+      "name": "Tanques de Solución y Recuperación",
+      "description": "Recovery & Solution Tank Group",
+      "figure": "Fig. 27 / 29",
+      "status": "available",
+      "figures": [
+        {
+          "label": "Fig. 27 · Tanque de recuperación",
+          "data": "data/recovery_tank.json"
+        },
+        {
+          "label": "Fig. 29 · Tanque de solución",
+          "data": "data/solution_tank_disk.json"
+        }
+      ],
+      "hotspot": { "x": 76.5, "y": 20.1 }
+    },
+    {
+      "id": "rueda-motriz",
+      "name": "Rueda Motriz / Tracción",
+      "description": "Front Drive Wheel Group (S/N 10518139-)",
+      "figure": "Fig. 11",
+      "status": "available",
+      "data": "data/front_drive_wheel.json",
+      "hotspot": { "x": 25.7, "y": 92.3 }
+    }
+  ]
+}
