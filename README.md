@@ -20,6 +20,7 @@ Visor web interactivo de repuestos para la fregadora Tennant T7, basado en los d
 | Asiento y Cubierta de Baterías | Fig. 8 · Seat Group | `data/seat_group.json` |
 | Chasis y Bastidor Principal | Fig. 4 · Main Frame Group, Disk Scrub Head<br>Fig. 7 · Main Frame Group, Cylindrical (S/N 10000000-10448498) | `data/main_frame_disk.json`<br>`data/main_frame.json` |
 | Mecanismo de Elevación del Cabezal | Fig. 16 · Disk Scrub Head Lift Group | `data/scrub_head_lift.json` |
+| Motor de Aspiración y Silenciador | Fig. 28 · Vacuum Fan Group | `data/vacuum_fan.json` |
 
 ## Uso local
 

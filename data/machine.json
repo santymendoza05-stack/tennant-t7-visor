@@ -112,6 +112,16 @@
       "data": "data/scrub_head_lift.json",
       "hotspot": { "x": 46, "y": 76 },
       "labelSide": "left"
+    },
+    {
+      "id": "motor-aspiracion",
+      "name": "Motor de Aspiración y Silenciador",
+      "description": "Vacuum Fan Group",
+      "figure": "Fig. 28",
+      "status": "available",
+      "data": "data/vacuum_fan.json",
+      "hotspot": { "x": 86, "y": 33 },
+      "labelSide": "left"
     }
   ]
 }

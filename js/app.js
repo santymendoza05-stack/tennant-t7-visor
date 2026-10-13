@@ -27,7 +27,8 @@
         { id: "columna-direccion", name: "Columna de Dirección / Volante", description: "Steering Group", figure: "Fig. 9", status: "available", data: "data/steering_group.json", hotspot: { x: 34.6, y: 30.2 } },
         { id: "asiento-cubierta", name: "Asiento y Cubierta de Baterías", description: "Seat Group", figure: "Fig. 8", status: "available", data: "data/seat_group.json", hotspot: { x: 55.9, y: 37.6 }, labelSide: "right" },
         { id: "chasis-bastidor", name: "Chasis y Bastidor Principal", description: "Main Frame Group", figure: "Fig. 4 / 7", status: "available", figures: [{ label: "Fig. 4 · Cabezal de disco", data: "data/main_frame_disk.json" }, { label: "Fig. 7 · Cilíndrico (S/N hasta 10448498)", data: "data/main_frame.json" }], hotspot: { x: 58.8, y: 67.1 } },
-        { id: "elevacion-cabezal", name: "Mecanismo de Elevación del Cabezal", description: "Disk Scrub Head Lift Group", figure: "Fig. 16", status: "available", data: "data/scrub_head_lift.json", hotspot: { x: 46, y: 76 }, labelSide: "left" }
+        { id: "elevacion-cabezal", name: "Mecanismo de Elevación del Cabezal", description: "Disk Scrub Head Lift Group", figure: "Fig. 16", status: "available", data: "data/scrub_head_lift.json", hotspot: { x: 46, y: 76 }, labelSide: "left" },
+        { id: "motor-aspiracion", name: "Motor de Aspiración y Silenciador", description: "Vacuum Fan Group", figure: "Fig. 28", status: "available", data: "data/vacuum_fan.json", hotspot: { x: 86, y: 33 }, labelSide: "left" }
       ]
     },
     "data/squeegee_parts.json": {
@@ -472,6 +473,60 @@
         { item: 17, partNumber: "57048", description: "Washer, Flat, 0.53b 2.13d .11, Stl, Pl", category: "Tornillería", qty: 2, hotspots: [{ x: 18.6, y: 33.1 }, { x: 75.5, y: 55.1 }] },
         { item: 18, partNumber: "222027", description: "Arm, Lift, Head", category: "Brazos y soportes", qty: 2, hotspots: [{ x: 11.9, y: 93 }, { x: 27.9, y: 91.7 }] },
         { item: 19, partNumber: "222210", description: "Pin, Clevis, 0.62 D x 2.12L", category: "Pasadores y bujes", qty: 4, hotspots: [{ x: 28.2, y: 59.4 }, { x: 72.5, y: 97.9 }, { x: 28.3, y: 74.6 }] }
+      ]
+    },
+    "data/vacuum_fan.json": {
+      machine: "Tennant T7",
+      group: "Vacuum Fan Group",
+      figure: "Fig. 28",
+      image: "assets/vacuum_fan.png",
+      categories: ["Motor de aspiración", "Manguera y conexiones", "Montaje y aislamiento", "Sellos y empaques", "Soporte del tanque", "Tornillería"],
+      parts: [
+        { item: 1, partNumber: "1039763", description: "Fan, Vacuum, 5.7d, 024VDC, 3 Stage [BPP] (See Breakdown)", category: "Motor de aspiración", qty: 1, hotspots: [{ x: 47.3, y: 25.9 }] },
+        { item: 1, partNumber: "1021064", description: "Fan, Vacuum, 5.7d, 024VDC, 3 Stage [BPP] (Australia) (See Breakdown)", category: "Motor de aspiración", qty: 1, note: "Versión Australia", hotspots: [] },
+        { item: 1, partNumber: "372883", description: "Brush Kit, Motor, Ele", category: "Motor de aspiración", qty: 1, note: "Escobillas (carbones) · Repuesto interno del motor 1039763 / 1021064 (despiece sección 4, Fig. 8 y 9)", hotspots: [] },
+        { item: 1, partNumber: "01837", description: "Bearing, Motor, Vacfan", category: "Motor de aspiración", qty: 2, note: "Repuesto interno del motor 1039763 / 1021064 (despiece sección 4, Fig. 8 y 9)", hotspots: [] },
+        { item: 1, partNumber: "01856", description: "Spring, Brg, Motor, Vacfan", category: "Motor de aspiración", qty: 1, note: "Repuesto interno del motor 1039763 / 1021064 (despiece sección 4, Fig. 8 y 9)", hotspots: [] },
+        { item: 1, partNumber: "372884", description: "Armature", category: "Motor de aspiración", qty: 1, note: "Repuesto interno del motor 1039763 / 1021064 (despiece sección 4, Fig. 8 y 9)", hotspots: [] },
+        { item: 1, partNumber: "223264", description: "Seal, Rbr, Clsd, 0.25th, 5.8d 03.3h", category: "Motor de aspiración", qty: 1, note: "Repuesto interno del motor 1039763 / 1021064 (despiece sección 4, Fig. 8 y 9)", hotspots: [] },
+        { item: 1, partNumber: "10925", description: "Connector, Fem, 2cav [MP630 Sealed]", category: "Motor de aspiración", qty: 1, note: "Repuesto interno del motor 1039763 / 1021064 (despiece sección 4, Fig. 8 y 9)", hotspots: [] },
+        { item: 1, partNumber: "24537", description: "Terminal, Fem, 10/12ga [MP630 P2S]", category: "Motor de aspiración", qty: 2, note: "Repuesto interno del motor 1039763 / 1021064 (despiece sección 4, Fig. 8 y 9)", hotspots: [] },
+        { item: 2, partNumber: "1015506", description: "Screw, Pan, M5 x 16, F/ Plstc", category: "Tornillería", qty: 4, hotspots: [{ x: 69, y: 34.3 }] },
+        { item: 3, partNumber: "19066", description: "Washer, Flat, #10", category: "Tornillería", qty: 4, hotspots: [{ x: 65.7, y: 32.7 }] },
+        { item: 4, partNumber: "1011127", description: "Plate, Mtg, Fan", category: "Montaje y aislamiento", qty: 1, hotspots: [{ x: 7.5, y: 43.7 }] },
+        { item: 5, partNumber: "1013611", description: "Seal, Cover, Recvy", category: "Sellos y empaques", qty: 1, hotspots: [{ x: 38.2, y: 58.9 }] },
+        { item: 6, partNumber: "1014858", description: "Gasket, Adapter", category: "Sellos y empaques", qty: 1, hotspots: [{ x: 13.9, y: 42 }] },
+        { item: 7, partNumber: "1014711", description: "Adaptor, Hose", category: "Manguera y conexiones", qty: 1, hotspots: [{ x: 13.6, y: 38.6 }] },
+        { item: 8, partNumber: "1034731", description: "Screw, Hex, M6 x 1.00 x 16, SS, Sems", category: "Tornillería", qty: 2, hotspots: [{ x: 14.8, y: 58.3 }] },
+        { item: 9, partNumber: "01684", description: "Washer, Flat, 0.25 SS", category: "Tornillería", qty: 9, hotspots: [{ x: 13.7, y: 35.8 }, { x: 23.4, y: 70.8 }, { x: 41, y: 41.4 }] },
+        { item: 10, partNumber: "07790", description: "Nut, Hex, Flng, M6 x 1.00", category: "Tornillería", qty: 9, hotspots: [{ x: 13.4, y: 33.4 }, { x: 23.1, y: 73.2 }, { x: 40.5, y: 39.7 }] },
+        { item: 11, partNumber: "1011140", description: "Seal, Fan", category: "Sellos y empaques", qty: 1, hotspots: [{ x: 77.2, y: 39 }] },
+        { item: 12, partNumber: "1011103", description: "Bracket Wldt, Mtg, Fan", category: "Montaje y aislamiento", qty: 1, hotspots: [{ x: 65.8, y: 49.3 }] },
+        { item: 13, partNumber: "1011093", description: "Isolator, Vib, .75d, M6 Stud Both Ends", category: "Montaje y aislamiento", qty: 3, hotspots: [{ x: 25.5, y: 53.8 }] },
+        { item: 14, partNumber: "9003365", description: "Insulation Kit, Acstc, Vacfan", category: "Montaje y aislamiento", qty: 1, note: "Kit: incluye ítems 14 y 15", hotspots: [{ x: 68.7, y: 21 }] },
+        { item: 14, partNumber: "1028514", description: "Insulation, Acstc, Vacfan", category: "Montaje y aislamiento", qty: 1, note: "Incluido en el kit de aislamiento acústico 9003365", hotspots: [] },
+        { item: 15, partNumber: "1028515", description: "Insulation, Acstc, Hsng, Vacfan", category: "Montaje y aislamiento", qty: 1, note: "Incluido en el kit de aislamiento acústico 9003365", hotspots: [{ x: 12.1, y: 12 }] },
+        { item: 16, partNumber: "1020341", description: "Screw, Hex, M8 x 1.25 x 20, SS, Sems", category: "Tornillería", qty: 4, hotspots: [{ x: 14.1, y: 62.1 }, { x: 94, y: 5.7 }, { x: 61.7, y: 63.9 }] },
+        { item: 17, partNumber: "41169", description: "Nut, Hex, Lock, .25-20, NL, SS", category: "Tornillería", qty: 1, note: "S/N 10261379-10764500", hotspots: [{ x: 83.5, y: 76.7 }] },
+        { item: 18, partNumber: "1011159", description: "Hose, Vacuum, 1.5d x 8.3L, Clr, Blk Wire", category: "Manguera y conexiones", qty: 1, hotspots: [{ x: 3.9, y: 11 }] },
+        { item: 19, partNumber: "79381", description: "Clamp, Hose, Wormdrive, 1.25-2.00d, .50w", category: "Manguera y conexiones", qty: 2, hotspots: [{ x: 18.2, y: 16.2 }, { x: 14.6, y: 30.5 }] },
+        { item: 20, partNumber: "80491", description: "Sleeve, P/M, 0.375d 0.250b 0.16L 430SS", category: "Soporte del tanque", qty: 1, note: "S/N 10000000-10261378", hotspots: [{ x: 91.5, y: 8.9 }] },
+        { item: 21, partNumber: "08716", description: "Screw, Hex, M6 x 1.0 x 20, SS", category: "Tornillería", qty: 1, note: "S/N 10000000-10261378", hotspots: [{ x: 89.8, y: 16.7 }] },
+        { item: 22, partNumber: "1015803", description: "Bracket, Mtg, Stop", category: "Soporte del tanque", qty: 1, note: "S/N 10000000-10261378", hotspots: [{ x: 78.2, y: 13.1 }] },
+        { item: 23, partNumber: "1015808", description: "Plate, Mtg, Tank", category: "Soporte del tanque", qty: 1, note: "S/N 10000000-10261378", hotspots: [{ x: 74.8, y: 17.9 }] },
+        { item: 24, partNumber: "01684", description: "Washer, Flat, 0.25, SS", category: "Tornillería", qty: 2, note: "S/N 10000000-10261378", hotspots: [{ x: 74.5, y: 10.9 }, { x: 93.9, y: 10.6 }] },
+        { item: 25, partNumber: "08712", description: "Nut, Hex, Lock, M6 x 1.00, SS, NL", category: "Tornillería", qty: 1, note: "S/N 10000000-10261378", hotspots: [{ x: 71.4, y: 9.6 }] },
+        { item: 26, partNumber: "1026322", description: "Bracket, Mtg, Stop", category: "Soporte del tanque", qty: 1, note: "S/N 10261379-", hotspots: [{ x: 40, y: 68.3 }] },
+        { item: 27, partNumber: "1034731", description: "Screw, Hex, M6 x 1.00 x 16, SS, Sems", category: "Tornillería", qty: 2, note: "S/N 10261379-", hotspots: [{ x: 14.9, y: 69 }, { x: 40.9, y: 51.7 }] },
+        { item: 28, partNumber: "01684", description: "Washer, Flat, 0.25, SS", category: "Tornillería", qty: 2, note: "S/N 10261379-", hotspots: [{ x: 19.1, y: 70.9 }, { x: 45.5, y: 74.7 }] },
+        { item: 29, partNumber: "80491", description: "Sleeve, P/M, 0.25b 0.38d 0.2L [430SS]", category: "Soporte del tanque", qty: 1, note: "S/N 10261379-", hotspots: [{ x: 42.2, y: 72.7 }] },
+        { item: 30, partNumber: "08712", description: "Nut, Hex, Lock, M6 x 1.00, SS, NL", category: "Tornillería", qty: 1, note: "S/N 10261379-", hotspots: [{ x: 48.3, y: 77.2 }] },
+        { item: 31, partNumber: "1026270", description: "Bracket, Arm, Prop", category: "Soporte del tanque", qty: 1, note: "S/N 10261379-", hotspots: [{ x: 40, y: 70.8 }] },
+        { item: 32, partNumber: "1026986", description: "Screw, Trs, .25-20 x 3.00, Phl, SS", category: "Tornillería", qty: 1, note: "S/N 10261379-10764500", hotspots: [{ x: 69.2, y: 93.3 }] },
+        { item: 33, partNumber: "578579", description: "Spacer, 0.25b 0.88d 0.50L", category: "Soporte del tanque", qty: 1, note: "S/N 10261379-", hotspots: [{ x: 17.8, y: 73.7 }] },
+        { item: 34, partNumber: "140154", description: "Sleeve, P/M, 0.25b 0.38d 0.3L, Pl", category: "Soporte del tanque", qty: 1, note: "S/N 10261379-", hotspots: [{ x: 35.1, y: 77.8 }] },
+        { item: 35, partNumber: "140053", description: "Washer, Flat, 0.28b 0.88d .12, SS", category: "Tornillería", qty: 1, note: "S/N 10261379-", hotspots: [{ x: 38.2, y: 78.5 }] },
+        { item: 36, partNumber: "06946", description: "Screw, Hex, M6 x 1.00 x 35, 8.8", category: "Tornillería", qty: 1, note: "S/N 10764501-", hotspots: [{ x: 44.9, y: 80.3 }] }
       ]
     }
   };
