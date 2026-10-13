@@ -25,7 +25,7 @@
       "id": "tanques",
       "name": "Tanques de Solución y Recuperación",
       "description": "Recovery & Solution Tank Group",
-      "figure": "Fig. 27 / 29",
+      "figure": "Fig. 27 / 29 / 30",
       "status": "available",
       "figures": [
         {
@@ -33,8 +33,12 @@
           "data": "data/recovery_tank.json"
         },
         {
-          "label": "Fig. 29 · Tanque de solución",
+          "label": "Fig. 29 · Solución (disco)",
           "data": "data/solution_tank_disk.json"
+        },
+        {
+          "label": "Fig. 30 · Solución (cilíndrico)",
+          "data": "data/solution_tank_cyl.json"
         }
       ],
       "hotspot": { "x": 76.5, "y": 20.1 }
