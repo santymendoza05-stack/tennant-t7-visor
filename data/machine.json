@@ -74,6 +74,16 @@
       "status": "available",
       "data": "data/steering_group.json",
       "hotspot": { "x": 34.6, "y": 30.2 }
+    },
+    {
+      "id": "asiento-cubierta",
+      "name": "Asiento y Cubierta de Baterías",
+      "description": "Seat Group",
+      "figure": "Fig. 8",
+      "status": "available",
+      "data": "data/seat_group.json",
+      "hotspot": { "x": 55.9, "y": 37.6 },
+      "labelSide": "right"
     }
   ]
 }

@@ -746,8 +746,13 @@ mark { background: var(--accent); color: var(--accent-ink); border-radius: 3px; 
 
 .zone-dot {
   position: relative;
-  width: 20px; height: 20px;
+  display: grid;
+  place-items: center;
+  width: 22px; height: 22px;
   border-radius: 50%;
+  /* Número de zona: coincide con el índice 01-07 de las tarjetas */
+  color: var(--accent-ink);
+  font: 800 0.7rem/1 var(--font);
   background: radial-gradient(circle at 35% 35%, #fff6c8 0%, var(--accent) 45%, var(--accent-2) 100%);
   box-shadow:
     0 0 0 3px rgba(255, 255, 255, 0.9),
@@ -795,8 +800,12 @@ mark { background: var(--accent); color: var(--accent-ink); border-radius: 3px; 
 
 /* Plano angosto (móvil): etiquetas y puntos más compactos para que no se corten ni se monten */
 @container (max-width: 520px) {
-  .zone-label { bottom: calc(100% + 8px); padding: 2px 7px; font-size: 0.62rem; border-radius: 6px; }
-  .zone-dot { width: 14px; height: 14px; }
+  .zone-label { display: none; bottom: calc(100% + 8px); padding: 2px 7px; font-size: 0.62rem; border-radius: 6px; z-index: 3; }
+  .zone-hotspot:hover .zone-label,
+  .zone-hotspot:focus-visible .zone-label,
+  .zone-hotspot.is-active .zone-label { display: block; }
+  .zone-hotspot:hover, .zone-hotspot.is-active { z-index: 3; }
+  .zone-dot { width: 20px; height: 20px; font-size: 0.66rem; }
 }
 
 .zone-hotspot:hover .zone-label,

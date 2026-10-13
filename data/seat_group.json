@@ -1,0 +1,508 @@
+{
+  "machine": "Tennant T7",
+  "group": "Seat Group",
+  "figure": "Fig. 8",
+  "image": "assets/seat_group.png",
+  "categories": [
+    "Asiento",
+    "Interruptor y arnés",
+    "Portavasos",
+    "Cubierta y tapa",
+    "Tornillería"
+  ],
+  "parts": [
+    {
+      "item": 1,
+      "partNumber": "1015406",
+      "description": "Plate, Seat, W/ Label",
+      "category": "Cubierta y tapa",
+      "qty": 1,
+      "hotspots": [
+        { "x": 45.2, "y": 51.9 }
+      ]
+    },
+    {
+      "item": 1,
+      "partNumber": "1036299",
+      "description": "Plate, Seat, Afmkt, TJ (Japan)",
+      "category": "Cubierta y tapa",
+      "qty": 1,
+      "note": "Versión Japón",
+      "hotspots": []
+    },
+    {
+      "item": 2,
+      "partNumber": "1038062",
+      "description": "Holder Kit, Cup, Assy [T7]",
+      "category": "Portavasos",
+      "qty": 1,
+      "note": "S/N 10000000-10226853",
+      "hotspots": [
+        { "x": 21.8, "y": 32.9 }
+      ]
+    },
+    {
+      "item": 3,
+      "partNumber": "1038062",
+      "description": "Holder Kit, Cup, Assy [T7]",
+      "category": "Portavasos",
+      "qty": 1,
+      "note": "S/N 10226854-10382115",
+      "hotspots": [
+        { "x": 21.5, "y": 49.5 }
+      ]
+    },
+    {
+      "item": 4,
+      "partNumber": "1025867",
+      "description": "Holder, Cup, Blk [T7]",
+      "category": "Portavasos",
+      "qty": 1,
+      "note": "S/N 10382116-",
+      "hotspots": [
+        { "x": 89.8, "y": 33.4 }
+      ]
+    },
+    {
+      "item": 5,
+      "partNumber": "1038081",
+      "description": "Holder, Cup, Brkt, Blk, [T7]",
+      "category": "Portavasos",
+      "qty": 1,
+      "note": "S/N 10382116-",
+      "hotspots": [
+        { "x": 89.4, "y": 41.9 }
+      ]
+    },
+    {
+      "item": 6,
+      "partNumber": "1016435",
+      "description": "Washer, Flat, 0.52b 0.75d .06, Stl, Blk",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 82.6, "y": 48.8 },
+        { "x": 70.6, "y": 62.1 }
+      ]
+    },
+    {
+      "item": 7,
+      "partNumber": "393135",
+      "description": "Screw, Btn, M8 x 1.25 x 20, Blk",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 82.8, "y": 46.5 }
+      ]
+    },
+    {
+      "item": 8,
+      "partNumber": "08709",
+      "description": "Nut, Hex, Lock, M8 x 1.25, NL",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 68.8, "y": 64.4 }
+      ]
+    },
+    {
+      "item": 9,
+      "partNumber": "9005082",
+      "description": "Seat Kit, Std, Replmt",
+      "category": "Asiento",
+      "qty": 1,
+      "note": "S/N 10000000-10400496",
+      "hotspots": [
+        { "x": 51.9, "y": 11.2 }
+      ]
+    },
+    {
+      "item": 9,
+      "partNumber": "1048932",
+      "description": "Seat, Std [Michigan, Model V-2505] (Replaced By 9005082)",
+      "category": "Asiento",
+      "qty": 1,
+      "note": "S/N 10400497-10611439",
+      "hotspots": []
+    },
+    {
+      "item": 9,
+      "partNumber": "9005082",
+      "description": "Seat Kit, Std, Replmt (Kit Includes Screw and Spacer)",
+      "category": "Asiento",
+      "qty": 1,
+      "note": "S/N 10611440-",
+      "hotspots": []
+    },
+    {
+      "item": 10,
+      "partNumber": "223078",
+      "description": "Switch, Seat, NO",
+      "category": "Interruptor y arnés",
+      "qty": 1,
+      "note": "S/N 10000000-10400496",
+      "hotspots": [
+        { "x": 5, "y": 14 }
+      ]
+    },
+    {
+      "item": 11,
+      "partNumber": "1017054",
+      "description": "Rail, Adj, Slide, Seat, 11.5L, W/ Latch",
+      "category": "Asiento",
+      "qty": 1,
+      "hotspots": [
+        { "x": 83.4, "y": 43.9 }
+      ]
+    },
+    {
+      "item": 12,
+      "partNumber": "1017053",
+      "description": "Rail, Adj, Slide, Seat, 11.5L",
+      "category": "Asiento",
+      "qty": 1,
+      "hotspots": [
+        { "x": 54.7, "y": 36.2 }
+      ]
+    },
+    {
+      "item": 13,
+      "partNumber": "25537",
+      "description": "Screw, Pan, Phl, .31-18 x 0.75, G2",
+      "category": "Tornillería",
+      "qty": 4,
+      "note": "S/N 10000000-10400496",
+      "hotspots": [
+        { "x": 24.4, "y": 22 }
+      ]
+    },
+    {
+      "item": 14,
+      "partNumber": "69461",
+      "description": "Washer, Flat, 0.38b 0.88d .12, Stl, Pl",
+      "category": "Tornillería",
+      "qty": 8,
+      "note": "S/N 10000000-10400496",
+      "hotspots": [
+        { "x": 22.8, "y": 15.2 }
+      ]
+    },
+    {
+      "item": 15,
+      "partNumber": "32491",
+      "description": "Washer, Flat, 0.31 Std",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 80.5, "y": 69.8 }
+      ]
+    },
+    {
+      "item": 16,
+      "partNumber": "01760",
+      "description": "Nut, Hex, Lock, .31-18, NL, Thin",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 83.2, "y": 71.2 }
+      ]
+    },
+    {
+      "item": 17,
+      "partNumber": "46236",
+      "description": "Clamp, Cable, Stl, 0.25D x 0.56W, 1H",
+      "category": "Interruptor y arnés",
+      "qty": 1,
+      "hotspots": [
+        { "x": 78, "y": 68.6 }
+      ]
+    },
+    {
+      "item": 18,
+      "partNumber": "1016000",
+      "description": "Plate, Stop, Seat",
+      "category": "Cubierta y tapa",
+      "qty": 1,
+      "hotspots": [
+        { "x": 66.8, "y": 79.3 }
+      ]
+    },
+    {
+      "item": 19,
+      "partNumber": "1017699",
+      "description": "Sleeve, P/M, 0.437d 0.318b 0.57L 430SS",
+      "category": "Cubierta y tapa",
+      "qty": 1,
+      "hotspots": [
+        { "x": 56.2, "y": 74.1 }
+      ]
+    },
+    {
+      "item": 20,
+      "partNumber": "10928",
+      "description": "Spring, Tors, 0.49id .05wir 05.0coil",
+      "category": "Cubierta y tapa",
+      "qty": 1,
+      "hotspots": [
+        { "x": 53.5, "y": 72 }
+      ]
+    },
+    {
+      "item": 21,
+      "partNumber": "1018151",
+      "description": "Washer, Flat, 0.44b 0.88d .06, Nyl",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 61, "y": 65.1 }
+      ]
+    },
+    {
+      "item": 22,
+      "partNumber": "09023",
+      "description": "Screw, Hex, M8 x 1.25 x 35, SS, Fl",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 34.4, "y": 58.1 }
+      ]
+    },
+    {
+      "item": 23,
+      "partNumber": "01685",
+      "description": "Washer, Flat, 0.31 SS",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 37.8, "y": 59.7 },
+        { "x": 63.6, "y": 66.1 }
+      ]
+    },
+    {
+      "item": 24,
+      "partNumber": "08713",
+      "description": "Nut, Hex, Lock, M8 x 1.25, NL, SS",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 66.9, "y": 68.7 }
+      ]
+    },
+    {
+      "item": 25,
+      "partNumber": "223330",
+      "description": "Harness, Switch, Seat",
+      "category": "Interruptor y arnés",
+      "qty": 1,
+      "note": "S/N 10000000-10236151",
+      "hotspots": [
+        { "x": 41.3, "y": 44 }
+      ]
+    },
+    {
+      "item": 25,
+      "partNumber": "391951",
+      "description": "Harness, Seat, [T7/SSR]",
+      "category": "Interruptor y arnés",
+      "qty": 1,
+      "note": "S/N 10236152-",
+      "hotspots": []
+    },
+    {
+      "item": 26,
+      "partNumber": "1020170",
+      "description": "Molding, Afmkt, Trim, PVC, .08-.11, 2ft",
+      "category": "Cubierta y tapa",
+      "qty": 1,
+      "hotspots": [
+        { "x": 57.6, "y": 48.1 }
+      ]
+    },
+    {
+      "item": 27,
+      "partNumber": "1033968",
+      "description": "Cover, Box, Battery, Afmkt, Teal [T7]",
+      "category": "Cubierta y tapa",
+      "qty": 1,
+      "note": "Teal",
+      "hotspots": [
+        { "x": 33.7, "y": 66.8 }
+      ]
+    },
+    {
+      "item": 27,
+      "partNumber": "1033972",
+      "description": "Cover, Box, Battery, Afmkt, HG [Aramark]",
+      "category": "Cubierta y tapa",
+      "qty": 1,
+      "note": "Aramark",
+      "hotspots": []
+    },
+    {
+      "item": 28,
+      "partNumber": "09740",
+      "description": "Screw, Hex, M8 x 1.25 x 20, SS",
+      "category": "Tornillería",
+      "qty": 2,
+      "note": "Modelo FaST",
+      "hotspots": [
+        { "x": 34, "y": 75.5 }
+      ]
+    },
+    {
+      "item": 29,
+      "partNumber": "1017218",
+      "description": "Washer, Flat, 0.321b 1.00d .12, SS",
+      "category": "Tornillería",
+      "qty": 2,
+      "note": "Modelo FaST",
+      "hotspots": [
+        { "x": 35.1, "y": 71.3 }
+      ]
+    },
+    {
+      "item": 30,
+      "partNumber": "1035037",
+      "description": "Box, Holder, CI [T7 FaST] (Teal)",
+      "category": "Cubierta y tapa",
+      "qty": 1,
+      "note": "Modelo FaST · Teal",
+      "hotspots": [
+        { "x": 21.9, "y": 96.7 }
+      ]
+    },
+    {
+      "item": 30,
+      "partNumber": "1024324",
+      "description": "Box, Holder, Trimmed [FaST] (Gray)",
+      "category": "Cubierta y tapa",
+      "qty": 1,
+      "note": "Modelo FaST · Gray",
+      "hotspots": []
+    },
+    {
+      "item": 31,
+      "partNumber": "1016553",
+      "description": "Seal, Rbr",
+      "category": "Cubierta y tapa",
+      "qty": 2,
+      "note": "Modelo FaST",
+      "hotspots": [
+        { "x": 17.2, "y": 93.9 },
+        { "x": 29.3, "y": 98 }
+      ]
+    },
+    {
+      "item": 32,
+      "partNumber": "1048955",
+      "description": "Switch, Seat, NO [Delta 6440-04]",
+      "category": "Interruptor y arnés",
+      "qty": 1,
+      "note": "S/N 10400497-",
+      "hotspots": [
+        { "x": 71.7, "y": 39.7 }
+      ]
+    },
+    {
+      "item": 33,
+      "partNumber": "49177",
+      "description": "Screw, Pan, Phl, .31-18 x 1.00, G2",
+      "category": "Tornillería",
+      "qty": 4,
+      "note": "S/N 10400497-10611439",
+      "hotspots": [
+        { "x": 75, "y": 32.6 },
+        { "x": 87.9, "y": 38.6 }
+      ]
+    },
+    {
+      "item": 33,
+      "partNumber": "76956",
+      "description": "Screw, Hex, .31-18 x 1.25, G5",
+      "category": "Tornillería",
+      "qty": 4,
+      "note": "S/N 10611440-",
+      "hotspots": []
+    },
+    {
+      "item": 34,
+      "partNumber": "1051052",
+      "description": "Spacer, Rnd, .38b .88d .38L",
+      "category": "Asiento",
+      "qty": 4,
+      "hotspots": [
+        { "x": 60.7, "y": 35.5 },
+        { "x": 83.3, "y": 36.8 }
+      ]
+    },
+    {
+      "item": 35,
+      "partNumber": "69461",
+      "description": "Washer, Flat, 0.38b 0.88d .12, Stl, Pl",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 60.9, "y": 31.9 },
+        { "x": 83, "y": 33.8 }
+      ]
+    },
+    {
+      "item": 36,
+      "partNumber": "1046428",
+      "description": "Seal, Afmkt, Rbr, Clsd, Adh, 02ft",
+      "category": "Cubierta y tapa",
+      "qty": 1,
+      "note": "Modelo ec-H2O",
+      "hotspots": [
+        { "x": 34.8, "y": 63.3 },
+        { "x": 94.1, "y": 61 },
+        { "x": 72.8, "y": 76.6 }
+      ]
+    },
+    {
+      "item": 37,
+      "partNumber": "08713",
+      "description": "Nut, Hex, Lock, M8 x 1.25, NL, SS",
+      "category": "Tornillería",
+      "qty": 2,
+      "note": "Modelos estándar y ec-H2O",
+      "hotspots": [
+        { "x": 3.6, "y": 68 }
+      ]
+    },
+    {
+      "item": 38,
+      "partNumber": "1017218",
+      "description": "Washer, Flat, 0.32b 1.00d .12, SS",
+      "category": "Tornillería",
+      "qty": 4,
+      "note": "Modelos estándar y ec-H2O",
+      "hotspots": [
+        { "x": 7.6, "y": 69 },
+        { "x": 17.9, "y": 85.2 }
+      ]
+    },
+    {
+      "item": 39,
+      "partNumber": "09740",
+      "description": "Screw, Hex, M8 x 1.25 x 20, SS",
+      "category": "Tornillería",
+      "qty": 2,
+      "note": "Modelos estándar y ec-H2O",
+      "hotspots": [
+        { "x": 21.8, "y": 85.7 }
+      ]
+    },
+    {
+      "item": 40,
+      "partNumber": "1051138",
+      "description": "Bracket, Cover, Fast Open [T7 ec-H2O]",
+      "category": "Cubierta y tapa",
+      "qty": 1,
+      "note": "Modelos estándar y ec-H2O",
+      "hotspots": [
+        { "x": 5.8, "y": 90.6 }
+      ]
+    }
+  ]
+}

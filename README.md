@@ -17,6 +17,7 @@ Visor web interactivo de repuestos para la fregadora Tennant T7, basado en los d
 | Rueda Motriz / Tracción | Fig. 11 · Front Drive Wheel Group (S/N 10518139-) | `data/front_drive_wheel.json` |
 | Panel de Instrumentos / Consola | Fig. 10 · Instrument Panel Group<br>Fig. 38 · Circuit Board Group | `data/instrument_panel.json`<br>`data/circuit_board.json` |
 | Columna de Dirección / Volante | Fig. 9 · Steering Group | `data/steering_group.json` |
+| Asiento y Cubierta de Baterías | Fig. 8 · Seat Group | `data/seat_group.json` |
 
 ## Uso local
 
