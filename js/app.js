@@ -18,20 +18,26 @@
       machine: "Tennant T7",
       title: "Fregadora de conductor sentado",
       image: "assets/t7_full.png",
+      systems: [
+        { id: "lavado", name: "Lavado y Secado", icon: "brush" },
+        { id: "traccion", name: "Tracción y Chasis", icon: "wheel" },
+        { id: "agua", name: "Agua y Aspiración", icon: "drop" },
+        { id: "electrico", name: "Eléctrico y Control", icon: "bolt" }
+      ],
       zones: [
-        { id: "racleta-trasera", name: "Racleta Trasera", description: "Rear Squeegee Group, 800 mm", figure: "Fig. 37", status: "available", data: "data/squeegee_parts.json", hotspot: { x: 91.9, y: 69.1 } },
-        { id: "cabeza-cepillos", name: "Cabeza de Cepillos", description: "Disk Scrub Head Drive Motor Group, 800 mm", figure: "Fig. 18", status: "available", data: "data/scrub_head_disk_800.json", hotspot: { x: 61.8, y: 85.9 } },
-        { id: "tanques", name: "Tanques de Solución y Recuperación", description: "Recovery & Solution Tank Group", figure: "Fig. 27 / 29 / 30", status: "available", figures: [{ label: "Fig. 27 · Tanque de recuperación", data: "data/recovery_tank.json" }, { label: "Fig. 29 · Solución (disco)", data: "data/solution_tank_disk.json" }, { label: "Fig. 30 · Solución (cilíndrico)", data: "data/solution_tank_cyl.json" }], hotspot: { x: 76.5, y: 20.1 } },
-        { id: "rueda-motriz", name: "Rueda Motriz / Tracción", description: "Front Drive Wheel Group (S/N 10518139-)", figure: "Fig. 11", status: "available", data: "data/front_drive_wheel.json", hotspot: { x: 25.7, y: 92.3 } },
-        { id: "panel-instrumentos", name: "Panel de Instrumentos / Consola", description: "Instrument Panel & Circuit Board Group", figure: "Fig. 10 / 38", status: "available", figures: [{ label: "Fig. 10 · Panel de instrumentos", data: "data/instrument_panel.json" }, { label: "Fig. 38 · Tarjeta controladora", data: "data/circuit_board.json" }], hotspot: { x: 24, y: 38 } },
-        { id: "columna-direccion", name: "Columna de Dirección / Volante", description: "Steering Group", figure: "Fig. 9", status: "available", data: "data/steering_group.json", hotspot: { x: 34.6, y: 30.2 } },
-        { id: "asiento-cubierta", name: "Asiento y Cubierta de Baterías", description: "Seat Group", figure: "Fig. 8", status: "available", data: "data/seat_group.json", hotspot: { x: 55.9, y: 37.6 }, labelSide: "right" },
-        { id: "chasis-bastidor", name: "Chasis y Bastidor Principal", description: "Main Frame Group", figure: "Fig. 4 / 7", status: "available", figures: [{ label: "Fig. 4 · Cabezal de disco", data: "data/main_frame_disk.json" }, { label: "Fig. 7 · Cilíndrico (S/N hasta 10448498)", data: "data/main_frame.json" }], hotspot: { x: 58.8, y: 67.1 } },
-        { id: "elevacion-cabezal", name: "Mecanismo de Elevación del Cabezal", description: "Disk Scrub Head Lift Group", figure: "Fig. 16", status: "available", data: "data/scrub_head_lift.json", hotspot: { x: 46, y: 76 }, labelSide: "left" },
-        { id: "motor-aspiracion", name: "Motor de Aspiración y Silenciador", description: "Vacuum Fan Group", figure: "Fig. 28", status: "available", data: "data/vacuum_fan.json", hotspot: { x: 86, y: 33 }, labelSide: "left" },
-        { id: "drenaje-tanques", name: "Sistema de Drenaje de Tanques", description: "Tanks Drain Group", figure: "Fig. 31", status: "available", data: "data/tanks_drain.json", hotspot: { x: 86, y: 50 }, labelSide: "left" },
-        { id: "baterias", name: "Sistema de Baterías y Alimentación", description: "Battery Group, 235Ah (S/N 10523206-)", figure: "Fig. 32", status: "available", data: "data/battery_group.json", hotspot: { x: 44, y: 56 }, labelSide: "left" },
-        { id: "elevacion-racleta", name: "Mecanismo de Elevación de Racleta", description: "Rear Squeegee Lift Group, Disk Scrub Head", figure: "Fig. 34", status: "available", data: "data/squeegee_lift.json", hotspot: { x: 80, y: 77 }, labelSide: "left" }
+        { id: "racleta-trasera", name: "Racleta Trasera", system: "lavado", description: "Rear Squeegee Group, 800 mm", figure: "Fig. 37", status: "available", data: "data/squeegee_parts.json", hotspot: { x: 91.9, y: 69.1 } },
+        { id: "cabeza-cepillos", name: "Cabeza de Cepillos", system: "lavado", description: "Disk Scrub Head Drive Motor Group, 800 mm", figure: "Fig. 18", status: "available", data: "data/scrub_head_disk_800.json", hotspot: { x: 61.8, y: 85.9 } },
+        { id: "tanques", name: "Tanques de Solución y Recuperación", system: "agua", description: "Recovery & Solution Tank Group", figure: "Fig. 27 / 29 / 30", status: "available", figures: [{ label: "Fig. 27 · Tanque de recuperación", data: "data/recovery_tank.json" }, { label: "Fig. 29 · Solución (disco)", data: "data/solution_tank_disk.json" }, { label: "Fig. 30 · Solución (cilíndrico)", data: "data/solution_tank_cyl.json" }], hotspot: { x: 76.5, y: 20.1 } },
+        { id: "rueda-motriz", name: "Rueda Motriz / Tracción", system: "traccion", description: "Front Drive Wheel Group (S/N 10518139-)", figure: "Fig. 11", status: "available", data: "data/front_drive_wheel.json", hotspot: { x: 25.7, y: 92.3 } },
+        { id: "panel-instrumentos", name: "Panel de Instrumentos / Consola", system: "electrico", description: "Instrument Panel & Circuit Board Group", figure: "Fig. 10 / 38", status: "available", figures: [{ label: "Fig. 10 · Panel de instrumentos", data: "data/instrument_panel.json" }, { label: "Fig. 38 · Tarjeta controladora", data: "data/circuit_board.json" }], hotspot: { x: 24, y: 38 } },
+        { id: "columna-direccion", name: "Columna de Dirección / Volante", system: "traccion", description: "Steering Group", figure: "Fig. 9", status: "available", data: "data/steering_group.json", hotspot: { x: 34.6, y: 30.2 } },
+        { id: "asiento-cubierta", name: "Asiento y Cubierta de Baterías", system: "traccion", description: "Seat Group", figure: "Fig. 8", status: "available", data: "data/seat_group.json", hotspot: { x: 55.9, y: 37.6 }, labelSide: "right" },
+        { id: "chasis-bastidor", name: "Chasis y Bastidor Principal", system: "traccion", description: "Main Frame Group", figure: "Fig. 4 / 7", status: "available", figures: [{ label: "Fig. 4 · Cabezal de disco", data: "data/main_frame_disk.json" }, { label: "Fig. 7 · Cilíndrico (S/N hasta 10448498)", data: "data/main_frame.json" }], hotspot: { x: 58.8, y: 67.1 } },
+        { id: "elevacion-cabezal", name: "Mecanismo de Elevación del Cabezal", system: "lavado", description: "Disk Scrub Head Lift Group", figure: "Fig. 16", status: "available", data: "data/scrub_head_lift.json", hotspot: { x: 46, y: 76 }, labelSide: "left" },
+        { id: "motor-aspiracion", name: "Motor de Aspiración y Silenciador", system: "agua", description: "Vacuum Fan Group", figure: "Fig. 28", status: "available", data: "data/vacuum_fan.json", hotspot: { x: 86, y: 33 }, labelSide: "left" },
+        { id: "drenaje-tanques", name: "Sistema de Drenaje de Tanques", system: "agua", description: "Tanks Drain Group", figure: "Fig. 31", status: "available", data: "data/tanks_drain.json", hotspot: { x: 86, y: 50 }, labelSide: "left" },
+        { id: "baterias", name: "Sistema de Baterías y Alimentación", system: "electrico", description: "Battery Group, 235Ah (S/N 10523206-)", figure: "Fig. 32", status: "available", data: "data/battery_group.json", hotspot: { x: 44, y: 56 }, labelSide: "left" },
+        { id: "elevacion-racleta", name: "Mecanismo de Elevación de Racleta", system: "lavado", description: "Rear Squeegee Lift Group, Disk Scrub Head", figure: "Fig. 34", status: "available", data: "data/squeegee_lift.json", hotspot: { x: 80, y: 77 }, labelSide: "left" }
       ]
     },
     "data/squeegee_parts.json": {
@@ -794,6 +800,16 @@
   /* ==========================================================
      NIVEL 1 · Máquina completa
      ========================================================== */
+  // Íconos de los sistemas en la portada (SVG en línea, heredan el color del texto)
+  const svg = (d) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
+  const SYSTEM_ICONS = {
+    brush: svg('<path d="M4 20h16"/><path d="M6 20v-4h12v4"/><path d="M8 16V9m4 7V6m4 10V9"/>'),
+    wheel: svg('<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2.5"/><path d="M12 4v5.5M12 14.5V20M4 12h5.5M14.5 12H20"/>'),
+    drop: svg('<path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11Z"/>'),
+    bolt: svg('<path d="M13 2 5 13h6l-1 9 8-11h-6l1-9Z"/>'),
+    gear: svg('<circle cx="12" cy="12" r="3"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3M4.9 4.9l2.1 2.1m10 10 2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/>')
+  };
+
   const MachineView = {
     data: null,
 
@@ -808,6 +824,22 @@
       };
       els.zoneHotspots.addEventListener("click", onZone);
       els.zoneList.addEventListener("click", onZone);
+
+      // Mostrar/ocultar todos los nombres sobre el plano (se recuerda por navegador)
+      const toggle = document.getElementById("labels-toggle");
+      const setLabels = (on) => {
+        els.machineDiagram.classList.toggle("show-labels", on);
+        toggle.setAttribute("aria-pressed", String(on));
+        toggle.textContent = on ? "Ocultar nombres" : "Mostrar nombres";
+      };
+      let saved = false;
+      try { saved = localStorage.getItem("t7-labels") === "1"; } catch {}
+      setLabels(saved);
+      toggle.addEventListener("click", () => {
+        const on = toggle.getAttribute("aria-pressed") !== "true";
+        setLabels(on);
+        try { localStorage.setItem("t7-labels", on ? "1" : "0"); } catch {}
+      });
 
       // Hover sincronizado entre tarjeta y zona en la imagen
       const syncHover = (e, on) => {
@@ -847,20 +879,40 @@
         })
         .join("");
 
-      els.zoneList.innerHTML = zones
-        .map((z, i) => {
-          const soon = z.status !== "available";
-          return `<li>
-            <button type="button" class="zone-card ${soon ? "is-soon" : ""}" data-zone="${z.id}">
-              <span class="zone-index" aria-hidden="true">${String(i + 1).padStart(2, "0")}</span>
-              <span class="zone-card-text">
-                <strong>${escapeHtml(z.name)}</strong>
-                <span>${escapeHtml(z.description || "")}${z.figure ? ` · ${escapeHtml(z.figure)}` : ""}</span>
-              </span>
-              ${soon ? `<span class="tag tag-soon">Próximamente</span>` : `<span class="tag tag-ok">Ver despiece →</span>`}
-            </button>
-          </li>`;
-        })
+      // Tarjetas agrupadas por sistema; el número coincide con el del punto en el plano
+      const card = (z) => {
+        const n = zones.indexOf(z) + 1;
+        const soon = z.status !== "available";
+        const fig = (z.figure || "").replace(/^Fig\.\s*/, "").replace(/\s*\/\s*/g, " · ");
+        return `<li>
+          <button type="button" class="zone-card ${soon ? "is-soon" : ""}" data-zone="${z.id}"
+                  title="${escapeHtml(z.description || z.name)}${soon ? " · Próximamente" : ""}">
+            <span class="zone-index" aria-hidden="true">${String(n).padStart(2, "0")}</span>
+            <span class="zone-card-text">
+              <strong>${escapeHtml(z.name)}</strong>
+              <span>${escapeHtml(z.description || "")}</span>
+            </span>
+            ${fig ? `<span class="fig-badge"><small>Fig.</small>${escapeHtml(fig)}</span>` : ""}
+            ${soon ? `<span class="tag tag-soon">Próximamente</span>` : ""}
+          </button>
+        </li>`;
+      };
+      const systems = this.data.systems || [{ id: null, name: "Zonas" }];
+      const grouped = systems
+        .map((s) => ({ s, items: zones.filter((z) => (s.id ? z.system === s.id : true)) }))
+        .filter((g) => g.items.length);
+      const loose = zones.filter((z) => !systems.some((s) => s.id && s.id === z.system));
+      if (this.data.systems && loose.length) grouped.push({ s: { id: "otros", name: "Otros" }, items: loose });
+
+      els.zoneList.innerHTML = grouped
+        .map(({ s, items }) => `<section class="system-group" data-system="${escapeHtml(s.id || "")}">
+            <h3 class="system-title">
+              <span class="system-icon" aria-hidden="true">${SYSTEM_ICONS[s.icon] || SYSTEM_ICONS.gear}</span>
+              ${escapeHtml(s.name)}
+              <span class="system-count">${items.length}</span>
+            </h3>
+            <ul class="zone-list">${items.map(card).join("")}</ul>
+          </section>`)
         .join("");
     },
 

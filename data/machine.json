@@ -2,10 +2,33 @@
   "machine": "Tennant T7",
   "title": "Fregadora de conductor sentado",
   "image": "assets/t7_full.png",
+  "systems": [
+    {
+      "id": "lavado",
+      "name": "Lavado y Secado",
+      "icon": "brush"
+    },
+    {
+      "id": "traccion",
+      "name": "Tracción y Chasis",
+      "icon": "wheel"
+    },
+    {
+      "id": "agua",
+      "name": "Agua y Aspiración",
+      "icon": "drop"
+    },
+    {
+      "id": "electrico",
+      "name": "Eléctrico y Control",
+      "icon": "bolt"
+    }
+  ],
   "zones": [
     {
       "id": "racleta-trasera",
       "name": "Racleta Trasera",
+      "system": "lavado",
       "description": "Rear Squeegee Group, 800 mm",
       "figure": "Fig. 37",
       "status": "available",
@@ -15,6 +38,7 @@
     {
       "id": "cabeza-cepillos",
       "name": "Cabeza de Cepillos",
+      "system": "lavado",
       "description": "Disk Scrub Head Drive Motor Group, 800 mm",
       "figure": "Fig. 18",
       "status": "available",
@@ -24,6 +48,7 @@
     {
       "id": "tanques",
       "name": "Tanques de Solución y Recuperación",
+      "system": "agua",
       "description": "Recovery & Solution Tank Group",
       "figure": "Fig. 27 / 29 / 30",
       "status": "available",
@@ -46,6 +71,7 @@
     {
       "id": "rueda-motriz",
       "name": "Rueda Motriz / Tracción",
+      "system": "traccion",
       "description": "Front Drive Wheel Group (S/N 10518139-)",
       "figure": "Fig. 11",
       "status": "available",
@@ -55,6 +81,7 @@
     {
       "id": "panel-instrumentos",
       "name": "Panel de Instrumentos / Consola",
+      "system": "electrico",
       "description": "Instrument Panel & Circuit Board Group",
       "figure": "Fig. 10 / 38",
       "status": "available",
@@ -73,6 +100,7 @@
     {
       "id": "columna-direccion",
       "name": "Columna de Dirección / Volante",
+      "system": "traccion",
       "description": "Steering Group",
       "figure": "Fig. 9",
       "status": "available",
@@ -82,6 +110,7 @@
     {
       "id": "asiento-cubierta",
       "name": "Asiento y Cubierta de Baterías",
+      "system": "traccion",
       "description": "Seat Group",
       "figure": "Fig. 8",
       "status": "available",
@@ -92,6 +121,7 @@
     {
       "id": "chasis-bastidor",
       "name": "Chasis y Bastidor Principal",
+      "system": "traccion",
       "description": "Main Frame Group",
       "figure": "Fig. 4 / 7",
       "status": "available",
@@ -110,6 +140,7 @@
     {
       "id": "elevacion-cabezal",
       "name": "Mecanismo de Elevación del Cabezal",
+      "system": "lavado",
       "description": "Disk Scrub Head Lift Group",
       "figure": "Fig. 16",
       "status": "available",
@@ -120,6 +151,7 @@
     {
       "id": "motor-aspiracion",
       "name": "Motor de Aspiración y Silenciador",
+      "system": "agua",
       "description": "Vacuum Fan Group",
       "figure": "Fig. 28",
       "status": "available",
@@ -130,6 +162,7 @@
     {
       "id": "drenaje-tanques",
       "name": "Sistema de Drenaje de Tanques",
+      "system": "agua",
       "description": "Tanks Drain Group",
       "figure": "Fig. 31",
       "status": "available",
@@ -140,6 +173,7 @@
     {
       "id": "baterias",
       "name": "Sistema de Baterías y Alimentación",
+      "system": "electrico",
       "description": "Battery Group, 235Ah (S/N 10523206-)",
       "figure": "Fig. 32",
       "status": "available",
@@ -150,6 +184,7 @@
     {
       "id": "elevacion-racleta",
       "name": "Mecanismo de Elevación de Racleta",
+      "system": "lavado",
       "description": "Rear Squeegee Lift Group, Disk Scrub Head",
       "figure": "Fig. 34",
       "status": "available",

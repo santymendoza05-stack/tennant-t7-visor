@@ -461,20 +461,112 @@ mark { background: var(--accent); color: var(--accent-ink); border-radius: 3px; 
 
 /* ---------- Rejilla de portada ---------- */
 .home-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+/* Plano general: protagonista, centrado y a todo el ancho */
+.blueprint-panel {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+.blueprint-panel .panel-header .hint { margin-left: auto; }
+
+.labels-toggle {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 5px 13px;
+  font: 600 0.78rem var(--font);
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+.labels-toggle:hover, .labels-toggle:focus-visible { border-color: var(--accent); outline: none; }
+.labels-toggle[aria-pressed="true"] { background: var(--grad); border-color: transparent; color: var(--accent-ink); }
+
+/* ---------- Sistemas (cuadrícula de subensambles) ---------- */
+.systems { display: flex; flex-direction: column; gap: 18px; }
+
+.systems-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+.systems-title { display: flex; align-items: center; gap: 12px; order: -1; }
+.systems-title h2 {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font: 800 1.5rem var(--font-display);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.systems-title h2::before { content: ""; width: 5px; height: 22px; border-radius: 3px; background: var(--grad); }
+
+.systems-grid {
   display: grid;
-  grid-template-columns: minmax(300px, 380px) minmax(0, 1fr);
-  gap: 22px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
   align-items: start;
 }
-.home-side { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
 
-/* ---------- Asistente INGPAR ---------- */
+.system-group {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.system-title {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 16px;
+  font: 700 0.92rem var(--font-display);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(180deg, var(--surface-2), var(--surface));
+}
+.system-icon {
+  display: grid;
+  place-items: center;
+  width: 30px; height: 30px;
+  border-radius: 9px;
+  background: var(--grad);
+  color: var(--accent-ink);
+  font-size: 1.05rem;
+  flex-shrink: 0;
+}
+.system-count {
+  margin-left: auto;
+  font: 700 0.72rem var(--font);
+  letter-spacing: 0;
+  padding: 2px 9px;
+  border-radius: 999px;
+  background: var(--surface-3);
+  color: var(--text-muted);
+}
+
+/* ---------- Asistente INGPAR (compacto, junto al título de sistemas) ---------- */
 .assistant-card {
   position: relative;
   display: flex;
   align-items: center;
-  gap: 18px;
-  padding: 20px;
+  gap: 14px;
+  padding: 10px 18px 14px 10px;
+  max-width: 560px;
   border-radius: var(--radius);
   color: #e9ecf1;
   background:
@@ -489,19 +581,19 @@ mark { background: var(--accent); color: var(--accent-ink); border-radius: 3px; 
   content: "";
   position: absolute;
   left: 0; right: 0; bottom: 0;
-  height: 5px;
+  height: 4px;
   background: repeating-linear-gradient(-45deg, var(--accent) 0 10px, #0f141b 10px 20px);
 }
 
 .assistant-avatar {
   position: relative;
   flex-shrink: 0;
-  width: 104px;
-  height: 128px;
-  border-radius: 14px;
-  padding: 3px;
+  width: 58px;
+  height: 70px;
+  border-radius: 12px;
+  padding: 2px;
   background: var(--grad);
-  box-shadow: 0 10px 24px rgba(255, 122, 26, 0.35);
+  box-shadow: 0 8px 18px rgba(255, 122, 26, 0.35);
 }
 .assistant-avatar img {
   display: block;
@@ -509,13 +601,13 @@ mark { background: var(--accent); color: var(--accent-ink); border-radius: 3px; 
   height: 100%;
   object-fit: cover;
   object-position: top;
-  border-radius: 11px;
+  border-radius: 10px;
   background: #24344a;
 }
 .assistant-status {
   position: absolute;
-  right: -4px; bottom: 10px;
-  width: 16px; height: 16px;
+  right: -4px; bottom: 6px;
+  width: 13px; height: 13px;
   border-radius: 50%;
   background: #2fd27a;
   border: 3px solid #131a24;
@@ -528,36 +620,26 @@ mark { background: var(--accent); color: var(--accent-ink); border-radius: 3px; 
   100% { box-shadow: 0 0 0 0 rgba(47, 210, 122, 0); }
 }
 
-.assistant-body { min-width: 0; }
-.assistant-body .eyebrow { color: var(--accent); }
-.assistant-body h3 {
-  margin: 2px 0 8px;
-  font: 800 1.5rem/1 var(--font-display);
-  letter-spacing: 0.03em;
-}
+.assistant-body { min-width: 0; display: flex; flex-direction: column; gap: 5px; }
+.assistant-body .eyebrow { color: var(--accent); font-size: 0.66rem; }
 .assistant-msg {
-  position: relative;
   margin: 0;
-  padding: 10px 12px;
-  border-radius: 4px 12px 12px 12px;
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  font-size: 0.9rem;
-  line-height: 1.4;
+  font-size: 0.86rem;
+  line-height: 1.35;
   color: #d5dbe4;
 }
 
-/* ---------- Tarjetas de zonas ---------- */
-.zone-list { list-style: none; margin: 0; padding: 12px; display: flex; flex-direction: column; gap: 10px; }
+/* ---------- Tarjetas de subensambles ---------- */
+.zone-list { list-style: none; margin: 0; padding: 10px; display: flex; flex-direction: column; gap: 8px; }
 
 .zone-card {
   position: relative;
   width: 100%;
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 14px 16px;
-  border-radius: 14px;
+  gap: 12px;
+  padding: 11px 12px;
+  border-radius: 12px;
   border: 1px solid var(--border);
   background: var(--surface-2);
   color: var(--text);
@@ -594,17 +676,17 @@ mark { background: var(--accent); color: var(--accent-ink); border-radius: 3px; 
 }
 .zone-card:hover::before, .zone-card:focus-visible::before, .zone-card.is-active::before { opacity: 1; }
 .zone-card:hover::after, .zone-card:focus-visible::after, .zone-card.is-active::after { transform: scaleY(1); }
-.zone-card:not(.is-soon):hover { transform: translateX(4px); }
+.zone-card:not(.is-soon):hover { transform: translateY(-2px); }
 
 .zone-index {
   flex-shrink: 0;
   display: grid;
   place-items: center;
-  width: 40px; height: 40px;
-  border-radius: 10px;
+  width: 32px; height: 32px;
+  border-radius: 9px;
   background: var(--surface-3);
   border: 1px solid var(--border);
-  font: 800 1rem var(--font-display);
+  font: 800 0.9rem var(--font-display);
   color: var(--text-muted);
   transition: background 0.2s, color 0.2s, border-color 0.2s;
 }
@@ -614,9 +696,34 @@ mark { background: var(--accent); color: var(--accent-ink); border-radius: 3px; 
   border-color: transparent;
 }
 
-.zone-card-text { flex: 1; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
-.zone-card-text strong { font: 700 1.08rem var(--font-display); letter-spacing: 0.02em; }
-.zone-card-text span { font-size: 0.78rem; color: var(--text-muted); }
+.zone-card-text { flex: 1; display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.zone-card-text strong { font: 700 1rem/1.15 var(--font-display); letter-spacing: 0.02em; }
+.zone-card-text span {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Badge de figura del manual */
+.fig-badge {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 3px;
+  padding: 4px 9px;
+  border-radius: 8px;
+  border: 1px solid var(--accent-line);
+  background: var(--accent-soft);
+  color: var(--text);
+  font: 700 0.8rem var(--mono);
+  white-space: nowrap;
+  transition: background 0.2s, color 0.2s;
+}
+.fig-badge small { font: 600 0.62rem var(--font); color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+.zone-card:hover .fig-badge, .zone-card.is-active .fig-badge { background: var(--grad); color: var(--accent-ink); border-color: transparent; }
+.zone-card:hover .fig-badge small, .zone-card.is-active .fig-badge small { color: var(--accent-ink); }
 
 .zone-card.is-soon { cursor: default; opacity: 0.7; }
 
@@ -627,7 +734,6 @@ mark { background: var(--accent); color: var(--accent-ink); border-radius: 3px; 
   border-radius: 999px;
   white-space: nowrap;
 }
-.tag-ok { background: var(--grad); color: var(--accent-ink); box-shadow: 0 4px 10px rgba(255, 122, 26, 0.25); }
 .tag-soon { background: var(--surface-3); color: var(--text-muted); border: 1px solid var(--border); }
 
 /* ---------- Plano técnico ---------- */
@@ -690,7 +796,7 @@ mark { background: var(--accent); color: var(--accent-ink); border-radius: 3px; 
     linear-gradient(90deg, var(--blueprint-line) 1px, transparent 1px) -1px -1px / 20px 20px,
     var(--blueprint);
 }
-.diagram-blueprint { background: transparent; max-width: 720px; }
+.diagram-blueprint { background: transparent; max-width: 960px; }
 .diagram-blueprint img {
   filter: invert(1) brightness(1.15);
   mix-blend-mode: screen;
@@ -792,19 +898,23 @@ mark { background: var(--accent); color: var(--accent-ink); border-radius: 3px; 
   letter-spacing: 0.02em;
   backdrop-filter: blur(4px);
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
-  transition: background 0.15s, color 0.15s;
+  transition: background 0.15s, color 0.15s, opacity 0.15s, transform 0.15s;
   pointer-events: none;
+  opacity: 0;
+  transform: translateY(4px);
 }
+/* Etiquetas ocultas por defecto: aparecen en hover/activo o con "Mostrar nombres" */
+.diagram.show-labels .zone-label,
+.zone-hotspot:hover .zone-label,
+.zone-hotspot:focus-visible .zone-label,
+.zone-hotspot.is-active .zone-label { opacity: 1; transform: none; }
+.zone-hotspot:hover, .zone-hotspot:focus-visible, .zone-hotspot.is-active { z-index: 4; }
 .zone-hotspot.label-left .zone-label { right: -8px; }
 .zone-hotspot.label-right .zone-label { left: -8px; }
 
 /* Plano angosto (móvil): etiquetas y puntos más compactos para que no se corten ni se monten */
 @container (max-width: 520px) {
-  .zone-label { display: none; bottom: calc(100% + 8px); padding: 2px 7px; font-size: 0.62rem; border-radius: 6px; z-index: 3; }
-  .zone-hotspot:hover .zone-label,
-  .zone-hotspot:focus-visible .zone-label,
-  .zone-hotspot.is-active .zone-label { display: block; }
-  .zone-hotspot:hover, .zone-hotspot.is-active { z-index: 3; }
+  .zone-label { bottom: calc(100% + 8px); padding: 2px 7px; font-size: 0.62rem; border-radius: 6px; }
   .zone-dot { width: 20px; height: 20px; font-size: 0.66rem; }
 }
 
@@ -819,7 +929,7 @@ mark { background: var(--accent); color: var(--accent-ink); border-radius: 3px; 
 
 .zone-hotspot.is-soon .zone-dot { background: #8a94a6; animation: none; box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.8); }
 .zone-hotspot.is-soon .zone-dot::after { display: none; }
-.zone-hotspot.is-soon .zone-label { border-color: rgba(255, 255, 255, 0.2); opacity: 0.8; }
+.zone-hotspot.is-soon .zone-label { border-color: rgba(255, 255, 255, 0.2); }
 
 /* ---------- Puntos numerados del despiece ---------- */
 .hotspot {
@@ -1084,9 +1194,8 @@ tr.is-active .item-num, tr:hover .item-num, .gr-item[aria-selected="true"] .item
 .toast.show { opacity: 1; transform: translate(-50%, 0); }
 
 /* ---------- Responsive ---------- */
-@media (max-width: 1100px) {
-  .home-grid { grid-template-columns: 1fr; }
-  .home-side { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; }
+@media (max-width: 1180px) {
+  .systems-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 960px) {
@@ -1096,12 +1205,11 @@ tr.is-active .item-num, tr:hover .item-num, .gr-item[aria-selected="true"] .item
   .topbar { padding: 10px 16px 13px; gap: 12px; }
   .figure-tabs { margin-left: 0; width: 100%; }
   .figure-tab { flex: 1; text-align: center; }
-  .home-side { grid-template-columns: 1fr; }
-  /* En móvil el plano va antes que las tarjetas de zonas */
-  .home-grid { display: flex; flex-direction: column; align-items: stretch; }
-  .blueprint-panel { order: -1; }
-  .home-side { display: contents; }
-  .assistant-card { order: -2; }
+}
+
+@media (max-width: 720px) {
+  .systems-grid { grid-template-columns: 1fr; }
+  .assistant-card { max-width: none; width: 100%; }
 }
 
 @media (max-width: 640px) {
@@ -1114,8 +1222,7 @@ tr.is-active .item-num, tr:hover .item-num, .gr-item[aria-selected="true"] .item
   .gr-item { flex-wrap: wrap; }
   .gr-zone { max-width: none; width: 100%; align-items: flex-start; text-align: left; padding-left: 42px; }
   .gr-line { white-space: normal; }
-  .assistant-card { gap: 14px; padding: 16px 16px 20px; }
-  .assistant-avatar { width: 84px; height: 104px; }
+  .labels-toggle { margin-left: auto; }
   .title-block { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .title-block div:nth-child(3) { border-left: 0; }
   .title-block div:nth-child(n + 3) { border-top: 1px solid rgba(140, 190, 255, 0.25); }

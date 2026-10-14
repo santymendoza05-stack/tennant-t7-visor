@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" />
   <!-- ?v= evita que el navegador use un CSS/JS viejo en caché tras publicar cambios -->
-  <link rel="stylesheet" href="css/styles.css?v=2026-10-13m" />
+  <link rel="stylesheet" href="css/styles.css?v=2026-10-14a" />
 </head>
 <body>
   <!-- Íconos SVG reutilizables -->
@@ -74,33 +74,12 @@
     </section>
 
     <div class="home-grid">
-      <aside class="home-side">
-        <!-- Asistente INGPAR -->
-        <article class="assistant-card">
-          <div class="assistant-avatar">
-            <img src="assets/engineer.png" alt="Asistente técnico de INGPAR S.A.S. con casco de seguridad" width="145" height="192" />
-            <span class="assistant-status" aria-hidden="true"></span>
-          </div>
-          <div class="assistant-body">
-            <p class="eyebrow">Asistente Técnico</p>
-            <h3>INGPAR S.A.S.</h3>
-            <p class="assistant-msg">Haz clic en una zona de la máquina o busca una referencia para ver el despiece interactivo.</p>
-          </div>
-        </article>
-
-        <section class="panel zones-panel" aria-label="Zonas de la máquina">
-          <div class="panel-header">
-            <h2>Zonas clave</h2>
-            <span id="zone-count" class="count-badge"></span>
-          </div>
-          <ul id="zone-list" class="zone-list"></ul>
-        </section>
-      </aside>
-
+      <!-- Plano general: protagonista, a todo el ancho -->
       <section class="panel blueprint-panel" aria-label="Vista general de la máquina">
         <div class="panel-header">
           <h2>Plano general</h2>
-          <span class="hint">Selecciona una zona de la máquina</span>
+          <span class="hint">Pasa el cursor por un punto para ver su nombre</span>
+          <button id="labels-toggle" class="labels-toggle" type="button" aria-pressed="false">Mostrar nombres</button>
         </div>
         <div class="diagram-wrapper">
           <div class="blueprint blueprint-grid">
@@ -120,6 +99,28 @@
             </dl>
           </div>
         </div>
+      </section>
+
+      <!-- Subensambles agrupados por sistema -->
+      <section class="systems" aria-label="Subensambles por sistema">
+        <div class="systems-header">
+          <!-- Asistente INGPAR (versión compacta) -->
+          <article class="assistant-card">
+            <div class="assistant-avatar">
+              <img src="assets/engineer.png" alt="Asistente técnico de INGPAR S.A.S. con casco de seguridad" width="145" height="192" />
+              <span class="assistant-status" aria-hidden="true"></span>
+            </div>
+            <div class="assistant-body">
+              <p class="eyebrow">Asistente Técnico · INGPAR S.A.S.</p>
+              <p class="assistant-msg">Haz clic en una zona de la máquina o busca una referencia para ver el despiece interactivo.</p>
+            </div>
+          </article>
+          <div class="systems-title">
+            <h2>Subensambles</h2>
+            <span id="zone-count" class="count-badge"></span>
+          </div>
+        </div>
+        <div id="zone-list" class="systems-grid"></div>
       </section>
     </div>
   </main>
@@ -192,6 +193,6 @@
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
-  <script src="js/app.js?v=2026-10-13m"></script>
+  <script src="js/app.js?v=2026-10-14a"></script>
 </body>
 </html>
