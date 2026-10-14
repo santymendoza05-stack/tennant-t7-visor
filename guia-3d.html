@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guía Interactiva 3D - Tennant T7 & T12 | INGPAR S.A.S.</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body { overflow: hidden; background: #121214; color: #fff; }
+    #canvas-container { width: 100vw; height: 100vh; }
+
+    /* Panel Superior de Control */
+    #ui-header {
+      position: absolute; top: 15px; left: 15px; z-index: 10;
+      background: rgba(20, 20, 26, 0.90); padding: 16px 20px;
+      border-radius: 12px; backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.12); width: 340px;
+      max-width: calc(100vw - 30px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    }
+    h2 { font-size: 1.1rem; color: #00d2ff; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+    p.subtitle { font-size: 0.75rem; color: #aaa; margin-bottom: 12px; }
+    .back-link { display: inline-block; font-size: 0.78rem; color: #aaa; text-decoration: none; margin-bottom: 10px; }
+    .back-link:hover { color: #00d2ff; }
+
+    .btn-group { display: flex; gap: 8px; margin-bottom: 12px; }
+    .btn-view {
+      flex: 1; padding: 9px 6px; background: #22222a; color: #ccc;
+      border: 1px solid #3a3a48; border-radius: 6px; font-size: 0.82rem;
+      font-weight: 600; cursor: pointer; transition: all 0.2s ease;
+    }
+    .btn-view:hover { border-color: #00d2ff; color: #fff; }
+    .btn-view.active { background: #00d2ff; color: #111; border-color: #00d2ff; }
+
+    /* Ficha Técnica de Repuesto Flotante */
+    #part-card {
+      position: absolute; bottom: 20px; right: 20px; z-index: 10;
+      background: rgba(20, 20, 26, 0.92); padding: 18px 22px;
+      border-radius: 12px; border-left: 5px solid #00d2ff;
+      width: 360px; max-width: calc(100vw - 40px); display: none; backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+    }
+    #part-card .machine-tag { font-size: 0.7rem; text-transform: uppercase; background: #00d2ff22; color: #00d2ff; padding: 2px 8px; border-radius: 4px; display: inline-block; margin-bottom: 6px; }
+    #part-card h3 { font-size: 1.05rem; color: #fff; margin-bottom: 4px; }
+    #part-card .code { color: #00d2ff; font-weight: bold; font-size: 0.85rem; margin-bottom: 8px; }
+    #part-card p { font-size: 0.82rem; color: #bbb; line-height: 1.4; }
+    #part-card .close-btn { position: absolute; top: 10px; right: 12px; background: none; border: none; color: #888; font-size: 1.1rem; cursor: pointer; }
+    #part-card .close-btn:hover { color: #fff; }
+  </style>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+</head>
+<body>
+
+  <div id="ui-header">
+    <a class="back-link" href="./">&larr; Volver al visor de despiece T7</a>
+    <h2>INGPAR S.A.S. - Guía 3D</h2>
+    <p class="subtitle">Inspección Técnica Tennant T7 & T12</p>
+
+    <div class="btn-group">
+      <button class="btn-view" onclick="setView('T7', this)">Ver T7</button>
+      <button class="btn-view" onclick="setView('T12', this)">Ver T12</button>
+      <button class="btn-view active" onclick="setView('BOTH', this)">Ver Ambas</button>
+    </div>
+  </div>
+
+  <div id="part-card">
+    <button class="close-btn" onclick="closePartCard()">&times;</button>
+    <span class="machine-tag" id="card-machine">MÁQUINA</span>
+    <h3 id="card-title">Nombre del Repuesto</h3>
+    <div class="code" id="card-code">CÓDIGO: -</div>
+    <p id="card-desc">Descripción del repuesto e información técnica.</p>
+  </div>
+
+  <div id="canvas-container"></div>
+
+  <script>
+    const database = {
+      T7: {
+        name: "Tennant T7",
+        color: 0x0088cc,
+        size: [1.6, 1.3, 1.1],
+        offset: [-1.8, 0, 0],
+        parts: [
+          { name: "Filtro Polvo Panel T7", code: "1037821", desc: "Panel filtrante de polvo para tanque de recolección T7.", pos: [-1.8, 0.7, 0.3] },
+          { name: "Escobilla Linatex Lateral T7", code: "86859", desc: "Conjunto de escobilla lateral Linatex estándar T7.", pos: [-1.2, -0.4, 0] },
+          { name: "Relé de Potencia 24V", code: "2424", desc: "Relay 24VDC 100A SP N/O para sistema eléctrico T7.", pos: [-1.8, 0.2, -0.4] }
+        ]
+      },
+      T12: {
+        name: "Tennant T12",
+        color: 0x005588,
+        size: [2.3, 1.7, 1.5],
+        offset: [1.8, 0, 0],
+        parts: [
+          { name: "Llama / Escobilla Trasera Linatex", code: "1200384", desc: "Escobilla trasera principal Linatex para cabezal de secado T12.", pos: [1.8, -0.6, -0.9] },
+          { name: "Llama / Escobilla Delantera Linard", code: "1200383", desc: "Escobilla delantera principal Linard (42.59 pulgadas).", pos: [1.8, -0.6, -0.7] },
+          { name: "Escobilla Lateral Linatex 22.5\"", code: "1200430", desc: "Escobilla de goma lateral Linatex de protección T12.", pos: [2.6, -0.5, 0] },
+          { name: "Motor / Ventilador Vacío 36V", code: "1200149", desc: "Motor de aspiración Ametek 36VDC de alto rendimiento.", pos: [1.8, 0.6, 0.2] },
+          { name: "Filtro Panel Tanque Recuperación", code: "1037822", desc: "Panel filtrante de polvo específico para la Tennant T12.", pos: [1.8, 0.9, -0.3] },
+          { name: "Manguera de Drenaje Solución", code: "1216347", desc: "Manguera de drenaje 2.0\" DI x 32.2\" para tanque T12.", pos: [1.0, -0.3, 0.5] }
+        ]
+      }
+    };
+
+    let scene, camera, renderer, controls;
+    let raycaster = new THREE.Raycaster();
+    let mouse = new THREE.Vector2();
+    let machineGroups = {};
+    let partMeshes = [];
+
+    function init() {
+      const container = document.getElementById('canvas-container');
+
+      scene = new THREE.Scene();
+      scene.background = new THREE.Color(0x121214);
+
+      camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+      camera.position.set(0, 3, 7.5);
+
+      renderer = new THREE.WebGLRenderer({ antialias: true });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setPixelRatio(window.devicePixelRatio);
+      container.appendChild(renderer.domElement);
+
+      controls = new THREE.OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true;
+
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+      scene.add(ambientLight);
+
+      const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
+      dirLight.position.set(5, 10, 7);
+      scene.add(dirLight);
+
+      const grid = new THREE.GridHelper(12, 12, 0x00d2ff, 0x333344);
+      grid.position.y = -0.9;
+      scene.add(grid);
+
+      buildMachine('T7');
+      buildMachine('T12');
+
+      window.addEventListener('resize', onWindowResize);
+      // Solo clics sobre el lienzo 3D (no sobre los paneles)
+      renderer.domElement.addEventListener('click', onPointerClick);
+
+      animate();
+    }
+
+    function buildMachine(key) {
+      const data = database[key];
+      const group = new THREE.Group();
+
+      const geometry = new THREE.BoxGeometry(...data.size);
+      // Carrocería translúcida para que se vean los repuestos que quedan dentro
+      const material = new THREE.MeshStandardMaterial({ color: data.color, roughness: 0.35, metalness: 0.3, transparent: true, opacity: 0.35, depthWrite: false });
+      const body = new THREE.Mesh(geometry, material);
+      body.position.set(...data.offset);
+      group.add(body);
+      group.add(new THREE.LineSegments(new THREE.EdgesGeometry(geometry), new THREE.LineBasicMaterial({ color: 0x00d2ff })).translateX(data.offset[0]));
+
+      data.parts.forEach(part => {
+        const pGeo = new THREE.SphereGeometry(0.1, 16, 16);
+        const pMat = new THREE.MeshStandardMaterial({ color: 0x00d2ff, emissive: 0x003355 });
+        const pMesh = new THREE.Mesh(pGeo, pMat);
+        pMesh.position.set(...part.pos);
+        pMesh.userData = { ...part, machine: data.name };
+        group.add(pMesh);
+        partMeshes.push(pMesh);
+      });
+
+      machineGroups[key] = group;
+      scene.add(group);
+    }
+
+    function setView(viewMode, btn) {
+      document.querySelectorAll('.btn-view').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      if (viewMode === 'T7') {
+        focusCamera(-1.8, 0.5, 3.8);
+      } else if (viewMode === 'T12') {
+        focusCamera(1.8, 0.5, 4.2);
+      } else {
+        focusCamera(0, 1.5, 7.5);
+      }
+    }
+
+    function focusCamera(x, y, z) {
+      camera.position.set(x, y, z);
+      controls.target.set(x > 0 ? 1.8 : (x < 0 ? -1.8 : 0), 0, 0);
+      controls.update();
+    }
+
+    function onPointerClick(event) {
+      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+      raycaster.setFromCamera(mouse, camera);
+
+      // Solo los repuestos son seleccionables (la carrocería no tapa el clic)
+      const intersects = raycaster.intersectObjects(partMeshes);
+
+      if (intersects.length > 0) {
+        const hit = intersects[0].object;
+        if (hit.userData && hit.userData.name) {
+          showCard(hit.userData);
+        }
+      }
+    }
+
+    function showCard(info) {
+      document.getElementById('card-machine').innerText = info.machine;
+      document.getElementById('card-title').innerText = info.name;
+      document.getElementById('card-code').innerText = "CÓDIGO TENNANT: " + info.code;
+      document.getElementById('card-desc').innerText = info.desc;
+      document.getElementById('part-card').style.display = 'block';
+    }
+
+    function closePartCard() {
+      document.getElementById('part-card').style.display = 'none';
+    }
+
+    function onWindowResize() {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    }
+
+    function animate() {
+      requestAnimationFrame(animate);
+      controls.update();
+      renderer.render(scene, camera);
+    }
+
+    init();
+  </script>
+</body>
+</html>

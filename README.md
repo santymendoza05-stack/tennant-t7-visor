@@ -48,3 +48,7 @@ Para calibrar la posición de un punto, haz **Alt+clic** sobre el diagrama. Eso 
 ---
 
 Diagramas y referencias © Tennant Company, tomados del manual de partes de la T7. Este proyecto es una herramienta de consulta y no está afiliado a Tennant.
+
+## Guía 3D (experimental)
+
+`guia-3d.html` es una escena 3D esquemática (Three.js r128) de la T7 y la T12 con algunos repuestos de ejemplo, enlazada desde el botón **Guía 3D** de la barra superior. Las cajas son representaciones genéricas, no modelos reales. Los códigos de esa página **no** salen del manual 9013606 (salvo 1037821) y deben verificarse antes de pedir repuestos.
