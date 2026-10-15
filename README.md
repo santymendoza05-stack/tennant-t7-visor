@@ -11,6 +11,15 @@ El **selector de la cabecera** (Tennant T7 / Tennant T12 / IPC CT110) cambia el 
 1. **Nivel 1 · Máquina completa:** vista general de la máquina con las zonas clave y un **buscador global** que busca en todas las zonas. Al elegir un resultado se abre la zona, se selecciona el repuesto y se ilumina su punto en el diagrama.
 2. **Nivel 2 · Despiece:** diagrama con puntos numerados, buscador y tabla de repuestos con "Copiar Ref".
 
+### Puntos del diagrama
+
+Para no tapar los números del manual, los puntos del despiece están **ocultos por defecto** y son solo un anillo fino; se rellenan al pasar el cursor o al seleccionarlos.
+
+- **Mostrar/Ocultar todos los puntos:** el navegador recuerda la elección.
+- **Filtro por subsistema** (o por categoría si la figura no define subsistemas): muestra o resalta solo los puntos de ese grupo. La búsqueda, el filtro de la tabla y el repuesto seleccionado también muestran sus puntos.
+- **Clusters:** los puntos muy juntos se agrupan en una burbuja con el total, que se despliega al pasar el cursor, con clic/toque o al hacer zoom.
+- **Zoom:** botones − / + (el porcentaje restablece), <kbd>Ctrl</kbd>+rueda, doble clic o pellizco; con zoom se arrastra para desplazar.
+
 ### Tennant T7 · manual 9013606
 
 | Zona | Figura del manual | Datos |
@@ -75,6 +84,7 @@ Luego abre http://localhost:8000. También funciona abriendo `index.html` con do
 ## Agregar o editar una zona
 
 1. Crea el JSON de la figura con el mismo formato que los existentes (`data/` para la T7, `data/t12/` para la T12, `data/ct110/` para la CT110) y su imagen en `assets/` (o `assets/t12/`, `assets/ct110/`).
+   Opcional: para filtrar el diagrama por subsistema, agrega `"subsystems": [...]` a la figura y `"subsystem"` a cada repuesto (ver `data/ct110/electrical.json`).
 2. Regístrala en el `machine.json` de la máquina (`data/machine.json`, `data/t12/machine.json` o `data/ct110/machine.json`): `"status": "available"` y `"data"`, o `"figures"` si tiene varias.
 3. Sincroniza la copia de respaldo:
    ```

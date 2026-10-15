@@ -1785,93 +1785,94 @@
       figure: "Tabla ELECTRI.INSTAL.",
       image: "assets/ct110/electrical.png",
       categories: ["Tornillería", "Pasadores y bujes", "Resortes", "Sellos y empaques", "Motores y actuadores", "Eléctrico", "Ruedas", "Etiquetas", "Estructura y cubiertas"],
+      subsystems: ["Panel principal", "Acelerador / Pedal", "Placa y controlador", "Relés / Fusibles", "Baterías", "Cableado y sensores"],
       parts: [
-        { item: 1, partNumber: "ETET01650", description: "LABEL PLANCIA COMANDI", category: "Etiquetas", qty: 1, hotspots: [{ x: 4.2, y: 13.6 }] },
-        { item: 2, partNumber: "MECI75805", description: "SWITCH TK", category: "Eléctrico", qty: 1, hotspots: [{ x: 20.5, y: 24.8 }] },
-        { item: 3, partNumber: "MECI00028", description: "BUTTON DI EMERGENZA TK1400 24V", category: "Eléctrico", qty: 1, hotspots: [{ x: 34.9, y: 30.8 }] },
-        { item: 4, partNumber: "KTRI01935", description: "KIT 1050-1202", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 17.3, y: 36.2 }] },
-        { item: 5, partNumber: "LAFN06408", description: "PLATE", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 17.3, y: 38.1 }] },
-        { item: 6, partNumber: "MEVR01941", description: "POTENTIOMETER 100K", category: "Eléctrico", qty: 1, hotspots: [{ x: 17.3, y: 40.1 }] },
-        { item: 7, partNumber: "VTVT13937", description: "SCREW TE M 8X 30 INX UNI 5739", category: "Tornillería", qty: 1, hotspots: [{ x: 17.1, y: 55.5 }] },
-        { item: 8, partNumber: "VTDD01696", description: "NUT M 8 INX", category: "Tornillería", qty: 1, hotspots: [{ x: 17.2, y: 57.6 }] },
-        { item: 9, partNumber: "VTVT00727", description: "SCREW TE M. 4-20", category: "Tornillería", qty: 2, hotspots: [{ x: 22.1, y: 70.9 }] },
-        { item: 10, partNumber: "MECE00509", description: "BOARD CT110-MF", category: "Eléctrico", qty: 1, hotspots: [{ x: 29.9, y: 44.4 }] },
-        { item: 11, partNumber: "LAFN06429", description: "PEDALE CT110", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 3.1, y: 42.8 }] },
-        { item: 12, partNumber: "VTVT15143", description: "SCREW TE 6X16 UNI5739", category: "Tornillería", qty: 2, hotspots: [{ x: 15.4, y: 44.7 }] },
-        { item: 13, partNumber: "VTDD15518", description: "NUT M 6 INX", category: "Tornillería", qty: 2, hotspots: [{ x: 15.3, y: 46.8 }] },
-        { item: 14, partNumber: "VTVT00005", description: "SCREW TE FR 5X12 ZB", category: "Tornillería", qty: 4, hotspots: [{ x: 3.3, y: 57.7 }] },
-        { item: 15, partNumber: "LAFN06521", description: "SUPPORT ACCELERATORE", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 3.3, y: 59.8 }] },
-        { item: 16, partNumber: "VTVT00911", description: "GRUB SCREW M4X8", category: "Tornillería", qty: 1, hotspots: [{ x: 3.1, y: 64.1 }] },
-        { item: 17, partNumber: "VTVT00727", description: "SCREW TE M. 4-20", category: "Tornillería", qty: 2, hotspots: [{ x: 3.1, y: 66.1 }] },
-        { item: 18, partNumber: "LAFN06371", description: "CONNECTING ROD POTENZIOMETRO", category: "Eléctrico", qty: 1, hotspots: [{ x: 3.7, y: 75.4 }] },
-        { item: 19, partNumber: "MLML00301", description: "SPRING ACCELLERATORE", category: "Resortes", qty: 1, note: "Hasta 04/2010", hotspots: [{ x: 12.6, y: 69.2 }] },
-        { item: 19, partNumber: "MLML00327", description: "SPRING", category: "Resortes", qty: 1, note: "Desde 04/2010", hotspots: [] },
-        { item: 20, partNumber: "MPVR05236", description: "BUSHING", category: "Pasadores y bujes", qty: 1, note: "Hasta 04/2010", hotspots: [{ x: 12.6, y: 71.2 }] },
-        { item: 20, partNumber: "MPVR05786", description: "BUSHING", category: "Pasadores y bujes", qty: 1, note: "Desde 04/2010", hotspots: [] },
-        { item: 21, partNumber: "MEVR01700", description: "POTENTIOMETER 0-5K", category: "Eléctrico", qty: 1, hotspots: [{ x: 16.4, y: 73.3 }] },
-        { item: 22, partNumber: "MEVR02058", description: "FUSE-HOLDER", category: "Eléctrico", qty: 1, hotspots: [{ x: 26.4, y: 32.4 }] },
-        { item: 23, partNumber: "MECE00450", description: "BOARD TRACTION CURTIS CT110", category: "Eléctrico", qty: 1, hotspots: [{ x: 21.7, y: 68.8 }] },
-        { item: 24, partNumber: "MEVR01746", description: "CARBON X MOT.COD.MOCC00374", category: "Eléctrico", qty: 4, hotspots: [] },
-        { item: 24, partNumber: "MEVR02030", description: "BRAKE", category: "Motores y actuadores", qty: 1, hotspots: [] },
-        { item: 24, partNumber: "MOCC00374", description: "MOTOR", category: "Motores y actuadores", qty: 1, hotspots: [] },
-        { item: 24, partNumber: "RTRT00533", description: "RING MOTORWHEEL", category: "Ruedas", qty: 1, hotspots: [] },
-        { item: 25, partNumber: "MEEV00018", description: "SOLENOID VALVE", category: "Motores y actuadores", qty: 1, note: "Hasta 10/2011", hotspots: [{ x: 69, y: 76.7 }] },
-        { item: 25, partNumber: "MEEV00044", description: "SOLENOID VALVE", category: "Motores y actuadores", qty: 1, note: "Desde 10/2011", hotspots: [] },
-        { item: 26, partNumber: "MEVR00146", description: "FUSE-HOLDER MEGA", category: "Eléctrico", qty: 1, hotspots: [{ x: 44.5, y: 64.3 }] },
-        { item: 27, partNumber: "MECE00510", description: "BOARD CT110-MF", category: "Eléctrico", qty: 1, hotspots: [{ x: 38.2, y: 53.4 }] },
-        { item: 28, partNumber: "MECB01099", description: "CABLE FLAT", category: "Eléctrico", qty: 1, hotspots: [{ x: 33, y: 69.3 }] },
-        { item: 29, partNumber: "MECE00511", description: "BOARD CT110-MF", category: "Eléctrico", qty: 1, hotspots: [{ x: 48.8, y: 38.4 }] },
-        { item: 30, partNumber: "LAFN06503", description: "PLATE ELETTRONICA", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 58.9, y: 59 }] },
-        { item: 32, partNumber: "VTVT00005", description: "SCREW TE FR 5X12 ZB", category: "Tornillería", qty: 8, hotspots: [] },
-        { item: 33, partNumber: "VTVT00005", description: "SCREW TE FR 5X12 ZB", category: "Tornillería", qty: 4, hotspots: [{ x: 56.9, y: 65.5 }] },
-        { item: 34, partNumber: "MPVR05217", description: "CONTAINER BATTERIA", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 67.6, y: 64.5 }] },
-        { item: 35, partNumber: "MECB01015", description: "WIRING CT110", category: "Eléctrico", qty: 1, hotspots: [{ x: 80.3, y: 86.8 }] },
-        { item: 36, partNumber: "BAAC00005", description: "BATTERY 6 V 180 AH (C5)", category: "Eléctrico", qty: 4, hotspots: [{ x: 65.5, y: 35 }, { x: 83.1, y: 39.8 }] },
-        { item: 36, partNumber: "BAAC00074", description: "BATTERY ACID 6V 180Ah TUBOLAR", category: "Eléctrico", qty: 4, hotspots: [] },
-        { item: 37, partNumber: "MEVR34820", description: "WIRING B 450 BT", category: "Eléctrico", qty: 3, hotspots: [{ x: 72.1, y: 29 }] },
-        { item: 38, partNumber: "MECB01015", description: "WIRING CT110", category: "Eléctrico", qty: 1, hotspots: [{ x: 58.6, y: 35.8 }] },
-        { item: 39, partNumber: "MEVR00567", description: "FUSE-HOLDER 6 VIE", category: "Eléctrico", qty: 1, hotspots: [{ x: 37.2, y: 20 }] },
-        { item: 40, partNumber: "MEVR01136", description: "FUSE 30A", category: "Eléctrico", qty: 1, note: "Hasta 10/2011", hotspots: [] },
-        { item: 41, partNumber: "MEVR01136", description: "FUSE 30A", category: "Eléctrico", qty: 1, note: "Hasta 10/2011", hotspots: [{ x: 41.7, y: 9.3 }] },
-        { item: 41, partNumber: "MEVR01428", description: "FUSE A LAMA 2 A. UNIVAL", category: "Eléctrico", qty: 1, note: "Desde 10/2011", hotspots: [] },
-        { item: 42, partNumber: "MEVR00327", description: "FUSE 25A", category: "Eléctrico", qty: 1, hotspots: [{ x: 41.7, y: 10.9 }] },
-        { item: 43, partNumber: "MEVR00584", description: "FUSE 3A", category: "Eléctrico", qty: 1, hotspots: [{ x: 41.7, y: 13.3 }] },
-        { item: 44, partNumber: "MEVR00584", description: "FUSE 3A", category: "Eléctrico", qty: 1, hotspots: [{ x: 41.7, y: 15.1 }] },
-        { item: 45, partNumber: "MEVR00584", description: "FUSE 3A", category: "Eléctrico", qty: 1, hotspots: [{ x: 41.7, y: 16.9 }] },
-        { item: 46, partNumber: "MEVR00148", description: "DASHBOARD SEDILE", category: "Eléctrico", qty: 1, hotspots: [{ x: 86.5, y: 19.9 }] },
-        { item: 47, partNumber: "MEVR01079", description: "PLUG M CB50 A 600V RD.", category: "Eléctrico", qty: 1, hotspots: [{ x: 95.7, y: 25.8 }] },
-        { item: 51, partNumber: "MECB01015", description: "WIRING CT110", category: "Eléctrico", qty: 1, hotspots: [{ x: 72.1, y: 82.3 }] },
-        { item: 52, partNumber: "MECI00405", description: "SENSOR", category: "Eléctrico", qty: 1, hotspots: [{ x: 40.2, y: 73.5 }] },
-        { item: 53, partNumber: "LAFN06386", description: "SUPPORT", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 40.2, y: 75.6 }] },
-        { item: 54, partNumber: "VTVT15143", description: "SCREW TE 6X16 UNI5739", category: "Tornillería", qty: 2, hotspots: [{ x: 40.2, y: 77.4 }] },
-        { item: 55, partNumber: "VTRS15144", description: "WASHER D. 6 INX GRW UNI 1751", category: "Tornillería", qty: 2, hotspots: [{ x: 45.2, y: 83.5 }] },
-        { item: 56, partNumber: "MEVR00145", description: "FUSE 100A", category: "Eléctrico", qty: 1, hotspots: [{ x: 48.4, y: 61.2 }] },
-        { item: 57, partNumber: "MEVR47082", description: "INSULATOR M6 35-CH32", category: "Sellos y empaques", qty: 1, hotspots: [{ x: 38.4, y: 51.4 }] },
-        { item: 58, partNumber: "MECE00456", description: "RELAY CT110", category: "Eléctrico", qty: 4, hotspots: [{ x: 39.2, y: 66.5 }] },
-        { item: 59, partNumber: "VTVT00005", description: "SCREW TE FR 5X12 ZB", category: "Tornillería", qty: 2, hotspots: [{ x: 39.8, y: 5.4 }] },
-        { item: 60, partNumber: "MPVR05235", description: "COVER", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 4.1, y: 83.8 }] },
-        { item: 61, partNumber: "VTVT00005", description: "SCREW TE FR 5X12 ZB", category: "Tornillería", qty: 2, hotspots: [{ x: 4.1, y: 85.8 }] },
-        { item: 62, partNumber: "GUVR00292", description: "GASKET CT110", category: "Sellos y empaques", qty: 1, hotspots: [{ x: 2.2, y: 52.2 }] },
-        { item: 63, partNumber: "LAFN07362", description: "PLATE ANDERSON", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 96.8, y: 23.6 }] },
-        { item: 64, partNumber: "MECI00334", description: "MICROSWITCH V4", category: "Eléctrico", qty: 1, hotspots: [{ x: 91.6, y: 13.8 }] },
-        { item: 65, partNumber: "VTVT00671", description: "SCREW TC- M.2-16 OTTONE", category: "Tornillería", qty: 2, hotspots: [{ x: 93.8, y: 13.1 }] },
-        { item: 66, partNumber: "VTDD08634", description: "NUT M2", category: "Tornillería", qty: 2, hotspots: [{ x: 89.4, y: 15.1 }] },
-        { item: 67, partNumber: "VTVT01350", description: "SCREW M3-20 INOX", category: "Tornillería", qty: 2, hotspots: [{ x: 96.1, y: 12.3 }] },
-        { item: 68, partNumber: "VTRS21116", description: "WASHER D. 3 INX", category: "Tornillería", qty: 2, hotspots: [{ x: 95.1, y: 9.6 }] },
-        { item: 69, partNumber: "MECI00532", description: "CONTACTOR 24V-100A", category: "Eléctrico", qty: 1, hotspots: [{ x: 84.8, y: 21.9 }, { x: 31.5, y: 48.6 }] },
-        { item: 70, partNumber: "LAFN07743", description: "BRACKET", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 31.5, y: 50.9 }] },
-        { item: 71, partNumber: "VTVT01669", description: "CARRYNG BAG", category: "Estructura y cubiertas", qty: 2, hotspots: [{ x: 32.9, y: 59.2 }] },
-        { item: 72, partNumber: "VTRS00501", description: "WASHER D. 4 0.232 UNI 6592", category: "Tornillería", qty: 2, hotspots: [{ x: 30.8, y: 57.2 }] },
-        { item: 73, partNumber: "VTVT00005", description: "SCREW TE FR 5X12 ZB", category: "Tornillería", qty: 2, hotspots: [{ x: 45.3, y: 37.4 }] },
-        { item: 74, partNumber: "MECE00139", description: "RELAY POTENZA 24V", category: "Eléctrico", qty: 1, hotspots: [{ x: 51.7, y: 50.3 }] },
-        { item: 75, partNumber: "METT00053", description: "BLOCK PORTA RELE'", category: "Eléctrico", qty: 1, hotspots: [{ x: 51.7, y: 52.3 }] },
-        { item: 76, partNumber: "MEVR31036", description: "FUSE-HOLDER", category: "Eléctrico", qty: 1, hotspots: [{ x: 64.9, y: 74.5 }] },
-        { item: 77, partNumber: "MEVR02042", description: "FUSE 40A NST.", category: "Eléctrico", qty: 1, hotspots: [{ x: 57.3, y: 86.3 }] },
-        { item: 78, partNumber: "VTVT00079", description: "SCREW AUTOF.TC UNI6954 3,9X22", category: "Tornillería", qty: 1, hotspots: [{ x: 56, y: 74.6 }] },
-        { item: 79, partNumber: "VTDD01693", description: "NUT M 5 INX", category: "Tornillería", qty: 2, note: "Desde 10/2011", hotspots: [{ x: 43.7, y: 27.1 }] },
-        { item: 80, partNumber: "VTVT01300", description: "SCREW TE M5X12 INOX", category: "Tornillería", qty: 2, note: "Desde 10/2011", hotspots: [{ x: 45.4, y: 27.8 }] },
-        { item: 81, partNumber: "MEVR02048", description: "FUSE 40A", category: "Eléctrico", qty: 2, note: "Desde 10/2011", hotspots: [{ x: 45.4, y: 4.6 }] },
-        { item: 82, partNumber: "MEVR00613", description: "FUSE CARRIER MAXIVAL with cover", category: "Eléctrico", qty: 2, note: "Desde 10/2011", hotspots: [{ x: 52.6, y: 17.9 }] }
+        { item: 1, partNumber: "ETET01650", description: "LABEL PLANCIA COMANDI", category: "Etiquetas", subsystem: "Panel principal", qty: 1, hotspots: [{ x: 4.2, y: 13.6 }] },
+        { item: 2, partNumber: "MECI75805", description: "SWITCH TK", category: "Eléctrico", subsystem: "Panel principal", qty: 1, hotspots: [{ x: 20.5, y: 24.8 }] },
+        { item: 3, partNumber: "MECI00028", description: "BUTTON DI EMERGENZA TK1400 24V", category: "Eléctrico", subsystem: "Panel principal", qty: 1, hotspots: [{ x: 34.9, y: 30.8 }] },
+        { item: 4, partNumber: "KTRI01935", description: "KIT 1050-1202", category: "Estructura y cubiertas", subsystem: "Panel principal", qty: 1, hotspots: [{ x: 17.3, y: 36.2 }] },
+        { item: 5, partNumber: "LAFN06408", description: "PLATE", category: "Estructura y cubiertas", subsystem: "Panel principal", qty: 1, hotspots: [{ x: 17.3, y: 38.1 }] },
+        { item: 6, partNumber: "MEVR01941", description: "POTENTIOMETER 100K", category: "Eléctrico", subsystem: "Panel principal", qty: 1, hotspots: [{ x: 17.3, y: 40.1 }] },
+        { item: 7, partNumber: "VTVT13937", description: "SCREW TE M 8X 30 INX UNI 5739", category: "Tornillería", subsystem: "Acelerador / Pedal", qty: 1, hotspots: [{ x: 17.1, y: 55.5 }] },
+        { item: 8, partNumber: "VTDD01696", description: "NUT M 8 INX", category: "Tornillería", subsystem: "Acelerador / Pedal", qty: 1, hotspots: [{ x: 17.2, y: 57.6 }] },
+        { item: 9, partNumber: "VTVT00727", description: "SCREW TE M. 4-20", category: "Tornillería", subsystem: "Placa y controlador", qty: 2, hotspots: [{ x: 22.1, y: 70.9 }] },
+        { item: 10, partNumber: "MECE00509", description: "BOARD CT110-MF", category: "Eléctrico", subsystem: "Panel principal", qty: 1, hotspots: [{ x: 29.9, y: 44.4 }] },
+        { item: 11, partNumber: "LAFN06429", description: "PEDALE CT110", category: "Estructura y cubiertas", subsystem: "Acelerador / Pedal", qty: 1, hotspots: [{ x: 3.1, y: 42.8 }] },
+        { item: 12, partNumber: "VTVT15143", description: "SCREW TE 6X16 UNI5739", category: "Tornillería", subsystem: "Acelerador / Pedal", qty: 2, hotspots: [{ x: 15.4, y: 44.7 }] },
+        { item: 13, partNumber: "VTDD15518", description: "NUT M 6 INX", category: "Tornillería", subsystem: "Acelerador / Pedal", qty: 2, hotspots: [{ x: 15.3, y: 46.8 }] },
+        { item: 14, partNumber: "VTVT00005", description: "SCREW TE FR 5X12 ZB", category: "Tornillería", subsystem: "Acelerador / Pedal", qty: 4, hotspots: [{ x: 3.3, y: 57.7 }] },
+        { item: 15, partNumber: "LAFN06521", description: "SUPPORT ACCELERATORE", category: "Estructura y cubiertas", subsystem: "Acelerador / Pedal", qty: 1, hotspots: [{ x: 3.3, y: 59.8 }] },
+        { item: 16, partNumber: "VTVT00911", description: "GRUB SCREW M4X8", category: "Tornillería", subsystem: "Acelerador / Pedal", qty: 1, hotspots: [{ x: 3.1, y: 64.1 }] },
+        { item: 17, partNumber: "VTVT00727", description: "SCREW TE M. 4-20", category: "Tornillería", subsystem: "Acelerador / Pedal", qty: 2, hotspots: [{ x: 3.1, y: 66.1 }] },
+        { item: 18, partNumber: "LAFN06371", description: "CONNECTING ROD POTENZIOMETRO", category: "Eléctrico", subsystem: "Acelerador / Pedal", qty: 1, hotspots: [{ x: 3.7, y: 75.4 }] },
+        { item: 19, partNumber: "MLML00301", description: "SPRING ACCELLERATORE", category: "Resortes", subsystem: "Acelerador / Pedal", qty: 1, note: "Hasta 04/2010", hotspots: [{ x: 12.6, y: 69.2 }] },
+        { item: 19, partNumber: "MLML00327", description: "SPRING", category: "Resortes", subsystem: "Acelerador / Pedal", qty: 1, note: "Desde 04/2010", hotspots: [] },
+        { item: 20, partNumber: "MPVR05236", description: "BUSHING", category: "Pasadores y bujes", subsystem: "Acelerador / Pedal", qty: 1, note: "Hasta 04/2010", hotspots: [{ x: 12.6, y: 71.2 }] },
+        { item: 20, partNumber: "MPVR05786", description: "BUSHING", category: "Pasadores y bujes", subsystem: "Acelerador / Pedal", qty: 1, note: "Desde 04/2010", hotspots: [] },
+        { item: 21, partNumber: "MEVR01700", description: "POTENTIOMETER 0-5K", category: "Eléctrico", subsystem: "Acelerador / Pedal", qty: 1, hotspots: [{ x: 16.4, y: 73.3 }] },
+        { item: 22, partNumber: "MEVR02058", description: "FUSE-HOLDER", category: "Eléctrico", subsystem: "Panel principal", qty: 1, hotspots: [{ x: 26.4, y: 32.4 }] },
+        { item: 23, partNumber: "MECE00450", description: "BOARD TRACTION CURTIS CT110", category: "Eléctrico", subsystem: "Placa y controlador", qty: 1, hotspots: [{ x: 21.7, y: 68.8 }] },
+        { item: 24, partNumber: "MEVR01746", description: "CARBON X MOT.COD.MOCC00374", category: "Eléctrico", subsystem: "Placa y controlador", qty: 4, hotspots: [] },
+        { item: 24, partNumber: "MEVR02030", description: "BRAKE", category: "Motores y actuadores", subsystem: "Placa y controlador", qty: 1, hotspots: [] },
+        { item: 24, partNumber: "MOCC00374", description: "MOTOR", category: "Motores y actuadores", subsystem: "Placa y controlador", qty: 1, hotspots: [] },
+        { item: 24, partNumber: "RTRT00533", description: "RING MOTORWHEEL", category: "Ruedas", subsystem: "Placa y controlador", qty: 1, hotspots: [] },
+        { item: 25, partNumber: "MEEV00018", description: "SOLENOID VALVE", category: "Motores y actuadores", subsystem: "Cableado y sensores", qty: 1, note: "Hasta 10/2011", hotspots: [{ x: 69, y: 76.7 }] },
+        { item: 25, partNumber: "MEEV00044", description: "SOLENOID VALVE", category: "Motores y actuadores", subsystem: "Cableado y sensores", qty: 1, note: "Desde 10/2011", hotspots: [] },
+        { item: 26, partNumber: "MEVR00146", description: "FUSE-HOLDER MEGA", category: "Eléctrico", subsystem: "Relés / Fusibles", qty: 1, hotspots: [{ x: 44.5, y: 64.3 }] },
+        { item: 27, partNumber: "MECE00510", description: "BOARD CT110-MF", category: "Eléctrico", subsystem: "Placa y controlador", qty: 1, hotspots: [{ x: 38.2, y: 53.4 }] },
+        { item: 28, partNumber: "MECB01099", description: "CABLE FLAT", category: "Eléctrico", subsystem: "Panel principal", qty: 1, hotspots: [{ x: 33, y: 69.3 }] },
+        { item: 29, partNumber: "MECE00511", description: "BOARD CT110-MF", category: "Eléctrico", subsystem: "Placa y controlador", qty: 1, hotspots: [{ x: 48.8, y: 38.4 }] },
+        { item: 30, partNumber: "LAFN06503", description: "PLATE ELETTRONICA", category: "Estructura y cubiertas", subsystem: "Placa y controlador", qty: 1, hotspots: [{ x: 58.9, y: 59 }] },
+        { item: 32, partNumber: "VTVT00005", description: "SCREW TE FR 5X12 ZB", category: "Tornillería", subsystem: "Placa y controlador", qty: 8, hotspots: [] },
+        { item: 33, partNumber: "VTVT00005", description: "SCREW TE FR 5X12 ZB", category: "Tornillería", subsystem: "Placa y controlador", qty: 4, hotspots: [{ x: 56.9, y: 65.5 }] },
+        { item: 34, partNumber: "MPVR05217", description: "CONTAINER BATTERIA", category: "Estructura y cubiertas", subsystem: "Baterías", qty: 1, hotspots: [{ x: 67.6, y: 64.5 }] },
+        { item: 35, partNumber: "MECB01015", description: "WIRING CT110", category: "Eléctrico", subsystem: "Cableado y sensores", qty: 1, hotspots: [{ x: 80.3, y: 86.8 }] },
+        { item: 36, partNumber: "BAAC00005", description: "BATTERY 6 V 180 AH (C5)", category: "Eléctrico", subsystem: "Baterías", qty: 4, hotspots: [{ x: 65.5, y: 35 }, { x: 83.1, y: 39.8 }] },
+        { item: 36, partNumber: "BAAC00074", description: "BATTERY ACID 6V 180Ah TUBOLAR", category: "Eléctrico", subsystem: "Baterías", qty: 4, hotspots: [] },
+        { item: 37, partNumber: "MEVR34820", description: "WIRING B 450 BT", category: "Eléctrico", subsystem: "Baterías", qty: 3, hotspots: [{ x: 72.1, y: 29 }] },
+        { item: 38, partNumber: "MECB01015", description: "WIRING CT110", category: "Eléctrico", subsystem: "Baterías", qty: 1, hotspots: [{ x: 58.6, y: 35.8 }] },
+        { item: 39, partNumber: "MEVR00567", description: "FUSE-HOLDER 6 VIE", category: "Eléctrico", subsystem: "Relés / Fusibles", qty: 1, hotspots: [{ x: 37.2, y: 20 }] },
+        { item: 40, partNumber: "MEVR01136", description: "FUSE 30A", category: "Eléctrico", subsystem: "Relés / Fusibles", qty: 1, note: "Hasta 10/2011", hotspots: [] },
+        { item: 41, partNumber: "MEVR01136", description: "FUSE 30A", category: "Eléctrico", subsystem: "Relés / Fusibles", qty: 1, note: "Hasta 10/2011", hotspots: [{ x: 41.7, y: 9.3 }] },
+        { item: 41, partNumber: "MEVR01428", description: "FUSE A LAMA 2 A. UNIVAL", category: "Eléctrico", subsystem: "Relés / Fusibles", qty: 1, note: "Desde 10/2011", hotspots: [] },
+        { item: 42, partNumber: "MEVR00327", description: "FUSE 25A", category: "Eléctrico", subsystem: "Relés / Fusibles", qty: 1, hotspots: [{ x: 41.7, y: 10.9 }] },
+        { item: 43, partNumber: "MEVR00584", description: "FUSE 3A", category: "Eléctrico", subsystem: "Relés / Fusibles", qty: 1, hotspots: [{ x: 41.7, y: 13.3 }] },
+        { item: 44, partNumber: "MEVR00584", description: "FUSE 3A", category: "Eléctrico", subsystem: "Relés / Fusibles", qty: 1, hotspots: [{ x: 41.7, y: 15.1 }] },
+        { item: 45, partNumber: "MEVR00584", description: "FUSE 3A", category: "Eléctrico", subsystem: "Relés / Fusibles", qty: 1, hotspots: [{ x: 41.7, y: 16.9 }] },
+        { item: 46, partNumber: "MEVR00148", description: "DASHBOARD SEDILE", category: "Eléctrico", subsystem: "Baterías", qty: 1, hotspots: [{ x: 86.5, y: 19.9 }] },
+        { item: 47, partNumber: "MEVR01079", description: "PLUG M CB50 A 600V RD.", category: "Eléctrico", subsystem: "Baterías", qty: 1, hotspots: [{ x: 95.7, y: 25.8 }] },
+        { item: 51, partNumber: "MECB01015", description: "WIRING CT110", category: "Eléctrico", subsystem: "Cableado y sensores", qty: 1, hotspots: [{ x: 72.1, y: 82.3 }] },
+        { item: 52, partNumber: "MECI00405", description: "SENSOR", category: "Eléctrico", subsystem: "Cableado y sensores", qty: 1, hotspots: [{ x: 40.2, y: 73.5 }] },
+        { item: 53, partNumber: "LAFN06386", description: "SUPPORT", category: "Estructura y cubiertas", subsystem: "Cableado y sensores", qty: 1, hotspots: [{ x: 40.2, y: 75.6 }] },
+        { item: 54, partNumber: "VTVT15143", description: "SCREW TE 6X16 UNI5739", category: "Tornillería", subsystem: "Cableado y sensores", qty: 2, hotspots: [{ x: 40.2, y: 77.4 }] },
+        { item: 55, partNumber: "VTRS15144", description: "WASHER D. 6 INX GRW UNI 1751", category: "Tornillería", subsystem: "Cableado y sensores", qty: 2, hotspots: [{ x: 45.2, y: 83.5 }] },
+        { item: 56, partNumber: "MEVR00145", description: "FUSE 100A", category: "Eléctrico", subsystem: "Relés / Fusibles", qty: 1, hotspots: [{ x: 48.4, y: 61.2 }] },
+        { item: 57, partNumber: "MEVR47082", description: "INSULATOR M6 35-CH32", category: "Sellos y empaques", subsystem: "Relés / Fusibles", qty: 1, hotspots: [{ x: 38.4, y: 51.4 }] },
+        { item: 58, partNumber: "MECE00456", description: "RELAY CT110", category: "Eléctrico", subsystem: "Relés / Fusibles", qty: 4, hotspots: [{ x: 39.2, y: 66.5 }] },
+        { item: 59, partNumber: "VTVT00005", description: "SCREW TE FR 5X12 ZB", category: "Tornillería", subsystem: "Relés / Fusibles", qty: 2, hotspots: [{ x: 39.8, y: 5.4 }] },
+        { item: 60, partNumber: "MPVR05235", description: "COVER", category: "Estructura y cubiertas", subsystem: "Acelerador / Pedal", qty: 1, hotspots: [{ x: 4.1, y: 83.8 }] },
+        { item: 61, partNumber: "VTVT00005", description: "SCREW TE FR 5X12 ZB", category: "Tornillería", subsystem: "Acelerador / Pedal", qty: 2, hotspots: [{ x: 4.1, y: 85.8 }] },
+        { item: 62, partNumber: "GUVR00292", description: "GASKET CT110", category: "Sellos y empaques", subsystem: "Acelerador / Pedal", qty: 1, hotspots: [{ x: 2.2, y: 52.2 }] },
+        { item: 63, partNumber: "LAFN07362", description: "PLATE ANDERSON", category: "Estructura y cubiertas", subsystem: "Baterías", qty: 1, hotspots: [{ x: 96.8, y: 23.6 }] },
+        { item: 64, partNumber: "MECI00334", description: "MICROSWITCH V4", category: "Eléctrico", subsystem: "Baterías", qty: 1, hotspots: [{ x: 91.6, y: 13.8 }] },
+        { item: 65, partNumber: "VTVT00671", description: "SCREW TC- M.2-16 OTTONE", category: "Tornillería", subsystem: "Baterías", qty: 2, hotspots: [{ x: 93.8, y: 13.1 }] },
+        { item: 66, partNumber: "VTDD08634", description: "NUT M2", category: "Tornillería", subsystem: "Baterías", qty: 2, hotspots: [{ x: 89.4, y: 15.1 }] },
+        { item: 67, partNumber: "VTVT01350", description: "SCREW M3-20 INOX", category: "Tornillería", subsystem: "Baterías", qty: 2, hotspots: [{ x: 96.1, y: 12.3 }] },
+        { item: 68, partNumber: "VTRS21116", description: "WASHER D. 3 INX", category: "Tornillería", subsystem: "Baterías", qty: 2, hotspots: [{ x: 95.1, y: 9.6 }] },
+        { item: 69, partNumber: "MECI00532", description: "CONTACTOR 24V-100A", category: "Eléctrico", subsystem: "Relés / Fusibles", qty: 1, hotspots: [{ x: 84.8, y: 21.9 }, { x: 31.5, y: 48.6 }] },
+        { item: 70, partNumber: "LAFN07743", description: "BRACKET", category: "Estructura y cubiertas", subsystem: "Relés / Fusibles", qty: 1, hotspots: [{ x: 31.5, y: 50.9 }] },
+        { item: 71, partNumber: "VTVT01669", description: "CARRYNG BAG", category: "Estructura y cubiertas", subsystem: "Relés / Fusibles", qty: 2, hotspots: [{ x: 32.9, y: 59.2 }] },
+        { item: 72, partNumber: "VTRS00501", description: "WASHER D. 4 0.232 UNI 6592", category: "Tornillería", subsystem: "Relés / Fusibles", qty: 2, hotspots: [{ x: 30.8, y: 57.2 }] },
+        { item: 73, partNumber: "VTVT00005", description: "SCREW TE FR 5X12 ZB", category: "Tornillería", subsystem: "Placa y controlador", qty: 2, hotspots: [{ x: 45.3, y: 37.4 }] },
+        { item: 74, partNumber: "MECE00139", description: "RELAY POTENZA 24V", category: "Eléctrico", subsystem: "Relés / Fusibles", qty: 1, hotspots: [{ x: 51.7, y: 50.3 }] },
+        { item: 75, partNumber: "METT00053", description: "BLOCK PORTA RELE'", category: "Eléctrico", subsystem: "Relés / Fusibles", qty: 1, hotspots: [{ x: 51.7, y: 52.3 }] },
+        { item: 76, partNumber: "MEVR31036", description: "FUSE-HOLDER", category: "Eléctrico", subsystem: "Relés / Fusibles", qty: 1, hotspots: [{ x: 64.9, y: 74.5 }] },
+        { item: 77, partNumber: "MEVR02042", description: "FUSE 40A NST.", category: "Eléctrico", subsystem: "Relés / Fusibles", qty: 1, hotspots: [{ x: 57.3, y: 86.3 }] },
+        { item: 78, partNumber: "VTVT00079", description: "SCREW AUTOF.TC UNI6954 3,9X22", category: "Tornillería", subsystem: "Relés / Fusibles", qty: 1, hotspots: [{ x: 56, y: 74.6 }] },
+        { item: 79, partNumber: "VTDD01693", description: "NUT M 5 INX", category: "Tornillería", subsystem: "Relés / Fusibles", qty: 2, note: "Desde 10/2011", hotspots: [{ x: 43.7, y: 27.1 }] },
+        { item: 80, partNumber: "VTVT01300", description: "SCREW TE M5X12 INOX", category: "Tornillería", subsystem: "Relés / Fusibles", qty: 2, note: "Desde 10/2011", hotspots: [{ x: 45.4, y: 27.8 }] },
+        { item: 81, partNumber: "MEVR02048", description: "FUSE 40A", category: "Eléctrico", subsystem: "Relés / Fusibles", qty: 2, note: "Desde 10/2011", hotspots: [{ x: 45.4, y: 4.6 }] },
+        { item: 82, partNumber: "MEVR00613", description: "FUSE CARRIER MAXIVAL with cover", category: "Eléctrico", subsystem: "Relés / Fusibles", qty: 2, note: "Desde 10/2011", hotspots: [{ x: 52.6, y: 17.9 }] }
       ]
     },
     "data/ct110/drive_assembly.json": {
@@ -2001,8 +2002,15 @@
     backBtn: $("#back-btn"),
     backLabel: $("#back-label"),
     diagram: $("#diagram"),
+    stage: $("#diagram-stage"),
     img: $("#diagram-img"),
     hotspots: $("#hotspots"),
+    pointsToggle: $("#points-toggle"),
+    pointsStatus: $("#points-status"),
+    pointGroups: $("#point-groups"),
+    zoomIn: $("#zoom-in"),
+    zoomOut: $("#zoom-out"),
+    zoomReset: $("#zoom-reset"),
     search: $("#search"),
     filters: $("#filters"),
     body: $("#parts-body"),
@@ -2292,20 +2300,220 @@
   /* ==========================================================
      NIVEL 2 · Despiece por subensamble
      ========================================================== */
+  // Puntos a menos de esta distancia (px en pantalla) se agrupan en un cluster
+  const CLUSTER_PX = 24;
+  const MAX_ZOOM = 5;
+
   const AssemblyView = {
-    state: { parts: [], categories: [], query: "", category: ALL, activeItem: null },
+    // group: subsistema (o categoría) resaltado en el diagrama; showAll: "Mostrar todos los puntos"
+    state: { parts: [], categories: [], groups: [], groupKey: "category", group: null, showAll: false, query: "", category: ALL, activeItem: null },
+    zoom: { s: 1, tx: 0, ty: 0 },
     loadedUrl: null,
 
     init() {
       bindImageFallback(els.img);
-      bindCoordinatePicker(els.diagram);
+      bindCoordinatePicker(els.stage);
       this.bindEvents();
+      this.bindPoints();
+      this.bindZoom();
 
       // En escritorio el diagrama queda fijo al hacer scroll: se limita su ancho para que
       // un plano vertical (p. ej. Fig. 10) quepa completo en la altura visible.
       const fit = () => this.fitDiagram();
       els.img.addEventListener("load", fit);
       window.addEventListener("resize", fit);
+      // Los clusters dependen del tamaño en pantalla: se recalculan al cambiar el ancho
+      let lastW = 0;
+      new ResizeObserver(() => {
+        // Con zoom, conserva la misma zona del dibujo a la vista
+        const w = els.diagram.clientWidth;
+        if (lastW && w) {
+          this.zoom.tx *= w / lastW;
+          this.zoom.ty *= w / lastW;
+        }
+        lastW = w;
+        this.clampPan();
+        this.applyZoom();
+        this.renderHotspots();
+      }).observe(els.diagram);
+    },
+
+    // ---------- Visibilidad de puntos ----------
+    bindPoints() {
+      let saved = false;
+      try { saved = localStorage.getItem("t7-points") === "1"; } catch {}
+      this.setShowAll(saved);
+      els.pointsToggle.addEventListener("click", () => {
+        this.setShowAll(!this.state.showAll);
+        try { localStorage.setItem("t7-points", this.state.showAll ? "1" : "0"); } catch {}
+        this.renderHotspots();
+      });
+
+      els.pointGroups.addEventListener("click", (e) => {
+        const chip = e.target.closest("[data-group]");
+        if (!chip) return;
+        // Un segundo clic sobre el grupo activo lo quita
+        this.state.group = this.state.group === chip.dataset.group ? null : chip.dataset.group;
+        this.renderPointGroups();
+        this.renderHotspots();
+      });
+
+      // Clusters: se despliegan al pasar el cursor (CSS) o con clic/toque
+      els.hotspots.addEventListener("click", (e) => {
+        const bubble = e.target.closest(".hs-cluster");
+        if (!bubble) return;
+        e.stopPropagation();
+        const group = bubble.parentElement;
+        const open = !group.classList.contains("is-open");
+        els.hotspots.querySelectorAll(".hs-group.is-open").forEach((g) => g.classList.remove("is-open"));
+        group.classList.toggle("is-open", open);
+      });
+      els.diagram.addEventListener("click", (e) => {
+        if (!e.target.closest(".hs-group")) {
+          els.hotspots.querySelectorAll(".hs-group.is-open").forEach((g) => g.classList.remove("is-open"));
+        }
+      });
+    },
+
+    setShowAll(on) {
+      this.state.showAll = on;
+      els.pointsToggle.setAttribute("aria-pressed", String(on));
+      els.pointsToggle.textContent = on ? "Ocultar todos los puntos" : "Mostrar todos los puntos";
+    },
+
+    groupOf(p) {
+      return p[this.state.groupKey] || p.category;
+    },
+
+    renderPointGroups() {
+      const { parts, groups, group, groupKey } = this.state;
+      const count = (g) => parts.filter((p) => this.groupOf(p) === g).reduce((n, p) => n + (p.hotspots || [p.hotspot]).filter(Boolean).length, 0);
+      const label = groupKey === "subsystem" ? "Subsistema" : "Categoría";
+      els.pointGroups.setAttribute("aria-label", `Resaltar puntos por ${label.toLowerCase()}`);
+      els.pointGroups.innerHTML = `<span class="point-groups-label">${label}:</span>` + groups
+        .map((g) => [g, count(g)])
+        .filter(([, n]) => n)
+        .map(([g, n]) => `<button type="button" class="chip chip-sm" data-group="${escapeHtml(g)}" aria-pressed="${g === group}">${escapeHtml(g)} <small>${n}</small></button>`)
+        .join("");
+    },
+
+    // ---------- Zoom y desplazamiento ----------
+    applyZoom() {
+      const { s, tx, ty } = this.zoom;
+      els.stage.style.transform = s === 1 ? "" : `translate(${tx}px, ${ty}px) scale(${s})`;
+      // Los puntos crecen menos que el dibujo (raíz del zoom) para no tapar los números ampliados
+      els.stage.style.setProperty("--inv", String(1 / Math.sqrt(s)));
+      els.diagram.classList.toggle("is-zoomed", s > 1);
+      els.zoomReset.textContent = `${Math.round(s * 100)}%`;
+      els.zoomOut.disabled = s <= 1;
+      els.zoomReset.disabled = s <= 1;
+      els.zoomIn.disabled = s >= MAX_ZOOM;
+    },
+
+    clampPan() {
+      const z = this.zoom;
+      const w = els.diagram.clientWidth, h = els.diagram.clientHeight;
+      z.tx = Math.min(0, Math.max(w - w * z.s, z.tx));
+      z.ty = Math.min(0, Math.max(h - h * z.s, z.ty));
+    },
+
+    // (px, py): punto fijo del zoom, en px relativos al diagrama; por defecto el centro
+    zoomTo(target, px, py) {
+      const z = this.zoom;
+      const s = Math.min(MAX_ZOOM, Math.max(1, target));
+      if (s === z.s) return;
+      if (px == null) [px, py] = [els.diagram.clientWidth / 2, els.diagram.clientHeight / 2];
+      z.tx = px - (px - z.tx) * (s / z.s);
+      z.ty = py - (py - z.ty) * (s / z.s);
+      z.s = s;
+      this.clampPan();
+      this.applyZoom();
+      // Agrupar de nuevo con la nueva escala (una vez por cuadro)
+      cancelAnimationFrame(this.zoomFrame);
+      this.zoomFrame = requestAnimationFrame(() => this.renderHotspots());
+    },
+
+    resetZoom() {
+      this.zoom = { s: 1, tx: 0, ty: 0 };
+      this.applyZoom();
+    },
+
+    bindZoom() {
+      els.zoomIn.addEventListener("click", () => this.zoomTo(this.zoom.s * 1.5));
+      els.zoomOut.addEventListener("click", () => this.zoomTo(this.zoom.s / 1.5));
+      els.zoomReset.addEventListener("click", () => this.zoomTo(1));
+
+      const local = (e) => {
+        const r = els.diagram.getBoundingClientRect();
+        return [e.clientX - r.left, e.clientY - r.top];
+      };
+
+      // Ctrl/⌘ + rueda (y el gesto de pellizco del touchpad, que llega igual)
+      els.diagram.addEventListener("wheel", (e) => {
+        if (!e.ctrlKey && !e.metaKey) return;
+        e.preventDefault();
+        this.zoomTo(this.zoom.s * Math.exp(-e.deltaY * 0.0025), ...local(e));
+      }, { passive: false });
+
+      els.diagram.addEventListener("dblclick", (e) => {
+        if (e.altKey || e.target.closest(".hotspot, .hs-cluster")) return;
+        this.zoomTo(this.zoom.s >= MAX_ZOOM ? 1 : this.zoom.s * 2, ...local(e));
+      });
+
+      // Arrastrar para desplazar (con zoom) y pellizcar con dos dedos
+      const pointers = new Map();
+      let drag = null, pinch = null, moved = false;
+      const spread = () => {
+        const [a, b] = [...pointers.values()];
+        return { d: Math.hypot(a.x - b.x, a.y - b.y), x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
+      };
+      els.diagram.addEventListener("pointerdown", (e) => {
+        if (e.pointerType === "mouse" && e.button !== 0) return;
+        pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+        if (pointers.size === 2) {
+          pinch = { d: spread().d, s: this.zoom.s };
+          drag = null;
+          return;
+        }
+        if (this.zoom.s === 1 || e.target.closest(".hotspot, .hs-cluster")) return;
+        drag = { x: e.clientX, y: e.clientY, tx: this.zoom.tx, ty: this.zoom.ty };
+        moved = false;
+      });
+      els.diagram.addEventListener("pointermove", (e) => {
+        if (!pointers.has(e.pointerId)) return;
+        pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+        if (pinch && pointers.size === 2) {
+          const { d, x, y } = spread();
+          const r = els.diagram.getBoundingClientRect();
+          this.zoomTo(pinch.s * (d / pinch.d), x - r.left, y - r.top);
+          moved = true;
+        } else if (drag) {
+          const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+          if (!moved && Math.hypot(dx, dy) < 4) return;
+          if (!moved) els.diagram.setPointerCapture(e.pointerId);
+          moved = true;
+          els.diagram.classList.add("is-panning");
+          this.zoom.tx = drag.tx + dx;
+          this.zoom.ty = drag.ty + dy;
+          this.clampPan();
+          this.applyZoom();
+        }
+      });
+      const end = (e) => {
+        pointers.delete(e.pointerId);
+        if (pointers.size < 2) pinch = null;
+        drag = null;
+        els.diagram.classList.remove("is-panning");
+      };
+      els.diagram.addEventListener("pointerup", end);
+      els.diagram.addEventListener("pointercancel", end);
+      // Un arrastre no debe contar como clic sobre un punto
+      els.diagram.addEventListener("click", (e) => {
+        if (!moved) return;
+        moved = false;
+        e.stopPropagation();
+        e.preventDefault();
+      }, true);
     },
 
     fitDiagram() {
@@ -2323,13 +2531,20 @@
       const data = await loadJSON(figure.data);
 
       this.loadedUrl = figure.data;
+      const categories = data.categories || [...new Set(data.parts.map((p) => p.category))];
+      // Filtro del diagrama: subsistemas si la figura los define ("subsystems" + "subsystem" en cada repuesto), si no categorías
+      const bySubsystem = Array.isArray(data.subsystems) && data.subsystems.length > 0;
       Object.assign(this.state, {
         parts: [...data.parts].sort((a, b) => a.item - b.item),
-        categories: data.categories || [...new Set(data.parts.map((p) => p.category))],
+        categories,
+        groups: bySubsystem ? data.subsystems : categories,
+        groupKey: bySubsystem ? "subsystem" : "category",
+        group: null,
         query: "",
         category: ALL,
         activeItem: null
       });
+      this.resetZoom();
       els.search.value = "";
       els.img.src = data.image;
       els.img.alt = `${data.figure || ""} - ${data.group || zone.name}`;
@@ -2337,8 +2552,8 @@
       els.groupLabel.textContent = data.group || zone.description || zone.name;
 
       this.renderFilters();
-      this.renderHotspots();
-      this.renderTable();
+      this.renderPointGroups();
+      this.renderTable(); // también dibuja los puntos
     },
 
     filteredParts() {
@@ -2363,18 +2578,73 @@
         .join("");
     },
 
-    // Un ítem puede aparecer varias veces en el diagrama (p. ej. las 4 perillas del ítem 3)
+    // Un ítem puede aparecer varias veces en el diagrama (p. ej. las 4 perillas del ítem 3).
+    // Los puntos están ocultos salvo que se pida verlos: "Mostrar todos", un subsistema/categoría,
+    // la búsqueda o el filtro de la tabla, o el repuesto seleccionado. Los cercanos se agrupan.
     renderHotspots() {
-      els.hotspots.innerHTML = this.state.parts
-        .flatMap((p) =>
-          (p.hotspots || [p.hotspot]).filter(Boolean).map(
-            (h) => `<button type="button" class="hotspot" data-item="${p.item}"
-                    style="left:${h.x}%;top:${h.y}%"
-                    aria-label="Ítem ${p.item}: ${escapeHtml(p.description)}"
-                    title="${p.item} · ${escapeHtml(p.description)}">${p.item}</button>`
-          )
-        )
-        .join("");
+      const s = this.state;
+      const rows = this.filteredParts();
+      const filtering = rows.length !== s.parts.length;
+      const matched = new Set(rows);
+
+      const points = s.parts.flatMap((p) =>
+        (p.hotspots || [p.hotspot]).filter(Boolean).map((h) => {
+          const lit = (!s.group || this.groupOf(p) === s.group) && (!filtering || matched.has(p));
+          const active = p.item === s.activeItem;
+          const shown = active || s.showAll || ((s.group || filtering) && lit);
+          return { p, h, active, shown, dimmed: shown && !lit && !active };
+        })
+      );
+
+      // Agrupación por cercanía en pantalla (el zoom separa los puntos y deshace los clusters)
+      const W = els.stage.offsetWidth * this.zoom.s;
+      const H = els.stage.offsetHeight * this.zoom.s;
+      const clusters = [];
+      for (const pt of points) {
+        if (!pt.shown || pt.active || !W || !H) continue;
+        const x = (pt.h.x * W) / 100, y = (pt.h.y * H) / 100;
+        let c = clusters.find((c) => Math.hypot(c.x - x, c.y - y) < CLUSTER_PX);
+        if (!c) clusters.push((c = { x, y, members: [] }));
+        c.members.push(pt);
+      }
+      const grouped = new Set(clusters.filter((c) => c.members.length > 1).flatMap((c) => c.members));
+
+      const button = (pt, left, top) => {
+        const cls = ["hotspot", pt.active && "is-active", pt.dimmed && "is-dimmed", !pt.shown && "is-hidden"].filter(Boolean).join(" ");
+        return `<button type="button" class="${cls}" data-item="${pt.p.item}"
+                  style="left:${left}%;top:${top}%"
+                  aria-label="Ítem ${pt.p.item}: ${escapeHtml(pt.p.description)}"
+                  title="${pt.p.item} · ${escapeHtml(pt.p.description)}">${pt.p.item}</button>`;
+      };
+
+      const single = points.filter((pt) => !grouped.has(pt)).map((pt) => button(pt, pt.h.x, pt.h.y));
+
+      // Cluster: caja que cubre a sus puntos (para desplegarlos al pasar el cursor) y burbuja con el total
+      const pad = { x: ((CLUSTER_PX / 2) / W) * 100, y: ((CLUSTER_PX / 2) / H) * 100 };
+      const groups = clusters
+        .filter((c) => c.members.length > 1)
+        .map((c) => {
+          const xs = c.members.map((m) => m.h.x), ys = c.members.map((m) => m.h.y);
+          const left = Math.min(...xs) - pad.x, top = Math.min(...ys) - pad.y;
+          const width = Math.max(...xs) + pad.x - left, height = Math.max(...ys) + pad.y - top;
+          const rel = (v, o, size) => (((v - o) / size) * 100).toFixed(2);
+          const cx = xs.reduce((a, b) => a + b) / xs.length, cy = ys.reduce((a, b) => a + b) / ys.length;
+          const items = [...new Set(c.members.map((m) => m.p.item))];
+          const dimmed = c.members.every((m) => m.dimmed);
+          return `<div class="hs-group${dimmed ? " is-dimmed" : ""}" style="left:${left}%;top:${top}%;width:${width}%;height:${height}%">
+              <button type="button" class="hs-cluster" style="left:${rel(cx, left, width)}%;top:${rel(cy, top, height)}%"
+                      aria-label="${c.members.length} puntos agrupados: ítems ${items.join(", ")}. Clic para desplegar"
+                      title="Ítems ${items.join(", ")}">${c.members.length}</button>
+              ${c.members.map((m) => button(m, rel(m.h.x, left, width), rel(m.h.y, top, height))).join("")}
+            </div>`;
+        });
+
+      els.hotspots.innerHTML = single.join("") + groups.join("");
+
+      const shown = points.filter((pt) => pt.shown).length;
+      els.pointsStatus.textContent = shown
+        ? `${shown} de ${points.length} puntos`
+        : `Puntos ocultos · elige un grupo o muéstralos todos`;
     },
 
     renderTable() {
@@ -2396,12 +2666,8 @@
       els.empty.hidden = rows.length > 0;
       els.count.textContent = `${rows.length} / ${this.state.parts.length}`;
 
-      // Atenúa en el diagrama los ítems que no están en el resultado filtrado
-      const visible = new Set(rows.map((p) => p.item));
-      const filtering = rows.length !== this.state.parts.length;
-      els.hotspots.querySelectorAll(".hotspot").forEach((h) => {
-        h.classList.toggle("is-dimmed", filtering && !visible.has(Number(h.dataset.item)));
-      });
+      // El diagrama muestra/atenúa los puntos según el resultado filtrado
+      this.renderHotspots();
     },
 
     // ---------- Sincronización hotspot <-> fila ----------
@@ -2416,9 +2682,8 @@
       const s = this.state;
       s.activeItem = s.activeItem === item && !scroll ? null : item;
 
-      els.hotspots.querySelectorAll(".hotspot").forEach((h) =>
-        h.classList.toggle("is-active", Number(h.dataset.item) === s.activeItem)
-      );
+      // El punto seleccionado siempre se ve, aunque los demás estén ocultos
+      this.renderHotspots();
 
       const findRow = () =>
         (partNumber && els.body.querySelector(`tr[data-item="${item}"][data-pn="${CSS.escape(partNumber)}"]`)) ||

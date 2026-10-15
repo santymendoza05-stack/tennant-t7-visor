@@ -14,12 +14,21 @@
     "Etiquetas",
     "Estructura y cubiertas"
   ],
+  "subsystems": [
+    "Panel principal",
+    "Acelerador / Pedal",
+    "Placa y controlador",
+    "Relés / Fusibles",
+    "Baterías",
+    "Cableado y sensores"
+  ],
   "parts": [
     {
       "item": 1,
       "partNumber": "ETET01650",
       "description": "LABEL PLANCIA COMANDI",
       "category": "Etiquetas",
+      "subsystem": "Panel principal",
       "qty": 1,
       "hotspots": [
         { "x": 4.2, "y": 13.6 }
@@ -30,6 +39,7 @@
       "partNumber": "MECI75805",
       "description": "SWITCH TK",
       "category": "Eléctrico",
+      "subsystem": "Panel principal",
       "qty": 1,
       "hotspots": [
         { "x": 20.5, "y": 24.8 }
@@ -40,6 +50,7 @@
       "partNumber": "MECI00028",
       "description": "BUTTON DI EMERGENZA TK1400 24V",
       "category": "Eléctrico",
+      "subsystem": "Panel principal",
       "qty": 1,
       "hotspots": [
         { "x": 34.9, "y": 30.8 }
@@ -50,6 +61,7 @@
       "partNumber": "KTRI01935",
       "description": "KIT 1050-1202",
       "category": "Estructura y cubiertas",
+      "subsystem": "Panel principal",
       "qty": 1,
       "hotspots": [
         { "x": 17.3, "y": 36.2 }
@@ -60,6 +72,7 @@
       "partNumber": "LAFN06408",
       "description": "PLATE",
       "category": "Estructura y cubiertas",
+      "subsystem": "Panel principal",
       "qty": 1,
       "hotspots": [
         { "x": 17.3, "y": 38.1 }
@@ -70,6 +83,7 @@
       "partNumber": "MEVR01941",
       "description": "POTENTIOMETER 100K",
       "category": "Eléctrico",
+      "subsystem": "Panel principal",
       "qty": 1,
       "hotspots": [
         { "x": 17.3, "y": 40.1 }
@@ -80,6 +94,7 @@
       "partNumber": "VTVT13937",
       "description": "SCREW TE M 8X 30 INX UNI 5739",
       "category": "Tornillería",
+      "subsystem": "Acelerador / Pedal",
       "qty": 1,
       "hotspots": [
         { "x": 17.1, "y": 55.5 }
@@ -90,6 +105,7 @@
       "partNumber": "VTDD01696",
       "description": "NUT M 8 INX",
       "category": "Tornillería",
+      "subsystem": "Acelerador / Pedal",
       "qty": 1,
       "hotspots": [
         { "x": 17.2, "y": 57.6 }
@@ -100,6 +116,7 @@
       "partNumber": "VTVT00727",
       "description": "SCREW TE M. 4-20",
       "category": "Tornillería",
+      "subsystem": "Placa y controlador",
       "qty": 2,
       "hotspots": [
         { "x": 22.1, "y": 70.9 }
@@ -110,6 +127,7 @@
       "partNumber": "MECE00509",
       "description": "BOARD CT110-MF",
       "category": "Eléctrico",
+      "subsystem": "Panel principal",
       "qty": 1,
       "hotspots": [
         { "x": 29.9, "y": 44.4 }
@@ -120,6 +138,7 @@
       "partNumber": "LAFN06429",
       "description": "PEDALE CT110",
       "category": "Estructura y cubiertas",
+      "subsystem": "Acelerador / Pedal",
       "qty": 1,
       "hotspots": [
         { "x": 3.1, "y": 42.8 }
@@ -130,6 +149,7 @@
       "partNumber": "VTVT15143",
       "description": "SCREW TE 6X16 UNI5739",
       "category": "Tornillería",
+      "subsystem": "Acelerador / Pedal",
       "qty": 2,
       "hotspots": [
         { "x": 15.4, "y": 44.7 }
@@ -140,6 +160,7 @@
       "partNumber": "VTDD15518",
       "description": "NUT M 6 INX",
       "category": "Tornillería",
+      "subsystem": "Acelerador / Pedal",
       "qty": 2,
       "hotspots": [
         { "x": 15.3, "y": 46.8 }
@@ -150,6 +171,7 @@
       "partNumber": "VTVT00005",
       "description": "SCREW TE FR 5X12 ZB",
       "category": "Tornillería",
+      "subsystem": "Acelerador / Pedal",
       "qty": 4,
       "hotspots": [
         { "x": 3.3, "y": 57.7 }
@@ -160,6 +182,7 @@
       "partNumber": "LAFN06521",
       "description": "SUPPORT ACCELERATORE",
       "category": "Estructura y cubiertas",
+      "subsystem": "Acelerador / Pedal",
       "qty": 1,
       "hotspots": [
         { "x": 3.3, "y": 59.8 }
@@ -170,6 +193,7 @@
       "partNumber": "VTVT00911",
       "description": "GRUB SCREW M4X8",
       "category": "Tornillería",
+      "subsystem": "Acelerador / Pedal",
       "qty": 1,
       "hotspots": [
         { "x": 3.1, "y": 64.1 }
@@ -180,6 +204,7 @@
       "partNumber": "VTVT00727",
       "description": "SCREW TE M. 4-20",
       "category": "Tornillería",
+      "subsystem": "Acelerador / Pedal",
       "qty": 2,
       "hotspots": [
         { "x": 3.1, "y": 66.1 }
@@ -190,6 +215,7 @@
       "partNumber": "LAFN06371",
       "description": "CONNECTING ROD POTENZIOMETRO",
       "category": "Eléctrico",
+      "subsystem": "Acelerador / Pedal",
       "qty": 1,
       "hotspots": [
         { "x": 3.7, "y": 75.4 }
@@ -200,6 +226,7 @@
       "partNumber": "MLML00301",
       "description": "SPRING ACCELLERATORE",
       "category": "Resortes",
+      "subsystem": "Acelerador / Pedal",
       "qty": 1,
       "note": "Hasta 04/2010",
       "hotspots": [
@@ -211,6 +238,7 @@
       "partNumber": "MLML00327",
       "description": "SPRING",
       "category": "Resortes",
+      "subsystem": "Acelerador / Pedal",
       "qty": 1,
       "note": "Desde 04/2010",
       "hotspots": []
@@ -220,6 +248,7 @@
       "partNumber": "MPVR05236",
       "description": "BUSHING",
       "category": "Pasadores y bujes",
+      "subsystem": "Acelerador / Pedal",
       "qty": 1,
       "note": "Hasta 04/2010",
       "hotspots": [
@@ -231,6 +260,7 @@
       "partNumber": "MPVR05786",
       "description": "BUSHING",
       "category": "Pasadores y bujes",
+      "subsystem": "Acelerador / Pedal",
       "qty": 1,
       "note": "Desde 04/2010",
       "hotspots": []
@@ -240,6 +270,7 @@
       "partNumber": "MEVR01700",
       "description": "POTENTIOMETER 0-5K",
       "category": "Eléctrico",
+      "subsystem": "Acelerador / Pedal",
       "qty": 1,
       "hotspots": [
         { "x": 16.4, "y": 73.3 }
@@ -250,6 +281,7 @@
       "partNumber": "MEVR02058",
       "description": "FUSE-HOLDER",
       "category": "Eléctrico",
+      "subsystem": "Panel principal",
       "qty": 1,
       "hotspots": [
         { "x": 26.4, "y": 32.4 }
@@ -260,6 +292,7 @@
       "partNumber": "MECE00450",
       "description": "BOARD TRACTION CURTIS CT110",
       "category": "Eléctrico",
+      "subsystem": "Placa y controlador",
       "qty": 1,
       "hotspots": [
         { "x": 21.7, "y": 68.8 }
@@ -270,6 +303,7 @@
       "partNumber": "MEVR01746",
       "description": "CARBON X MOT.COD.MOCC00374",
       "category": "Eléctrico",
+      "subsystem": "Placa y controlador",
       "qty": 4,
       "hotspots": []
     },
@@ -278,6 +312,7 @@
       "partNumber": "MEVR02030",
       "description": "BRAKE",
       "category": "Motores y actuadores",
+      "subsystem": "Placa y controlador",
       "qty": 1,
       "hotspots": []
     },
@@ -286,6 +321,7 @@
       "partNumber": "MOCC00374",
       "description": "MOTOR",
       "category": "Motores y actuadores",
+      "subsystem": "Placa y controlador",
       "qty": 1,
       "hotspots": []
     },
@@ -294,6 +330,7 @@
       "partNumber": "RTRT00533",
       "description": "RING MOTORWHEEL",
       "category": "Ruedas",
+      "subsystem": "Placa y controlador",
       "qty": 1,
       "hotspots": []
     },
@@ -302,6 +339,7 @@
       "partNumber": "MEEV00018",
       "description": "SOLENOID VALVE",
       "category": "Motores y actuadores",
+      "subsystem": "Cableado y sensores",
       "qty": 1,
       "note": "Hasta 10/2011",
       "hotspots": [
@@ -313,6 +351,7 @@
       "partNumber": "MEEV00044",
       "description": "SOLENOID VALVE",
       "category": "Motores y actuadores",
+      "subsystem": "Cableado y sensores",
       "qty": 1,
       "note": "Desde 10/2011",
       "hotspots": []
@@ -322,6 +361,7 @@
       "partNumber": "MEVR00146",
       "description": "FUSE-HOLDER MEGA",
       "category": "Eléctrico",
+      "subsystem": "Relés / Fusibles",
       "qty": 1,
       "hotspots": [
         { "x": 44.5, "y": 64.3 }
@@ -332,6 +372,7 @@
       "partNumber": "MECE00510",
       "description": "BOARD CT110-MF",
       "category": "Eléctrico",
+      "subsystem": "Placa y controlador",
       "qty": 1,
       "hotspots": [
         { "x": 38.2, "y": 53.4 }
@@ -342,6 +383,7 @@
       "partNumber": "MECB01099",
       "description": "CABLE FLAT",
       "category": "Eléctrico",
+      "subsystem": "Panel principal",
       "qty": 1,
       "hotspots": [
         { "x": 33.0, "y": 69.3 }
@@ -352,6 +394,7 @@
       "partNumber": "MECE00511",
       "description": "BOARD CT110-MF",
       "category": "Eléctrico",
+      "subsystem": "Placa y controlador",
       "qty": 1,
       "hotspots": [
         { "x": 48.8, "y": 38.4 }
@@ -362,6 +405,7 @@
       "partNumber": "LAFN06503",
       "description": "PLATE ELETTRONICA",
       "category": "Estructura y cubiertas",
+      "subsystem": "Placa y controlador",
       "qty": 1,
       "hotspots": [
         { "x": 58.9, "y": 59.0 }
@@ -372,6 +416,7 @@
       "partNumber": "VTVT00005",
       "description": "SCREW TE FR 5X12 ZB",
       "category": "Tornillería",
+      "subsystem": "Placa y controlador",
       "qty": 8,
       "hotspots": []
     },
@@ -380,6 +425,7 @@
       "partNumber": "VTVT00005",
       "description": "SCREW TE FR 5X12 ZB",
       "category": "Tornillería",
+      "subsystem": "Placa y controlador",
       "qty": 4,
       "hotspots": [
         { "x": 56.9, "y": 65.5 }
@@ -390,6 +436,7 @@
       "partNumber": "MPVR05217",
       "description": "CONTAINER BATTERIA",
       "category": "Estructura y cubiertas",
+      "subsystem": "Baterías",
       "qty": 1,
       "hotspots": [
         { "x": 67.6, "y": 64.5 }
@@ -400,6 +447,7 @@
       "partNumber": "MECB01015",
       "description": "WIRING CT110",
       "category": "Eléctrico",
+      "subsystem": "Cableado y sensores",
       "qty": 1,
       "hotspots": [
         { "x": 80.3, "y": 86.8 }
@@ -410,6 +458,7 @@
       "partNumber": "BAAC00005",
       "description": "BATTERY 6 V 180 AH (C5)",
       "category": "Eléctrico",
+      "subsystem": "Baterías",
       "qty": 4,
       "hotspots": [
         { "x": 65.5, "y": 35.0 },
@@ -421,6 +470,7 @@
       "partNumber": "BAAC00074",
       "description": "BATTERY ACID 6V 180Ah TUBOLAR",
       "category": "Eléctrico",
+      "subsystem": "Baterías",
       "qty": 4,
       "hotspots": []
     },
@@ -429,6 +479,7 @@
       "partNumber": "MEVR34820",
       "description": "WIRING B 450 BT",
       "category": "Eléctrico",
+      "subsystem": "Baterías",
       "qty": 3,
       "hotspots": [
         { "x": 72.1, "y": 29.0 }
@@ -439,6 +490,7 @@
       "partNumber": "MECB01015",
       "description": "WIRING CT110",
       "category": "Eléctrico",
+      "subsystem": "Baterías",
       "qty": 1,
       "hotspots": [
         { "x": 58.6, "y": 35.8 }
@@ -449,6 +501,7 @@
       "partNumber": "MEVR00567",
       "description": "FUSE-HOLDER 6 VIE",
       "category": "Eléctrico",
+      "subsystem": "Relés / Fusibles",
       "qty": 1,
       "hotspots": [
         { "x": 37.2, "y": 20.0 }
@@ -459,6 +512,7 @@
       "partNumber": "MEVR01136",
       "description": "FUSE 30A",
       "category": "Eléctrico",
+      "subsystem": "Relés / Fusibles",
       "qty": 1,
       "note": "Hasta 10/2011",
       "hotspots": []
@@ -468,6 +522,7 @@
       "partNumber": "MEVR01136",
       "description": "FUSE 30A",
       "category": "Eléctrico",
+      "subsystem": "Relés / Fusibles",
       "qty": 1,
       "note": "Hasta 10/2011",
       "hotspots": [
@@ -479,6 +534,7 @@
       "partNumber": "MEVR01428",
       "description": "FUSE A LAMA 2 A. UNIVAL",
       "category": "Eléctrico",
+      "subsystem": "Relés / Fusibles",
       "qty": 1,
       "note": "Desde 10/2011",
       "hotspots": []
@@ -488,6 +544,7 @@
       "partNumber": "MEVR00327",
       "description": "FUSE 25A",
       "category": "Eléctrico",
+      "subsystem": "Relés / Fusibles",
       "qty": 1,
       "hotspots": [
         { "x": 41.7, "y": 10.9 }
@@ -498,6 +555,7 @@
       "partNumber": "MEVR00584",
       "description": "FUSE 3A",
       "category": "Eléctrico",
+      "subsystem": "Relés / Fusibles",
       "qty": 1,
       "hotspots": [
         { "x": 41.7, "y": 13.3 }
@@ -508,6 +566,7 @@
       "partNumber": "MEVR00584",
       "description": "FUSE 3A",
       "category": "Eléctrico",
+      "subsystem": "Relés / Fusibles",
       "qty": 1,
       "hotspots": [
         { "x": 41.7, "y": 15.1 }
@@ -518,6 +577,7 @@
       "partNumber": "MEVR00584",
       "description": "FUSE 3A",
       "category": "Eléctrico",
+      "subsystem": "Relés / Fusibles",
       "qty": 1,
       "hotspots": [
         { "x": 41.7, "y": 16.9 }
@@ -528,6 +588,7 @@
       "partNumber": "MEVR00148",
       "description": "DASHBOARD SEDILE",
       "category": "Eléctrico",
+      "subsystem": "Baterías",
       "qty": 1,
       "hotspots": [
         { "x": 86.5, "y": 19.9 }
@@ -538,6 +599,7 @@
       "partNumber": "MEVR01079",
       "description": "PLUG M CB50 A 600V RD.",
       "category": "Eléctrico",
+      "subsystem": "Baterías",
       "qty": 1,
       "hotspots": [
         { "x": 95.7, "y": 25.8 }
@@ -548,6 +610,7 @@
       "partNumber": "MECB01015",
       "description": "WIRING CT110",
       "category": "Eléctrico",
+      "subsystem": "Cableado y sensores",
       "qty": 1,
       "hotspots": [
         { "x": 72.1, "y": 82.3 }
@@ -558,6 +621,7 @@
       "partNumber": "MECI00405",
       "description": "SENSOR",
       "category": "Eléctrico",
+      "subsystem": "Cableado y sensores",
       "qty": 1,
       "hotspots": [
         { "x": 40.2, "y": 73.5 }
@@ -568,6 +632,7 @@
       "partNumber": "LAFN06386",
       "description": "SUPPORT",
       "category": "Estructura y cubiertas",
+      "subsystem": "Cableado y sensores",
       "qty": 1,
       "hotspots": [
         { "x": 40.2, "y": 75.6 }
@@ -578,6 +643,7 @@
       "partNumber": "VTVT15143",
       "description": "SCREW TE 6X16 UNI5739",
       "category": "Tornillería",
+      "subsystem": "Cableado y sensores",
       "qty": 2,
       "hotspots": [
         { "x": 40.2, "y": 77.4 }
@@ -588,6 +654,7 @@
       "partNumber": "VTRS15144",
       "description": "WASHER D. 6 INX GRW UNI 1751",
       "category": "Tornillería",
+      "subsystem": "Cableado y sensores",
       "qty": 2,
       "hotspots": [
         { "x": 45.2, "y": 83.5 }
@@ -598,6 +665,7 @@
       "partNumber": "MEVR00145",
       "description": "FUSE 100A",
       "category": "Eléctrico",
+      "subsystem": "Relés / Fusibles",
       "qty": 1,
       "hotspots": [
         { "x": 48.4, "y": 61.2 }
@@ -608,6 +676,7 @@
       "partNumber": "MEVR47082",
       "description": "INSULATOR M6 35-CH32",
       "category": "Sellos y empaques",
+      "subsystem": "Relés / Fusibles",
       "qty": 1,
       "hotspots": [
         { "x": 38.4, "y": 51.4 }
@@ -618,6 +687,7 @@
       "partNumber": "MECE00456",
       "description": "RELAY CT110",
       "category": "Eléctrico",
+      "subsystem": "Relés / Fusibles",
       "qty": 4,
       "hotspots": [
         { "x": 39.2, "y": 66.5 }
@@ -628,6 +698,7 @@
       "partNumber": "VTVT00005",
       "description": "SCREW TE FR 5X12 ZB",
       "category": "Tornillería",
+      "subsystem": "Relés / Fusibles",
       "qty": 2,
       "hotspots": [
         { "x": 39.8, "y": 5.4 }
@@ -638,6 +709,7 @@
       "partNumber": "MPVR05235",
       "description": "COVER",
       "category": "Estructura y cubiertas",
+      "subsystem": "Acelerador / Pedal",
       "qty": 1,
       "hotspots": [
         { "x": 4.1, "y": 83.8 }
@@ -648,6 +720,7 @@
       "partNumber": "VTVT00005",
       "description": "SCREW TE FR 5X12 ZB",
       "category": "Tornillería",
+      "subsystem": "Acelerador / Pedal",
       "qty": 2,
       "hotspots": [
         { "x": 4.1, "y": 85.8 }
@@ -658,6 +731,7 @@
       "partNumber": "GUVR00292",
       "description": "GASKET CT110",
       "category": "Sellos y empaques",
+      "subsystem": "Acelerador / Pedal",
       "qty": 1,
       "hotspots": [
         { "x": 2.2, "y": 52.2 }
@@ -668,6 +742,7 @@
       "partNumber": "LAFN07362",
       "description": "PLATE ANDERSON",
       "category": "Estructura y cubiertas",
+      "subsystem": "Baterías",
       "qty": 1,
       "hotspots": [
         { "x": 96.8, "y": 23.6 }
@@ -678,6 +753,7 @@
       "partNumber": "MECI00334",
       "description": "MICROSWITCH V4",
       "category": "Eléctrico",
+      "subsystem": "Baterías",
       "qty": 1,
       "hotspots": [
         { "x": 91.6, "y": 13.8 }
@@ -688,6 +764,7 @@
       "partNumber": "VTVT00671",
       "description": "SCREW TC- M.2-16 OTTONE",
       "category": "Tornillería",
+      "subsystem": "Baterías",
       "qty": 2,
       "hotspots": [
         { "x": 93.8, "y": 13.1 }
@@ -698,6 +775,7 @@
       "partNumber": "VTDD08634",
       "description": "NUT M2",
       "category": "Tornillería",
+      "subsystem": "Baterías",
       "qty": 2,
       "hotspots": [
         { "x": 89.4, "y": 15.1 }
@@ -708,6 +786,7 @@
       "partNumber": "VTVT01350",
       "description": "SCREW M3-20 INOX",
       "category": "Tornillería",
+      "subsystem": "Baterías",
       "qty": 2,
       "hotspots": [
         { "x": 96.1, "y": 12.3 }
@@ -718,6 +797,7 @@
       "partNumber": "VTRS21116",
       "description": "WASHER D. 3 INX",
       "category": "Tornillería",
+      "subsystem": "Baterías",
       "qty": 2,
       "hotspots": [
         { "x": 95.1, "y": 9.6 }
@@ -728,6 +808,7 @@
       "partNumber": "MECI00532",
       "description": "CONTACTOR 24V-100A",
       "category": "Eléctrico",
+      "subsystem": "Relés / Fusibles",
       "qty": 1,
       "hotspots": [
         { "x": 84.8, "y": 21.9 },
@@ -739,6 +820,7 @@
       "partNumber": "LAFN07743",
       "description": "BRACKET",
       "category": "Estructura y cubiertas",
+      "subsystem": "Relés / Fusibles",
       "qty": 1,
       "hotspots": [
         { "x": 31.5, "y": 50.9 }
@@ -749,6 +831,7 @@
       "partNumber": "VTVT01669",
       "description": "CARRYNG BAG",
       "category": "Estructura y cubiertas",
+      "subsystem": "Relés / Fusibles",
       "qty": 2,
       "hotspots": [
         { "x": 32.9, "y": 59.2 }
@@ -759,6 +842,7 @@
       "partNumber": "VTRS00501",
       "description": "WASHER D. 4 0.232 UNI 6592",
       "category": "Tornillería",
+      "subsystem": "Relés / Fusibles",
       "qty": 2,
       "hotspots": [
         { "x": 30.8, "y": 57.2 }
@@ -769,6 +853,7 @@
       "partNumber": "VTVT00005",
       "description": "SCREW TE FR 5X12 ZB",
       "category": "Tornillería",
+      "subsystem": "Placa y controlador",
       "qty": 2,
       "hotspots": [
         { "x": 45.3, "y": 37.4 }
@@ -779,6 +864,7 @@
       "partNumber": "MECE00139",
       "description": "RELAY POTENZA 24V",
       "category": "Eléctrico",
+      "subsystem": "Relés / Fusibles",
       "qty": 1,
       "hotspots": [
         { "x": 51.7, "y": 50.3 }
@@ -789,6 +875,7 @@
       "partNumber": "METT00053",
       "description": "BLOCK PORTA RELE'",
       "category": "Eléctrico",
+      "subsystem": "Relés / Fusibles",
       "qty": 1,
       "hotspots": [
         { "x": 51.7, "y": 52.3 }
@@ -799,6 +886,7 @@
       "partNumber": "MEVR31036",
       "description": "FUSE-HOLDER",
       "category": "Eléctrico",
+      "subsystem": "Relés / Fusibles",
       "qty": 1,
       "hotspots": [
         { "x": 64.9, "y": 74.5 }
@@ -809,6 +897,7 @@
       "partNumber": "MEVR02042",
       "description": "FUSE 40A NST.",
       "category": "Eléctrico",
+      "subsystem": "Relés / Fusibles",
       "qty": 1,
       "hotspots": [
         { "x": 57.3, "y": 86.3 }
@@ -819,6 +908,7 @@
       "partNumber": "VTVT00079",
       "description": "SCREW AUTOF.TC UNI6954 3,9X22",
       "category": "Tornillería",
+      "subsystem": "Relés / Fusibles",
       "qty": 1,
       "hotspots": [
         { "x": 56.0, "y": 74.6 }
@@ -829,6 +919,7 @@
       "partNumber": "VTDD01693",
       "description": "NUT M 5 INX",
       "category": "Tornillería",
+      "subsystem": "Relés / Fusibles",
       "qty": 2,
       "note": "Desde 10/2011",
       "hotspots": [
@@ -840,6 +931,7 @@
       "partNumber": "VTVT01300",
       "description": "SCREW TE M5X12 INOX",
       "category": "Tornillería",
+      "subsystem": "Relés / Fusibles",
       "qty": 2,
       "note": "Desde 10/2011",
       "hotspots": [
@@ -851,6 +943,7 @@
       "partNumber": "MEVR02048",
       "description": "FUSE 40A",
       "category": "Eléctrico",
+      "subsystem": "Relés / Fusibles",
       "qty": 2,
       "note": "Desde 10/2011",
       "hotspots": [
@@ -862,6 +955,7 @@
       "partNumber": "MEVR00613",
       "description": "FUSE CARRIER MAXIVAL with cover",
       "category": "Eléctrico",
+      "subsystem": "Relés / Fusibles",
       "qty": 2,
       "note": "Desde 10/2011",
       "hotspots": [

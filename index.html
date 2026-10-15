@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" />
   <!-- ?v= evita que el navegador use un CSS/JS viejo en caché tras publicar cambios -->
-  <link rel="stylesheet" href="css/styles.css?v=2026-10-15g" />
+  <link rel="stylesheet" href="css/styles.css?v=2026-10-15h" />
 </head>
 <body>
   <!-- Íconos SVG reutilizables -->
@@ -133,17 +133,33 @@
     <section class="panel diagram-panel" aria-label="Diagrama de despiece">
       <div class="panel-header">
         <h2>Diagrama</h2>
-        <span class="hint">Haz clic en un número para ubicar el repuesto · <kbd>Alt</kbd>+clic muestra coordenadas</span>
+        <span class="hint"><kbd>Ctrl</kbd>+rueda o doble clic para zoom · <kbd>Alt</kbd>+clic muestra coordenadas</span>
+      </div>
+      <!-- Puntos ocultos por defecto: se muestran todos o por subsistema/categoría -->
+      <div class="diagram-tools">
+        <div class="points-bar">
+          <button id="points-toggle" class="labels-toggle" type="button" aria-pressed="false">Mostrar todos los puntos</button>
+          <span id="points-status" class="points-status" aria-live="polite"></span>
+          <div class="zoom-controls" role="group" aria-label="Zoom del diagrama">
+            <button id="zoom-out" class="zoom-btn" type="button" aria-label="Alejar" title="Alejar">−</button>
+            <button id="zoom-reset" class="zoom-level" type="button" title="Restablecer zoom">100%</button>
+            <button id="zoom-in" class="zoom-btn" type="button" aria-label="Acercar" title="Acercar">+</button>
+          </div>
+        </div>
+        <div id="point-groups" class="point-groups" role="group" aria-label="Resaltar puntos"></div>
       </div>
       <div class="diagram-wrapper">
         <div class="blueprint blueprint-paper">
           <div id="diagram" class="diagram">
-            <img id="diagram-img" alt="" />
-            <div class="diagram-placeholder" hidden>
-              <strong>Imagen no encontrada</strong>
-              <span>Revisa la ruta de la imagen en el JSON del subensamble</span>
+            <!-- El "escenario" es lo que se amplía y desplaza; #diagram recorta -->
+            <div id="diagram-stage" class="diagram-stage">
+              <img id="diagram-img" alt="" />
+              <div class="diagram-placeholder" hidden>
+                <strong>Imagen no encontrada</strong>
+                <span>Revisa la ruta de la imagen en el JSON del subensamble</span>
+              </div>
+              <div id="hotspots" class="hotspots"></div>
             </div>
-            <div id="hotspots" class="hotspots"></div>
           </div>
         </div>
       </div>
@@ -189,6 +205,6 @@
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
-  <script src="js/app.js?v=2026-10-15g"></script>
+  <script src="js/app.js?v=2026-10-15h"></script>
 </body>
 </html>
