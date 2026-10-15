@@ -54,7 +54,7 @@ Datos en `data/t12/` e imágenes en `assets/t12/`.
 
 ### IPC CT110 · catálogo LPTB02378 (CT110 BT85 ECS+CD GR/VE)
 
-Datos en `data/ct110/` e imágenes en `assets/ct110/`. El catálogo no trae una vista general de la máquina, así que el plano general es un tablero con el dibujo de cada sección. Los números de los dibujos (que en este catálogo son imágenes) se ubicaron con OCR y se revisaron a mano.
+Datos en `data/ct110/` e imágenes en `assets/ct110/`. El catálogo no trae una vista general de la máquina, así que el plano general (`assets/ct110/ct110_full.png`) es el dibujo del chasis y la estructura completa de la tabla TRACTION MOTOR (bastidor, ruedas, columna de dirección y rueda motriz) sin los números de despiece, con los puntos de cada zona ubicados sobre su lugar en el equipo. Los números de los dibujos (que en este catálogo son imágenes) se ubicaron con OCR y se revisaron a mano.
 
 | Zona | Tabla del catálogo | Repuestos clave |
 |---|---|---|
