@@ -11,6 +11,14 @@ El **selector de la cabecera** (Tennant T7 / Tennant T12 / IPC CT110) cambia el 
 1. **Nivel 1 · Máquina completa:** vista general de la máquina con las zonas clave y un **buscador global** que busca en todas las zonas. Al elegir un resultado se abre la zona, se selecciona el repuesto y se ilumina su punto en el diagrama.
 2. **Nivel 2 · Despiece:** diagrama con puntos numerados, buscador y tabla de repuestos con "Copiar Ref".
 
+### Lista de selección (carrito de repuestos)
+
+- **+ Agregar a la lista** en cada fila de la tabla y en cada resultado del buscador global. Si el repuesto ya está en la lista, el botón muestra la cantidad y suma una unidad más.
+- **🛒 Mi Lista (n)** en la cabecera abre el resumen, clasificado automáticamente por máquina (Tennant T7, Tennant T12, IPC CT110) con Part Number, descripción, categoría, subensamble y **cantidad editable**.
+- Campos de trazabilidad: **Nombre del Técnico / Solicitante** y **Número de OP / Proyecto**. La fecha del día se pone sola.
+- **Descargar Excel** (.xlsx real, generado en el navegador sin librerías) e **Imprimir / PDF** (formato carta con cabecera de INGPAR S.A.S., fecha, OP, tablas por máquina y firmas de **Solicitante** y **Bodega**; para PDF, elige "Guardar como PDF" en el diálogo de impresión).
+- La lista y los campos se guardan en este navegador (`localStorage`) y se sincronizan entre pestañas abiertas del visor.
+
 ### Puntos del diagrama
 
 Para no tapar los números del manual, los puntos del despiece están **ocultos por defecto** y son solo un anillo fino; se rellenan al pasar el cursor o al seleccionarlos.

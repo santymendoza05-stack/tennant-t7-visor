@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" />
   <!-- ?v= evita que el navegador use un CSS/JS viejo en caché tras publicar cambios -->
-  <link rel="stylesheet" href="css/styles.css?v=2026-10-15h" />
+  <link rel="stylesheet" href="css/styles.css?v=2026-10-15i" />
 </head>
 <body>
   <!-- Íconos SVG reutilizables -->
@@ -17,6 +17,7 @@
     <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="m20 20-4.2-4.2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
     <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
     <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-cart" viewBox="0 0 24 24"><path d="M3 4h2.2l2.1 10.2a1.5 1.5 0 0 0 1.5 1.2h8.4a1.5 1.5 0 0 0 1.4-1.1L20.5 8H6.1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="19.5" r="1.5" fill="currentColor"/><circle cx="17" cy="19.5" r="1.5" fill="currentColor"/></symbol>
     <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M19 12H5m6-6-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   </svg>
 
@@ -39,6 +40,12 @@
     </div>
     <!-- Selector de máquina: cambia planos, repuestos y datos del manual -->
     <div id="machine-switch" class="machine-switch" role="radiogroup" aria-label="Máquina"></div>
+    <!-- Lista de selección de repuestos (se guarda en este navegador) -->
+    <button id="cart-toggle" class="cart-toggle" type="button" aria-haspopup="dialog" title="Ver mi lista de repuestos">
+      <svg aria-hidden="true"><use href="#i-cart"/></svg>
+      <span class="cart-toggle-label">Mi Lista</span>
+      <span id="cart-count" class="cart-count">0</span>
+    </button>
     <button id="theme-toggle" class="icon-btn" type="button" aria-label="Cambiar tema" title="Cambiar tema claro/oscuro">
       <svg class="icon-sun" aria-hidden="true"><use href="#i-sun"/></svg>
       <svg class="icon-moon" aria-hidden="true"><use href="#i-moon"/></svg>
@@ -203,8 +210,42 @@
     <span>Diagramas y referencias © Tennant Company e IPC · Herramienta de consulta no afiliada a los fabricantes</span>
   </footer>
 
+  <!-- Resumen de la lista de selección, clasificado por máquina -->
+  <dialog id="cart-dialog" class="cart-dialog" aria-labelledby="cart-title">
+    <header class="cart-head">
+      <div>
+        <p class="eyebrow">INGPAR S.A.S. · Solicitud de repuestos</p>
+        <h2 id="cart-title">Mi lista de repuestos</h2>
+        <p class="cart-date">Fecha: <strong id="cart-date"></strong></p>
+      </div>
+      <button type="button" id="cart-close" class="cart-close" aria-label="Cerrar lista">&times;</button>
+    </header>
+    <div class="cart-fields">
+      <label class="cart-field">
+        <span>Nombre del Técnico / Solicitante</span>
+        <input id="cart-requester" type="text" maxlength="80" autocomplete="name" placeholder="Nombre y apellido" />
+      </label>
+      <label class="cart-field">
+        <span>Número de OP / Proyecto</span>
+        <input id="cart-project" type="text" maxlength="40" autocomplete="off" placeholder="Ej. OP-2026-0153" />
+      </label>
+    </div>
+    <div id="cart-body" class="cart-body"></div>
+    <footer class="cart-foot">
+      <p id="cart-totals" class="cart-totals"></p>
+      <div class="cart-actions">
+        <button type="button" id="cart-clear" class="cart-btn cart-btn-ghost">Vaciar lista</button>
+        <button type="button" id="cart-xlsx" class="cart-btn">Descargar Excel</button>
+        <button type="button" id="cart-print" class="cart-btn cart-btn-primary">Imprimir / PDF</button>
+      </div>
+    </footer>
+  </dialog>
+
+  <!-- Formato imprimible de la lista: solo se ve al imprimir desde el modal -->
+  <section id="print-sheet" class="print-sheet" aria-hidden="true"></section>
+
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
-  <script src="js/app.js?v=2026-10-15h"></script>
+  <script src="js/app.js?v=2026-10-15i"></script>
 </body>
 </html>

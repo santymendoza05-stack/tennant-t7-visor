@@ -2020,6 +2020,20 @@
     crumbAssembly: $("#crumb-assembly"),
     machineSwitch: $("#machine-switch"),
     titleMachine: $("#title-machine"),
+    // Lista de selección
+    cartToggle: $("#cart-toggle"),
+    cartCount: $("#cart-count"),
+    cartDialog: $("#cart-dialog"),
+    cartClose: $("#cart-close"),
+    cartDate: $("#cart-date"),
+    cartRequester: $("#cart-requester"),
+    cartProject: $("#cart-project"),
+    cartBody: $("#cart-body"),
+    cartTotals: $("#cart-totals"),
+    cartClear: $("#cart-clear"),
+    cartXlsx: $("#cart-xlsx"),
+    cartPrint: $("#cart-print"),
+    printSheet: $("#print-sheet"),
     // Nivel 1
     machineView: $("#view-machine"),
     heroEyebrow: $("#hero-eyebrow"),
@@ -2077,6 +2091,9 @@
 
   let toastTimer;
   function showToast(msg) {
+    // Con el modal abierto (capa superior) el aviso se muestra dentro de él
+    const host = els.cartDialog.open ? els.cartDialog : document.body;
+    if (els.toast.parentElement !== host) host.appendChild(els.toast);
     els.toast.textContent = msg;
     els.toast.classList.add("show");
     clearTimeout(toastTimer);
@@ -2344,7 +2361,7 @@
 
   const AssemblyView = {
     // group: subsistema (o categoría) resaltado en el diagrama; showAll: "Mostrar todos los puntos"
-    state: { parts: [], categories: [], groups: [], groupKey: "category", group: null, showAll: false, query: "", category: ALL, activeItem: null },
+    state: { parts: [], categories: [], groups: [], groupKey: "category", group: null, showAll: false, query: "", category: ALL, activeItem: null, zone: "", figure: "" },
     zoom: { s: 1, tx: 0, ty: 0 },
     loadedUrl: null,
 
@@ -2580,7 +2597,9 @@
         group: null,
         query: "",
         category: ALL,
-        activeItem: null
+        activeItem: null,
+        zone: zone.name,
+        figure: data.figure || figure.label || ""
       });
       this.resetZoom();
       els.search.value = "";
@@ -2696,7 +2715,7 @@
             <td class="pn">${highlight(p.partNumber, q)}</td>
             <td>${highlight(p.description, q)}<span class="desc-cat">${escapeHtml(p.category)}${p.note ? ` · ${highlight(p.note, q)}` : ""}</span></td>
             <td class="num">${p.qty}</td>
-            <td><button type="button" class="copy-btn" data-copy="${escapeHtml(p.partNumber)}">Copiar Ref</button></td>
+            <td><div class="row-actions">${Cart.button(p.partNumber)}<button type="button" class="copy-btn" data-copy="${escapeHtml(p.partNumber)}">Copiar Ref</button></div></td>
           </tr>`
         )
         .join("");
@@ -2774,6 +2793,13 @@
 
       // Fila -> hotspot (selección por clic o teclado) y botón "Copiar Ref"
       els.body.addEventListener("click", async (e) => {
+        const add = e.target.closest(".cart-add");
+        if (add) {
+          const tr = add.closest("tr");
+          const p = this.state.parts.find((x) => x.item === Number(tr.dataset.item) && x.partNumber === tr.dataset.pn);
+          if (p) Cart.add(p, this.state.zone, this.state.figure);
+          return;
+        }
         const btn = e.target.closest(".copy-btn");
         if (btn) {
           const ref = btn.dataset.copy;
@@ -2821,7 +2847,7 @@
 
       // Atajos: "/" enfoca el buscador, Esc lo limpia (solo en el Nivel 2)
       document.addEventListener("keydown", (e) => {
-        if (els.assemblyView.hidden) return;
+        if (els.assemblyView.hidden || els.cartDialog.open) return;
         if (e.key === "/" && document.activeElement !== els.search) {
           e.preventDefault();
           els.search.focus();
@@ -2965,6 +2991,7 @@
               ${part.note ? `<span class="gr-note">${highlight(part.note, mark)}</span>` : ""}
             </span>
             <span class="gr-zone">${escapeHtml(zone.name)}<small>${escapeHtml(figure)}</small></span>
+            ${Cart.button(part.partNumber, `data-index="${i}"`)}
           </li>`)
         .join("");
 
@@ -3026,6 +3053,12 @@
       });
 
       els.globalResults.addEventListener("click", (e) => {
+        const add = e.target.closest(".cart-add");
+        if (add) {
+          const r = this.results[Number(add.dataset.index)];
+          if (r) Cart.add(r.part, r.zone.name, r.figure);
+          return;
+        }
         const li = e.target.closest(".gr-item");
         if (li) this.go(Number(li.dataset.index));
       });
@@ -3055,12 +3088,538 @@
 
       // "/" enfoca el buscador global en el Nivel 1
       document.addEventListener("keydown", (e) => {
-        if (els.machineView.hidden || e.key !== "/" || document.activeElement === els.globalSearch) return;
+        if (els.machineView.hidden || els.cartDialog.open || e.key !== "/" || document.activeElement === els.globalSearch) return;
         e.preventDefault();
         els.globalSearch.focus();
       });
     }
   };
+
+  /* ==========================================================
+     Lista de selección (carrito de repuestos)
+     Se guarda en este navegador y se clasifica por máquina (T7, T12, CT110)
+     en el resumen, en el Excel y en el formato imprimible.
+     ========================================================== */
+  const CART_KEY = "t7-cart";
+  const CART_INFO_KEY = "t7-cart-info";
+  const MAX_QTY = 999;
+
+  const pad2 = (n) => String(n).padStart(2, "0");
+  const dateShort = (d) => `${pad2(d.getDate())}/${pad2(d.getMonth() + 1)}/${d.getFullYear()}`;
+  const dateIso = (d) => `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}`;
+  const dateLong = (d) => d.toLocaleDateString("es-CO", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
+  const timeShort = (d) => d.toLocaleTimeString("es-CO", { hour: "2-digit", minute: "2-digit" });
+  const plural = (n, one, many) => `${n} ${n === 1 ? one : many}`;
+
+  const Cart = {
+    items: [], // { machine, machineName, pn, description, category, zone, figure, qty }
+    info: { requester: "", project: "" },
+
+    init() {
+      this.load();
+      els.cartRequester.value = this.info.requester;
+      els.cartProject.value = this.info.project;
+
+      els.cartToggle.addEventListener("click", () => this.open());
+      els.cartClose.addEventListener("click", () => els.cartDialog.close());
+      // Clic en el fondo oscuro: cierra
+      els.cartDialog.addEventListener("click", (e) => {
+        if (e.target === els.cartDialog) els.cartDialog.close();
+      });
+
+      const saveInfo = () => {
+        this.info = { requester: els.cartRequester.value.trim(), project: els.cartProject.value.trim() };
+        try { localStorage.setItem(CART_INFO_KEY, JSON.stringify(this.info)); } catch {}
+      };
+      els.cartRequester.addEventListener("input", saveInfo);
+      els.cartProject.addEventListener("input", saveInfo);
+
+      // Botones −/+ y quitar
+      const itemOf = (el) => {
+        const row = el.closest("[data-key]");
+        return row && this.items[this.indexOf(row.dataset.key)];
+      };
+      els.cartBody.addEventListener("click", (e) => {
+        const it = itemOf(e.target);
+        if (!it) return;
+        const step = e.target.closest("[data-step]");
+        if (step) {
+          this.setQty(it, it.qty + Number(step.dataset.step));
+          e.target.closest("[data-key]").querySelector(".qty-input").value = it.qty;
+        } else if (e.target.closest(".cart-remove")) {
+          this.items.splice(this.items.indexOf(it), 1);
+          this.save();
+          this.render();
+          showToast(`${it.pn} quitado de la lista`);
+        }
+      });
+      // Cantidad escrita a mano
+      els.cartBody.addEventListener("input", (e) => {
+        if (!e.target.matches(".qty-input")) return;
+        const it = itemOf(e.target), n = parseInt(e.target.value, 10);
+        if (it && n >= 1) this.setQty(it, n);
+      });
+      els.cartBody.addEventListener("change", (e) => {
+        if (!e.target.matches(".qty-input")) return;
+        const it = itemOf(e.target);
+        if (it) e.target.value = it.qty; // corrige vacíos o valores fuera de rango
+      });
+
+      els.cartClear.addEventListener("click", () => {
+        if (!this.items.length || !confirm("¿Vaciar la lista de repuestos?")) return;
+        this.items = [];
+        this.save();
+        this.render();
+      });
+      els.cartXlsx.addEventListener("click", () => this.downloadXlsx());
+      els.cartPrint.addEventListener("click", () => this.print());
+
+      // Otra pestaña del visor modificó la lista
+      window.addEventListener("storage", (e) => {
+        if (e.key !== CART_KEY) return;
+        this.load();
+        this.refresh();
+        if (els.cartDialog.open) this.render();
+      });
+
+      this.refresh();
+    },
+
+    load() {
+      const read = (key) => { try { return JSON.parse(localStorage.getItem(key)); } catch { return null; } };
+      const items = read(CART_KEY);
+      this.items = Array.isArray(items) ? items.filter((i) => i && i.pn && i.machine && i.qty >= 1) : [];
+      const info = read(CART_INFO_KEY) || {};
+      this.info = { requester: String(info.requester || ""), project: String(info.project || "") };
+    },
+
+    save() {
+      try { localStorage.setItem(CART_KEY, JSON.stringify(this.items)); } catch {}
+      this.refresh();
+    },
+
+    key: (machine, pn) => `${machine}|${pn}`,
+    indexOf(key) {
+      return this.items.findIndex((i) => this.key(i.machine, i.pn) === key);
+    },
+    find(pn, machine = current && current.id) {
+      return this.items[this.indexOf(this.key(machine, pn))];
+    },
+
+    // Si el Part Number ya está en la lista (de esa máquina), suma una unidad
+    add(part, zone, figure) {
+      const it = this.find(part.partNumber);
+      if (it) {
+        this.setQty(it, it.qty + 1);
+        showToast(`${it.pn} · cantidad en la lista: ${it.qty}`);
+      } else {
+        this.items.push({
+          machine: current.id,
+          machineName: current.name,
+          pn: part.partNumber,
+          description: part.description,
+          category: part.category || "",
+          zone: zone || "",
+          figure: figure || "",
+          qty: 1
+        });
+        this.save();
+        showToast(`${part.partNumber} agregado a tu lista (${current.short || current.name})`);
+      }
+      els.cartCount.classList.remove("bump");
+      void els.cartCount.offsetWidth; // reinicia la animación
+      els.cartCount.classList.add("bump");
+    },
+
+    setQty(it, n) {
+      it.qty = Math.min(MAX_QTY, Math.max(1, Math.round(n) || 1));
+      this.save();
+    },
+
+    totals() {
+      return { refs: this.items.length, units: this.items.reduce((n, i) => n + i.qty, 0) };
+    },
+
+    // Grupos por máquina, en el orden de data/machines.json (T7, T12, CT110)
+    groups() {
+      const rank = (id) => {
+        const i = machines.findIndex((m) => m.id === id);
+        return i === -1 ? machines.length : i;
+      };
+      return [...new Set(this.items.map((i) => i.machine))]
+        .sort((a, b) => rank(a) - rank(b))
+        .map((id) => {
+          const m = machines.find((x) => x.id === id);
+          const items = this.items.filter((i) => i.machine === id);
+          return { id, name: m ? m.name : items[0].machineName || id, manual: (m && m.manual) || "", items };
+        });
+    },
+
+    groupSummary(g) {
+      return `${g.manual ? `Manual ${g.manual} · ` : ""}${plural(g.items.length, "referencia", "referencias")}`;
+    },
+
+    // Botón «+ Agregar a la lista» de la tabla y del buscador global (máquina activa)
+    button(pn, attrs = "") {
+      const cls = this.find(pn) ? "cart-add is-in" : "cart-add";
+      return `<button type="button" class="${cls}" data-pn="${escapeHtml(pn)}" ${attrs}>${this.buttonLabel(pn)}</button>`;
+    },
+    buttonLabel(pn) {
+      const it = this.find(pn);
+      return it
+        ? `<span aria-hidden="true">✓</span> En la lista <b>${it.qty}</b><span class="sr-only">. Agregar otra unidad</span>`
+        : `+ Agregar<span class="cart-add-long"> a la lista</span>`;
+    },
+
+    // Actualiza el contador y los botones visibles sin redibujar la tabla
+    refresh() {
+      const { refs } = this.totals();
+      els.cartCount.textContent = refs;
+      els.cartToggle.classList.toggle("has-items", refs > 0);
+      els.cartToggle.setAttribute("aria-label", `Mi lista de repuestos: ${plural(refs, "referencia", "referencias")}`);
+      if (current) {
+        document.querySelectorAll(".cart-add").forEach((btn) => {
+          btn.classList.toggle("is-in", !!this.find(btn.dataset.pn));
+          btn.innerHTML = this.buttonLabel(btn.dataset.pn);
+        });
+      }
+      if (els.cartDialog.open) this.renderTotals();
+    },
+
+    open() {
+      els.cartDate.textContent = dateLong(new Date());
+      this.render();
+      els.cartDialog.showModal();
+    },
+
+    renderTotals() {
+      const { refs, units } = this.totals();
+      els.cartTotals.innerHTML = refs
+        ? `<strong>${refs}</strong> referencia${refs === 1 ? "" : "s"} · <strong>${units}</strong> unidad${units === 1 ? "" : "es"}`
+        : "";
+      [els.cartClear, els.cartXlsx, els.cartPrint].forEach((b) => (b.disabled = !refs));
+    },
+
+    render() {
+      this.renderTotals();
+      if (!this.items.length) {
+        els.cartBody.innerHTML = `<div class="cart-empty">
+            <span class="cart-empty-icon" aria-hidden="true"><svg><use href="#i-cart"/></svg></span>
+            <strong>Tu lista está vacía</strong>
+            <span>Usa «+ Agregar a la lista» en la tabla de repuestos o en los resultados del buscador.</span>
+          </div>`;
+        return;
+      }
+      els.cartBody.innerHTML = this.groups()
+        .map((g) => `<section class="cart-group">
+            <h3 class="cart-group-title">${escapeHtml(g.name)} <small>${escapeHtml(this.groupSummary(g))}</small></h3>
+            <table class="cart-table">
+              <thead><tr>
+                <th scope="col">Part Number</th>
+                <th scope="col">Descripción</th>
+                <th scope="col" class="cart-col-cat">Categoría</th>
+                <th scope="col" class="num">Cantidad</th>
+                <th scope="col"><span class="sr-only">Quitar</span></th>
+              </tr></thead>
+              <tbody>${g.items.map((i) => `<tr data-key="${escapeHtml(this.key(i.machine, i.pn))}">
+                  <td class="pn">${escapeHtml(i.pn)}</td>
+                  <td>${escapeHtml(i.description)}<span class="desc-cat"><span class="cart-cat-inline">${escapeHtml(i.category)} · </span>${escapeHtml([i.zone, i.figure].filter(Boolean).join(" · "))}</span></td>
+                  <td class="cart-col-cat"><span class="cart-cat">${escapeHtml(i.category)}</span></td>
+                  <td class="num"><div class="qty">
+                    <button type="button" class="qty-btn" data-step="-1" aria-label="Restar una unidad">−</button>
+                    <input class="qty-input" type="number" inputmode="numeric" min="1" max="${MAX_QTY}" value="${i.qty}" aria-label="Cantidad de ${escapeHtml(i.pn)}" />
+                    <button type="button" class="qty-btn" data-step="1" aria-label="Sumar una unidad">+</button>
+                  </div></td>
+                  <td><button type="button" class="cart-remove" aria-label="Quitar ${escapeHtml(i.pn)} de la lista" title="Quitar de la lista">&times;</button></td>
+                </tr>`).join("")}</tbody>
+            </table>
+          </section>`)
+        .join("");
+    },
+
+    fileName(date, ext) {
+      const project = this.info.project.replace(/[^\w-]+/g, "_").replace(/^_+|_+$/g, "");
+      return `Lista_repuestos_INGPAR_${dateIso(date)}${project ? `_${project}` : ""}${ext}`;
+    },
+
+    // ---------- Formato imprimible (Imprimir / Guardar como PDF) ----------
+    print() {
+      if (!this.items.length) return;
+      const now = new Date();
+      els.printSheet.innerHTML = this.sheetHtml(now);
+      const root = document.documentElement;
+      const title = document.title;
+      document.title = this.fileName(now, ""); // nombre sugerido al guardar como PDF
+      root.classList.add("printing-cart");
+      const done = () => {
+        root.classList.remove("printing-cart");
+        document.title = title;
+        window.removeEventListener("afterprint", done);
+      };
+      window.addEventListener("afterprint", done);
+      window.print();
+    },
+
+    sheetHtml(now) {
+      const { refs, units } = this.totals();
+      const field = (v) => (v ? escapeHtml(v) : `<span class="ps-blank"></span>`);
+      let n = 0;
+      return `<header class="ps-head">
+          <div class="ps-brand">
+            <span class="ps-mark">IP</span>
+            <div><strong>INGPAR S.A.S.</strong><small>Soporte técnico industrial</small></div>
+          </div>
+          <div class="ps-title">
+            <h1>Solicitud de repuestos</h1>
+            <p>Lista de selección · Visor de despiece</p>
+          </div>
+        </header>
+        <dl class="ps-meta">
+          <div><dt>Fecha</dt><dd>${dateShort(now)}</dd></div>
+          <div><dt>Técnico / Solicitante</dt><dd>${field(this.info.requester)}</dd></div>
+          <div><dt>N.º OP / Proyecto</dt><dd>${field(this.info.project)}</dd></div>
+          <div><dt>Total</dt><dd>${refs} ref. · ${units} und.</dd></div>
+        </dl>
+        ${this.groups().map((g) => `<section class="ps-group">
+            <h2>${escapeHtml(g.name)} <small>${escapeHtml(this.groupSummary(g))}</small></h2>
+            <table>
+              <thead><tr><th class="ps-n">#</th><th>Part Number</th><th>Descripción</th><th>Categoría</th><th>Subensamble</th><th class="ps-qty">Cant.</th></tr></thead>
+              <tbody>${g.items.map((i) => `<tr>
+                  <td class="ps-n">${++n}</td>
+                  <td class="ps-pn">${escapeHtml(i.pn)}</td>
+                  <td>${escapeHtml(i.description)}</td>
+                  <td>${escapeHtml(i.category)}</td>
+                  <td>${escapeHtml([i.zone, i.figure].filter(Boolean).join(" · "))}</td>
+                  <td class="ps-qty">${i.qty}</td>
+                </tr>`).join("")}</tbody>
+            </table>
+          </section>`).join("")}
+        <section class="ps-signs">
+          <div><span class="ps-line"></span><strong>Firma de Solicitante</strong><small>Nombre: ${escapeHtml(this.info.requester)}</small></div>
+          <div><span class="ps-line"></span><strong>Firma de Bodega</strong><small>Nombre:</small></div>
+        </section>
+        <footer class="ps-foot">Generado el ${dateShort(now)} a las ${timeShort(now)} · INGPAR S.A.S. · Visor de despiece Tennant T7 · T12 · IPC CT110</footer>`;
+    },
+
+    // ---------- Excel (.xlsx) ----------
+    downloadXlsx() {
+      if (!this.items.length) return;
+      const now = new Date();
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(buildXlsx(this.sheetRows(now)));
+      a.download = this.fileName(now, ".xlsx");
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+      showToast(`Excel descargado: ${a.download}`);
+    },
+
+    // Filas de la hoja (columnas A–F); s = índice de estilo en XLSX_STYLES
+    sheetRows(now) {
+      const { refs, units } = this.totals();
+      const rows = [], merges = [];
+      const add = (cells, height) => rows.push({ cells, height });
+      const span = (r, a, b) => merges.push(`${a}${r}:${b}${r}`);
+
+      span(add([{ v: "INGPAR S.A.S. · Solicitud de repuestos", s: 1 }], 26), "A", "F");
+      span(add([{ v: "Soporte técnico industrial · Lista de selección del visor de despiece", s: 2 }]), "A", "F");
+      add([]);
+      const meta = (label, value) => add([null, { v: label, s: 3 }, { v: value }]);
+      meta("Fecha", dateShort(now));
+      meta("Técnico / Solicitante", this.info.requester);
+      meta("N.º OP / Proyecto", this.info.project);
+      meta("Total", `${plural(refs, "referencia", "referencias")} · ${plural(units, "unidad", "unidades")}`);
+      add([]);
+      add(["#", "Part Number", "Descripción", "Categoría", "Subensamble", "Cantidad"].map((v) => ({ v, s: 4 })), 20);
+
+      let n = 0;
+      for (const g of this.groups()) {
+        const title = { v: `${g.name} · ${this.groupSummary(g)}`, s: 7 };
+        span(add([title, ...Array(5).fill({ v: "", s: 7 })], 20), "A", "F");
+        for (const i of g.items) {
+          add([
+            { v: ++n, s: 6 },
+            { v: i.pn, s: 8 },
+            { v: i.description, s: 5 },
+            { v: i.category, s: 5 },
+            { v: [i.zone, i.figure].filter(Boolean).join(" · "), s: 5 },
+            { v: i.qty, s: 6 }
+          ]);
+        }
+      }
+
+      add([]);
+      add([], 42); // espacio para firmar
+      const line = add([null, { v: "Firma de Solicitante", s: 9 }, { v: "", s: 9 }, null, { v: "Firma de Bodega", s: 9 }, { v: "", s: 9 }]);
+      span(line, "B", "C");
+      span(line, "E", "F");
+      add([null, { v: `Nombre: ${this.info.requester}`, s: 2 }, null, null, { v: "Nombre:", s: 2 }]);
+      add([]);
+      span(add([{ v: `Generado el ${dateShort(now)} a las ${timeShort(now)} · INGPAR S.A.S.`, s: 2 }]), "A", "F");
+
+      return { rows, merges, widths: [6, 16, 46, 24, 32, 10] };
+    }
+  };
+
+  /* ---------- Generador mínimo de .xlsx (sin librerías) ----------
+     Un .xlsx es un ZIP de archivos XML; aquí se empaqueta sin compresión. */
+  const XLSX_STYLES = [
+    // [fuente, relleno, borde, alineación]
+    [0, 0, 0, ""],                                                // 0 normal
+    [2, 0, 0, ""],                                                // 1 título
+    [3, 0, 0, ""],                                                // 2 texto gris
+    [1, 0, 0, ""],                                                // 3 etiqueta en negrita
+    [1, 2, 1, '<alignment vertical="center"/>'],                  // 4 encabezado de tabla (amarillo)
+    [0, 0, 1, '<alignment vertical="top" wrapText="1"/>'],        // 5 celda
+    [1, 0, 1, '<alignment horizontal="center" vertical="top"/>'], // 6 número / cantidad
+    [4, 3, 1, '<alignment vertical="center"/>'],                  // 7 grupo por máquina
+    [1, 0, 1, '<alignment vertical="top"/>'],                     // 8 Part Number
+    [1, 0, 2, '<alignment horizontal="center"/>']                 // 9 línea de firma
+  ];
+
+  const xmlEscape = (s) =>
+    String(s)
+      .replace(/[\x00-\x08\x0b\x0c\x0e-\x1f]/g, "")
+      .replace(/[<>&"]/g, (c) => ({ "<": "&lt;", ">": "&gt;", "&": "&amp;", '"': "&quot;" }[c]));
+
+  function buildXlsx({ rows, merges, widths }) {
+    const NS = 'xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"';
+    const head = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n';
+    const col = (i) => String.fromCharCode(65 + i);
+
+    const sheetData = rows
+      .map(({ cells, height }, r) => {
+        const xml = cells
+          .map((c, i) => {
+            if (!c) return "";
+            const ref = `${col(i)}${r + 1}`, s = c.s || 0;
+            return typeof c.v === "number"
+              ? `<c r="${ref}" s="${s}"><v>${c.v}</v></c>`
+              : `<c r="${ref}" s="${s}" t="inlineStr"><is><t xml:space="preserve">${xmlEscape(c.v ?? "")}</t></is></c>`;
+          })
+          .join("");
+        return `<row r="${r + 1}"${height ? ` ht="${height}" customHeight="1"` : ""}>${xml}</row>`;
+      })
+      .join("");
+
+    const sheet = `${head}<worksheet ${NS}>
+<sheetPr><pageSetUpPr fitToPage="1"/></sheetPr>
+<sheetViews><sheetView showGridLines="0" workbookViewId="0"/></sheetViews>
+<sheetFormatPr defaultRowHeight="15"/>
+<cols>${widths.map((w, i) => `<col min="${i + 1}" max="${i + 1}" width="${w}" customWidth="1"/>`).join("")}</cols>
+<sheetData>${sheetData}</sheetData>
+${merges.length ? `<mergeCells count="${merges.length}">${merges.map((m) => `<mergeCell ref="${m}"/>`).join("")}</mergeCells>` : ""}
+<pageMargins left="0.5" right="0.5" top="0.6" bottom="0.6" header="0.3" footer="0.3"/>
+<pageSetup paperSize="1" orientation="portrait" fitToWidth="1" fitToHeight="0"/>
+</worksheet>`;
+
+    const line = (side, rgb) => `<${side} style="thin"><color rgb="${rgb}"/></${side}>`;
+    const box = ["left", "right", "top", "bottom"].map((side) => line(side, "FFC2C8D1")).join("");
+    const styles = `${head}<styleSheet ${NS}>
+<fonts count="5">
+<font><sz val="11"/><name val="Calibri"/></font>
+<font><b/><sz val="11"/><name val="Calibri"/></font>
+<font><b/><sz val="16"/><name val="Calibri"/></font>
+<font><sz val="10"/><color rgb="FF5A6474"/><name val="Calibri"/></font>
+<font><b/><sz val="12"/><name val="Calibri"/></font>
+</fonts>
+<fills count="4">
+<fill><patternFill patternType="none"/></fill>
+<fill><patternFill patternType="gray125"/></fill>
+<fill><patternFill patternType="solid"><fgColor rgb="FFF5B301"/><bgColor indexed="64"/></patternFill></fill>
+<fill><patternFill patternType="solid"><fgColor rgb="FFE8EAEE"/><bgColor indexed="64"/></patternFill></fill>
+</fills>
+<borders count="3">
+<border><left/><right/><top/><bottom/><diagonal/></border>
+<border>${box}<diagonal/></border>
+<border><left/><right/>${line("top", "FF000000")}<bottom/><diagonal/></border>
+</borders>
+<cellStyleXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0"/></cellStyleXfs>
+<cellXfs count="${XLSX_STYLES.length}">${XLSX_STYLES.map(([font, fill, border, align]) =>
+      `<xf numFmtId="0" fontId="${font}" fillId="${fill}" borderId="${border}" xfId="0"${font ? ' applyFont="1"' : ""}${fill ? ' applyFill="1"' : ""}${border ? ' applyBorder="1"' : ""}${align ? ` applyAlignment="1">${align}</xf>` : "/>"}`).join("")}</cellXfs>
+<cellStyles count="1"><cellStyle name="Normal" xfId="0" builtinId="0"/></cellStyles>
+</styleSheet>`;
+
+    const REL = "http://schemas.openxmlformats.org/officeDocument/2006/relationships";
+    const PKG = "http://schemas.openxmlformats.org/package/2006/relationships";
+    const CT = "application/vnd.openxmlformats-officedocument.spreadsheetml";
+    return zipStore([
+      { name: "[Content_Types].xml", data: `${head}<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="${CT}.sheet.main+xml"/><Override PartName="/xl/worksheets/sheet1.xml" ContentType="${CT}.worksheet+xml"/><Override PartName="/xl/styles.xml" ContentType="${CT}.styles+xml"/></Types>` },
+      { name: "_rels/.rels", data: `${head}<Relationships xmlns="${PKG}"><Relationship Id="rId1" Type="${REL}/officeDocument" Target="xl/workbook.xml"/></Relationships>` },
+      { name: "xl/workbook.xml", data: `${head}<workbook ${NS} xmlns:r="${REL}"><sheets><sheet name="Lista de repuestos" sheetId="1" r:id="rId1"/></sheets></workbook>` },
+      { name: "xl/_rels/workbook.xml.rels", data: `${head}<Relationships xmlns="${PKG}"><Relationship Id="rId1" Type="${REL}/worksheet" Target="worksheets/sheet1.xml"/><Relationship Id="rId2" Type="${REL}/styles" Target="styles.xml"/></Relationships>` },
+      { name: "xl/worksheets/sheet1.xml", data: sheet },
+      { name: "xl/styles.xml", data: styles }
+    ], `${CT}.sheet`);
+  }
+
+  const CRC_TABLE = (() => {
+    const t = new Uint32Array(256);
+    for (let n = 0; n < 256; n++) {
+      let c = n;
+      for (let k = 0; k < 8; k++) c = c & 1 ? 0xedb88320 ^ (c >>> 1) : c >>> 1;
+      t[n] = c >>> 0;
+    }
+    return t;
+  })();
+  const crc32 = (bytes) => {
+    let c = 0xffffffff;
+    for (const b of bytes) c = CRC_TABLE[(c ^ b) & 0xff] ^ (c >>> 8);
+    return (c ^ 0xffffffff) >>> 0;
+  };
+
+  // ZIP sin compresión ("stored"), con nombres en UTF-8
+  function zipStore(files, type) {
+    const enc = new TextEncoder();
+    const now = new Date();
+    const time = (now.getHours() << 11) | (now.getMinutes() << 5) | (now.getSeconds() >> 1);
+    const date = ((now.getFullYear() - 1980) << 9) | ((now.getMonth() + 1) << 5) | now.getDate();
+    const header = (size, fill) => {
+      const b = new Uint8Array(size);
+      fill(new DataView(b.buffer));
+      return b;
+    };
+    const local = [], central = [];
+    let offset = 0;
+    for (const f of files) {
+      const name = enc.encode(f.name), data = enc.encode(f.data), crc = crc32(data);
+      local.push(header(30, (v) => {
+        v.setUint32(0, 0x04034b50, true);
+        v.setUint16(4, 20, true);
+        v.setUint16(6, 0x0800, true);
+        v.setUint16(10, time, true);
+        v.setUint16(12, date, true);
+        v.setUint32(14, crc, true);
+        v.setUint32(18, data.length, true);
+        v.setUint32(22, data.length, true);
+        v.setUint16(26, name.length, true);
+      }), name, data);
+      central.push(header(46, (v) => {
+        v.setUint32(0, 0x02014b50, true);
+        v.setUint16(4, 20, true);
+        v.setUint16(6, 20, true);
+        v.setUint16(8, 0x0800, true);
+        v.setUint16(12, time, true);
+        v.setUint16(14, date, true);
+        v.setUint32(16, crc, true);
+        v.setUint32(20, data.length, true);
+        v.setUint32(24, data.length, true);
+        v.setUint16(28, name.length, true);
+        v.setUint32(42, offset, true);
+      }), name);
+      offset += 30 + name.length + data.length;
+    }
+    const size = central.reduce((n, b) => n + b.length, 0);
+    const end = header(22, (v) => {
+      v.setUint32(0, 0x06054b50, true);
+      v.setUint16(8, files.length, true);
+      v.setUint16(10, files.length, true);
+      v.setUint32(12, size, true);
+      v.setUint32(16, offset, true);
+    });
+    return new Blob([...local, ...central, end], { type });
+  }
 
   async function route() {
     // #/<máquina>/zona/<id>  o  #/<máquina>/zona/<id>/<n.º de figura, desde 1>
@@ -3147,6 +3706,7 @@
     defaultId = registry.default || machines[0].id;
     MachineView.init();
     GlobalSearch.init();
+    Cart.init();
 
     // Selector de máquina en la cabecera: abre la portada de la máquina elegida
     els.machineSwitch.addEventListener("click", (e) => {
