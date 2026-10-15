@@ -3,6 +3,7 @@
   "machines": [
     {
       "id": "t7",
+      "brand": "Tennant",
       "name": "Tennant T7",
       "short": "T7",
       "manual": "9013606",
@@ -11,11 +12,21 @@
     },
     {
       "id": "t12",
+      "brand": "Tennant",
       "name": "Tennant T12",
       "short": "T12",
       "manual": "9012729",
       "data": "data/t12/machine.json",
       "examples": ["1200384", "motor", "squeegee blade", "battery"]
+    },
+    {
+      "id": "ct110",
+      "brand": "IPC",
+      "name": "IPC CT110",
+      "short": "CT110",
+      "manual": "LPTB02378",
+      "data": "data/ct110/machine.json",
+      "examples": ["MPVR08041", "116598-13", "MECE00450", "RTRT00533"]
     }
   ]
 }

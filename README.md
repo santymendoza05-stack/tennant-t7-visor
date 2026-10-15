@@ -1,12 +1,12 @@
-# Visor de despiece · Tennant T7 y T12
+# Visor de despiece · Tennant T7, Tennant T12 e IPC CT110
 
-Visor web interactivo de repuestos para las fregadoras Tennant **T7** (manual de partes 9013606) y **T12** (manual 9012729), basado en los diagramas 2D de cada manual.
+Visor web interactivo de repuestos para las fregadoras Tennant **T7** (manual de partes 9013606), Tennant **T12** (manual 9012729) e IPC **CT110** (catálogo LPTB02378), basado en los diagramas 2D de cada manual.
 
 **Sitio:** https://santymendoza05-stack.github.io/tennant-t7-visor/
 
 ## Navegación
 
-El **selector de la cabecera** (Tennant T7 / Tennant T12) cambia el plano general, las zonas, los despieces y el buscador global a los de la máquina elegida. El navegador recuerda la última máquina usada.
+El **selector de la cabecera** (Tennant T7 / Tennant T12 / IPC CT110) cambia el plano general, las zonas, los despieces y el buscador global a los de la máquina elegida. El navegador recuerda la última máquina usada.
 
 1. **Nivel 1 · Máquina completa:** vista general de la máquina con las zonas clave y un **buscador global** que busca en todas las zonas. Al elegir un resultado se abre la zona, se selecciona el repuesto y se ilumina su punto en el diagrama.
 2. **Nivel 2 · Despiece:** diagrama con puntos numerados, buscador y tabla de repuestos con "Copiar Ref".
@@ -52,6 +52,18 @@ Datos en `data/t12/` e imágenes en `assets/t12/`.
 | Contactor y Cableado | Fig. 23 · Electrical Contactor and Wires Group |
 | Sistema de Baterías | Fig. 24 · Battery Group, 240Ah |
 
+### IPC CT110 · catálogo LPTB02378 (CT110 BT85 ECS+CD GR/VE)
+
+Datos en `data/ct110/` e imágenes en `assets/ct110/`. El catálogo no trae una vista general de la máquina, así que el plano general es un tablero con el dibujo de cada sección. Los números de los dibujos (que en este catálogo son imágenes) se ubicaron con OCR y se revisaron a mano.
+
+| Zona | Tabla del catálogo | Repuestos clave |
+|---|---|---|
+| Racleta | SQUEEGEE | MPVR08041 Blade XL Latex (desde 07/2013) |
+| Cabezal de Cepillos | HEAD | |
+| Tanques | TANK | MOCC00273 Motor 3 St. 24V (Ametek 116598-13) |
+| Instalación Eléctrica | ELECTRI.INSTAL. | MECE00450 Board Traction Curtis CT110 |
+| Motor Rueda de Tracción | DRIVE ASSEMBLY<br>TRACTION MOTOR | RTRT00533 Ring Motorwheel |
+
 ## Uso local
 
 ```
@@ -62,8 +74,8 @@ Luego abre http://localhost:8000. También funciona abriendo `index.html` con do
 
 ## Agregar o editar una zona
 
-1. Crea el JSON de la figura con el mismo formato que los existentes (`data/` para la T7, `data/t12/` para la T12) y su imagen en `assets/` (o `assets/t12/`).
-2. Regístrala en el `machine.json` de la máquina (`data/machine.json` o `data/t12/machine.json`): `"status": "available"` y `"data"`, o `"figures"` si tiene varias.
+1. Crea el JSON de la figura con el mismo formato que los existentes (`data/` para la T7, `data/t12/` para la T12, `data/ct110/` para la CT110) y su imagen en `assets/` (o `assets/t12/`, `assets/ct110/`).
+2. Regístrala en el `machine.json` de la máquina (`data/machine.json`, `data/t12/machine.json` o `data/ct110/machine.json`): `"status": "available"` y `"data"`, o `"figures"` si tiene varias.
 3. Sincroniza la copia de respaldo:
    ```
    node tools/sync-fallback.js
@@ -74,8 +86,8 @@ Para calibrar la posición de un punto, haz **Alt+clic** sobre el diagrama. Eso 
 
 ## Agregar otra máquina
 
-Añádela a `data/machines.json` con su `id`, `name`, `short`, `manual`, la ruta a su `machine.json` y las búsquedas de ejemplo (`examples`). El selector de la cabecera la muestra automáticamente; su portada queda en `#/<id>/`.
+Añádela a `data/machines.json` con su `id`, `brand`, `name`, `short`, `manual`, la ruta a su `machine.json` y las búsquedas de ejemplo (`examples`). El selector de la cabecera la muestra automáticamente; su portada queda en `#/<id>/`.
 
 ---
 
-Diagramas y referencias © Tennant Company, tomados de los manuales de partes de la T7 y la T12. Este proyecto es una herramienta de consulta y no está afiliado a Tennant.
+Diagramas y referencias © Tennant Company e IPC, tomados de los manuales de partes de la T7, la T12 y la CT110. Este proyecto es una herramienta de consulta y no está afiliado a los fabricantes.

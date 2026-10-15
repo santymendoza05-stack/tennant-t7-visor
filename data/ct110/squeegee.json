@@ -1,0 +1,766 @@
+{
+  "machine": "IPC CT110",
+  "group": "Racleta",
+  "figure": "Tabla SQUEEGEE",
+  "image": "assets/ct110/squeegee.png",
+  "categories": [
+    "Tornillería",
+    "Pasadores y bujes",
+    "Resortes",
+    "Mangueras y conexiones",
+    "Sellos y empaques",
+    "Motores y actuadores",
+    "Eléctrico",
+    "Ruedas",
+    "Escobillas y hojas",
+    "Estructura y cubiertas"
+  ],
+  "parts": [
+    {
+      "item": 1,
+      "partNumber": "LAFN07536",
+      "description": "PLATE",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 31.5, "y": 87.0 }
+      ]
+    },
+    {
+      "item": 2,
+      "partNumber": "KTRI02050",
+      "description": "BODY SQUEEGEE PRESSOFUSO \"XL\"",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 72.8, "y": 87.0 }
+      ]
+    },
+    {
+      "item": 3,
+      "partNumber": "VTRS13946",
+      "description": "WASHER D. 8 X24 INX UNI 6593",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 31.6, "y": 90.7 },
+        { "x": 20.5, "y": 71.7 }
+      ]
+    },
+    {
+      "item": 4,
+      "partNumber": "VTVT00410",
+      "description": "SCREW TE M8x35 UNI5739 INOX",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 31.5, "y": 92.6 }
+      ]
+    },
+    {
+      "item": 5,
+      "partNumber": "VTDD01695",
+      "description": "NUT M 8 INX",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 20.6, "y": 69.8 }
+      ]
+    },
+    {
+      "item": 6,
+      "partNumber": "LAFN09010",
+      "description": "SUPPORT",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 20.6, "y": 73.4 }
+      ]
+    },
+    {
+      "item": 7,
+      "partNumber": "VTRS15978",
+      "description": "WASHER D.12X24 UNI 6592 INX",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 20.8, "y": 82.8 }
+      ]
+    },
+    {
+      "item": 8,
+      "partNumber": "VTVT00757",
+      "description": "SCREW",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 17.3, "y": 75.9 }
+      ]
+    },
+    {
+      "item": 9,
+      "partNumber": "VTRS13947",
+      "description": "WASHER D. 8 INX UNI 6592",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 15.4, "y": 82.4 }
+      ]
+    },
+    {
+      "item": 10,
+      "partNumber": "VTDD01695",
+      "description": "NUT M 8 INX",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 12.9, "y": 79.5 }
+      ]
+    },
+    {
+      "item": 11,
+      "partNumber": "VTVT01145",
+      "description": "CARRYNG BAG",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 32.8, "y": 78.0 }
+      ]
+    },
+    {
+      "item": 12,
+      "partNumber": "LAFN08956",
+      "description": "BRACKET",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "note": "Hasta 10/2013",
+      "hotspots": [
+        { "x": 12.6, "y": 58.0 }
+      ]
+    },
+    {
+      "item": 12,
+      "partNumber": "LAFN09288",
+      "description": "SHEET METAL PA.-",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "note": "Desde 10/2013",
+      "hotspots": []
+    },
+    {
+      "item": 13,
+      "partNumber": "LAFN08957",
+      "description": "BRACKET",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "note": "Hasta 10/2013",
+      "hotspots": [
+        { "x": 63.8, "y": 96.1 }
+      ]
+    },
+    {
+      "item": 13,
+      "partNumber": "LAFN09289",
+      "description": "SHEET METAL PA.-",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "note": "Desde 10/2013",
+      "hotspots": []
+    },
+    {
+      "item": 14,
+      "partNumber": "MPVR05808",
+      "description": "RUBBER FRONT SQUEEGEE XL PU",
+      "category": "Escobillas y hojas",
+      "qty": 1,
+      "note": "Hasta 07/2013",
+      "hotspots": [
+        { "x": 63.8, "y": 94.4 }
+      ]
+    },
+    {
+      "item": 14,
+      "partNumber": "MPVR08041",
+      "description": "BLADE XL LATEX",
+      "category": "Escobillas y hojas",
+      "qty": 1,
+      "note": "Desde 07/2013",
+      "hotspots": []
+    },
+    {
+      "item": 15,
+      "partNumber": "VTDD01694",
+      "description": "NUT M6 INOX",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 60.2, "y": 45.6 }
+      ]
+    },
+    {
+      "item": 16,
+      "partNumber": "LAFN09016",
+      "description": "PLATE",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 60.0, "y": 43.6 }
+      ]
+    },
+    {
+      "item": 17,
+      "partNumber": "LAFN09151",
+      "description": "PLATE",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 26.0, "y": 42.2 }
+      ]
+    },
+    {
+      "item": 18,
+      "partNumber": "MPVR05290",
+      "description": "ROLLER PARACOLPI",
+      "category": "Ruedas",
+      "qty": 2,
+      "hotspots": [
+        { "x": 74.8, "y": 50.1 }
+      ]
+    },
+    {
+      "item": 19,
+      "partNumber": "VTDD01694",
+      "description": "NUT M6 INOX",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 74.8, "y": 46.4 }
+      ]
+    },
+    {
+      "item": 20,
+      "partNumber": "MPVR49229",
+      "description": "BUSHING SHK",
+      "category": "Pasadores y bujes",
+      "qty": 2,
+      "hotspots": [
+        { "x": 74.9, "y": 48.3 }
+      ]
+    },
+    {
+      "item": 21,
+      "partNumber": "GUGO00164",
+      "description": "GASKET",
+      "category": "Sellos y empaques",
+      "qty": 2,
+      "hotspots": [
+        { "x": 74.8, "y": 54.9 }
+      ]
+    },
+    {
+      "item": 22,
+      "partNumber": "CMCV00445",
+      "description": "CABLE LIFTING SQUEEGEE CT110",
+      "category": "Eléctrico",
+      "qty": 1,
+      "hotspots": [
+        { "x": 15.8, "y": 43.6 }
+      ]
+    },
+    {
+      "item": 23,
+      "partNumber": "VTRS15144",
+      "description": "WASHER D. 6 INX GRW UNI 1751",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 15.7, "y": 38.9 }
+      ]
+    },
+    {
+      "item": 24,
+      "partNumber": "VTDD01694",
+      "description": "NUT M6 INOX",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 18.9, "y": 30.6 }
+      ]
+    },
+    {
+      "item": 25,
+      "partNumber": "MOCC00322",
+      "description": "ATUATOR SQUEEGEE CT110",
+      "category": "Motores y actuadores",
+      "qty": 1,
+      "hotspots": [
+        { "x": 18.0, "y": 26.7 }
+      ]
+    },
+    {
+      "item": 26,
+      "partNumber": "VTVT15917",
+      "description": "SCREW TE M 8X50 INOX A2 UNI",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 19.5, "y": 16.2 }
+      ]
+    },
+    {
+      "item": 27,
+      "partNumber": "VTRS13947",
+      "description": "WASHER D. 8 INX UNI 6592",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 14.9, "y": 11.1 }
+      ]
+    },
+    {
+      "item": 28,
+      "partNumber": "VTDD01695",
+      "description": "NUT M 8 INX",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 12.5, "y": 10.6 },
+        { "x": 18.2, "y": 13.3 }
+      ]
+    },
+    {
+      "item": 29,
+      "partNumber": "LAFN04100",
+      "description": "SPACER PER RUOTINO PARACOLPI",
+      "category": "Pasadores y bujes",
+      "qty": 2,
+      "hotspots": [
+        { "x": 74.8, "y": 56.7 }
+      ]
+    },
+    {
+      "item": 30,
+      "partNumber": "VTRS16937",
+      "description": "WASHER 6x24 INOX UNI 6593",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 74.8, "y": 58.6 }
+      ]
+    },
+    {
+      "item": 31,
+      "partNumber": "VTRS00245",
+      "description": "WASHER D.6 UNI 6592 INOX",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 60.2, "y": 47.7 }
+      ]
+    },
+    {
+      "item": 32,
+      "partNumber": "MPVR06004",
+      "description": "KNOB AISI 304",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 60.1, "y": 41.7 }
+      ]
+    },
+    {
+      "item": 33,
+      "partNumber": "MLML49422",
+      "description": "SPRING D.15X 45 X1",
+      "category": "Resortes",
+      "qty": 2,
+      "hotspots": [
+        { "x": 84.5, "y": 69.7 }
+      ]
+    },
+    {
+      "item": 34,
+      "partNumber": "VTVT01304",
+      "description": "SCREW M 8X 40 TTQST UNI 5731",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 77.8, "y": 80.1 }
+      ]
+    },
+    {
+      "item": 35,
+      "partNumber": "VTDD01694",
+      "description": "NUT M6 INOX",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 88.0, "y": 74.0 }
+      ]
+    },
+    {
+      "item": 36,
+      "partNumber": "VTAE45707",
+      "description": "CIRCLIP D. 6 UNI 7434 INOX",
+      "category": "Tornillería",
+      "qty": 4,
+      "note": "Ref. alterna #8479.90.9498",
+      "hotspots": [
+        { "x": 86.4, "y": 72.8 }
+      ]
+    },
+    {
+      "item": 37,
+      "partNumber": "RTRT00540",
+      "description": "WHEEL D.8x32",
+      "category": "Ruedas",
+      "qty": 2,
+      "hotspots": [
+        { "x": 74.3, "y": 71.8 }
+      ]
+    },
+    {
+      "item": 38,
+      "partNumber": "LAFN51069",
+      "description": "BRACKET SUPP.RUOTINO SQUEEGEE",
+      "category": "Estructura y cubiertas",
+      "qty": 2,
+      "hotspots": [
+        { "x": 74.3, "y": 75.5 }
+      ]
+    },
+    {
+      "item": 39,
+      "partNumber": "VTVT15515",
+      "description": "SCREW TE M 6X 50 INOX A2",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 74.3, "y": 73.6 }
+      ]
+    },
+    {
+      "item": 40,
+      "partNumber": "VTVT00841",
+      "description": "SCREW TE M 6X65 UNI 5739 INX",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 73.0, "y": 88.8 }
+      ]
+    },
+    {
+      "item": 41,
+      "partNumber": "VTVT00699",
+      "description": "SCREW TE M. 6-70",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 59.3, "y": 81.1 }
+      ]
+    },
+    {
+      "item": 42,
+      "partNumber": "LAFN08958",
+      "description": "BRACKET",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "note": "Hasta 10/2013",
+      "hotspots": [
+        { "x": 80.3, "y": 10.8 }
+      ]
+    },
+    {
+      "item": 42,
+      "partNumber": "LAFN09290",
+      "description": "SHEET METAL PA.-",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "note": "Desde 10/2013",
+      "hotspots": []
+    },
+    {
+      "item": 43,
+      "partNumber": "LAFN08959",
+      "description": "BRACKET",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "note": "Hasta 10/2013",
+      "hotspots": [
+        { "x": 97.6, "y": 45.6 }
+      ]
+    },
+    {
+      "item": 43,
+      "partNumber": "LAFN09291",
+      "description": "SHEET METAL PA.-",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "note": "Desde 10/2013",
+      "hotspots": []
+    },
+    {
+      "item": 44,
+      "partNumber": "MPVR05810",
+      "description": "RUBBER REAR SQUEEGEE XL PU",
+      "category": "Escobillas y hojas",
+      "qty": 1,
+      "note": "Hasta 07/2013",
+      "hotspots": [
+        { "x": 94.3, "y": 47.7 }
+      ]
+    },
+    {
+      "item": 44,
+      "partNumber": "MPVR08037",
+      "description": "BLADE XL LATEX",
+      "category": "Escobillas y hojas",
+      "qty": 1,
+      "note": "Desde 07/2013",
+      "hotspots": []
+    },
+    {
+      "item": 45,
+      "partNumber": "TBBP00402",
+      "description": "TUBE TERGI D.40",
+      "category": "Mangueras y conexiones",
+      "qty": 1,
+      "hotspots": [
+        { "x": 52.2, "y": 34.9 }
+      ]
+    },
+    {
+      "item": 46,
+      "partNumber": "VTVT17342",
+      "description": "SCREW TE M 6X 60 UNI 5739 INX",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 1.8, "y": 40.7 }
+      ]
+    },
+    {
+      "item": 47,
+      "partNumber": "VTRS07728",
+      "description": "WASHER D. 6 INX",
+      "category": "Tornillería",
+      "qty": 3,
+      "hotspots": [
+        { "x": 11.1, "y": 35.1 },
+        { "x": 5.3, "y": 38.4 }
+      ]
+    },
+    {
+      "item": 48,
+      "partNumber": "VTRS13947",
+      "description": "WASHER D. 8 INX UNI 6592",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 7.8, "y": 36.6 }
+      ]
+    },
+    {
+      "item": 49,
+      "partNumber": "LAFN03840",
+      "description": "BUSHING",
+      "category": "Pasadores y bujes",
+      "qty": 1,
+      "hotspots": [
+        { "x": 10.1, "y": 42.6 }
+      ]
+    },
+    {
+      "item": 50,
+      "partNumber": "VTDD15518",
+      "description": "NUT M 6 INX",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 12.7, "y": 40.4 }
+      ]
+    },
+    {
+      "item": 51,
+      "partNumber": "VTDD15518",
+      "description": "NUT M 6 INX",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 16.1, "y": 32.3 }
+      ]
+    },
+    {
+      "item": 52,
+      "partNumber": "MPVR04659",
+      "description": "FLANGE",
+      "category": "Mangueras y conexiones",
+      "qty": 1,
+      "hotspots": [
+        { "x": 58.5, "y": 17.5 }
+      ]
+    },
+    {
+      "item": 53,
+      "partNumber": "LAFN35608",
+      "description": "SPACER S. BLOCK BT 530",
+      "category": "Pasadores y bujes",
+      "qty": 1,
+      "hotspots": [
+        { "x": 19.1, "y": 85.3 }
+      ]
+    },
+    {
+      "item": 54,
+      "partNumber": "MPVR05898",
+      "description": "CLOSURE L",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 48.7, "y": 7.4 }
+      ]
+    },
+    {
+      "item": 55,
+      "partNumber": "GUVR00304",
+      "description": "GASKET",
+      "category": "Sellos y empaques",
+      "qty": 1,
+      "hotspots": [
+        { "x": 72.9, "y": 85.1 }
+      ]
+    },
+    {
+      "item": 56,
+      "partNumber": "GUVR00305",
+      "description": "GASKET",
+      "category": "Sellos y empaques",
+      "qty": 1,
+      "hotspots": [
+        { "x": 26.0, "y": 44.0 }
+      ]
+    },
+    {
+      "item": 57,
+      "partNumber": "MPVR05898",
+      "description": "CLOSURE L",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 96.0, "y": 46.8 }
+      ]
+    },
+    {
+      "item": 58,
+      "partNumber": "VTVT01070",
+      "description": "SCREW TSTC M3X8",
+      "category": "Tornillería",
+      "qty": 8,
+      "hotspots": [
+        { "x": 75.7, "y": 27.9 },
+        { "x": 44.6, "y": 66.5 }
+      ]
+    },
+    {
+      "item": 59,
+      "partNumber": "VTDD00210",
+      "description": "NUT M 3 INOX",
+      "category": "Tornillería",
+      "qty": 8,
+      "hotspots": [
+        { "x": 90.3, "y": 21.1 },
+        { "x": 33.1, "y": 75.1 }
+      ]
+    },
+    {
+      "item": 60,
+      "partNumber": "VTVR01040",
+      "description": "RIVET",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 84.5, "y": 72.0 }
+      ]
+    },
+    {
+      "item": 61,
+      "partNumber": "VTDD01694",
+      "description": "NUT M6 INOX",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 84.4, "y": 66.0 }
+      ]
+    },
+    {
+      "item": 62,
+      "partNumber": "LAFN05559",
+      "description": "SUPPORT RUOTINO",
+      "category": "Estructura y cubiertas",
+      "qty": 2,
+      "hotspots": [
+        { "x": 84.7, "y": 59.7 }
+      ]
+    },
+    {
+      "item": 63,
+      "partNumber": "VTRS13947",
+      "description": "WASHER D. 8 INX UNI 6592",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 84.8, "y": 57.7 }
+      ]
+    },
+    {
+      "item": 64,
+      "partNumber": "VTDD01695",
+      "description": "NUT M 8 INX",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 84.8, "y": 55.9 }
+      ]
+    },
+    {
+      "item": 65,
+      "partNumber": "TBBP00124",
+      "description": "TUBE D 8/6",
+      "category": "Mangueras y conexiones",
+      "qty": 0.01,
+      "hotspots": [
+        { "x": 77.4, "y": 61.4 }
+      ]
+    },
+    {
+      "item": 66,
+      "partNumber": "VTVT15515",
+      "description": "SCREW TE M 6X 50 INOX A2",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 75.7, "y": 60.7 }
+      ]
+    },
+    {
+      "item": 67,
+      "partNumber": "VTRS13947",
+      "description": "WASHER D. 8 INX UNI 6592",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 84.5, "y": 67.9 }
+      ]
+    },
+    {
+      "item": 68,
+      "partNumber": "MPVR06016",
+      "description": "BRACKET",
+      "category": "Estructura y cubiertas",
+      "qty": 2,
+      "hotspots": [
+        { "x": 60.3, "y": 49.8 }
+      ]
+    }
+  ]
+}

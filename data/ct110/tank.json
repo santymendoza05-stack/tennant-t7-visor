@@ -1,0 +1,893 @@
+{
+  "machine": "IPC CT110",
+  "group": "Tanques de solución y recuperación",
+  "figure": "Tabla TANK",
+  "image": "assets/ct110/tank.png",
+  "categories": [
+    "Tornillería",
+    "Pasadores y bujes",
+    "Mangueras y conexiones",
+    "Sellos y empaques",
+    "Motores y actuadores",
+    "Eléctrico",
+    "Escobillas y hojas",
+    "Estructura y cubiertas"
+  ],
+  "parts": [
+    {
+      "item": 1,
+      "partNumber": "SESD00021",
+      "description": "SEAT",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 2.4, "y": 22.9 }
+      ]
+    },
+    {
+      "item": 2,
+      "partNumber": "LAFN06430",
+      "description": "PLATE CT110",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 2.4, "y": 25.0 }
+      ]
+    },
+    {
+      "item": 3,
+      "partNumber": "VTVT15143",
+      "description": "SCREW TE 6X16 UNI5739",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 2.4, "y": 27.1 }
+      ]
+    },
+    {
+      "item": 4,
+      "partNumber": "CEVR00060",
+      "description": "HINGE PORTA SEDILE P185",
+      "category": "Estructura y cubiertas",
+      "qty": 2,
+      "hotspots": [
+        { "x": 2.5, "y": 30.2 }
+      ]
+    },
+    {
+      "item": 5,
+      "partNumber": "VTVT01317",
+      "description": "SCREW M 5X 12 TSPEI UNI 5933",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 12.0, "y": 32.3 }
+      ]
+    },
+    {
+      "item": 6,
+      "partNumber": "GUVR00284",
+      "description": "GASKET CT110",
+      "category": "Sellos y empaques",
+      "qty": 1,
+      "hotspots": [
+        { "x": 31.3, "y": 36.4 }
+      ]
+    },
+    {
+      "item": 7,
+      "partNumber": "MPVR05692",
+      "description": "TANK CT110",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 23.0, "y": 46.0 }
+      ]
+    },
+    {
+      "item": 8,
+      "partNumber": "SESD00020",
+      "description": "SHEET METAL PA.CLEANTIME",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 31.3, "y": 31.9 }
+      ]
+    },
+    {
+      "item": 9,
+      "partNumber": "VTVT00433",
+      "description": "SCREW TE M 6X 30 UNI 5739 INX",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 54.1, "y": 27.3 }
+      ]
+    },
+    {
+      "item": 10,
+      "partNumber": "VTRS13945",
+      "description": "WASHER D. 6X18 INX UNI 6593",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 52.4, "y": 28.8 }
+      ]
+    },
+    {
+      "item": 11,
+      "partNumber": "MPVR05694",
+      "description": "SIDE PANEL CT110",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 12.9, "y": 62.7 }
+      ]
+    },
+    {
+      "item": 12,
+      "partNumber": "MPVR05205",
+      "description": "COVER SCHEDA POTENZA",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "note": "Desde 11/2009",
+      "hotspots": [
+        { "x": 13.0, "y": 65.0 }
+      ]
+    },
+    {
+      "item": 12,
+      "partNumber": "MPVR05693",
+      "description": "COVER SCHEDA POTENZA",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "note": "Hasta 11/2009",
+      "hotspots": []
+    },
+    {
+      "item": 13,
+      "partNumber": "VTVT00005",
+      "description": "SCREW TE FR 5X12 ZB",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 13.0, "y": 67.1 }
+      ]
+    },
+    {
+      "item": 14,
+      "partNumber": "VTVT15142",
+      "description": "SCREW TE M 6x45 INOX",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 9.7, "y": 92.1 }
+      ]
+    },
+    {
+      "item": 15,
+      "partNumber": "MPVR05691",
+      "description": "PLANE CT110",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 35.1, "y": 93.5 }
+      ]
+    },
+    {
+      "item": 16,
+      "partNumber": "MPVR05206",
+      "description": "COVER PANNELLO ELETTRONICA",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 37.0, "y": 69.7 }
+      ]
+    },
+    {
+      "item": 17,
+      "partNumber": "VTVT00433",
+      "description": "SCREW TE M 6X 30 UNI 5739 INX",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 34.3, "y": 76.9 }
+      ]
+    },
+    {
+      "item": 18,
+      "partNumber": "VTVT00005",
+      "description": "SCREW TE FR 5X12 ZB",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 36.9, "y": 67.4 }
+      ]
+    },
+    {
+      "item": 19,
+      "partNumber": "FSVR00243",
+      "description": "CLAMP 20/30",
+      "category": "Mangueras y conexiones",
+      "qty": 3,
+      "hotspots": [
+        { "x": 47.1, "y": 84.3 }
+      ]
+    },
+    {
+      "item": 20,
+      "partNumber": "VTVT37012",
+      "description": "SCREW M 4X 10 TCB-TC INX",
+      "category": "Tornillería",
+      "qty": 3,
+      "hotspots": [
+        { "x": 47.1, "y": 86.4 }
+      ]
+    },
+    {
+      "item": 21,
+      "partNumber": "KTRI03463",
+      "description": "CAP SCARICO SERBATOIO SOLUZ.",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 55.0, "y": 73.4 }
+      ]
+    },
+    {
+      "item": 22,
+      "partNumber": "VTVT00005",
+      "description": "SCREW TE FR 5X12 ZB",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 55.0, "y": 75.5 }
+      ]
+    },
+    {
+      "item": 23,
+      "partNumber": "LAFN06433",
+      "description": "PIN ROTAZIONE",
+      "category": "Pasadores y bujes",
+      "qty": 2,
+      "hotspots": [
+        { "x": 59.4, "y": 62.2 }
+      ]
+    },
+    {
+      "item": 24,
+      "partNumber": "VTAE06761",
+      "description": "CIRCLIP D. 18 UNI 7435",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 56.9, "y": 61.4 }
+      ]
+    },
+    {
+      "item": 25,
+      "partNumber": "MPVR05314",
+      "description": "CAP STR35X25",
+      "category": "Estructura y cubiertas",
+      "qty": 2,
+      "hotspots": [
+        { "x": 34.3, "y": 74.4 }
+      ]
+    },
+    {
+      "item": 26,
+      "partNumber": "MPVR05315",
+      "description": "ROD CT110",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 32.7, "y": 17.3 }
+      ]
+    },
+    {
+      "item": 27,
+      "partNumber": "VTVT15924",
+      "description": "SCREW M 4X 16 TCB-TC UNI 7687",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 88.6, "y": 42.4 }
+      ]
+    },
+    {
+      "item": 28,
+      "partNumber": "MPVR05252",
+      "description": "CLIP D.60",
+      "category": "Mangueras y conexiones",
+      "qty": 1,
+      "hotspots": [
+        { "x": 88.6, "y": 44.5 }
+      ]
+    },
+    {
+      "item": 29,
+      "partNumber": "MEVR05200",
+      "description": "CARBON MOTORE ASP.AMET.116599-13",
+      "category": "Eléctrico",
+      "qty": 1,
+      "hotspots": [
+        { "x": 63.8, "y": 61.3 }
+      ]
+    },
+    {
+      "item": 29,
+      "partNumber": "MOCC00273",
+      "description": "MOTOR 3 ST.24V 116598-13",
+      "category": "Motores y actuadores",
+      "qty": 1,
+      "hotspots": []
+    },
+    {
+      "item": 30,
+      "partNumber": "MECI00533",
+      "description": "SENSOR VS303-51N",
+      "category": "Eléctrico",
+      "qty": 1,
+      "hotspots": [
+        { "x": 58.9, "y": 84.1 }
+      ]
+    },
+    {
+      "item": 31,
+      "partNumber": "FTDP00133",
+      "description": "FILTER",
+      "category": "Escobillas y hojas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 86.8, "y": 18.0 }
+      ]
+    },
+    {
+      "item": 32,
+      "partNumber": "GUGO00417",
+      "description": "GASKET SCATOLA ASPIRAZIONE",
+      "category": "Sellos y empaques",
+      "qty": 1,
+      "hotspots": [
+        { "x": 96.9, "y": 28.2 }
+      ]
+    },
+    {
+      "item": 33,
+      "partNumber": "MPVR05103",
+      "description": "SOUND-PROOFING ASPIRATORE",
+      "category": "Sellos y empaques",
+      "qty": 1,
+      "hotspots": [
+        { "x": 58.9, "y": 81.5 }
+      ]
+    },
+    {
+      "item": 34,
+      "partNumber": "LAFN06363",
+      "description": "FLANGE ASPIRATORE",
+      "category": "Mangueras y conexiones",
+      "qty": 1,
+      "hotspots": [
+        { "x": 58.9, "y": 86.7 }
+      ]
+    },
+    {
+      "item": 35,
+      "partNumber": "TBFX00244",
+      "description": "TUBE D 34 L200MM",
+      "category": "Mangueras y conexiones",
+      "qty": 1,
+      "hotspots": [
+        { "x": 58.8, "y": 92.9 }
+      ]
+    },
+    {
+      "item": 36,
+      "partNumber": "TBFX00244",
+      "description": "TUBE D 34 L200MM",
+      "category": "Mangueras y conexiones",
+      "qty": 1,
+      "hotspots": [
+        { "x": 74.8, "y": 65.6 }
+      ]
+    },
+    {
+      "item": 37,
+      "partNumber": "FSVR00033",
+      "description": "CLAMP 45-60",
+      "category": "Mangueras y conexiones",
+      "qty": 1,
+      "hotspots": [
+        { "x": 80.3, "y": 58.7 }
+      ]
+    },
+    {
+      "item": 38,
+      "partNumber": "MPVR04724",
+      "description": "FLANGE IN NYLON",
+      "category": "Mangueras y conexiones",
+      "qty": 1,
+      "hotspots": [
+        { "x": 73.4, "y": 77.4 }
+      ]
+    },
+    {
+      "item": 39,
+      "partNumber": "TBBP00401",
+      "description": "TUBE ACQUA SPORCA",
+      "category": "Mangueras y conexiones",
+      "qty": 1,
+      "note": "Hasta 03/2013",
+      "hotspots": [
+        { "x": 90.2, "y": 53.5 }
+      ]
+    },
+    {
+      "item": 39,
+      "partNumber": "TBFX00362",
+      "description": "TUBE PU",
+      "category": "Mangueras y conexiones",
+      "qty": 1,
+      "note": "Desde 03/2013",
+      "hotspots": []
+    },
+    {
+      "item": 40,
+      "partNumber": "VTAE14096",
+      "description": "CIRCLIP D. 8 UNI 7435",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 82.7, "y": 48.3 },
+        { "x": 74.5, "y": 56.3 }
+      ]
+    },
+    {
+      "item": 41,
+      "partNumber": "VTRS13947",
+      "description": "WASHER D. 8 INX UNI 6592",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 77.2, "y": 56.6 }
+      ]
+    },
+    {
+      "item": 42,
+      "partNumber": "LAFN06434",
+      "description": "PIN ROTAZIONE",
+      "category": "Pasadores y bujes",
+      "qty": 1,
+      "hotspots": [
+        { "x": 80.1, "y": 52.4 }
+      ]
+    },
+    {
+      "item": 43,
+      "partNumber": "MPVR31077",
+      "description": "BUSHING L.450",
+      "category": "Pasadores y bujes",
+      "qty": 1,
+      "hotspots": [
+        { "x": 58.9, "y": 89.7 }
+      ]
+    },
+    {
+      "item": 44,
+      "partNumber": "MPVR05696",
+      "description": "TANK CT110",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 82.6, "y": 43.6 }
+      ]
+    },
+    {
+      "item": 45,
+      "partNumber": "MPVR05482",
+      "description": "BOX",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 96.8, "y": 25.7 }
+      ]
+    },
+    {
+      "item": 46,
+      "partNumber": "VTVT01325",
+      "description": "SCREW TCEI 5X35 INOX UNI5931",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 96.9, "y": 20.4 }
+      ]
+    },
+    {
+      "item": 47,
+      "partNumber": "GUGO00418",
+      "description": "GASKET CONDOTTO ASPIRAZIONE",
+      "category": "Sellos y empaques",
+      "qty": 1,
+      "hotspots": [
+        { "x": 97.0, "y": 16.7 }
+      ]
+    },
+    {
+      "item": 48,
+      "partNumber": "MPVR05695",
+      "description": "COVER CT110",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 84.4, "y": 5.6 }
+      ]
+    },
+    {
+      "item": 49,
+      "partNumber": "GUVR00272",
+      "description": "GASKET CT110",
+      "category": "Sellos y empaques",
+      "qty": 1,
+      "hotspots": [
+        { "x": 84.4, "y": 8.6 }
+      ]
+    },
+    {
+      "item": 50,
+      "partNumber": "GUGO00272",
+      "description": "GASKET VACUUM MOTOR CT",
+      "category": "Sellos y empaques",
+      "qty": 1,
+      "hotspots": [
+        { "x": 64.9, "y": 58.0 }
+      ]
+    },
+    {
+      "item": 51,
+      "partNumber": "VTVR00536",
+      "description": "SEEGER 8",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 63.9, "y": 14.7 },
+        { "x": 71.1, "y": 16.6 }
+      ]
+    },
+    {
+      "item": 52,
+      "partNumber": "LAFN06509",
+      "description": "PIN ROTAZIONE",
+      "category": "Pasadores y bujes",
+      "qty": 1,
+      "hotspots": [
+        { "x": 67.4, "y": 15.9 }
+      ]
+    },
+    {
+      "item": 53,
+      "partNumber": "VTVT37012",
+      "description": "SCREW M 4X 10 TCB-TC INX",
+      "category": "Tornillería",
+      "qty": 3,
+      "hotspots": [
+        { "x": 68.3, "y": 33.8 }
+      ]
+    },
+    {
+      "item": 54,
+      "partNumber": "MPVR02933",
+      "description": "DUCT LOCK D.9,5",
+      "category": "Mangueras y conexiones",
+      "qty": 3,
+      "hotspots": [
+        { "x": 68.4, "y": 35.9 }
+      ]
+    },
+    {
+      "item": 55,
+      "partNumber": "MECI00516",
+      "description": "SENSOR DI LIVELLO ORIZZONTALE",
+      "category": "Eléctrico",
+      "qty": 1,
+      "hotspots": [
+        { "x": 51.6, "y": 17.4 }
+      ]
+    },
+    {
+      "item": 56,
+      "partNumber": "MPVR05212",
+      "description": "CAP",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "note": "Hasta 06/2009",
+      "hotspots": [
+        { "x": 32.8, "y": 9.6 }
+      ]
+    },
+    {
+      "item": 57,
+      "partNumber": "GUVR00287",
+      "description": "GASKET CT110",
+      "category": "Sellos y empaques",
+      "qty": 1,
+      "note": "Hasta 06/2009",
+      "hotspots": [
+        { "x": 32.8, "y": 11.7 }
+      ]
+    },
+    {
+      "item": 58,
+      "partNumber": "VTVT00849",
+      "description": "SCREW M 4X 10 TSPEI INX U.5933",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 25.9, "y": 33.8 }
+      ]
+    },
+    {
+      "item": 59,
+      "partNumber": "LAFN06431",
+      "description": "ROD CT110",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 25.9, "y": 31.7 }
+      ]
+    },
+    {
+      "item": 60,
+      "partNumber": "LAFN06432",
+      "description": "PLATE CT110",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 25.7, "y": 43.3 }
+      ]
+    },
+    {
+      "item": 61,
+      "partNumber": "VTRS13945",
+      "description": "WASHER D. 6X18 INX UNI 6593",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 12.1, "y": 86.6 }
+      ]
+    },
+    {
+      "item": 62,
+      "partNumber": "LAFN51077",
+      "description": "SPACER PH",
+      "category": "Pasadores y bujes",
+      "qty": 3,
+      "hotspots": [
+        { "x": 73.3, "y": 74.8 }
+      ]
+    },
+    {
+      "item": 63,
+      "partNumber": "VTVT00785",
+      "description": "ROD FILETTO",
+      "category": "Estructura y cubiertas",
+      "qty": 3,
+      "hotspots": [
+        { "x": 73.4, "y": 94.1 }
+      ]
+    },
+    {
+      "item": 64,
+      "partNumber": "VTRS13945",
+      "description": "WASHER D. 6X18 INX UNI 6593",
+      "category": "Tornillería",
+      "qty": 3,
+      "hotspots": [
+        { "x": 73.4, "y": 96.2 }
+      ]
+    },
+    {
+      "item": 65,
+      "partNumber": "VTDD15518",
+      "description": "NUT M 6 INX",
+      "category": "Tornillería",
+      "qty": 3,
+      "hotspots": [
+        { "x": 73.4, "y": 98.4 }
+      ]
+    },
+    {
+      "item": 68,
+      "partNumber": "MPVR05273",
+      "description": "CAP CT110",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 41.7, "y": 42.4 }
+      ]
+    },
+    {
+      "item": 69,
+      "partNumber": "MPVR05272",
+      "description": "CAP CT110",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 44.3, "y": 52.8 }
+      ]
+    },
+    {
+      "item": 70,
+      "partNumber": "VTVT62920",
+      "description": "SCREW TE F/ROND. M 6X 16 ZB",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 26.5, "y": 69.8 }
+      ]
+    },
+    {
+      "item": 71,
+      "partNumber": "VTRS15144",
+      "description": "WASHER D. 6 INX GRW UNI 1751",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 10.7, "y": 89.2 }
+      ]
+    },
+    {
+      "item": 72,
+      "partNumber": "VTRS15144",
+      "description": "WASHER D. 6 INX GRW UNI 1751",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 34.4, "y": 79.7 }
+      ]
+    },
+    {
+      "item": 73,
+      "partNumber": "VTRS00502",
+      "description": "WASHER D. 5 0.466 UNI 6592",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 16.9, "y": 27.6 }
+      ]
+    },
+    {
+      "item": 74,
+      "partNumber": "VTDD15517",
+      "description": "NUT M 5 INX",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 12.3, "y": 25.5 }
+      ]
+    },
+    {
+      "item": 75,
+      "partNumber": "VTRS13947",
+      "description": "WASHER D. 8 INX UNI 6592",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 48.7, "y": 29.1 },
+        { "x": 54.8, "y": 39.5 }
+      ]
+    },
+    {
+      "item": 76,
+      "partNumber": "VTVT13938",
+      "description": "SCREW TE 8X20 UNI5739 INX",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 48.5, "y": 26.9 },
+        { "x": 54.8, "y": 41.6 }
+      ]
+    },
+    {
+      "item": 77,
+      "partNumber": "CMCV00427",
+      "description": "CABLE CT 110",
+      "category": "Eléctrico",
+      "qty": 1,
+      "hotspots": [
+        { "x": 56.1, "y": 32.0 }
+      ]
+    },
+    {
+      "item": 78,
+      "partNumber": "MPVR05380",
+      "description": "CAP CT110",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 88.6, "y": 38.8 }
+      ]
+    },
+    {
+      "item": 79,
+      "partNumber": "GUGO00313",
+      "description": "MOUSSE CT110",
+      "category": "Sellos y empaques",
+      "qty": 1,
+      "hotspots": [
+        { "x": 2.1, "y": 38.9 }
+      ]
+    },
+    {
+      "item": 80,
+      "partNumber": "LAFN02931",
+      "description": "BRACKET FAN COOLER",
+      "category": "Estructura y cubiertas",
+      "qty": 2,
+      "hotspots": [
+        { "x": 24.4, "y": 65.8 },
+        { "x": 26.4, "y": 71.8 }
+      ]
+    },
+    {
+      "item": 81,
+      "partNumber": "MEVR00232",
+      "description": "DOOR TO REMOVE AND RESET FUSE",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 6.6, "y": 70.6 }
+      ]
+    },
+    {
+      "item": 82,
+      "partNumber": "LAFN07737",
+      "description": "BRACKET",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 45.7, "y": 8.2 }
+      ]
+    },
+    {
+      "item": 83,
+      "partNumber": "VTVT01150",
+      "description": "SCREW 4x10",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 54.5, "y": 2.7 }
+      ]
+    },
+    {
+      "item": 84,
+      "partNumber": "MPVR05596",
+      "description": "PROTECTION",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 54.5, "y": 4.8 }
+      ]
+    },
+    {
+      "item": 85,
+      "partNumber": "VTVT15961",
+      "description": "SCREW M 5X 16 TCB TC UNI 7687",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 60.3, "y": 13.8 }
+      ]
+    },
+    {
+      "item": 86,
+      "partNumber": "VTRS15908",
+      "description": "WASHER D. 5 INX GRW UNI 1751",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 60.3, "y": 16.7 }
+      ]
+    }
+  ]
+}

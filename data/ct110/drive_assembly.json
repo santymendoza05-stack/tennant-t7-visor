@@ -1,0 +1,136 @@
+{
+  "machine": "IPC CT110",
+  "group": "Motor rueda de tracción",
+  "figure": "Tabla DRIVE ASSEMBLY",
+  "image": "assets/ct110/drive_assembly.png",
+  "categories": [
+    "Pasadores y bujes",
+    "Mangueras y conexiones",
+    "Motores y actuadores",
+    "Eléctrico",
+    "Ruedas",
+    "Estructura y cubiertas"
+  ],
+  "parts": [
+    {
+      "item": 1,
+      "partNumber": "RTRT00533",
+      "description": "RING MOTORWHEEL",
+      "category": "Ruedas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 16.5, "y": 83.8 }
+      ]
+    },
+    {
+      "item": 2,
+      "partNumber": "RTRT00533",
+      "description": "RING MOTORWHEEL",
+      "category": "Ruedas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 31.8, "y": 48.9 }
+      ]
+    },
+    {
+      "item": 3,
+      "partNumber": "RDGR00040",
+      "description": "REDUCTION UNIT CT110",
+      "category": "Motores y actuadores",
+      "qty": 1,
+      "hotspots": [
+        { "x": 35.6, "y": 88.5 }
+      ]
+    },
+    {
+      "item": 6,
+      "partNumber": "MEVR02084",
+      "description": "CAP CT110",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 73.1, "y": 69.1 }
+      ]
+    },
+    {
+      "item": 7,
+      "partNumber": "MEVR02030",
+      "description": "BRAKE",
+      "category": "Motores y actuadores",
+      "qty": 1,
+      "hotspots": [
+        { "x": 79.0, "y": 69.1 }
+      ]
+    },
+    {
+      "item": 8,
+      "partNumber": "MPVR06031",
+      "description": "COWLING MOTORUOTA",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 88.8, "y": 69.0 }
+      ]
+    },
+    {
+      "item": 9,
+      "partNumber": "MEVR00985",
+      "description": "BRUSHES CT110",
+      "category": "Eléctrico",
+      "qty": 4,
+      "hotspots": [
+        { "x": 64.8, "y": 92.1 }
+      ]
+    },
+    {
+      "item": 10,
+      "partNumber": "MOCC00399",
+      "description": "MOTOR MP80",
+      "category": "Motores y actuadores",
+      "qty": 1,
+      "hotspots": [
+        { "x": 61.7, "y": 95.8 }
+      ]
+    },
+    {
+      "item": 11,
+      "partNumber": "MEVR00889",
+      "description": "PIPETTE",
+      "category": "Mangueras y conexiones",
+      "qty": 2,
+      "hotspots": [
+        { "x": 94.4, "y": 78.8 }
+      ]
+    },
+    {
+      "item": 12,
+      "partNumber": "MPVR08044",
+      "description": "COVER",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 6.1, "y": 44.5 }
+      ]
+    },
+    {
+      "item": 13,
+      "partNumber": "CUVR00194",
+      "description": "BEARING 61926 2RS",
+      "category": "Pasadores y bujes",
+      "qty": 1,
+      "hotspots": [
+        { "x": 41.0, "y": 91.4 }
+      ]
+    },
+    {
+      "item": 14,
+      "partNumber": "KTRI02209",
+      "description": "KIT CT230 R",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 66.6, "y": 17.8 }
+      ]
+    }
+  ]
+}
