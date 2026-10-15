@@ -2361,7 +2361,7 @@
 
   const AssemblyView = {
     // group: subsistema (o categoría) resaltado en el diagrama; showAll: "Mostrar todos los puntos"
-    state: { parts: [], categories: [], groups: [], groupKey: "category", group: null, showAll: false, query: "", category: ALL, activeItem: null, zone: "", figure: "" },
+    state: { parts: [], categories: [], groups: [], groupKey: "category", group: null, showAll: false, query: "", category: ALL, activeItem: null, zone: null, figure: "", figureIndex: 0 },
     zoom: { s: 1, tx: 0, ty: 0 },
     loadedUrl: null,
 
@@ -2598,8 +2598,9 @@
         query: "",
         category: ALL,
         activeItem: null,
-        zone: zone.name,
-        figure: data.figure || figure.label || ""
+        zone,
+        figure: data.figure || figure.label || "",
+        figureIndex: Math.max(0, figuresOf(zone).findIndex((f) => f.data === figure.data))
       });
       this.resetZoom();
       els.search.value = "";
@@ -2797,7 +2798,7 @@
         if (add) {
           const tr = add.closest("tr");
           const p = this.state.parts.find((x) => x.item === Number(tr.dataset.item) && x.partNumber === tr.dataset.pn);
-          if (p) Cart.add(p, this.state.zone, this.state.figure);
+          if (p) Cart.add(p, this.state.zone, this.state.figure, this.state.figureIndex);
           return;
         }
         const btn = e.target.closest(".copy-btn");
@@ -3056,7 +3057,7 @@
         const add = e.target.closest(".cart-add");
         if (add) {
           const r = this.results[Number(add.dataset.index)];
-          if (r) Cart.add(r.part, r.zone.name, r.figure);
+          if (r) Cart.add(r.part, r.zone, r.figure, r.figureIndex);
           return;
         }
         const li = e.target.closest(".gr-item");
@@ -3103,6 +3104,12 @@
   const CART_KEY = "t7-cart";
   const CART_INFO_KEY = "t7-cart-info";
   const MAX_QTY = 999;
+  // Identificación formal de la empresa en el Excel y en el formato imprimible
+  const COMPANY = {
+    name: "INGPAR S.A.S.",
+    nit: "NIT 900.919.023-1",
+    slogan: "Ingeniería para un Mantenimiento Integral"
+  };
 
   const pad2 = (n) => String(n).padStart(2, "0");
   const dateShort = (d) => `${pad2(d.getDate())}/${pad2(d.getMonth() + 1)}/${d.getFullYear()}`;
@@ -3206,8 +3213,9 @@
       return this.items[this.indexOf(this.key(machine, pn))];
     },
 
-    // Si el Part Number ya está en la lista (de esa máquina), suma una unidad
-    add(part, zone, figure) {
+    // Si el Part Number ya está en la lista (de esa máquina), suma una unidad.
+    // zoneIndex/figureIndex/item guardan el orden técnico del manual para la exportación.
+    add(part, zone, figure, figureIndex = 0) {
       const it = this.find(part.partNumber);
       if (it) {
         this.setQty(it, it.qty + 1);
@@ -3219,8 +3227,11 @@
           pn: part.partNumber,
           description: part.description,
           category: part.category || "",
-          zone: zone || "",
+          item: part.item,
+          zone: zone.name,
+          zoneIndex: MachineView.data.zones.indexOf(zone),
           figure: figure || "",
+          figureIndex,
           qty: 1
         });
         this.save();
@@ -3253,6 +3264,26 @@
           const items = this.items.filter((i) => i.machine === id);
           return { id, name: m ? m.name : items[0].machineName || id, manual: (m && m.manual) || "", items };
         });
+    },
+
+    // Orden técnico: subensambles en el orden del plano general (machine.json), luego figura e ítem del manual
+    subassemblies(items) {
+      const num = (v, fallback) => (Number.isFinite(v) && v >= 0 ? v : fallback);
+      const sorted = [...items].sort((a, b) =>
+        num(a.zoneIndex, 999) - num(b.zoneIndex, 999) ||
+        (a.zone || "").localeCompare(b.zone || "") ||
+        num(a.figureIndex, 0) - num(b.figureIndex, 0) ||
+        (a.figure || "").localeCompare(b.figure || "") ||
+        num(a.item, 999) - num(b.item, 999) ||
+        a.pn.localeCompare(b.pn));
+      const subs = [];
+      for (const i of sorted) {
+        const name = [i.zone, i.figure].filter(Boolean).join(" · ") || "Sin subensamble";
+        const last = subs[subs.length - 1];
+        if (last && last.name === name) last.items.push(i);
+        else subs.push({ name, items: [i] });
+      }
+      return subs;
     },
 
     groupSummary(g) {
@@ -3367,38 +3398,49 @@
       return `<header class="ps-head">
           <div class="ps-brand">
             <span class="ps-mark">IP</span>
-            <div><strong>INGPAR S.A.S.</strong><small>Soporte técnico industrial</small></div>
+            <div>
+              <strong>${COMPANY.name}</strong>
+              <span class="ps-nit">${COMPANY.nit}</span>
+              <em class="ps-slogan">${COMPANY.slogan}</em>
+            </div>
           </div>
-          <div class="ps-title">
-            <h1>Solicitud de repuestos</h1>
-            <p>Lista de selección · Visor de despiece</p>
+          <div class="ps-doc">
+            <span class="ps-doc-kind">Formato</span>
+            <h1>Solicitud de Repuestos</h1>
+            <span class="ps-doc-date">Fecha: <strong>${dateShort(now)}</strong></span>
           </div>
         </header>
-        <dl class="ps-meta">
-          <div><dt>Fecha</dt><dd>${dateShort(now)}</dd></div>
-          <div><dt>Técnico / Solicitante</dt><dd>${field(this.info.requester)}</dd></div>
-          <div><dt>N.º OP / Proyecto</dt><dd>${field(this.info.project)}</dd></div>
-          <div><dt>Total</dt><dd>${refs} ref. · ${units} und.</dd></div>
-        </dl>
-        ${this.groups().map((g) => `<section class="ps-group">
-            <h2>${escapeHtml(g.name)} <small>${escapeHtml(this.groupSummary(g))}</small></h2>
-            <table>
-              <thead><tr><th class="ps-n">#</th><th>Part Number</th><th>Descripción</th><th>Categoría</th><th>Subensamble</th><th class="ps-qty">Cant.</th></tr></thead>
-              <tbody>${g.items.map((i) => `<tr>
+        <table class="ps-info">
+          <tr>
+            <th>Técnico / Solicitante</th><td>${field(this.info.requester)}</td>
+            <th>N.º OP / Proyecto</th><td>${field(this.info.project)}</td>
+          </tr>
+          <tr>
+            <th>Total</th><td colspan="3">${plural(refs, "referencia", "referencias")} · ${plural(units, "unidad", "unidades")}</td>
+          </tr>
+        </table>
+        ${this.groups().map((g, gi) => `<section class="ps-group">
+            <h2><span>${gi + 1}. ${escapeHtml(g.name)}</span><small>${escapeHtml(this.groupSummary(g))}</small></h2>
+            <table class="ps-parts">
+              <thead><tr><th class="ps-n">#</th><th class="ps-item">Ítem</th><th>Part Number</th><th>Descripción</th><th>Categoría</th><th class="ps-qty">Cant.</th></tr></thead>
+              <tbody>${this.subassemblies(g.items).map((s, si) => `<tr class="ps-sub"><td colspan="6">${gi + 1}.${si + 1} ${escapeHtml(s.name)}</td></tr>${s.items.map((i) => `<tr>
                   <td class="ps-n">${++n}</td>
+                  <td class="ps-item">${i.item ?? "—"}</td>
                   <td class="ps-pn">${escapeHtml(i.pn)}</td>
                   <td>${escapeHtml(i.description)}</td>
                   <td>${escapeHtml(i.category)}</td>
-                  <td>${escapeHtml([i.zone, i.figure].filter(Boolean).join(" · "))}</td>
                   <td class="ps-qty">${i.qty}</td>
-                </tr>`).join("")}</tbody>
+                </tr>`).join("")}`).join("")}</tbody>
             </table>
           </section>`).join("")}
         <section class="ps-signs">
           <div><span class="ps-line"></span><strong>Firma de Solicitante</strong><small>Nombre: ${escapeHtml(this.info.requester)}</small></div>
           <div><span class="ps-line"></span><strong>Firma de Bodega</strong><small>Nombre:</small></div>
         </section>
-        <footer class="ps-foot">Generado el ${dateShort(now)} a las ${timeShort(now)} · INGPAR S.A.S. · Visor de despiece Tennant T7 · T12 · IPC CT110</footer>`;
+        <footer class="ps-foot">
+          <span><strong>${COMPANY.name}</strong> · ${COMPANY.nit} · ${COMPANY.slogan}</span>
+          <span>Generado el ${dateShort(now)} a las ${timeShort(now)} desde el visor de despiece</span>
+        </footer>`;
     },
 
     // ---------- Excel (.xlsx) ----------
@@ -3422,60 +3464,79 @@
       const add = (cells, height) => rows.push({ cells, height });
       const span = (r, a, b) => merges.push(`${a}${r}:${b}${r}`);
 
-      span(add([{ v: "INGPAR S.A.S. · Solicitud de repuestos", s: 1 }], 26), "A", "F");
-      span(add([{ v: "Soporte técnico industrial · Lista de selección del visor de despiece", s: 2 }]), "A", "F");
+      // Celda combinada: todas las celdas del rango llevan el estilo (bordes y relleno completos)
+      const fill = (v, s, count) => [{ v, s }, ...Array(count - 1).fill({ v: "", s })];
+
+      // Encabezado formal: empresa a la izquierda, documento a la derecha
+      let r = add([{ v: COMPANY.name, s: 1 }, null, null, null, ...fill("SOLICITUD DE REPUESTOS", 7, 2)], 26);
+      span(r, "A", "D"); span(r, "E", "F");
+      r = add([{ v: COMPANY.nit, s: 13 }, null, null, null, ...fill(`Fecha: ${dateShort(now)}`, 14, 2)]);
+      span(r, "A", "D"); span(r, "E", "F");
+      span(add([{ v: COMPANY.slogan, s: 11 }]), "A", "D");
       add([]);
-      const meta = (label, value) => add([null, { v: label, s: 3 }, { v: value }]);
-      meta("Fecha", dateShort(now));
+      const meta = (label, value) => {
+        const row = add([...fill(label, 3, 2), ...fill(value, 12, 4)], 20);
+        span(row, "A", "B"); span(row, "C", "F");
+      };
       meta("Técnico / Solicitante", this.info.requester);
       meta("N.º OP / Proyecto", this.info.project);
       meta("Total", `${plural(refs, "referencia", "referencias")} · ${plural(units, "unidad", "unidades")}`);
       add([]);
-      add(["#", "Part Number", "Descripción", "Categoría", "Subensamble", "Cantidad"].map((v) => ({ v, s: 4 })), 20);
+      add(["#", "Ítem", "Part Number", "Descripción", "Categoría", "Cantidad"].map((v) => ({ v, s: 4 })), 20);
 
+      // Máquina → subensamble (orden técnico del manual) → repuestos por número de ítem
       let n = 0;
-      for (const g of this.groups()) {
-        const title = { v: `${g.name} · ${this.groupSummary(g)}`, s: 7 };
-        span(add([title, ...Array(5).fill({ v: "", s: 7 })], 20), "A", "F");
-        for (const i of g.items) {
-          add([
-            { v: ++n, s: 6 },
-            { v: i.pn, s: 8 },
-            { v: i.description, s: 5 },
-            { v: i.category, s: 5 },
-            { v: [i.zone, i.figure].filter(Boolean).join(" · "), s: 5 },
-            { v: i.qty, s: 6 }
-          ]);
-        }
-      }
+      this.groups().forEach((g, gi) => {
+        span(add(fill(`${gi + 1}. ${g.name} · ${this.groupSummary(g)}`, 7, 6), 20), "A", "F");
+        this.subassemblies(g.items).forEach((sub, si) => {
+          span(add(fill(`${gi + 1}.${si + 1} ${sub.name}`, 10, 6), 18), "A", "F");
+          for (const i of sub.items) {
+            add([
+              { v: ++n, s: 6 },
+              Number.isFinite(i.item) ? { v: i.item, s: 6 } : { v: "—", s: 6 },
+              { v: i.pn, s: 8 },
+              { v: i.description, s: 5 },
+              { v: i.category, s: 5 },
+              { v: i.qty, s: 6 }
+            ]);
+          }
+        });
+      });
 
       add([]);
       add([], 42); // espacio para firmar
-      const line = add([null, { v: "Firma de Solicitante", s: 9 }, { v: "", s: 9 }, null, { v: "Firma de Bodega", s: 9 }, { v: "", s: 9 }]);
-      span(line, "B", "C");
+      const line = add([...fill("Firma de Solicitante", 9, 3), null, ...fill("Firma de Bodega", 9, 2)]);
+      span(line, "A", "C");
       span(line, "E", "F");
-      add([null, { v: `Nombre: ${this.info.requester}`, s: 2 }, null, null, { v: "Nombre:", s: 2 }]);
+      add([{ v: `Nombre: ${this.info.requester}`, s: 2 }, null, null, null, { v: "Nombre:", s: 2 }]);
       add([]);
-      span(add([{ v: `Generado el ${dateShort(now)} a las ${timeShort(now)} · INGPAR S.A.S.`, s: 2 }]), "A", "F");
+      span(add([{ v: `${COMPANY.name} · ${COMPANY.nit} · ${COMPANY.slogan}`, s: 13 }]), "A", "F");
+      span(add([{ v: `Generado el ${dateShort(now)} a las ${timeShort(now)} desde el visor de despiece`, s: 2 }]), "A", "F");
 
-      return { rows, merges, widths: [6, 16, 46, 24, 32, 10] };
+      return { rows, merges, widths: [6, 7, 16, 46, 24, 16] };
     }
   };
 
   /* ---------- Generador mínimo de .xlsx (sin librerías) ----------
-     Un .xlsx es un ZIP de archivos XML; aquí se empaqueta sin compresión. */
+     Un .xlsx es un ZIP de archivos XML; aquí se empaqueta sin compresión.
+     Colores corporativos de INGPAR: azul FF0B3D6B, verde FF2E8B3E. */
   const XLSX_STYLES = [
     // [fuente, relleno, borde, alineación]
-    [0, 0, 0, ""],                                                // 0 normal
-    [2, 0, 0, ""],                                                // 1 título
-    [3, 0, 0, ""],                                                // 2 texto gris
-    [1, 0, 0, ""],                                                // 3 etiqueta en negrita
-    [1, 2, 1, '<alignment vertical="center"/>'],                  // 4 encabezado de tabla (amarillo)
-    [0, 0, 1, '<alignment vertical="top" wrapText="1"/>'],        // 5 celda
-    [1, 0, 1, '<alignment horizontal="center" vertical="top"/>'], // 6 número / cantidad
-    [4, 3, 1, '<alignment vertical="center"/>'],                  // 7 grupo por máquina
-    [1, 0, 1, '<alignment vertical="top"/>'],                     // 8 Part Number
-    [1, 0, 2, '<alignment horizontal="center"/>']                 // 9 línea de firma
+    [0, 0, 0, ""],                                                       // 0 normal
+    [2, 0, 0, '<alignment vertical="center"/>'],                         // 1 nombre de la empresa (azul)
+    [3, 0, 0, ""],                                                       // 2 texto gris
+    [8, 5, 1, '<alignment vertical="center"/>'],                         // 3 etiqueta (fondo azul claro)
+    [5, 2, 1, '<alignment horizontal="center" vertical="center"/>'],     // 4 encabezado de tabla (verde)
+    [0, 0, 1, '<alignment vertical="top" wrapText="1"/>'],               // 5 celda
+    [1, 0, 1, '<alignment horizontal="center" vertical="top"/>'],        // 6 número / ítem / cantidad
+    [4, 3, 1, '<alignment horizontal="left" vertical="center"/>'],       // 7 máquina y título del documento (azul)
+    [1, 0, 1, '<alignment vertical="top"/>'],                            // 8 Part Number
+    [1, 0, 2, '<alignment horizontal="center"/>'],                       // 9 línea de firma
+    [6, 4, 1, '<alignment vertical="center"/>'],                         // 10 subensamble (verde claro)
+    [7, 0, 0, ""],                                                       // 11 eslogan
+    [0, 0, 1, '<alignment vertical="center" wrapText="1"/>'],            // 12 valor de la cabecera
+    [8, 0, 0, ""],                                                       // 13 NIT (azul)
+    [1, 0, 1, '<alignment horizontal="center" vertical="center"/>']      // 14 fecha del documento
   ];
 
   const xmlEscape = (s) =>
@@ -3517,18 +3578,24 @@ ${merges.length ? `<mergeCells count="${merges.length}">${merges.map((m) => `<me
     const line = (side, rgb) => `<${side} style="thin"><color rgb="${rgb}"/></${side}>`;
     const box = ["left", "right", "top", "bottom"].map((side) => line(side, "FFC2C8D1")).join("");
     const styles = `${head}<styleSheet ${NS}>
-<fonts count="5">
+<fonts count="9">
 <font><sz val="11"/><name val="Calibri"/></font>
 <font><b/><sz val="11"/><name val="Calibri"/></font>
-<font><b/><sz val="16"/><name val="Calibri"/></font>
+<font><b/><sz val="18"/><color rgb="FF0B3D6B"/><name val="Calibri"/></font>
 <font><sz val="10"/><color rgb="FF5A6474"/><name val="Calibri"/></font>
-<font><b/><sz val="12"/><name val="Calibri"/></font>
+<font><b/><sz val="12"/><color rgb="FFFFFFFF"/><name val="Calibri"/></font>
+<font><b/><sz val="10"/><color rgb="FFFFFFFF"/><name val="Calibri"/></font>
+<font><b/><sz val="11"/><color rgb="FF1F6B2E"/><name val="Calibri"/></font>
+<font><i/><sz val="10"/><color rgb="FF2E8B3E"/><name val="Calibri"/></font>
+<font><b/><sz val="10"/><color rgb="FF0B3D6B"/><name val="Calibri"/></font>
 </fonts>
-<fills count="4">
+<fills count="6">
 <fill><patternFill patternType="none"/></fill>
 <fill><patternFill patternType="gray125"/></fill>
-<fill><patternFill patternType="solid"><fgColor rgb="FFF5B301"/><bgColor indexed="64"/></patternFill></fill>
-<fill><patternFill patternType="solid"><fgColor rgb="FFE8EAEE"/><bgColor indexed="64"/></patternFill></fill>
+<fill><patternFill patternType="solid"><fgColor rgb="FF2E8B3E"/><bgColor indexed="64"/></patternFill></fill>
+<fill><patternFill patternType="solid"><fgColor rgb="FF0B3D6B"/><bgColor indexed="64"/></patternFill></fill>
+<fill><patternFill patternType="solid"><fgColor rgb="FFE7F3EA"/><bgColor indexed="64"/></patternFill></fill>
+<fill><patternFill patternType="solid"><fgColor rgb="FFE6EEF7"/><bgColor indexed="64"/></patternFill></fill>
 </fills>
 <borders count="3">
 <border><left/><right/><top/><bottom/><diagonal/></border>

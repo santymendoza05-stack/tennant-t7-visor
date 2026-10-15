@@ -1618,7 +1618,13 @@ tr.is-active .item-num, tr:hover .item-num, .gr-item[aria-selected="true"] .item
   html.printing-cart .print-sheet { display: block; }
 }
 
+/* Plantilla formal de INGPAR S.A.S.: azul y verde corporativos */
 .print-sheet {
+  --ing-blue: #0b3d6b;
+  --ing-green: #2e8b3e;
+  --ing-green-dark: #1f6b2e;
+  --ing-green-soft: #e7f3ea;
+  --ing-blue-soft: #e6eef7;
   color: #000;
   font: 10pt/1.35 var(--font);
   -webkit-print-color-adjust: exact;
@@ -1627,64 +1633,106 @@ tr.is-active .item-num, tr:hover .item-num, .gr-item[aria-selected="true"] .item
 .ps-head {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: stretch;
   gap: 16px;
   padding-bottom: 10px;
-  border-bottom: 3px solid #f5b301;
+  border-bottom: 4px solid var(--ing-blue);
+  box-shadow: 0 3px 0 var(--ing-green); /* doble franja azul / verde */
 }
-.ps-brand { display: flex; align-items: center; gap: 10px; }
-.ps-brand strong { display: block; font: 800 16pt var(--font-display); letter-spacing: 0.04em; }
-.ps-brand small { color: #555; font-size: 8.5pt; }
+.ps-brand { display: flex; align-items: center; gap: 12px; }
+.ps-brand > div { display: flex; flex-direction: column; line-height: 1.2; }
+.ps-brand strong { font: 800 19pt var(--font-display); letter-spacing: 0.04em; color: var(--ing-blue); }
+.ps-nit { font-weight: 700; font-size: 9pt; color: var(--ing-blue); }
+.ps-slogan { font-size: 9pt; color: var(--ing-green); }
 .ps-mark {
   display: grid;
   place-items: center;
-  width: 38px; height: 38px;
-  border-radius: 9px;
-  background: #f5b301;
-  color: #1b1300;
-  font: 800 13pt var(--font-display);
+  width: 46px; height: 46px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--ing-blue) 0 55%, var(--ing-green) 55% 100%);
+  color: #fff;
+  font: 800 15pt var(--font-display);
 }
-.ps-title { text-align: right; }
-.ps-title h1 { margin: 0; font: 800 17pt var(--font-display); letter-spacing: 0.03em; text-transform: uppercase; }
-.ps-title p { margin: 0; color: #555; font-size: 8.5pt; }
+.ps-doc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 210px;
+  border: 1.5px solid var(--ing-blue);
+  text-align: center;
+}
+.ps-doc-kind {
+  align-self: stretch;
+  padding: 2px 0;
+  background: var(--ing-blue);
+  color: #fff;
+  font: 700 7pt var(--font);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.ps-doc h1 { margin: 4px 10px 2px; font: 800 15pt var(--font-display); letter-spacing: 0.03em; text-transform: uppercase; color: var(--ing-blue); }
+.ps-doc-date { padding-bottom: 4px; font-size: 9pt; }
 
-.ps-meta {
-  display: grid;
-  grid-template-columns: 0.8fr 1.6fr 1.2fr 1fr;
-  margin: 12px 0 4px;
-  border: 1px solid #999;
-}
-.ps-meta div { padding: 6px 9px; border-left: 1px solid #999; }
-.ps-meta div:first-child { border-left: 0; }
-.ps-meta dt { font: 700 7pt var(--font); letter-spacing: 0.08em; text-transform: uppercase; color: #555; }
-.ps-meta dd { margin: 2px 0 0; font-weight: 600; font-size: 10.5pt; min-height: 1.3em; }
-.ps-blank { display: block; height: 1.2em; }
-
-.ps-group { margin-top: 12px; }
-.ps-group h2 {
-  margin: 0 0 4px;
-  padding: 4px 8px;
-  background: #e8eaee;
-  border-left: 4px solid #f5b301;
-  font: 800 11.5pt var(--font-display);
-  letter-spacing: 0.03em;
-  break-after: avoid;
-}
-.ps-group h2 small { margin-left: 6px; font: 600 8pt var(--font); color: #555; letter-spacing: 0; }
-.ps-group table { width: 100%; border-collapse: collapse; }
-.ps-group thead { display: table-header-group; }
-.ps-group th {
-  text-align: left;
-  padding: 4px 6px;
-  border: 1px solid #999;
-  background: #f5b301;
+.ps-info { width: 100%; margin: 14px 0 4px; border-collapse: collapse; }
+.ps-info th, .ps-info td { padding: 5px 8px; border: 1px solid #9aa7b5; text-align: left; vertical-align: middle; }
+.ps-info th {
+  width: 1%;
+  white-space: nowrap;
+  background: var(--ing-blue-soft);
+  color: var(--ing-blue);
   font: 700 7.5pt var(--font);
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
-.ps-group td { padding: 4px 6px; border: 1px solid #bbb; vertical-align: top; }
-.ps-group tr { break-inside: avoid; }
-.ps-n { width: 26px; text-align: center; }
+.ps-info td { font-weight: 600; font-size: 10pt; }
+.ps-blank { display: block; min-width: 160px; height: 1.2em; }
+
+.ps-group { margin-top: 14px; }
+.ps-group h2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin: 0;
+  padding: 5px 8px;
+  background: var(--ing-blue);
+  color: #fff;
+  font: 800 11.5pt var(--font-display);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  break-after: avoid;
+}
+.ps-group h2 small { font: 600 8pt var(--font); letter-spacing: 0; text-transform: none; opacity: 0.9; }
+/* Anchos fijos: las columnas quedan alineadas entre máquinas */
+.ps-parts { width: 100%; border-collapse: collapse; table-layout: fixed; }
+.ps-parts th:nth-child(3) { width: 104px; }
+.ps-parts th:nth-child(5) { width: 130px; }
+.ps-parts thead { display: table-header-group; }
+.ps-parts th {
+  text-align: left;
+  padding: 4px 6px;
+  border: 1px solid var(--ing-green-dark);
+  background: var(--ing-green);
+  color: #fff;
+  font: 700 7.5pt var(--font);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.ps-parts td { padding: 4px 6px; border: 1px solid #b8c2cc; vertical-align: top; }
+.ps-parts tr { break-inside: avoid; }
+.ps-sub td {
+  padding: 4px 8px;
+  background: var(--ing-green-soft);
+  border-left: 4px solid var(--ing-green);
+  color: var(--ing-green-dark);
+  font-weight: 700;
+  font-size: 9.5pt;
+  break-after: avoid;
+}
+.ps-n { width: 24px; text-align: center; }
+.ps-parts th.ps-n, .ps-parts th.ps-item, .ps-parts th.ps-qty { text-align: center; }
+.ps-item { width: 36px; text-align: center; color: #333; }
 .ps-pn { font: 700 9.5pt var(--mono); white-space: nowrap; }
 .ps-qty { width: 46px; text-align: center; font-weight: 800; font-size: 11pt; }
 
@@ -1696,10 +1744,22 @@ tr.is-active .item-num, tr:hover .item-num, .gr-item[aria-selected="true"] .item
   break-inside: avoid;
 }
 .ps-signs div { display: flex; flex-direction: column; align-items: center; text-align: center; }
-.ps-line { width: 100%; border-top: 1.5px solid #000; margin-bottom: 4px; }
-.ps-signs strong { font-size: 10pt; }
+.ps-line { width: 100%; border-top: 1.5px solid var(--ing-blue); margin-bottom: 4px; }
+.ps-signs strong { font-size: 10pt; color: var(--ing-blue); }
 .ps-signs small { align-self: stretch; margin-top: 10px; text-align: left; color: #333; font-size: 9pt; }
-.ps-foot { margin-top: 24px; padding-top: 6px; border-top: 1px solid #ccc; color: #666; font-size: 7.5pt; text-align: center; }
+.ps-foot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  margin-top: 24px;
+  padding-top: 6px;
+  border-top: 2px solid var(--ing-green);
+  color: #555;
+  font-size: 7.5pt;
+  text-align: center;
+}
+.ps-foot strong { color: var(--ing-blue); }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 1180px) {
