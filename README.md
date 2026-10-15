@@ -45,7 +45,7 @@ Datos en `data/t12/` e imágenes en `assets/t12/`.
 | Zona | Figura del manual |
 |---|---|
 | Racleta Trasera / Escobillas de Secado | Fig. 21 · Rear Squeegee Kit |
-| Cabezal de Cepillos | Fig. 12 · Disk<br>Fig. 13 · Cylindrical Frame<br>Fig. 14 · Cylindrical Drive Motor |
+| Cabezal de Cepillos | Fig. 12 · Disk<br>Fig. 13 · Cylindrical Frame<br>Fig. 14 · Cylindrical Drive Motor<br>Fig. 2 · Replacement Brushes, Side Brush |
 | Escobillas Laterales del Cabezal | Fig. 15 · Right Hand<br>Fig. 16 · Left Hand |
 | Mecanismo de Elevación del Cabezal | Fig. 11 · Scrub Head Lift Group |
 | Mecanismo de Elevación de Racleta | Fig. 20 · Rear Squeegee Lift Group |

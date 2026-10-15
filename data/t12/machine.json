@@ -40,7 +40,7 @@
       "name": "Cabezal de Cepillos",
       "system": "lavado",
       "description": "Scrub Head Group, Disk / Cylindrical",
-      "figure": "Fig. 12 / 13 / 14",
+      "figure": "Fig. 12 / 13 / 14 / 2",
       "status": "available",
       "figures": [
         {
@@ -54,6 +54,10 @@
         {
           "label": "Fig. 14 · Motor cilíndrico",
           "data": "data/t12/scrub_head_cyl_drive.json"
+        },
+        {
+          "label": "Fig. 2 · Cepillo lateral (repuestos)",
+          "data": "data/t12/side_brush_replacement.json"
         }
       ],
       "hotspot": { "x": 50, "y": 94 }

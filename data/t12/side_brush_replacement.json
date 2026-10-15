@@ -1,0 +1,49 @@
+{
+  "machine": "Tennant T12",
+  "group": "Replacement Brushes, Side Brush",
+  "figure": "Fig. 2",
+  "image": "assets/t12/side_brush_replacement.png",
+  "categories": [
+    "Cepillos",
+    "Porta pad",
+    "Pads",
+    "Hubs y kits de fijación",
+    "Resortes y soportes",
+    "Tornillería"
+  ],
+  "subsystems": [
+    "Conjunto Cepillo Lateral",
+    "Porta Disco / Pad Driver",
+    "Mecanismo de Fijación / Latch"
+  ],
+  "parts": [
+    { "item": 1, "partNumber": "1220230", "description": "Brush Assy, Disk, Scb, 13.0D, Nylon", "category": "Cepillos", "subsystem": "Conjunto Cepillo Lateral", "qty": 2, "note": "Incluye kit de hub 9014662 (ítem 2)", "hotspots": [{ "x": 41.5, "y": 48.7 }] },
+    { "item": 1, "partNumber": "1220231", "description": "Brush Assy, Disk, Scb, 13.0D, Polypropylene Stiff", "category": "Cepillos", "subsystem": "Conjunto Cepillo Lateral", "qty": 2, "note": "S/N 10000000-19999999 según el manual · Incluye kit de hub 9014662 (ítem 2)", "hotspots": [] },
+    { "item": 1, "partNumber": "1220232", "description": "Brush Assy, Disk, Scb, 13.0D, Super Abrasive", "category": "Cepillos", "subsystem": "Conjunto Cepillo Lateral", "qty": 2, "note": "Incluye kit de hub 9014662 (ítem 2)", "hotspots": [] },
+    { "item": 1, "partNumber": "1042492", "description": "Brush Assy, Disk, Scb, 13.0d, Nylon (Scrubbing) (Replaced By 1220230)", "category": "Cepillos", "subsystem": "Conjunto Cepillo Lateral", "qty": 1, "note": "Anterior · reemplazado por 1220230", "hotspots": [] },
+    { "item": 1, "partNumber": "1042494", "description": "Brush Assy, Disk, Scb, 13.0d, Polypropylene Stiff (Scrubbing) (Replaced By 1220231)", "category": "Cepillos", "subsystem": "Conjunto Cepillo Lateral", "qty": 1, "note": "Anterior · reemplazado por 1220231", "hotspots": [] },
+    { "item": 1, "partNumber": "1042496", "description": "Brush Assy, Disk, Scb, 13.0d, Super Abrasive (Scrubbing) (Replaced By 1220232)", "category": "Cepillos", "subsystem": "Conjunto Cepillo Lateral", "qty": 1, "note": "Anterior · reemplazado por 1220232", "hotspots": [] },
+    { "item": 2, "partNumber": "9014662", "description": "Brush Kit, Hub Assy, Drive, CI (HDPE IN)", "category": "Hubs y kits de fijación", "subsystem": "Mecanismo de Fijación / Latch", "qty": 1, "note": "Componente del cepillo 1220230 / 1220231 / 1220232", "hotspots": [{ "x": 41.7, "y": 36.6 }] },
+    { "item": 3, "partNumber": "1220243", "description": "Driver Assy, Pad, 13.0D", "category": "Porta pad", "subsystem": "Porta Disco / Pad Driver", "qty": 1, "note": "Incluye ítems 4 a 7", "hotspots": [{ "x": 72.6, "y": 45.8 }] },
+    { "item": 3, "partNumber": "379013", "description": "Driver Assy, Pad, 13.0d (Replaced By 1220243)", "category": "Porta pad", "subsystem": "Porta Disco / Pad Driver", "qty": 2, "note": "Anterior · reemplazado por 1220243", "hotspots": [] },
+    { "item": 4, "partNumber": "9014664", "description": "Brush Kit, Hub Assy, Drive, CI (HDPE)", "category": "Hubs y kits de fijación", "subsystem": "Mecanismo de Fijación / Latch", "qty": 1, "note": "Componente del porta pad 1220243", "hotspots": [{ "x": 79.3, "y": 19.8 }] },
+    { "item": 5, "partNumber": "370095", "description": "Device, Centering, Clip On, Tl [Gf Pp]", "category": "Porta pad", "subsystem": "Porta Disco / Pad Driver", "qty": 1, "note": "Componente del porta pad 1220243", "hotspots": [{ "x": 83.2, "y": 40.1 }, { "x": 84.2, "y": 52.9 }] },
+    { "item": 6, "partNumber": "1016063", "description": "Disk, Driver, Pad, W/Face, 13.0D", "category": "Porta pad", "subsystem": "Porta Disco / Pad Driver", "qty": 1, "note": "Componente del porta pad 1220243", "hotspots": [{ "x": 90.4, "y": 25.8 }] },
+    { "item": 7, "partNumber": "360943", "description": "Screw, Pan, Phl, 10-14 x 0.75, F/Plstc", "category": "Tornillería", "subsystem": "Porta Disco / Pad Driver", "qty": 3, "note": "Componente del porta pad 1220243", "hotspots": [{ "x": 76.3, "y": 42.8 }] },
+    { "item": 8, "partNumber": "89046", "description": "Pad, Stripping, 13.0d, Brown [1pick=1pad]", "category": "Pads", "subsystem": "Porta Disco / Pad Driver", "qty": 2, "hotspots": [{ "x": 84.2, "y": 62.9 }] },
+    { "item": 8, "partNumber": "89047", "description": "Pad, Scrubbing, 13.0d, Blue", "category": "Pads", "subsystem": "Porta Disco / Pad Driver", "qty": 2, "hotspots": [] },
+    { "item": 8, "partNumber": "89048", "description": "Pad, Buff, 13.0d, Red [1pick=1pad]", "category": "Pads", "subsystem": "Porta Disco / Pad Driver", "qty": 2, "hotspots": [] },
+    { "item": 8, "partNumber": "89049", "description": "Pad, Polish, 13.0d, White [1pick=1pad]", "category": "Pads", "subsystem": "Porta Disco / Pad Driver", "qty": 2, "hotspots": [] },
+    { "item": 8, "partNumber": "1051024", "description": "Pad, Surf Prep, 13.0d [Maroon, 1pick=1pad]", "category": "Pads", "subsystem": "Porta Disco / Pad Driver", "qty": 2, "hotspots": [] },
+    { "item": 9, "partNumber": "1017368", "description": "Hub, Drive, Brush, Disk, 3hole 5.8bc", "category": "Hubs y kits de fijación", "subsystem": "Mecanismo de Fijación / Latch", "qty": 1, "note": "Pieza anterior · cepillo", "hotspots": [{ "x": 47.0, "y": 84.5 }] },
+    { "item": 10, "partNumber": "14838", "description": "Spring, Wir, 0.16d, Brush Retaining", "category": "Resortes y soportes", "subsystem": "Mecanismo de Fijación / Latch", "qty": 1, "note": "Pieza anterior · cepillo", "hotspots": [{ "x": 47.5, "y": 81.4 }] },
+    { "item": 11, "partNumber": "24299", "description": "Bracket, Retainer, Spring", "category": "Resortes y soportes", "subsystem": "Mecanismo de Fijación / Latch", "qty": 1, "note": "Pieza anterior · cepillo", "hotspots": [{ "x": 41.7, "y": 79.1 }] },
+    { "item": 12, "partNumber": "01684", "description": "Washer, Flat, 0.27b 0.69d .05, SS", "category": "Tornillería", "subsystem": "Mecanismo de Fijación / Latch", "qty": 1, "note": "Pieza anterior · cepillo", "hotspots": [{ "x": 47.2, "y": 79.4 }] },
+    { "item": 13, "partNumber": "32746", "description": "Screw, Pan, Phl, M6 x 1.00 x 35, SS", "category": "Tornillería", "subsystem": "Mecanismo de Fijación / Latch", "qty": 3, "note": "Pieza anterior · cepillo", "hotspots": [{ "x": 47.3, "y": 77.7 }, { "x": 41.7, "y": 77.3 }] },
+    { "item": 14, "partNumber": "1017368", "description": "Hub, Drive, Brush, Disk, 3hole 5.8bc", "category": "Hubs y kits de fijación", "subsystem": "Mecanismo de Fijación / Latch", "qty": 1, "note": "Pieza anterior · porta pad", "hotspots": [{ "x": 10.3, "y": 83.1 }] },
+    { "item": 15, "partNumber": "1017957", "description": "Spring, Retaining, Brush", "category": "Resortes y soportes", "subsystem": "Mecanismo de Fijación / Latch", "qty": 1, "note": "Pieza anterior · porta pad", "hotspots": [{ "x": 12.3, "y": 80.4 }] },
+    { "item": 16, "partNumber": "24299", "description": "Bracket, Retainer, Spring", "category": "Resortes y soportes", "subsystem": "Mecanismo de Fijación / Latch", "qty": 1, "note": "Pieza anterior · porta pad", "hotspots": [{ "x": 10.3, "y": 77.3 }] },
+    { "item": 17, "partNumber": "01684", "description": "Washer, Flat, 0.27b 0.69d .05, SS", "category": "Tornillería", "subsystem": "Mecanismo de Fijación / Latch", "qty": 1, "note": "Pieza anterior · porta pad", "hotspots": [{ "x": 19.5, "y": 77.3 }] },
+    { "item": 18, "partNumber": "32746", "description": "Screw, Pan, Phl, M6 x 1.00 x 35, SS", "category": "Tornillería", "subsystem": "Mecanismo de Fijación / Latch", "qty": 3, "note": "Pieza anterior · porta pad", "hotspots": [{ "x": 10.6, "y": 74.5 }, { "x": 19.3, "y": 75.6 }] }
+  ]
+}
