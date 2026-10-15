@@ -1,6 +1,6 @@
 {
   "machine": "IPC CT110",
-  "image": "assets/ct110/ct110_full.svg",
+  "image": "assets/ct110/ct110_full.png",
   "systems": [
     { "id": "lavado", "name": "Lavado y Secado", "icon": "brush" },
     { "id": "traccion", "name": "Tracción y Chasis", "icon": "wheel" },
@@ -16,7 +16,7 @@
       "figure": "SQUEEGEE",
       "status": "available",
       "data": "data/ct110/squeegee.json",
-      "hotspot": { "x": 90.4, "y": 83.7 }
+      "hotspot": { "x": 92.1, "y": 74 }
     },
     {
       "id": "cabezal-cepillos",
@@ -26,7 +26,7 @@
       "figure": "HEAD",
       "status": "available",
       "data": "data/ct110/head.json",
-      "hotspot": { "x": 53, "y": 89.8 }
+      "hotspot": { "x": 57.1, "y": 85.6 }
     },
     {
       "id": "tanques",
@@ -36,7 +36,7 @@
       "figure": "TANK",
       "status": "available",
       "data": "data/ct110/tank.json",
-      "hotspot": { "x": 72.7, "y": 30.2 }
+      "hotspot": { "x": 71.4, "y": 15.4 }
     },
     {
       "id": "instalacion-electrica",
@@ -46,7 +46,7 @@
       "figure": "ELECTRI.",
       "status": "available",
       "data": "data/ct110/electrical.json",
-      "hotspot": { "x": 16.5, "y": 51.8 }
+      "hotspot": { "x": 35, "y": 55.5 }
     },
     {
       "id": "motor-traccion",
@@ -59,7 +59,7 @@
         { "label": "DRIVE ASSEMBLY · Motor rueda", "data": "data/ct110/drive_assembly.json" },
         { "label": "TRACTION MOTOR · Dirección y chasis", "data": "data/ct110/traction_motor.json" }
       ],
-      "hotspot": { "x": 20.7, "y": 85.7 }
+      "hotspot": { "x": 20.7, "y": 91 }
     }
   ]
 }

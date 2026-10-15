@@ -1460,7 +1460,7 @@
     },
     "data/ct110/machine.json": {
       machine: "IPC CT110",
-      image: "assets/ct110/ct110_full.svg",
+      image: "assets/ct110/ct110_full.png",
       systems: [
         { id: "lavado", name: "Lavado y Secado", icon: "brush" },
         { id: "traccion", name: "Tracción y Chasis", icon: "wheel" },
@@ -1468,11 +1468,11 @@
         { id: "electrico", name: "Eléctrico y Control", icon: "bolt" }
       ],
       zones: [
-        { id: "racleta", name: "Racleta", system: "lavado", description: "SQUEEGEE · lámina Linatex MPVR08041", figure: "SQUEEGEE", status: "available", data: "data/ct110/squeegee.json", hotspot: { x: 90.4, y: 83.7 } },
-        { id: "cabezal-cepillos", name: "Cabezal de Cepillos", system: "lavado", description: "HEAD", figure: "HEAD", status: "available", data: "data/ct110/head.json", hotspot: { x: 53, y: 89.8 } },
-        { id: "tanques", name: "Tanques", system: "agua", description: "TANK · motor de aspiración MOCC00273", figure: "TANK", status: "available", data: "data/ct110/tank.json", hotspot: { x: 72.7, y: 30.2 } },
-        { id: "instalacion-electrica", name: "Instalación Eléctrica", system: "electrico", description: "ELECTRI.INSTAL. · tarjeta de tracción MECE00450", figure: "ELECTRI.", status: "available", data: "data/ct110/electrical.json", hotspot: { x: 16.5, y: 51.8 } },
-        { id: "motor-traccion", name: "Motor Rueda de Tracción", system: "traccion", description: "DRIVE ASSEMBLY · TRACTION MOTOR", figure: "DRIVE / TRACTION", status: "available", figures: [{ label: "DRIVE ASSEMBLY · Motor rueda", data: "data/ct110/drive_assembly.json" }, { label: "TRACTION MOTOR · Dirección y chasis", data: "data/ct110/traction_motor.json" }], hotspot: { x: 20.7, y: 85.7 } }
+        { id: "racleta", name: "Racleta", system: "lavado", description: "SQUEEGEE · lámina Linatex MPVR08041", figure: "SQUEEGEE", status: "available", data: "data/ct110/squeegee.json", hotspot: { x: 92.1, y: 74 } },
+        { id: "cabezal-cepillos", name: "Cabezal de Cepillos", system: "lavado", description: "HEAD", figure: "HEAD", status: "available", data: "data/ct110/head.json", hotspot: { x: 57.1, y: 85.6 } },
+        { id: "tanques", name: "Tanques", system: "agua", description: "TANK · motor de aspiración MOCC00273", figure: "TANK", status: "available", data: "data/ct110/tank.json", hotspot: { x: 71.4, y: 15.4 } },
+        { id: "instalacion-electrica", name: "Instalación Eléctrica", system: "electrico", description: "ELECTRI.INSTAL. · tarjeta de tracción MECE00450", figure: "ELECTRI.", status: "available", data: "data/ct110/electrical.json", hotspot: { x: 35, y: 55.5 } },
+        { id: "motor-traccion", name: "Motor Rueda de Tracción", system: "traccion", description: "DRIVE ASSEMBLY · TRACTION MOTOR", figure: "DRIVE / TRACTION", status: "available", figures: [{ label: "DRIVE ASSEMBLY · Motor rueda", data: "data/ct110/drive_assembly.json" }, { label: "TRACTION MOTOR · Dirección y chasis", data: "data/ct110/traction_motor.json" }], hotspot: { x: 20.7, y: 91 } }
       ]
     },
     "data/ct110/squeegee.json": {

@@ -834,12 +834,15 @@ mark { background: var(--accent); color: var(--accent-ink); border-radius: 3px; 
 /* El ancho se limita según la proporción de la imagen (--plan-ar, lo pone app.js al cargarla)
    para que el plano no pase de --plan-h de alto y los puntos sigan alineados con el dibujo */
 .diagram-blueprint {
-  --plan-h: min(480px, 62vh);
+  --plan-h: min(450px, 60vh);
   background: transparent;
   max-width: 960px;
+  max-height: var(--plan-h);
   width: min(100%, calc(var(--plan-h) * var(--plan-ar, 1.33)));
 }
 .diagram-blueprint img {
+  width: 100%;
+  height: auto;
   max-height: var(--plan-h);
   object-fit: contain;
   filter: invert(1) brightness(1.15);
