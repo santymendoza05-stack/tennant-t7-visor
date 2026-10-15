@@ -1,0 +1,181 @@
+{
+  "machine": "Tennant T12",
+  "group": "Battery Group, 240Ah",
+  "figure": "Fig. 24",
+  "image": "assets/t12/battery_240.png",
+  "categories": [
+    "Tornillería",
+    "Pasadores y bujes",
+    "Mangueras y sujeción",
+    "Eléctrico",
+    "Estructura y cubiertas"
+  ],
+  "parts": [
+    {
+      "item": 1,
+      "partNumber": "222280",
+      "description": "Battery, Wet, 06vdc 0240ah",
+      "category": "Eléctrico",
+      "qty": 6,
+      "hotspots": [
+        { "x": 97.5, "y": 57.1 },
+        { "x": 48.7, "y": 42.3 }
+      ]
+    },
+    {
+      "item": 2,
+      "partNumber": "1041030",
+      "description": "Cap, Battery",
+      "category": "Mangueras y sujeción",
+      "qty": 12,
+      "hotspots": [
+        { "x": 10.9, "y": 28.6 },
+        { "x": 7.9, "y": 18.3 },
+        { "x": 36.1, "y": 21.8 },
+        { "x": 22.8, "y": 12.8 },
+        { "x": 48.7, "y": 18.1 },
+        { "x": 46.4, "y": 10.6 },
+        { "x": 88.7, "y": 23.1 },
+        { "x": 91.9, "y": 30.8 },
+        { "x": 63.9, "y": 24.0 },
+        { "x": 53.3, "y": 29.6 },
+        { "x": 76.5, "y": 34.5 },
+        { "x": 64.3, "y": 39.6 }
+      ]
+    },
+    {
+      "item": 3,
+      "partNumber": "83415",
+      "description": "Spacer, Battery, Foam, 2.00 X 2.0 X 11.0",
+      "category": "Pasadores y bujes",
+      "qty": 4,
+      "hotspots": [
+        { "x": 14.1, "y": 57.2 }
+      ]
+    },
+    {
+      "item": 4,
+      "partNumber": "223355",
+      "description": "Cable, 04ga 08.0l Blk .34ring /.34ring",
+      "category": "Eléctrico",
+      "qty": 4,
+      "hotspots": [
+        { "x": 34.6, "y": 10.4 },
+        { "x": 22.2, "y": 16.0 },
+        { "x": 75.7, "y": 22.1 },
+        { "x": 63.7, "y": 26.9 }
+      ]
+    },
+    {
+      "item": 5,
+      "partNumber": "223356",
+      "description": "Cable, 04ga 12.0l Blk .34ring /.34ring",
+      "category": "Eléctrico",
+      "qty": 1,
+      "hotspots": [
+        { "x": 23.6, "y": 22.5 }
+      ]
+    },
+    {
+      "item": 6,
+      "partNumber": "87435",
+      "description": "Nut, Hex, Flexlock, .31-18",
+      "category": "Tornillería",
+      "qty": 12,
+      "hotspots": [
+        { "x": 10.9, "y": 26.0 },
+        { "x": 7.9, "y": 15.2 },
+        { "x": 36.0, "y": 19.4 },
+        { "x": 22.6, "y": 10.4 },
+        { "x": 48.7, "y": 15.7 },
+        { "x": 46.5, "y": 8.3 },
+        { "x": 88.7, "y": 20.8 },
+        { "x": 91.9, "y": 28.4 },
+        { "x": 63.8, "y": 21.7 },
+        { "x": 54.3, "y": 26.8 },
+        { "x": 76.0, "y": 31.9 },
+        { "x": 63.8, "y": 37.0 }
+      ]
+    },
+    {
+      "item": 7,
+      "partNumber": "1016314",
+      "description": "Boot, 90deg .50id 1.00id 2.50l, Red",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 51.7, "y": 6.4 }
+      ]
+    },
+    {
+      "item": 8,
+      "partNumber": "611221",
+      "description": "Boot, Terminal, Battery, 25.4mm, Blk",
+      "category": "Eléctrico",
+      "qty": 11,
+      "hotspots": [
+        { "x": 8.0, "y": 12.7 },
+        { "x": 11.0, "y": 23.5 },
+        { "x": 36.0, "y": 17.1 },
+        { "x": 22.6, "y": 8.2 },
+        { "x": 48.8, "y": 13.2 },
+        { "x": 88.8, "y": 18.3 },
+        { "x": 92.0, "y": 25.9 },
+        { "x": 63.8, "y": 19.4 },
+        { "x": 55.7, "y": 24.0 },
+        { "x": 75.9, "y": 29.5 },
+        { "x": 63.8, "y": 34.6 }
+      ]
+    },
+    {
+      "item": 9,
+      "partNumber": "1201303",
+      "description": "Tray Wldt, Battery",
+      "category": "Eléctrico",
+      "qty": 1,
+      "hotspots": [
+        { "x": 66.9, "y": 62.5 }
+      ]
+    },
+    {
+      "item": 10,
+      "partNumber": "1006401",
+      "description": "Hose, Afmkt, Pvc, Brd, 0.50id, 03ft, Clr",
+      "category": "Mangueras y sujeción",
+      "qty": 1,
+      "hotspots": [
+        { "x": 66.3, "y": 94.6 }
+      ]
+    },
+    {
+      "item": 11,
+      "partNumber": "54333",
+      "description": "Clamp, Hose, Wormdrive, 0.31-0.88d, .31w",
+      "category": "Mangueras y sujeción",
+      "qty": 2,
+      "hotspots": [
+        { "x": 62.3, "y": 88.8 }
+      ]
+    },
+    {
+      "item": 12,
+      "partNumber": "223361",
+      "description": "Cable Assy, 04ga .34ring /.34ring, 175a",
+      "category": "Eléctrico",
+      "qty": 1,
+      "hotspots": [
+        { "x": 61.4, "y": 10.5 }
+      ]
+    },
+    {
+      "item": 13,
+      "partNumber": "130773",
+      "description": "Tie, Cable, Nyl, 11.0l, .14w, 3.0 Max. D",
+      "category": "Mangueras y sujeción",
+      "qty": 1,
+      "hotspots": [
+        { "x": 39.0, "y": 2.7 }
+      ]
+    }
+  ]
+}

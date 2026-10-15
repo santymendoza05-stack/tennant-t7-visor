@@ -1,0 +1,270 @@
+{
+  "machine": "Tennant T12",
+  "group": "Front Bumper and Side Door Group",
+  "figure": "Fig. 4",
+  "image": "assets/t12/front_bumper.png",
+  "categories": [
+    "Tornillería",
+    "Pasadores y bujes",
+    "Ruedas",
+    "Escobillas y hojas",
+    "Estructura y cubiertas"
+  ],
+  "parts": [
+    {
+      "item": 1,
+      "partNumber": "9010924",
+      "description": "Bumper, Lh, Afmkt [T12]",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 35.3, "y": 52.6 }
+      ]
+    },
+    {
+      "item": 2,
+      "partNumber": "9010925",
+      "description": "Bumper, Rh, Afmkt [T12]",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 14.1, "y": 40.7 }
+      ]
+    },
+    {
+      "item": 3,
+      "partNumber": "1020341",
+      "description": "Screw, Hex, M8 X 1.25 X 20, Ss, Sems",
+      "category": "Tornillería",
+      "qty": 15,
+      "hotspots": [
+        { "x": 41.6, "y": 14.6 },
+        { "x": 80.3, "y": 36.2 },
+        { "x": 58.6, "y": 11.5 },
+        { "x": 75.8, "y": 29.2 },
+        { "x": 24.9, "y": 83.2 },
+        { "x": 44.6, "y": 97.1 },
+        { "x": 59.6, "y": 95.7 }
+      ]
+    },
+    {
+      "item": 4,
+      "partNumber": "1200869",
+      "description": "Channel Wldt, Rlr",
+      "category": "Estructura y cubiertas",
+      "qty": 2,
+      "hotspots": [
+        { "x": 7.2, "y": 31.7 },
+        { "x": 59.2, "y": 59.1 }
+      ]
+    },
+    {
+      "item": 5,
+      "partNumber": "1200870",
+      "description": "Plate, Backing, Roller",
+      "category": "Estructura y cubiertas",
+      "qty": 2,
+      "hotspots": [
+        { "x": 52.1, "y": 30.6 },
+        { "x": 39.0, "y": 25.3 }
+      ]
+    },
+    {
+      "item": 6,
+      "partNumber": "1054100",
+      "description": "Wheel, 04.0d 2.56w 0.41b",
+      "category": "Ruedas",
+      "qty": 2,
+      "hotspots": [
+        { "x": 78.2, "y": 56.6 },
+        { "x": 2.3, "y": 12.2 }
+      ]
+    },
+    {
+      "item": 7,
+      "partNumber": "57598",
+      "description": "Pin, Clevis, 0.37d X 3.25l",
+      "category": "Pasadores y bujes",
+      "qty": 2,
+      "hotspots": [
+        { "x": 70.1, "y": 44.5 },
+        { "x": 6.6, "y": 10.8 }
+      ]
+    },
+    {
+      "item": 8,
+      "partNumber": "01685",
+      "description": "Washer, Flat, 0.38b 0.88d .08, Ss",
+      "category": "Tornillería",
+      "qty": 6,
+      "hotspots": [
+        { "x": 70.9, "y": 50.6 },
+        { "x": 49.5, "y": 29.7 },
+        { "x": 41.9, "y": 26.7 },
+        { "x": 6.4, "y": 15.2 }
+      ]
+    },
+    {
+      "item": 9,
+      "partNumber": "08713",
+      "description": "Nut, Hex, Lock, M8 X 1.25, Nl, Ss",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 46.8, "y": 28.4 }
+      ]
+    },
+    {
+      "item": 10,
+      "partNumber": "44906",
+      "description": "Pin, Cotter, Hair, 0.38d .093 Wir",
+      "category": "Pasadores y bujes",
+      "qty": 2,
+      "hotspots": [
+        { "x": 73.6, "y": 47.3 },
+        { "x": 19.9, "y": 16.1 }
+      ]
+    },
+    {
+      "item": 11,
+      "partNumber": "1202289",
+      "description": "Panel, Door, Rh",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 29.2, "y": 1.7 }
+      ]
+    },
+    {
+      "item": 12,
+      "partNumber": "1202392",
+      "description": "Panel, Door, Lh",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 95.0, "y": 48.9 }
+      ]
+    },
+    {
+      "item": 13,
+      "partNumber": "1202349",
+      "description": "Hinge, Brush Door, Bent",
+      "category": "Escobillas y hojas",
+      "qty": 2,
+      "hotspots": [
+        { "x": 37.9, "y": 12.8 },
+        { "x": 75.8, "y": 34.7 }
+      ]
+    },
+    {
+      "item": 14,
+      "partNumber": "06941",
+      "description": "Screw, Hex, M6 X 1.00 X 10, 8.8",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 50.2, "y": 20.6 },
+        { "x": 68.8, "y": 31.2 }
+      ]
+    },
+    {
+      "item": 15,
+      "partNumber": "01684",
+      "description": "Washer, Flat, 0.27b 0.69d .05, Ss",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 46.6, "y": 18.5 },
+        { "x": 72.4, "y": 32.6 }
+      ]
+    },
+    {
+      "item": 16,
+      "partNumber": "1202941",
+      "description": "Plate, Latch",
+      "category": "Estructura y cubiertas",
+      "qty": 2,
+      "hotspots": [
+        { "x": 47.8, "y": 2.2 },
+        { "x": 96.9, "y": 28.4 }
+      ]
+    },
+    {
+      "item": 17,
+      "partNumber": "1203025",
+      "description": "Screw, Pan, Phl, 08-16 X 0.25, F/Plstc",
+      "category": "Tornillería",
+      "qty": 8,
+      "hotspots": [
+        { "x": 43.0, "y": 11.5 },
+        { "x": 84.2, "y": 35.2 }
+      ]
+    },
+    {
+      "item": 18,
+      "partNumber": "1200984",
+      "description": "Bracket Wldt, Latch, Lh",
+      "category": "Estructura y cubiertas",
+      "qty": 2,
+      "hotspots": [
+        { "x": 58.7, "y": 6.9 },
+        { "x": 87.1, "y": 21.8 }
+      ]
+    },
+    {
+      "item": 19,
+      "partNumber": "1202779",
+      "description": "Magnet, Latch, Brush Door",
+      "category": "Escobillas y hojas",
+      "qty": 2,
+      "hotspots": [
+        { "x": 51.4, "y": 3.6 },
+        { "x": 93.6, "y": 25.9 }
+      ]
+    },
+    {
+      "item": 20,
+      "partNumber": "32520",
+      "description": "Nut, Hex, Jam, .25-20",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 55.1, "y": 4.7 },
+        { "x": 90.8, "y": 23.1 }
+      ]
+    },
+    {
+      "item": 21,
+      "partNumber": "1200460",
+      "description": "Bracket, Bumper, Right",
+      "category": "Estructura y cubiertas",
+      "qty": 2,
+      "hotspots": [
+        { "x": 31.7, "y": 72.6 },
+        { "x": 60.5, "y": 91.5 }
+      ]
+    },
+    {
+      "item": 22,
+      "partNumber": "09028",
+      "description": "Screw, Hex, M10 X 1.50 X 25, Ss",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 24.0, "y": 77.8 },
+        { "x": 48.1, "y": 97.6 }
+      ]
+    },
+    {
+      "item": 23,
+      "partNumber": "01686",
+      "description": "Washer, Flat, 0.44b 1.00d .08, Ss",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 27.5, "y": 74.8 },
+        { "x": 51.6, "y": 97.0 }
+      ]
+    }
+  ]
+}

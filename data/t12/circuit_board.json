@@ -1,0 +1,309 @@
+{
+  "machine": "Tennant T12",
+  "group": "Electrical Circuit Board Group",
+  "figure": "Fig. 22",
+  "image": "assets/t12/circuit_board.png",
+  "categories": [
+    "Tornillería",
+    "Mangueras y sujeción",
+    "Sellos y empaques",
+    "Eléctrico",
+    "Estructura y cubiertas"
+  ],
+  "parts": [
+    {
+      "item": 1,
+      "partNumber": "1200918",
+      "description": "Plate Wldt, Mtg, Electronic Component",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 68.5, "y": 60.3 }
+      ]
+    },
+    {
+      "item": 2,
+      "partNumber": "1020341",
+      "description": "Screw, Hex, M8 X 1.25 X 20, Ss, Sems",
+      "category": "Tornillería",
+      "qty": 5,
+      "hotspots": [
+        { "x": 92.0, "y": 60.2 },
+        { "x": 2.9, "y": 46.0 },
+        { "x": 46.4, "y": 85.2 }
+      ]
+    },
+    {
+      "item": 3,
+      "partNumber": "1202868",
+      "description": "Clip, Tie, 0.25d, Plstc",
+      "category": "Mangueras y sujeción",
+      "qty": 7,
+      "hotspots": [
+        { "x": 55.6, "y": 60.3 }
+      ]
+    },
+    {
+      "item": 4,
+      "partNumber": "130773",
+      "description": "Tie, Cable, Nyl, 11.0l, .14w, 3.0 Max. D",
+      "category": "Mangueras y sujeción",
+      "qty": 7,
+      "hotspots": [
+        { "x": 80.9, "y": 70.2 }
+      ]
+    },
+    {
+      "item": 5,
+      "partNumber": "1203717",
+      "description": "Bracket, Stiffener",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 12.4, "y": 8.6 }
+      ]
+    },
+    {
+      "item": 6,
+      "partNumber": "1034731",
+      "description": "Screw, Hex, M6 X 1.00 X 16, Ss, Sems",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 8.3, "y": 5.5 },
+        { "x": 22.1, "y": 9.6 }
+      ]
+    },
+    {
+      "item": 7,
+      "partNumber": "9010931",
+      "description": "Circuit Board Kit, Scrub, Afmkt [T12]",
+      "category": "Eléctrico",
+      "qty": 1,
+      "hotspots": [
+        { "x": 63.5, "y": 93.0 }
+      ]
+    },
+    {
+      "item": 8,
+      "partNumber": "9010932",
+      "description": "Circuit board Kit, H20_Sba, Afmkt [T12]",
+      "category": "Eléctrico",
+      "qty": 1,
+      "hotspots": [
+        { "x": 69.0, "y": 96.6 }
+      ]
+    },
+    {
+      "item": 9,
+      "partNumber": "1016825",
+      "description": "Support, Circuitboard",
+      "category": "Estructura y cubiertas",
+      "qty": 4,
+      "hotspots": [
+        { "x": 66.3, "y": 95.0 }
+      ]
+    },
+    {
+      "item": 10,
+      "partNumber": "1202869",
+      "description": "Support, Circuitboard [0.5\"]",
+      "category": "Estructura y cubiertas",
+      "qty": 4,
+      "hotspots": [
+        { "x": 60.2, "y": 90.9 }
+      ]
+    },
+    {
+      "item": 11,
+      "partNumber": "3701.6",
+      "description": "Screw, Pan, Phl, 06-32 x 0.38, Shmtl, Ss",
+      "category": "Tornillería",
+      "qty": 8,
+      "hotspots": [
+        { "x": 42.6, "y": 73.9 }
+      ]
+    },
+    {
+      "item": 12,
+      "partNumber": "1202862",
+      "description": "Washer, Flat, .21b .39d .04, Brs",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 92.2, "y": 81.1 }
+      ]
+    },
+    {
+      "item": 13,
+      "partNumber": "07514",
+      "description": "Washer, Lock, Int, 10, Ss",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 95.1, "y": 83.6 }
+      ]
+    },
+    {
+      "item": 14,
+      "partNumber": "1202864",
+      "description": "Nut, Hex, Std, M5 X 0.80, Brs",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 97.2, "y": 85.9 }
+      ]
+    },
+    {
+      "item": 15,
+      "partNumber": "1061918",
+      "description": "Washer, Flat, 0.25b 0.47d .06, Brs",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 84.1, "y": 93.3 }
+      ]
+    },
+    {
+      "item": 16,
+      "partNumber": "07515",
+      "description": "Washer, Lock, Int, 0.25, Ss",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 87.7, "y": 94.4 }
+      ]
+    },
+    {
+      "item": 17,
+      "partNumber": "1061910",
+      "description": "Nut, Hex, Std, M6 X 1.00, Brs",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 91.7, "y": 95.6 }
+      ]
+    },
+    {
+      "item": 18,
+      "partNumber": "1200792",
+      "description": "Cover, Box, Circuitboard",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 56.6, "y": 5.6 }
+      ]
+    },
+    {
+      "item": 19,
+      "partNumber": "1201210",
+      "description": "Gasket, Cover, Circuitboard",
+      "category": "Sellos y empaques",
+      "qty": 1,
+      "hotspots": [
+        { "x": 26.6, "y": 2.4 }
+      ]
+    },
+    {
+      "item": 20,
+      "partNumber": "06934",
+      "description": "Screw, Pan, Phl, M5 X 0.80 X 20, 4.8",
+      "category": "Tornillería",
+      "qty": 6,
+      "hotspots": [
+        { "x": 55.8, "y": 13.9 }
+      ]
+    },
+    {
+      "item": 21,
+      "partNumber": "140011",
+      "description": "Washer, Flat, 0.21b 0.45d .03, Ss",
+      "category": "Tornillería",
+      "qty": 6,
+      "hotspots": [
+        { "x": 55.5, "y": 11.3 }
+      ]
+    },
+    {
+      "item": 22,
+      "partNumber": "9010922",
+      "description": "Side Cover, Std, Afmkt [T12]",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 84.7, "y": 33.4 }
+      ]
+    },
+    {
+      "item": 23,
+      "partNumber": "1201024",
+      "description": "Bracket, Mtg, Panel",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 13.6, "y": 37.2 }
+      ]
+    },
+    {
+      "item": 24,
+      "partNumber": "222290",
+      "description": "Diode, Ele, Plug",
+      "category": "Eléctrico",
+      "qty": 3,
+      "hotspots": [
+        { "x": 92.3, "y": 64.6 }
+      ]
+    },
+    {
+      "item": 25,
+      "partNumber": "06929",
+      "description": "Screw, Pan, Phl, M4 X 0.70 X 25, 4.8",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 91.3, "y": 78.0 }
+      ]
+    },
+    {
+      "item": 26,
+      "partNumber": "1202860",
+      "description": "Washer, Flat, 0.17b 0.31d .03, Nyl",
+      "category": "Tornillería",
+      "qty": 3,
+      "hotspots": [
+        { "x": 87.7, "y": 76.4 },
+        { "x": 76.4, "y": 96.7 }
+      ]
+    },
+    {
+      "item": 27,
+      "partNumber": "24199",
+      "description": "Screw, Hex, M5 X 0.80 X 16, Ss",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 50.3, "y": 98.1 }
+      ]
+    },
+    {
+      "item": 28,
+      "partNumber": "41140",
+      "description": "Washer, Lock, Int-Ext, 0.25",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 46.3, "y": 96.2 }
+      ]
+    },
+    {
+      "item": 29,
+      "partNumber": "24265",
+      "description": "Screw, Pan, Phl, M4 X 0.70 X 16, Ss",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 80.5, "y": 98.0 }
+      ]
+    }
+  ]
+}

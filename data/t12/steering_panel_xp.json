@@ -1,0 +1,474 @@
+{
+  "machine": "Tennant T12",
+  "group": "Steering and Instrument Panel Group, T12XP",
+  "figure": "Fig. 9",
+  "image": "assets/t12/steering_panel_xp.png",
+  "categories": [
+    "Tornillería",
+    "Pasadores y bujes",
+    "Mangueras y sujeción",
+    "Transmisión",
+    "Eléctrico",
+    "Ruedas",
+    "Etiquetas",
+    "Estructura y cubiertas"
+  ],
+  "parts": [
+    {
+      "item": 1,
+      "partNumber": "1208622",
+      "description": "Bracket Wldt, Brg",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 73.4, "y": 81.8 }
+      ]
+    },
+    {
+      "item": 2,
+      "partNumber": "16931",
+      "description": "Screw, Hex, M8 X 1.25 X 20, 8.8",
+      "category": "Tornillería",
+      "qty": 7,
+      "hotspots": [
+        { "x": 96.4, "y": 94.5 },
+        { "x": 34.2, "y": 81.0 },
+        { "x": 60.7, "y": 61.0 },
+        { "x": 55.4, "y": 93.7 }
+      ]
+    },
+    {
+      "item": 3,
+      "partNumber": "32490",
+      "description": "Washer, Flat, 0.25, Std",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 96.9, "y": 91.4 }
+      ]
+    },
+    {
+      "item": 4,
+      "partNumber": "9010942",
+      "description": "Sprocket Kit, 1.12b, Afmkt [T12]",
+      "category": "Transmisión",
+      "qty": 1,
+      "hotspots": [
+        { "x": 70.2, "y": 83.0 }
+      ]
+    },
+    {
+      "item": 5,
+      "partNumber": "00912",
+      "description": "Key, Sq, 0.19 X 0.19, 1.00l",
+      "category": "Pasadores y bujes",
+      "qty": 2,
+      "hotspots": [
+        { "x": 55.6, "y": 90.8 },
+        { "x": 42.9, "y": 58.9 }
+      ]
+    },
+    {
+      "item": 6,
+      "partNumber": "09162",
+      "description": "Screw, Set, M6 X 1.00 X 8, Nl",
+      "category": "Tornillería",
+      "qty": 6,
+      "hotspots": [
+        { "x": 64.8, "y": 96.6 },
+        { "x": 64.5, "y": 81.0 },
+        { "x": 13.0, "y": 67.3 },
+        { "x": 73.0, "y": 84.7 },
+        { "x": 89.3, "y": 95.9 }
+      ]
+    },
+    {
+      "item": 7,
+      "partNumber": "1057572",
+      "description": "Plate Wldt, Sppt, Brg",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 29.4, "y": 48.2 }
+      ]
+    },
+    {
+      "item": 8,
+      "partNumber": "32491",
+      "description": "Washer, Flat, 0.31, Std",
+      "category": "Tornillería",
+      "qty": 10,
+      "hotspots": [
+        { "x": 30.3, "y": 61.6 },
+        { "x": 39.0, "y": 79.5 },
+        { "x": 58.8, "y": 74.6 },
+        { "x": 60.9, "y": 63.9 },
+        { "x": 41.8, "y": 86.0 }
+      ]
+    },
+    {
+      "item": 9,
+      "partNumber": "08709",
+      "description": "Nut, Hex, Lock, M8 X 1.25, Nl",
+      "category": "Tornillería",
+      "qty": 10,
+      "hotspots": [
+        { "x": 27.9, "y": 64.4 },
+        { "x": 55.7, "y": 76.5 },
+        { "x": 79.2, "y": 43.0 }
+      ]
+    },
+    {
+      "item": 10,
+      "partNumber": "1057554",
+      "description": "Bearing, Flng, 2hole, 0.75b",
+      "category": "Pasadores y bujes",
+      "qty": 2,
+      "hotspots": [
+        { "x": 37.8, "y": 53.8 },
+        { "x": 12.4, "y": 54.7 }
+      ]
+    },
+    {
+      "item": 11,
+      "partNumber": "16735",
+      "description": "Screw, Hex, M8 X 1.25 X 16, 8.8",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 16.1, "y": 58.3 }
+      ]
+    },
+    {
+      "item": 12,
+      "partNumber": "07791",
+      "description": "Nut, Hex, Flng, M8 X 1.25",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 8.9, "y": 52.1 },
+        { "x": 38.7, "y": 56.9 }
+      ]
+    },
+    {
+      "item": 13,
+      "partNumber": "1202601",
+      "description": "Shaft Assy, Steering [T12]",
+      "category": "Pasadores y bujes",
+      "qty": 1,
+      "hotspots": [
+        { "x": 44.0, "y": 83.6 }
+      ]
+    },
+    {
+      "item": 14,
+      "partNumber": "9010943",
+      "description": "Sprocket Kit, 0.75b, Afmkt [T12]",
+      "category": "Transmisión",
+      "qty": 1,
+      "hotspots": [
+        { "x": 21.1, "y": 68.0 }
+      ]
+    },
+    {
+      "item": 15,
+      "partNumber": "1208612",
+      "description": "Tube, Column, Steering",
+      "category": "Mangueras y sujeción",
+      "qty": 1,
+      "hotspots": [
+        { "x": 59.7, "y": 36.2 }
+      ]
+    },
+    {
+      "item": 16,
+      "partNumber": "1057785",
+      "description": "Bearing, Journal, 0.75b 0.88d 0.75l",
+      "category": "Pasadores y bujes",
+      "qty": 2,
+      "hotspots": [
+        { "x": 52.6, "y": 31.8 },
+        { "x": 68.5, "y": 40.5 }
+      ]
+    },
+    {
+      "item": 17,
+      "partNumber": "1056412",
+      "description": "Wheel, Steering, 14.4d",
+      "category": "Ruedas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 47.8, "y": 18.1 }
+      ]
+    },
+    {
+      "item": 18,
+      "partNumber": "1059073",
+      "description": "Nut, Hex, Jam, 1.12-12",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 30.4, "y": 20.2 }
+      ]
+    },
+    {
+      "item": 19,
+      "partNumber": "04846",
+      "description": "Washer, Thrust, 0.79b 1.42d 0.06[Garlok]",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 25.5, "y": 18.1 }
+      ]
+    },
+    {
+      "item": 20,
+      "partNumber": "1057043",
+      "description": "Bearing, Flng, 2hole, 1.25b",
+      "category": "Pasadores y bujes",
+      "qty": 1,
+      "hotspots": [
+        { "x": 60.6, "y": 81.1 }
+      ]
+    },
+    {
+      "item": 21,
+      "partNumber": "1054654",
+      "description": "Bearing, Pillowblock, 1.12b",
+      "category": "Pasadores y bujes",
+      "qty": 1,
+      "hotspots": [
+        { "x": 82.4, "y": 96.4 }
+      ]
+    },
+    {
+      "item": 22,
+      "partNumber": "06961",
+      "description": "Screw, Hex, M10 X 1.5",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 73.0, "y": 98.0 }
+      ]
+    },
+    {
+      "item": 23,
+      "partNumber": "32485",
+      "description": "Washer, Flat, 0.38, Sae",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 76.9, "y": 97.1 }
+      ]
+    },
+    {
+      "item": 24,
+      "partNumber": "1053977",
+      "description": "Chain, Rlr, 35 X 35 Pitches",
+      "category": "Transmisión",
+      "qty": 1,
+      "hotspots": [
+        { "x": 33.1, "y": 74.0 }
+      ]
+    },
+    {
+      "item": 25,
+      "partNumber": "14799",
+      "description": "Link, Chain, Rlr, 35",
+      "category": "Transmisión",
+      "qty": 1,
+      "hotspots": [
+        { "x": 20.5, "y": 72.9 }
+      ]
+    },
+    {
+      "item": 26,
+      "partNumber": "223065",
+      "description": "Bearing, Flng, 2hole, 0.75b [Nyl]",
+      "category": "Pasadores y bujes",
+      "qty": 1,
+      "hotspots": [
+        { "x": 44.3, "y": 76.0 }
+      ]
+    },
+    {
+      "item": 27,
+      "partNumber": "1205753",
+      "description": "Bracket Wldt, Sppt, Brg",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 51.3, "y": 63.2 }
+      ]
+    },
+    {
+      "item": 28,
+      "partNumber": "09570",
+      "description": "Clamp, Cable, Stl, 0.9x1.8x0.62w, 1hole",
+      "category": "Mangueras y sujeción",
+      "qty": 1,
+      "hotspots": [
+        { "x": 39.1, "y": 66.9 }
+      ]
+    },
+    {
+      "item": 29,
+      "partNumber": "9010934",
+      "description": "Instr Panel, Pod, Afmkt [T12]",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 16.8, "y": 8.7 }
+      ]
+    },
+    {
+      "item": 30,
+      "partNumber": "1201534",
+      "description": "Panel, Console, Lh",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 71.5, "y": 4.4 }
+      ]
+    },
+    {
+      "item": 31,
+      "partNumber": "1204170",
+      "description": "Label, Opertnl, Console, Lh",
+      "category": "Etiquetas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 67.9, "y": 2.3 }
+      ]
+    },
+    {
+      "item": 32,
+      "partNumber": "361076",
+      "description": "Switch, Ignition [Merit Gmbh]",
+      "category": "Eléctrico",
+      "qty": 1,
+      "hotspots": [
+        { "x": 39.3, "y": 4.5 }
+      ]
+    },
+    {
+      "item": 32,
+      "partNumber": "361144",
+      "description": "Key, ignition, Sgl",
+      "category": "Pasadores y bujes",
+      "qty": 1,
+      "hotspots": []
+    },
+    {
+      "item": 33,
+      "partNumber": "82226",
+      "description": "Washer, Flat, 0.91b 1.38d .06, Stl, Pl",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 42.2, "y": 8.1 }
+      ]
+    },
+    {
+      "item": 34,
+      "partNumber": "1011735",
+      "description": "Switch, Safety, Shutoff",
+      "category": "Eléctrico",
+      "qty": 1,
+      "hotspots": [
+        { "x": 61.2, "y": 1.4 }
+      ]
+    },
+    {
+      "item": 35,
+      "partNumber": "1058679",
+      "description": "Switch, Rocker, Dpdt, On / None / On",
+      "category": "Eléctrico",
+      "qty": 1,
+      "hotspots": [
+        { "x": 41.9, "y": 1.7 }
+      ]
+    },
+    {
+      "item": 36,
+      "partNumber": "1201535",
+      "description": "Panel, Console, Rh",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 83.1, "y": 18.7 }
+      ]
+    },
+    {
+      "item": 37,
+      "partNumber": "1204176",
+      "description": "Label, Opertnl, Console, Rh",
+      "category": "Etiquetas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 83.4, "y": 15.6 }
+      ]
+    },
+    {
+      "item": 38,
+      "partNumber": "140825",
+      "description": "Screw, Pan, Phl, 06 X 0.50, Fmg/Ab, Blk",
+      "category": "Tornillería",
+      "qty": 10,
+      "hotspots": [
+        { "x": 61.5, "y": 17.2 },
+        { "x": 46.2, "y": 10.7 }
+      ]
+    },
+    {
+      "item": 39,
+      "partNumber": "398501",
+      "description": "Plug, Hole, Rt, Rocker Switch, .87 X 1.7",
+      "category": "Mangueras y sujeción",
+      "qty": 3,
+      "hotspots": [
+        { "x": 72.5, "y": 7.5 }
+      ]
+    },
+    {
+      "item": 40,
+      "partNumber": "70651",
+      "description": "Ring, Retaining, Ext, 1.12d",
+      "category": "Pasadores y bujes",
+      "qty": 1,
+      "hotspots": [
+        { "x": 91.5, "y": 86.3 }
+      ]
+    },
+    {
+      "item": 41,
+      "partNumber": "39277",
+      "description": "Screw, Hex, M8 X 1.25 X 25, 8.8",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 38.7, "y": 87.7 }
+      ]
+    },
+    {
+      "item": 42,
+      "partNumber": "1208625",
+      "description": "Plate Wldt, Brg",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 88.0, "y": 83.8 }
+      ]
+    },
+    {
+      "item": 43,
+      "partNumber": "1034731",
+      "description": "Screw, Hex, m6 X 1.00 X 16, Sems, Ss",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 71.8, "y": 87.1 }
+      ]
+    }
+  ]
+}

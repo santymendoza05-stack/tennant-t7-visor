@@ -1,0 +1,239 @@
+{
+  "machine": "Tennant T12",
+  "image": "assets/t12/t12_full.png",
+  "systems": [
+    {
+      "id": "lavado",
+      "name": "Lavado y Secado",
+      "icon": "brush"
+    },
+    {
+      "id": "traccion",
+      "name": "Tracción y Chasis",
+      "icon": "wheel"
+    },
+    {
+      "id": "agua",
+      "name": "Agua y Aspiración",
+      "icon": "drop"
+    },
+    {
+      "id": "electrico",
+      "name": "Eléctrico y Control",
+      "icon": "bolt"
+    }
+  ],
+  "zones": [
+    {
+      "id": "racleta-trasera",
+      "name": "Racleta Trasera / Escobillas de Secado",
+      "system": "lavado",
+      "description": "Rear Squeegee Kit",
+      "figure": "Fig. 21",
+      "status": "available",
+      "data": "data/t12/rear_squeegee.json",
+      "hotspot": { "x": 94, "y": 68 },
+      "labelSide": "left"
+    },
+    {
+      "id": "cabeza-cepillos",
+      "name": "Cabezal de Cepillos",
+      "system": "lavado",
+      "description": "Scrub Head Group, Disk / Cylindrical",
+      "figure": "Fig. 12 / 13 / 14",
+      "status": "available",
+      "figures": [
+        {
+          "label": "Fig. 12 · Cabezal de disco",
+          "data": "data/t12/scrub_head_disk.json"
+        },
+        {
+          "label": "Fig. 13 · Bastidor cilíndrico",
+          "data": "data/t12/scrub_head_cyl.json"
+        },
+        {
+          "label": "Fig. 14 · Motor cilíndrico",
+          "data": "data/t12/scrub_head_cyl_drive.json"
+        }
+      ],
+      "hotspot": { "x": 50, "y": 94 }
+    },
+    {
+      "id": "escobillas-laterales",
+      "name": "Escobillas Laterales del Cabezal",
+      "system": "lavado",
+      "description": "Scrub Head Side Squeegee Group",
+      "figure": "Fig. 15 / 16",
+      "status": "available",
+      "figures": [
+        {
+          "label": "Fig. 15 · Lado derecho",
+          "data": "data/t12/side_squeegee_rh.json"
+        },
+        {
+          "label": "Fig. 16 · Lado izquierdo",
+          "data": "data/t12/side_squeegee_lh.json"
+        }
+      ],
+      "hotspot": { "x": 63, "y": 87 }
+    },
+    {
+      "id": "elevacion-cabezal",
+      "name": "Mecanismo de Elevación del Cabezal",
+      "system": "lavado",
+      "description": "Scrub Head Lift Group",
+      "figure": "Fig. 11",
+      "status": "available",
+      "data": "data/t12/scrub_head_lift.json",
+      "hotspot": { "x": 34, "y": 90 },
+      "labelSide": "right"
+    },
+    {
+      "id": "elevacion-racleta",
+      "name": "Mecanismo de Elevación de Racleta",
+      "system": "lavado",
+      "description": "Rear Squeegee Lift Group",
+      "figure": "Fig. 20",
+      "status": "available",
+      "data": "data/t12/squeegee_lift.json",
+      "hotspot": { "x": 92, "y": 55 },
+      "labelSide": "left"
+    },
+    {
+      "id": "chasis-ruedas",
+      "name": "Chasis y Ruedas",
+      "system": "traccion",
+      "description": "Main Frame and Wheels Group",
+      "figure": "Fig. 3",
+      "status": "available",
+      "data": "data/t12/main_frame.json",
+      "hotspot": { "x": 84, "y": 77 },
+      "labelSide": "left"
+    },
+    {
+      "id": "parachoques-puerta",
+      "name": "Parachoques y Puerta Lateral",
+      "system": "traccion",
+      "description": "Front Bumper and Side Door Group",
+      "figure": "Fig. 4",
+      "status": "available",
+      "data": "data/t12/front_bumper.json",
+      "hotspot": { "x": 12, "y": 80 },
+      "labelSide": "right"
+    },
+    {
+      "id": "asiento",
+      "name": "Asiento y Soporte",
+      "system": "traccion",
+      "description": "Seat Support Group / Seat Group",
+      "figure": "Fig. 5 / 6",
+      "status": "available",
+      "figures": [
+        {
+          "label": "Fig. 5 · Soporte del asiento",
+          "data": "data/t12/seat_support.json"
+        },
+        {
+          "label": "Fig. 6 · Asiento estándar",
+          "data": "data/t12/seat.json"
+        }
+      ],
+      "hotspot": { "x": 53, "y": 33 }
+    },
+    {
+      "id": "direccion-panel",
+      "name": "Dirección y Panel de Instrumentos",
+      "system": "traccion",
+      "description": "Steering and Instrument Panel Group",
+      "figure": "Fig. 8 / 9",
+      "status": "available",
+      "figures": [
+        {
+          "label": "Fig. 8 · T12",
+          "data": "data/t12/steering_panel.json"
+        },
+        {
+          "label": "Fig. 9 · T12XP",
+          "data": "data/t12/steering_panel_xp.json"
+        }
+      ],
+      "hotspot": { "x": 36, "y": 30 },
+      "labelSide": "right"
+    },
+    {
+      "id": "cubierta-pedal",
+      "name": "Cubierta Frontal y Pedal",
+      "system": "traccion",
+      "description": "Front Cover and Directional Pedal Group",
+      "figure": "Fig. 10",
+      "status": "available",
+      "data": "data/t12/front_cover.json",
+      "hotspot": { "x": 44, "y": 72 }
+    },
+    {
+      "id": "tanque-recuperacion",
+      "name": "Tanque de Recuperación",
+      "system": "agua",
+      "description": "Recovery Tank Group",
+      "figure": "Fig. 17",
+      "status": "available",
+      "data": "data/t12/recovery_tank.json",
+      "hotspot": { "x": 76, "y": 8 },
+      "labelSide": "left"
+    },
+    {
+      "id": "motor-aspiracion",
+      "name": "Motor de Aspiración",
+      "system": "agua",
+      "description": "Vacuum Fan Group",
+      "figure": "Fig. 18",
+      "status": "available",
+      "data": "data/t12/vacuum_fan.json",
+      "hotspot": { "x": 92, "y": 22 },
+      "labelSide": "left"
+    },
+    {
+      "id": "tanque-solucion",
+      "name": "Tanque de Solución",
+      "system": "agua",
+      "description": "Solution Tank Group",
+      "figure": "Fig. 19",
+      "status": "available",
+      "data": "data/t12/solution_tank.json",
+      "hotspot": { "x": 73, "y": 64 },
+      "labelSide": "left"
+    },
+    {
+      "id": "tarjeta-control",
+      "name": "Tarjeta de Control",
+      "system": "electrico",
+      "description": "Electrical Circuit Board Group",
+      "figure": "Fig. 22",
+      "status": "available",
+      "data": "data/t12/circuit_board.json",
+      "hotspot": { "x": 24, "y": 37 },
+      "labelSide": "right"
+    },
+    {
+      "id": "contactor-cables",
+      "name": "Contactor y Cableado",
+      "system": "electrico",
+      "description": "Electrical Contactor and Wires Group",
+      "figure": "Fig. 23",
+      "status": "available",
+      "data": "data/t12/contactor_wires.json",
+      "hotspot": { "x": 16, "y": 53 },
+      "labelSide": "right"
+    },
+    {
+      "id": "baterias",
+      "name": "Sistema de Baterías",
+      "system": "electrico",
+      "description": "Battery Group, 240Ah",
+      "figure": "Fig. 24",
+      "status": "available",
+      "data": "data/t12/battery_240.json",
+      "hotspot": { "x": 57, "y": 50 }
+    }
+  ]
+}

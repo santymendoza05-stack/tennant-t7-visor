@@ -205,25 +205,37 @@ mark { background: var(--accent); color: var(--accent-ink); border-radius: 3px; 
   transition: border-color 0.15s, background 0.15s, color 0.15s;
 }
 .icon-btn:hover, .icon-btn:focus-visible { border-color: var(--accent); color: var(--accent); outline: none; }
-.topbar-link {
+/* Selector de máquina (T7 / T12) */
+.machine-switch {
   flex-shrink: 0;
-  margin-left: auto;
-  padding: 9px 14px;
-  border-radius: 11px;
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 13px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   background: rgba(255, 255, 255, 0.05);
-  color: #e9ecf1;
-  font: 700 0.82rem var(--font);
-  text-decoration: none;
+}
+.machine-option {
+  border: 0;
+  border-radius: 9px;
+  padding: 7px 13px;
+  background: transparent;
+  color: #b9c2cf;
+  font: 700 0.95rem var(--font-display);
+  letter-spacing: 0.03em;
   white-space: nowrap;
-  transition: border-color 0.15s, color 0.15s;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, box-shadow 0.15s;
 }
-.topbar-link:hover, .topbar-link:focus-visible { border-color: var(--accent); color: var(--accent); outline: none; }
-.topbar-link + .icon-btn { margin-left: 0; }
-@media (max-width: 560px) {
-  .topbar-link { padding: 9px 11px; }
-  .topbar-link-long { display: none; }
+.machine-option-brand { font-weight: 600; opacity: 0.8; }
+.machine-option:hover { color: #fff; background: rgba(255, 255, 255, 0.07); }
+.machine-option:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.machine-option[aria-checked="true"] {
+  background: var(--grad);
+  color: var(--accent-ink);
+  box-shadow: 0 4px 14px rgba(255, 122, 26, 0.35);
 }
+.machine-option[aria-checked="true"] .machine-option-brand { opacity: 1; }
 .icon-moon { display: none; }
 :root[data-theme="dark"] .icon-sun { display: none; }
 :root[data-theme="dark"] .icon-moon { display: inline; }
@@ -1234,6 +1246,14 @@ tr.is-active .item-num, tr:hover .item-num, .gr-item[aria-selected="true"] .item
 @media (max-width: 640px) {
   .brand-text small, .brand-divider { display: none; }
   .topbar-title h1 span { display: none; }
+  .machine-option-brand { display: none; }
+  .machine-option { padding: 7px 11px; }
+  /* La máquina ya se ve en el selector: solo queda la ruta de navegación */
+  .topbar-title h1 { display: none; }
+}
+
+@media (max-width: 440px) {
+  .brand-text { display: none; }
   .hint { display: none; }
   .global-search-kbd { display: none; }
   .global-search-icon { width: 40px; height: 40px; font-size: 1.1rem; }

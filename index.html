@@ -4,12 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tennant T7 · Visor de despiece</title>
-  <meta name="description" content="Visor interactivo de despiece de repuestos para la fregadora Tennant T7 · INGPAR S.A.S." />
+  <meta name="description" content="Visor interactivo de despiece de repuestos para las fregadoras Tennant T7 y T12 · INGPAR S.A.S." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" />
   <!-- ?v= evita que el navegador use un CSS/JS viejo en caché tras publicar cambios -->
-  <link rel="stylesheet" href="css/styles.css?v=2026-10-15a" />
+  <link rel="stylesheet" href="css/styles.css?v=2026-10-15b" />
 </head>
 <body>
   <!-- Íconos SVG reutilizables -->
@@ -30,14 +30,15 @@
     </a>
     <span class="brand-divider" aria-hidden="true"></span>
     <div class="topbar-title">
-      <h1>Tennant T7 <span>· Visor de despiece</span></h1>
+      <h1><span id="title-machine">Tennant T7</span> <span>· Visor de despiece</span></h1>
       <nav class="breadcrumb" aria-label="Ruta de navegación">
         <a href="#/" id="crumb-machine">T7 Completa</a>
         <span id="crumb-sep" class="crumb-sep" hidden>›</span>
         <span id="crumb-assembly" hidden></span>
       </nav>
     </div>
-    <a class="topbar-link" href="guia-3d.html" title="Guía interactiva 3D T7 y T12"><span class="topbar-link-long">Guía </span>3D</a>
+    <!-- Selector de máquina: cambia planos, repuestos y datos del manual -->
+    <div id="machine-switch" class="machine-switch" role="radiogroup" aria-label="Máquina"></div>
     <button id="theme-toggle" class="icon-btn" type="button" aria-label="Cambiar tema" title="Cambiar tema claro/oscuro">
       <svg class="icon-sun" aria-hidden="true"><use href="#i-sun"/></svg>
       <svg class="icon-moon" aria-hidden="true"><use href="#i-moon"/></svg>
@@ -47,7 +48,7 @@
   <!-- ===================== NIVEL 1: Máquina completa ===================== -->
   <main id="view-machine" class="view home" data-level="1">
     <section class="hero">
-      <p class="eyebrow">Tennant T7 · Manual de partes 9013606</p>
+      <p class="eyebrow" id="hero-eyebrow">Tennant T7 · Manual de partes 9013606</p>
       <h2 class="hero-title">¿Qué repuesto necesitas?</h2>
 
       <!-- Buscador global: busca en los repuestos de todas las zonas -->
@@ -65,13 +66,7 @@
         </div>
       </section>
 
-      <p class="hero-examples">
-        <span>Prueba:</span>
-        <button type="button" class="example-chip" data-example="1010560">1010560</button>
-        <button type="button" class="example-chip" data-example="motor">motor</button>
-        <button type="button" class="example-chip" data-example="squeegee blade">squeegee blade</button>
-        <button type="button" class="example-chip" data-example="sensor level">sensor level</button>
-      </p>
+      <p class="hero-examples" id="hero-examples"></p>
     </section>
 
     <div class="home-grid">
@@ -85,17 +80,17 @@
         <div class="diagram-wrapper">
           <div class="blueprint blueprint-grid">
             <div id="machine-diagram" class="diagram diagram-blueprint">
-              <img id="machine-img" src="assets/t7_full.png" alt="Fregadora Tennant T7, vista general" />
+              <img id="machine-img" alt="" />
               <div class="diagram-placeholder" hidden>
                 <strong>Imagen no encontrada</strong>
-                <span>Coloca la vista general en <code>assets/t7_full.png</code></span>
+                <span>Revisa la ruta <code>image</code> en el machine.json de la máquina</span>
               </div>
               <div id="zone-hotspots" class="hotspots"></div>
             </div>
             <dl class="title-block">
-              <div><dt>Equipo</dt><dd>Tennant T7</dd></div>
+              <div><dt>Equipo</dt><dd id="tb-machine">Tennant T7</dd></div>
               <div><dt>Plano</dt><dd>Vista general</dd></div>
-              <div><dt>Manual</dt><dd>9013606</dd></div>
+              <div><dt>Manual</dt><dd id="tb-manual">9013606</dd></div>
               <div><dt>Elaboró</dt><dd>INGPAR S.A.S.</dd></div>
             </dl>
           </div>
@@ -129,7 +124,7 @@
   <!-- ================ NIVEL 2: Despiece por subensamble ================ -->
   <main id="view-assembly" class="view layout" data-level="2" hidden>
     <div class="view-toolbar">
-      <a href="#/" id="back-btn" class="back-btn"><svg aria-hidden="true"><use href="#i-arrow-left"/></svg> Volver a la T7 Completa</a>
+      <a href="#/" id="back-btn" class="back-btn"><svg aria-hidden="true"><use href="#i-arrow-left"/></svg> <span id="back-label">Volver a la T7 Completa</span></a>
       <p class="subtitle"><span id="figure-label"></span> — <span id="group-label"></span></p>
       <nav id="figure-tabs" class="figure-tabs" role="tablist" aria-label="Figuras de esta zona" hidden></nav>
     </div>
@@ -188,12 +183,12 @@
   </main>
 
   <footer class="site-footer">
-    <span>INGPAR S.A.S. · Visor de despiece Tennant T7</span>
+    <span>INGPAR S.A.S. · Visor de despiece Tennant T7 · T12</span>
     <span>Diagramas y referencias © Tennant Company · Herramienta de consulta no afiliada a Tennant</span>
   </footer>
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
-  <script src="js/app.js?v=2026-10-15a"></script>
+  <script src="js/app.js?v=2026-10-15b"></script>
 </body>
 </html>

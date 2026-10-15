@@ -1,0 +1,509 @@
+{
+  "machine": "Tennant T12",
+  "group": "Scrub Head Drive Motor Group, Cylindrical",
+  "figure": "Fig. 14",
+  "image": "assets/t12/scrub_head_cyl_drive.png",
+  "categories": [
+    "Tornillería",
+    "Pasadores y bujes",
+    "Mangueras y sujeción",
+    "Sellos y empaques",
+    "Motores y actuadores",
+    "Transmisión",
+    "Eléctrico",
+    "Escobillas y hojas",
+    "Estructura y cubiertas"
+  ],
+  "parts": [
+    {
+      "item": 1,
+      "partNumber": "1200900",
+      "description": "Plate, Side, Scrubhead, Lh",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 85.3, "y": 40.0 }
+      ]
+    },
+    {
+      "item": 2,
+      "partNumber": "01684",
+      "description": "Washer, Flat, 0.27b 0.69d .05, Ss",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 73.4, "y": 68.7 }
+      ]
+    },
+    {
+      "item": 3,
+      "partNumber": "08716",
+      "description": "Screw, Hex, M6 X 1.00 X 20, Ss",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 77.8, "y": 70.9 }
+      ]
+    },
+    {
+      "item": 4,
+      "partNumber": "1200334",
+      "description": "Belt, Drive",
+      "category": "Transmisión",
+      "qty": 1,
+      "hotspots": [
+        { "x": 81.7, "y": 72.9 }
+      ]
+    },
+    {
+      "item": 5,
+      "partNumber": "1200215",
+      "description": "Sheave, 07grv, 2.96pd 0.63b [Pj]",
+      "category": "Transmisión",
+      "qty": 1,
+      "hotspots": [
+        { "x": 87.4, "y": 55.3 }
+      ]
+    },
+    {
+      "item": 6,
+      "partNumber": "1200281",
+      "description": "Shaft, Drive",
+      "category": "Pasadores y bujes",
+      "qty": 1,
+      "hotspots": [
+        { "x": 60.8, "y": 95.1 }
+      ]
+    },
+    {
+      "item": 7,
+      "partNumber": "41360",
+      "description": "Bearing, Ball, 0.59b 1.26d 0.35w[2seal]",
+      "category": "Pasadores y bujes",
+      "qty": 2,
+      "hotspots": [
+        { "x": 53.4, "y": 92.0 },
+        { "x": 48.3, "y": 89.1 }
+      ]
+    },
+    {
+      "item": 8,
+      "partNumber": "00961",
+      "description": "Key, Sq, 0.19 X 0.19, 0.50l",
+      "category": "Pasadores y bujes",
+      "qty": 1,
+      "hotspots": [
+        { "x": 57.6, "y": 97.6 }
+      ]
+    },
+    {
+      "item": 9,
+      "partNumber": "1002077",
+      "description": "Tube, 0.59id 0.81od 00.5l",
+      "category": "Mangueras y sujeción",
+      "qty": 1,
+      "hotspots": [
+        { "x": 50.9, "y": 90.1 }
+      ]
+    },
+    {
+      "item": 10,
+      "partNumber": "41186",
+      "description": "Washer, Flat, Belleville, .31",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 41.8, "y": 85.8 }
+      ]
+    },
+    {
+      "item": 11,
+      "partNumber": "1020341",
+      "description": "Screw, Hex, M8 X 1.25 X 20, Ss, Sems",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 37.9, "y": 83.7 },
+        { "x": 82.5, "y": 66.7 },
+        { "x": 10.2, "y": 21.2 }
+      ]
+    },
+    {
+      "item": 12,
+      "partNumber": "00911",
+      "description": "Key, Sq, 0.19 X 0.19, 0.75l",
+      "category": "Pasadores y bujes",
+      "qty": 1,
+      "hotspots": [
+        { "x": 54.2, "y": 95.7 }
+      ]
+    },
+    {
+      "item": 13,
+      "partNumber": "378805",
+      "description": "Plug, Drive, Brush, Mach",
+      "category": "Mangueras y sujeción",
+      "qty": 1,
+      "hotspots": [
+        { "x": 45.3, "y": 87.7 }
+      ]
+    },
+    {
+      "item": 14,
+      "partNumber": "1203758",
+      "description": "Tool, Installation, Belt",
+      "category": "Transmisión",
+      "qty": 1,
+      "hotspots": [
+        { "x": 89.9, "y": 39.0 }
+      ]
+    },
+    {
+      "item": 14,
+      "partNumber": "9010940",
+      "description": "Side Panel Assy, Cyl, Rh, Afmkt [T12]",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": []
+    },
+    {
+      "item": 15,
+      "partNumber": "01684",
+      "description": "Washer, Flat, 0.27b 0.69d .05, Ss",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 10.2, "y": 33.0 }
+      ]
+    },
+    {
+      "item": 16,
+      "partNumber": "08716",
+      "description": "Screw, Hex, M6 X 1.00 X 20, Ss",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 6.2, "y": 30.5 }
+      ]
+    },
+    {
+      "item": 17,
+      "partNumber": "1200334",
+      "description": "Belt, Drive",
+      "category": "Transmisión",
+      "qty": 1,
+      "hotspots": [
+        { "x": 18.5, "y": 3.8 }
+      ]
+    },
+    {
+      "item": 18,
+      "partNumber": "1200215",
+      "description": "Sheave, 07grv, 2.96pd 0.63b [Pj]",
+      "category": "Transmisión",
+      "qty": 1,
+      "hotspots": [
+        { "x": 24.3, "y": 8.1 }
+      ]
+    },
+    {
+      "item": 19,
+      "partNumber": "1200281",
+      "description": "Shaft, Drive",
+      "category": "Pasadores y bujes",
+      "qty": 1,
+      "hotspots": [
+        { "x": 20.0, "y": 49.8 }
+      ]
+    },
+    {
+      "item": 20,
+      "partNumber": "41360",
+      "description": "Bearing, Ball, 0.59b 1.26d 0.35w[2seal]",
+      "category": "Pasadores y bujes",
+      "qty": 2,
+      "hotspots": [
+        { "x": 27.8, "y": 53.4 },
+        { "x": 34.5, "y": 57.3 }
+      ]
+    },
+    {
+      "item": 21,
+      "partNumber": "00961",
+      "description": "Key, Sq, 0.19 X 0.19, 0.50l",
+      "category": "Pasadores y bujes",
+      "qty": 1,
+      "hotspots": [
+        { "x": 22.9, "y": 47.1 }
+      ]
+    },
+    {
+      "item": 22,
+      "partNumber": "1002077",
+      "description": "Tube, 0.59id 0.81od 00.5l",
+      "category": "Mangueras y sujeción",
+      "qty": 1,
+      "hotspots": [
+        { "x": 31.8, "y": 54.4 }
+      ]
+    },
+    {
+      "item": 23,
+      "partNumber": "41186",
+      "description": "Washer, Flat, Belleville, .31",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 41.7, "y": 60.3 }
+      ]
+    },
+    {
+      "item": 24,
+      "partNumber": "1020341",
+      "description": "Screw, Hex, M8 X 1.25 X 20, Ss, Sems",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 45.6, "y": 62.1 }
+      ]
+    },
+    {
+      "item": 25,
+      "partNumber": "00911",
+      "description": "Key, Sq, 0.19 X 0.19, 0.75l",
+      "category": "Pasadores y bujes",
+      "qty": 1,
+      "hotspots": [
+        { "x": 26.8, "y": 49.7 }
+      ]
+    },
+    {
+      "item": 26,
+      "partNumber": "378805",
+      "description": "Plug, Drive, Brush, Mach",
+      "category": "Mangueras y sujeción",
+      "qty": 1,
+      "hotspots": [
+        { "x": 38.1, "y": 58.6 }
+      ]
+    },
+    {
+      "item": 27,
+      "partNumber": "1200898",
+      "description": "Plate, Side, Scrubhead, Rh",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 10.4, "y": 24.8 }
+      ]
+    },
+    {
+      "item": 28,
+      "partNumber": "1203758",
+      "description": "Tool, Installation, Belt",
+      "category": "Transmisión",
+      "qty": 1,
+      "hotspots": [
+        { "x": 93.5, "y": 40.5 }
+      ]
+    },
+    {
+      "item": 29,
+      "partNumber": "1014328",
+      "description": "Key, Sq, 05mm X 05mm, 25mml",
+      "category": "Pasadores y bujes",
+      "qty": 2,
+      "hotspots": [
+        { "x": 40.6, "y": 4.3 },
+        { "x": 70.0, "y": 18.9 }
+      ]
+    },
+    {
+      "item": 30,
+      "partNumber": "1054581",
+      "description": "Sheave, 07grv, 1.22pd 0.55b [Pj]",
+      "category": "Transmisión",
+      "qty": 2,
+      "hotspots": [
+        { "x": 36.1, "y": 3.1 },
+        { "x": 77.7, "y": 29.6 }
+      ]
+    },
+    {
+      "item": 31,
+      "partNumber": "222818",
+      "description": "Screw, Set, Soc, 08- 32 X 0.25, Nl",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 32.5, "y": 2.2 },
+        { "x": 74.2, "y": 23.1 }
+      ]
+    },
+    {
+      "item": 32,
+      "partNumber": "1200283",
+      "description": "Cover, Belt",
+      "category": "Transmisión",
+      "qty": 2,
+      "hotspots": [
+        { "x": 93.2, "y": 75.6 },
+        { "x": 10.4, "y": 1.8 }
+      ]
+    },
+    {
+      "item": 32,
+      "partNumber": "222752",
+      "description": "Plug Assy, Idler, Brush",
+      "category": "Mangueras y sujeción",
+      "qty": 2,
+      "note": "S/N 10000000-19999999",
+      "hotspots": []
+    },
+    {
+      "item": 33,
+      "partNumber": "1201341",
+      "description": "Gasket, Cover, Belt",
+      "category": "Sellos y empaques",
+      "qty": 1,
+      "note": "S/N 10000000-19999999",
+      "hotspots": [
+        { "x": 89.0, "y": 74.4 },
+        { "x": 14.5, "y": 3.1 }
+      ]
+    },
+    {
+      "item": 34,
+      "partNumber": "1057629",
+      "description": "Plug, Idler, Brush [Sgl Brg]",
+      "category": "Mangueras y sujeción",
+      "qty": 1,
+      "note": "S/N 10000000-19999999",
+      "hotspots": [
+        { "x": 22.3, "y": 75.6 },
+        { "x": 59.3, "y": 67.4 }
+      ]
+    },
+    {
+      "item": 35,
+      "partNumber": "222184",
+      "description": "Pin, Roll, .094d X 0.25l, .094/.097",
+      "category": "Pasadores y bujes",
+      "qty": 1,
+      "note": "S/N 10000000-19999999",
+      "hotspots": [
+        { "x": 14.2, "y": 71.2 },
+        { "x": 67.8, "y": 73.6 }
+      ]
+    },
+    {
+      "item": 36,
+      "partNumber": "222177",
+      "description": "Shaft, Plug, Idler",
+      "category": "Pasadores y bujes",
+      "qty": 1,
+      "note": "S/N 10000000-19999999",
+      "hotspots": [
+        { "x": 18.0, "y": 73.6 },
+        { "x": 61.6, "y": 71.6 }
+      ]
+    },
+    {
+      "item": 37,
+      "partNumber": "01516",
+      "description": "Ring, Retaining, Ext, 0.59d, Basic",
+      "category": "Pasadores y bujes",
+      "qty": 1,
+      "note": "S/N 10000000-19999999",
+      "hotspots": [
+        { "x": 26.4, "y": 76.6 },
+        { "x": 55.4, "y": 65.8 }
+      ]
+    },
+    {
+      "item": 38,
+      "partNumber": "390996",
+      "description": "Screw, Flt, Soc, M10 X 1.50 X 20,10.9,Nl",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 5.4, "y": 61.8 },
+        { "x": 81.7, "y": 83.0 }
+      ]
+    },
+    {
+      "item": 39,
+      "partNumber": "1200309",
+      "description": "Door, Brush",
+      "category": "Escobillas y hojas",
+      "qty": 2,
+      "hotspots": [
+        { "x": 8.7, "y": 67.3 },
+        { "x": 78.0, "y": 76.9 }
+      ]
+    },
+    {
+      "item": 40,
+      "partNumber": "1059170",
+      "description": "Harness, Wire, Adapter [Deutsch, Dtp]",
+      "category": "Eléctrico",
+      "qty": 1,
+      "hotspots": [
+        { "x": 62.2, "y": 6.1 }
+      ]
+    },
+    {
+      "item": 41,
+      "partNumber": "1053342",
+      "description": "Motor, Ele, 36vdc 1750rpm 1.00hp 22.0a (See Breakdowns)",
+      "category": "Motores y actuadores",
+      "qty": 2,
+      "hotspots": [
+        { "x": 62.9, "y": 16.7 },
+        { "x": 45.0, "y": 6.2 }
+      ]
+    },
+    {
+      "item": 42,
+      "partNumber": "1034731",
+      "description": "Screw, Hex, M6 X 1.00 X 16, Ss, Sems",
+      "category": "Tornillería",
+      "qty": 12,
+      "hotspots": [
+        { "x": 81.1, "y": 41.3 },
+        { "x": 97.1, "y": 74.8 },
+        { "x": 2.7, "y": 13.7 },
+        { "x": 26.1, "y": 11.5 }
+      ]
+    },
+    {
+      "item": 42,
+      "partNumber": "9010935",
+      "description": "Belt, Cyl Head, W/Too;l, Afmkt",
+      "category": "Transmisión",
+      "qty": 1,
+      "hotspots": []
+    },
+    {
+      "item": 43,
+      "partNumber": "1200334",
+      "description": "Belt, Drive",
+      "category": "Transmisión",
+      "qty": 2,
+      "hotspots": [
+        { "x": 22.0, "y": 5.1 },
+        { "x": 85.1, "y": 73.9 }
+      ]
+    },
+    {
+      "item": 44,
+      "partNumber": "1203758",
+      "description": "Tool, Installation, Belt",
+      "category": "Transmisión",
+      "qty": 1,
+      "hotspots": [
+        { "x": 97.2, "y": 42.3 }
+      ]
+    }
+  ]
+}

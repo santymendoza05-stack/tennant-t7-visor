@@ -1,0 +1,218 @@
+{
+  "machine": "Tennant T12",
+  "group": "Scrub Head Side Squeegee Group, Right Hand",
+  "figure": "Fig. 15",
+  "image": "assets/t12/side_squeegee_rh.png",
+  "categories": [
+    "Tornillería",
+    "Pasadores y bujes",
+    "Resortes",
+    "Mangueras y sujeción",
+    "Escobillas y hojas",
+    "Estructura y cubiertas"
+  ],
+  "parts": [
+    {
+      "item": 1,
+      "partNumber": "1202243",
+      "description": "Door, Casting, Squeegee, Rh",
+      "category": "Escobillas y hojas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 16.9, "y": 57.3 }
+      ]
+    },
+    {
+      "item": 2,
+      "partNumber": "1065134",
+      "description": "Latch, Cmpr, Yel Grip",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 72.4, "y": 20.6 }
+      ]
+    },
+    {
+      "item": 3,
+      "partNumber": "363469",
+      "description": "Spring, Extn, 0.75od 0.10wir 03.0l",
+      "category": "Resortes",
+      "qty": 1,
+      "hotspots": [
+        { "x": 18.2, "y": 46.7 }
+      ]
+    },
+    {
+      "item": 4,
+      "partNumber": "10120",
+      "description": "Clevis, 0.31d X 0.75l",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 13.4, "y": 37.4 }
+      ]
+    },
+    {
+      "item": 5,
+      "partNumber": "1202100",
+      "description": "Bellcrank, Lift, Sqge [T12]",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 32.3, "y": 12.9 }
+      ]
+    },
+    {
+      "item": 6,
+      "partNumber": "71607",
+      "description": "Bushing, Sleeve, 0.63b 0.72d 0.38l",
+      "category": "Pasadores y bujes",
+      "qty": 2,
+      "hotspots": [
+        { "x": 38.5, "y": 20.0 },
+        { "x": 26.9, "y": 38.9 }
+      ]
+    },
+    {
+      "item": 7,
+      "partNumber": "64425",
+      "description": "Washer, Thrust, 0.61b 1.25d .06, Fgl",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 41.7, "y": 21.8 },
+        { "x": 30.3, "y": 44.5 },
+        { "x": 24.3, "y": 9.4 },
+        { "x": 10.4, "y": 26.6 }
+      ]
+    },
+    {
+      "item": 8,
+      "partNumber": "1200525",
+      "description": "Nut, T, M8 X 1.25",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 20.9, "y": 5.6 },
+        { "x": 6.8, "y": 23.2 }
+      ]
+    },
+    {
+      "item": 9,
+      "partNumber": "79246",
+      "description": "Screw, Flt, Soc, M8 X 1.25 X 20, 18-8,Ss",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 45.3, "y": 55.5 },
+        { "x": 90.0, "y": 83.1 }
+      ]
+    },
+    {
+      "item": 10,
+      "partNumber": "09088",
+      "description": "Pin, Clevis, 0.37d X 1.00l",
+      "category": "Pasadores y bujes",
+      "qty": 1,
+      "hotspots": [
+        { "x": 9.1, "y": 2.6 }
+      ]
+    },
+    {
+      "item": 11,
+      "partNumber": "44906",
+      "description": "Pin, Cotter, Hair, 0.38d .093 Wir",
+      "category": "Pasadores y bujes",
+      "qty": 1,
+      "hotspots": [
+        { "x": 12.1, "y": 6.9 }
+      ]
+    },
+    {
+      "item": 12,
+      "partNumber": "1201455",
+      "description": "Block, Sqge, Guide, Rh",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 71.0, "y": 88.4 }
+      ]
+    },
+    {
+      "item": 13,
+      "partNumber": "1016421",
+      "description": "Screw, Flt, M6 X 1.0 X 20, Ss",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 45.8, "y": 88.1 }
+      ]
+    },
+    {
+      "item": 14,
+      "partNumber": "08708",
+      "description": "Nut, Hex, Lock, M6 X 1.00, Nl",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 75.6, "y": 92.8 }
+      ]
+    },
+    {
+      "item": 15,
+      "partNumber": "1201453",
+      "description": "Strap Wldt, Sqge",
+      "category": "Mangueras y sujeción",
+      "qty": 1,
+      "hotspots": [
+        { "x": 79.8, "y": 36.5 }
+      ]
+    },
+    {
+      "item": 16,
+      "partNumber": "1054312",
+      "description": "Hook Wldt, Latch",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 89.5, "y": 40.3 }
+      ]
+    },
+    {
+      "item": 17,
+      "partNumber": "1200221",
+      "description": "Frame, Sqge, Side, Rh",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 79.9, "y": 84.5 }
+      ]
+    },
+    {
+      "item": 18,
+      "partNumber": "1200430",
+      "description": "Blade, Sqge, Side, 22.50l, Linatex (Standard)",
+      "category": "Escobillas y hojas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 89.0, "y": 55.5 }
+      ]
+    },
+    {
+      "item": 18,
+      "partNumber": "1202159",
+      "description": "Blade, Sqge, Side, 22.50l, Urethane (Option)",
+      "category": "Escobillas y hojas",
+      "qty": 1,
+      "hotspots": []
+    },
+    {
+      "item": 18,
+      "partNumber": "1202160",
+      "description": "Blade, Sqge, Side, 22.50l, Gum (Option)",
+      "category": "Escobillas y hojas",
+      "qty": 1,
+      "hotspots": []
+    }
+  ]
+}

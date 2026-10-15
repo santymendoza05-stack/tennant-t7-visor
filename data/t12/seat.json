@@ -1,0 +1,98 @@
+{
+  "machine": "Tennant T12",
+  "group": "Seat Group, Standard",
+  "figure": "Fig. 6",
+  "image": "assets/t12/seat.png",
+  "categories": [
+    "Tornillería",
+    "Pasadores y bujes",
+    "Eléctrico",
+    "Estructura y cubiertas"
+  ],
+  "parts": [
+    {
+      "item": 1,
+      "partNumber": "1201894",
+      "description": "Seat, Std [Milsco]",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 46.5, "y": 19.3 }
+      ]
+    },
+    {
+      "item": 2,
+      "partNumber": "1051052",
+      "description": "Spacer, Rnd, .38b .88d .38l",
+      "category": "Pasadores y bujes",
+      "qty": 4,
+      "hotspots": [
+        { "x": 3.2, "y": 57.8 },
+        { "x": 38.3, "y": 46.5 },
+        { "x": 14.8, "y": 66.3 }
+      ]
+    },
+    {
+      "item": 3,
+      "partNumber": "360370",
+      "description": "Track, Slide, Seat Adj, 12.5l, W/Latch",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 12.4, "y": 52.9 }
+      ]
+    },
+    {
+      "item": 4,
+      "partNumber": "360369",
+      "description": "Track, Slide, Seat Adj, 12.5l",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 35.1, "y": 66.0 }
+      ]
+    },
+    {
+      "item": 5,
+      "partNumber": "1048955",
+      "description": "Switch, Seat, No [Delta 6440-04]",
+      "category": "Eléctrico",
+      "qty": 1,
+      "hotspots": [
+        { "x": 31.3, "y": 48.9 }
+      ]
+    },
+    {
+      "item": 6,
+      "partNumber": "1035038",
+      "description": "Screw, Hex, .31-18 X 1.38, Ss, Nl",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 9.8, "y": 81.5 }
+      ]
+    },
+    {
+      "item": 7,
+      "partNumber": "01685",
+      "description": "Washer, Flat, 0.38b 0.88d .08, Ss",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 57.3, "y": 81.2 },
+        { "x": 49.3, "y": 75.0 }
+      ]
+    },
+    {
+      "item": 8,
+      "partNumber": "41437",
+      "description": "Nut, Hex, Lock, .31-18, Nl, Ss",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 57.2, "y": 86.0 },
+        { "x": 49.1, "y": 79.9 }
+      ]
+    }
+  ]
+}

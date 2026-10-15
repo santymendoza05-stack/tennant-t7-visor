@@ -1,5 +1,5 @@
-/* Regenera el bloque FALLBACK de js/app.js a partir de data/machine.json
-   y de los JSON de cada zona disponible.
+/* Regenera el bloque FALLBACK de js/app.js a partir de data/machines.json,
+   del machine.json de cada máquina (T7, T12, ...) y de los JSON de cada zona.
 
    Uso (desde la carpeta del proyecto):  node tools/sync-fallback.js */
 "use strict";
@@ -9,13 +9,17 @@ const path = require("path");
 const root = path.join(__dirname, "..");
 const read = (rel) => JSON.parse(fs.readFileSync(path.join(root, rel), "utf8"));
 
-const MACHINE = "data/machine.json";
-const machine = read(MACHINE);
-const files = { [MACHINE]: machine };
-for (const z of machine.zones) {
-  // Zonas con una figura ("data") o con varias ("figures": [{ label, data }])
-  const urls = z.figures ? z.figures.map((f) => f.data) : [z.data];
-  for (const url of urls) if (url) files[url] = read(url);
+const MACHINES = "data/machines.json";
+const registry = read(MACHINES);
+const files = { [MACHINES]: registry };
+for (const m of registry.machines) {
+  const machine = read(m.data);
+  files[m.data] = machine;
+  for (const z of machine.zones) {
+    // Zonas con una figura ("data") o con varias ("figures": [{ label, data }])
+    const urls = z.figures ? z.figures.map((f) => f.data) : [z.data];
+    for (const url of urls) if (url) files[url] = read(url);
+  }
 }
 
 // Formato compacto: un objeto por línea dentro de las listas "zones" y "parts"

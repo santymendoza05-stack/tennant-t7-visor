@@ -1,0 +1,155 @@
+{
+  "machine": "Tennant T12",
+  "group": "Solution Tank Group",
+  "figure": "Fig. 19",
+  "image": "assets/t12/solution_tank.png",
+  "categories": [
+    "Tornillería",
+    "Mangueras y sujeción",
+    "Eléctrico",
+    "Escobillas y hojas",
+    "Estructura y cubiertas"
+  ],
+  "parts": [
+    {
+      "item": 1,
+      "partNumber": "9010919",
+      "description": "Solution Tank, Afmkt [T12]",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 5.2, "y": 27.1 }
+      ]
+    },
+    {
+      "item": 2,
+      "partNumber": "1059317",
+      "description": "Fitting Assy, Soltn, Bh",
+      "category": "Mangueras y sujeción",
+      "qty": 1,
+      "hotspots": [
+        { "x": 78.6, "y": 47.4 }
+      ]
+    },
+    {
+      "item": 3,
+      "partNumber": "1011885",
+      "description": "Cap, Tank",
+      "category": "Mangueras y sujeción",
+      "qty": 1,
+      "hotspots": [
+        { "x": 11.3, "y": 8.0 }
+      ]
+    },
+    {
+      "item": 4,
+      "partNumber": "1201588",
+      "description": "Sensor, Level, Liq, 30watt, Spst",
+      "category": "Eléctrico",
+      "qty": 1,
+      "hotspots": [
+        { "x": 52.9, "y": 62.7 }
+      ]
+    },
+    {
+      "item": 5,
+      "partNumber": "1201077",
+      "description": "Bracket, Sppt, Tank, Lh",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 93.8, "y": 62.5 }
+      ]
+    },
+    {
+      "item": 6,
+      "partNumber": "1201079",
+      "description": "Bracket, Sppt, Tank, Rh",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 14.1, "y": 46.7 }
+      ]
+    },
+    {
+      "item": 7,
+      "partNumber": "12317",
+      "description": "Screw, Hex, M10 X 1.50 X 30, Ss",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 32.2, "y": 64.0 },
+        { "x": 86.6, "y": 90.1 }
+      ]
+    },
+    {
+      "item": 8,
+      "partNumber": "01686",
+      "description": "Washer, Flat, 0.44b 1.00d .08, Ss",
+      "category": "Tornillería",
+      "qty": 8,
+      "hotspots": [
+        { "x": 34.9, "y": 66.7 },
+        { "x": 82.2, "y": 88.6 },
+        { "x": 83.4, "y": 65.6 },
+        { "x": 27.2, "y": 55.4 }
+      ]
+    },
+    {
+      "item": 9,
+      "partNumber": "08714",
+      "description": "Nut, Hex, Lock, M10 X 1.5, Nl, Ss",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 79.7, "y": 64.7 },
+        { "x": 31.1, "y": 57.0 }
+      ]
+    },
+    {
+      "item": 10,
+      "partNumber": "1020341",
+      "description": "Screw, Hex, M8 X 1.25 X 20, Ss, Sems",
+      "category": "Tornillería",
+      "qty": 12,
+      "hotspots": [
+        { "x": 97.0, "y": 76.8 },
+        { "x": 14.4, "y": 49.8 },
+        { "x": 56.7, "y": 1.4 },
+        { "x": 55.9, "y": 89.9 },
+        { "x": 3.4, "y": 76.4 }
+      ]
+    },
+    {
+      "item": 11,
+      "partNumber": "1205727",
+      "description": "Bracket Wldt, Sppt, Seat",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 67.5, "y": 9.7 }
+      ]
+    },
+    {
+      "item": 12,
+      "partNumber": "630146",
+      "description": "Fitting, Plug, Pm06, Nyl",
+      "category": "Mangueras y sujeción",
+      "qty": 3,
+      "hotspots": [
+        { "x": 49.9, "y": 56.5 },
+        { "x": 79.9, "y": 52.8 }
+      ]
+    },
+    {
+      "item": 13,
+      "partNumber": "1027290",
+      "description": "Filter, Soltn, 020Mesh, Pm12 3.1D 02.6L",
+      "category": "Escobillas y hojas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 84.9, "y": 26.0 }
+      ]
+    }
+  ]
+}

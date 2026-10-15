@@ -1,19 +1,29 @@
 /* ==========================================================
-   Tennant T7 · Visor de despiece jerárquico
+   Tennant T7 / T12 · Visor de despiece jerárquico
    Nivel 1: Máquina completa (zonas)  ->  Nivel 2: Despiece por subensamble
 
    Rutas (hash):
-     #/                  -> Nivel 1
-     #/zona/<id-zona>    -> Nivel 2 (p. ej. #/zona/racleta-trasera)
+     #/                        -> Nivel 1 de la última máquina elegida
+     #/<máquina>/              -> Nivel 1 (p. ej. #/t12/)
+     #/<máquina>/zona/<id>     -> Nivel 2 (p. ej. #/t12/zona/racleta-trasera)
+     #/zona/<id>               -> enlaces antiguos: Nivel 2 de la máquina por defecto (T7)
    ========================================================== */
 (() => {
   "use strict";
 
-  const MACHINE_URL = "data/machine.json";
+  // Lista de máquinas: cada una apunta a su machine.json (zonas, plano general, sistemas)
+  const MACHINES_URL = "data/machines.json";
 
   // Copias de respaldo usadas solo si fetch() falla (p. ej. al abrir index.html
   // con doble clic vía file://). Mantener sincronizadas con los JSON de data/.
   const FALLBACK = {
+    "data/machines.json": {
+      default: "t7",
+      machines: [
+        { id: "t7", name: "Tennant T7", short: "T7", manual: "9013606", data: "data/machine.json", examples: ["1010560", "motor", "squeegee blade", "sensor level"] },
+        { id: "t12", name: "Tennant T12", short: "T12", manual: "9012729", data: "data/t12/machine.json", examples: ["1200384", "motor", "squeegee blade", "battery"] }
+      ]
+    },
     "data/machine.json": {
       machine: "Tennant T7",
       title: "Fregadora de conductor sentado",
@@ -713,6 +723,739 @@
         { item: 33, partNumber: "08182", description: "Pin, Cotter, .125 x 1.00", category: "Pasadores y bujes", qty: 2, hotspots: [{ x: 59.6, y: 38.4 }, { x: 20.2, y: 2.1 }] },
         { item: 34, partNumber: "08713", description: "Nut, Hex, Lock, M8 x 1.25, NL, SS", category: "Tornillería", qty: 2, hotspots: [{ x: 9.3, y: 9 }] }
       ]
+    },
+    "data/t12/machine.json": {
+      machine: "Tennant T12",
+      image: "assets/t12/t12_full.png",
+      systems: [
+        { id: "lavado", name: "Lavado y Secado", icon: "brush" },
+        { id: "traccion", name: "Tracción y Chasis", icon: "wheel" },
+        { id: "agua", name: "Agua y Aspiración", icon: "drop" },
+        { id: "electrico", name: "Eléctrico y Control", icon: "bolt" }
+      ],
+      zones: [
+        { id: "racleta-trasera", name: "Racleta Trasera / Escobillas de Secado", system: "lavado", description: "Rear Squeegee Kit", figure: "Fig. 21", status: "available", data: "data/t12/rear_squeegee.json", hotspot: { x: 94, y: 68 }, labelSide: "left" },
+        { id: "cabeza-cepillos", name: "Cabezal de Cepillos", system: "lavado", description: "Scrub Head Group, Disk / Cylindrical", figure: "Fig. 12 / 13 / 14", status: "available", figures: [{ label: "Fig. 12 · Cabezal de disco", data: "data/t12/scrub_head_disk.json" }, { label: "Fig. 13 · Bastidor cilíndrico", data: "data/t12/scrub_head_cyl.json" }, { label: "Fig. 14 · Motor cilíndrico", data: "data/t12/scrub_head_cyl_drive.json" }], hotspot: { x: 50, y: 94 } },
+        { id: "escobillas-laterales", name: "Escobillas Laterales del Cabezal", system: "lavado", description: "Scrub Head Side Squeegee Group", figure: "Fig. 15 / 16", status: "available", figures: [{ label: "Fig. 15 · Lado derecho", data: "data/t12/side_squeegee_rh.json" }, { label: "Fig. 16 · Lado izquierdo", data: "data/t12/side_squeegee_lh.json" }], hotspot: { x: 63, y: 87 } },
+        { id: "elevacion-cabezal", name: "Mecanismo de Elevación del Cabezal", system: "lavado", description: "Scrub Head Lift Group", figure: "Fig. 11", status: "available", data: "data/t12/scrub_head_lift.json", hotspot: { x: 34, y: 90 }, labelSide: "right" },
+        { id: "elevacion-racleta", name: "Mecanismo de Elevación de Racleta", system: "lavado", description: "Rear Squeegee Lift Group", figure: "Fig. 20", status: "available", data: "data/t12/squeegee_lift.json", hotspot: { x: 92, y: 55 }, labelSide: "left" },
+        { id: "chasis-ruedas", name: "Chasis y Ruedas", system: "traccion", description: "Main Frame and Wheels Group", figure: "Fig. 3", status: "available", data: "data/t12/main_frame.json", hotspot: { x: 84, y: 77 }, labelSide: "left" },
+        { id: "parachoques-puerta", name: "Parachoques y Puerta Lateral", system: "traccion", description: "Front Bumper and Side Door Group", figure: "Fig. 4", status: "available", data: "data/t12/front_bumper.json", hotspot: { x: 12, y: 80 }, labelSide: "right" },
+        { id: "asiento", name: "Asiento y Soporte", system: "traccion", description: "Seat Support Group / Seat Group", figure: "Fig. 5 / 6", status: "available", figures: [{ label: "Fig. 5 · Soporte del asiento", data: "data/t12/seat_support.json" }, { label: "Fig. 6 · Asiento estándar", data: "data/t12/seat.json" }], hotspot: { x: 53, y: 33 } },
+        { id: "direccion-panel", name: "Dirección y Panel de Instrumentos", system: "traccion", description: "Steering and Instrument Panel Group", figure: "Fig. 8 / 9", status: "available", figures: [{ label: "Fig. 8 · T12", data: "data/t12/steering_panel.json" }, { label: "Fig. 9 · T12XP", data: "data/t12/steering_panel_xp.json" }], hotspot: { x: 36, y: 30 }, labelSide: "right" },
+        { id: "cubierta-pedal", name: "Cubierta Frontal y Pedal", system: "traccion", description: "Front Cover and Directional Pedal Group", figure: "Fig. 10", status: "available", data: "data/t12/front_cover.json", hotspot: { x: 44, y: 72 } },
+        { id: "tanque-recuperacion", name: "Tanque de Recuperación", system: "agua", description: "Recovery Tank Group", figure: "Fig. 17", status: "available", data: "data/t12/recovery_tank.json", hotspot: { x: 76, y: 8 }, labelSide: "left" },
+        { id: "motor-aspiracion", name: "Motor de Aspiración", system: "agua", description: "Vacuum Fan Group", figure: "Fig. 18", status: "available", data: "data/t12/vacuum_fan.json", hotspot: { x: 92, y: 22 }, labelSide: "left" },
+        { id: "tanque-solucion", name: "Tanque de Solución", system: "agua", description: "Solution Tank Group", figure: "Fig. 19", status: "available", data: "data/t12/solution_tank.json", hotspot: { x: 73, y: 64 }, labelSide: "left" },
+        { id: "tarjeta-control", name: "Tarjeta de Control", system: "electrico", description: "Electrical Circuit Board Group", figure: "Fig. 22", status: "available", data: "data/t12/circuit_board.json", hotspot: { x: 24, y: 37 }, labelSide: "right" },
+        { id: "contactor-cables", name: "Contactor y Cableado", system: "electrico", description: "Electrical Contactor and Wires Group", figure: "Fig. 23", status: "available", data: "data/t12/contactor_wires.json", hotspot: { x: 16, y: 53 }, labelSide: "right" },
+        { id: "baterias", name: "Sistema de Baterías", system: "electrico", description: "Battery Group, 240Ah", figure: "Fig. 24", status: "available", data: "data/t12/battery_240.json", hotspot: { x: 57, y: 50 } }
+      ]
+    },
+    "data/t12/rear_squeegee.json": {
+      machine: "Tennant T12",
+      group: "Rear Squeegee Kit",
+      figure: "Fig. 21",
+      image: "assets/t12/rear_squeegee.png",
+      categories: ["Tornillería", "Pasadores y bujes", "Resortes", "Mangueras y sujeción", "Ruedas", "Escobillas y hojas", "Estructura y cubiertas"],
+      parts: [
+        { item: 1, partNumber: "1200219", description: "Frame, Sqge, Outer", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 42, y: 40.8 }] },
+        { item: 2, partNumber: "1200218", description: "Frame, Sqge, Inner", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 20.9, y: 65.8 }] },
+        { item: 3, partNumber: "1200466", description: "Clamp Wldt, Retainer, Sqge", category: "Mangueras y sujeción", qty: 1, hotspots: [{ x: 47.3, y: 44.9 }] },
+        { item: 4, partNumber: "363162", description: "Wheel, 04.0d 0.89w 0.64b", category: "Ruedas", qty: 2, hotspots: [{ x: 17.6, y: 17.9 }, { x: 97.7, y: 41 }] },
+        { item: 5, partNumber: "363301", description: "Sleeve, P/M, 0.34b 0.63d 1.2l, Bnz", category: "Pasadores y bujes", qty: 2, hotspots: [{ x: 23, y: 11.8 }, { x: 94.4, y: 36.3 }] },
+        { item: 6, partNumber: "49694", description: "Screw, Hex, M8 X 1.25 X 50, Ss", category: "Tornillería", qty: 2, hotspots: [{ x: 23, y: 6.1 }, { x: 94.6, y: 29.2 }] },
+        { item: 7, partNumber: "08713", description: "Nut, Hex, Lock, M8 X 1.25, Nl, Ss", category: "Tornillería", qty: 2, hotspots: [{ x: 22.6, y: 34.4 }, { x: 93.6, y: 59 }] },
+        { item: 8, partNumber: "1017218", description: "Washer, Flat, 0.32b 1.00d .12, Ss", category: "Tornillería", qty: 4, hotspots: [{ x: 23, y: 8.8 }, { x: 22.5, y: 22.2 }, { x: 94.5, y: 32.5 }, { x: 93.2, y: 46.1 }] },
+        { item: 9, partNumber: "1052532", description: "Grip, Lock", category: "Estructura y cubiertas", qty: 2, hotspots: [{ x: 82.8, y: 15 }, { x: 63.6, y: 6.7 }] },
+        { item: 10, partNumber: "1055396", description: "Pin, 0.63d, 02.0l [W/Cbore, M8 Screw]", category: "Pasadores y bujes", qty: 2, hotspots: [{ x: 80.5, y: 22.8 }, { x: 61.3, y: 14.6 }] },
+        { item: 11, partNumber: "07786", description: "Nut, Hex, Std, M8 X 1", category: "Tornillería", qty: 2, hotspots: [{ x: 80.7, y: 19.8 }, { x: 61.5, y: 11.6 }] },
+        { item: 12, partNumber: "1057407", description: "Rod, Thrd, 2end, M8x1.25/ M10x1.5 04.7l", category: "Estructura y cubiertas", qty: 2, hotspots: [{ x: 80.3, y: 27.5 }, { x: 61.1, y: 19.3 }] },
+        { item: 13, partNumber: "1055506", description: "Ring, Mtg, Sqge, .38l", category: "Pasadores y bujes", qty: 2, hotspots: [{ x: 80.2, y: 33.2 }, { x: 60.9, y: 24.9 }] },
+        { item: 14, partNumber: "1064770", description: "Spring, Cmpr, 0.98od .13wir 01.3l, Ss", category: "Resortes", qty: 2, hotspots: [{ x: 40.3, y: 70.5 }, { x: 58.4, y: 78.1 }] },
+        { item: 15, partNumber: "391345", description: "Nut, T, M10 X 1.50 X 0.62od X 0.5l", category: "Tornillería", qty: 2, hotspots: [{ x: 40, y: 73.4 }, { x: 57.7, y: 81.5 }] },
+        { item: 16, partNumber: "1200383", description: "Blade, Sqge, Front, 42.59l [Linard]", category: "Escobillas y hojas", qty: 1, hotspots: [{ x: 5.9, y: 58.7 }] },
+        { item: 17, partNumber: "1200384", description: "Blade, Sqge, Rear, Linatex", category: "Escobillas y hojas", qty: 1, hotspots: [{ x: 25.3, y: 49 }] },
+        { item: 18, partNumber: "1054312", description: "Hook Wldt, Latch", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 35.5, y: 43 }] },
+        { item: 19, partNumber: "1201825", description: "Blade, Sqge, Front, 43.19L [Gum] (Option)", category: "Escobillas y hojas", qty: 1, hotspots: [{ x: 11.4, y: 59.3 }] },
+        { item: 19, partNumber: "1201823", description: "Blade, Sqge, Front, 43.19l [Urethane] (Option)", category: "Escobillas y hojas", qty: 1, hotspots: [] },
+        { item: 19, partNumber: "1212213", description: "Blade, Sqge, Front, Tile, Tile, 42.59L [Linard} (Option)", category: "Escobillas y hojas", qty: 1, hotspots: [] },
+        { item: 20, partNumber: "1201826", description: "Blade, Sqge, Rear, Gum (Option)", category: "Escobillas y hojas", qty: 1, hotspots: [{ x: 30.9, y: 48.8 }] },
+        { item: 20, partNumber: "1201824", description: "Blade, Sqge, Rear, Urethane (Option)", category: "Escobillas y hojas", qty: 1, hotspots: [] }
+      ]
+    },
+    "data/t12/scrub_head_disk.json": {
+      machine: "Tennant T12",
+      group: "Scrub Head and Drive Motor Group, Disk",
+      figure: "Fig. 12",
+      image: "assets/t12/scrub_head_disk.png",
+      categories: ["Tornillería", "Pasadores y bujes", "Mangueras y sujeción", "Motores y actuadores", "Escobillas y hojas", "Estructura y cubiertas"],
+      parts: [
+        { item: 1, partNumber: "1202430", description: "Head Wldt, Scrbr, Disc", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 29.5, y: 41.3 }] },
+        { item: 2, partNumber: "1200168", description: "Motor, Ele, 36vdc 0315rpm", category: "Motores y actuadores", qty: 2, hotspots: [{ x: 29.9, y: 26.6 }, { x: 68.7, y: 37.2 }] },
+        { item: 2, partNumber: "9009577", description: "Brush Kit, Motor", category: "Escobillas y hojas", qty: 2, hotspots: [] },
+        { item: 3, partNumber: "01685", description: "Washer, Flat, 0.38b 0.88d .08, Ss", category: "Tornillería", qty: 8, hotspots: [{ x: 32.5, y: 64.9 }, { x: 46.7, y: 76.2 }] },
+        { item: 4, partNumber: "09011", description: "Screw, Hex, M8 X 1.25 X 30, Ss", category: "Tornillería", qty: 8, hotspots: [{ x: 32.4, y: 67.9 }, { x: 46.6, y: 78.9 }] },
+        { item: 5, partNumber: "377364", description: "Hub, Drive, Brush, Disk, 0.75b [6t]", category: "Escobillas y hojas", qty: 2, hotspots: [{ x: 33.8, y: 81.9 }, { x: 47.7, y: 89.6 }] },
+        { item: 6, partNumber: "00928", description: "Key, Sq, 0.25 X 0.25, 1.00l", category: "Pasadores y bujes", qty: 2, hotspots: [{ x: 46.2, y: 39.4 }] },
+        { item: 7, partNumber: "09010", description: "Screw, Hex, M8 X 1.25 X 25, Ss", category: "Tornillería", qty: 2, hotspots: [{ x: 34.1, y: 90.7 }, { x: 47.7, y: 97.8 }] },
+        { item: 8, partNumber: "01685", description: "Washer, Flat, 0.38b 0.88d .08, Ss", category: "Tornillería", qty: 2, hotspots: [{ x: 34, y: 87.7 }, { x: 47.7, y: 95.4 }] },
+        { item: 9, partNumber: "41186", description: "Washer, Flat, Belleville, .31", category: "Tornillería", qty: 2, hotspots: [{ x: 34.1, y: 85.4 }, { x: 47.6, y: 93.1 }] },
+        { item: 10, partNumber: "1201053", description: "Skirt, Rbr, Front, Disc", category: "Escobillas y hojas", qty: 1, hotspots: [{ x: 24.4, y: 65.3 }] },
+        { item: 11, partNumber: "1201190", description: "Strip, Retainer, Front", category: "Escobillas y hojas", qty: 1, hotspots: [{ x: 18.1, y: 78.2 }] },
+        { item: 12, partNumber: "1201127", description: "Skirt, Rbr, Rear, Disc", category: "Escobillas y hojas", qty: 1, hotspots: [{ x: 93, y: 52.4 }] },
+        { item: 13, partNumber: "1201185", description: "Strip, Skirt, Rear, Disc", category: "Escobillas y hojas", qty: 1, hotspots: [{ x: 93, y: 47.8 }] },
+        { item: 14, partNumber: "01684", description: "Washer, Flat, 0.27b 0.69d .05, Ss", category: "Tornillería", qty: 11, hotspots: [{ x: 80.2, y: 40.8 }, { x: 10, y: 75.7 }, { x: 38.4, y: 71.8 }, { x: 60.7, y: 79.4 }] },
+        { item: 15, partNumber: "09007", description: "Screw, Hex, M6 X 1.00 X 25, Ss", category: "Tornillería", qty: 9, hotspots: [{ x: 85, y: 38.9 }, { x: 5, y: 76.8 }] },
+        { item: 16, partNumber: "08708", description: "Nut, Hex, Lock, M6 X 1.00, Nl", category: "Tornillería", qty: 9, hotspots: [{ x: 25.8, y: 57.6 }, { x: 74.4, y: 60.5 }] },
+        { item: 17, partNumber: "1201215", description: "Tube, Distribution, Disc", category: "Mangueras y sujeción", qty: 1, hotspots: [{ x: 51, y: 5.2 }] },
+        { item: 18, partNumber: "1054795", description: "Valve, Water, Solenoid, 36vdc Bm12/Bm12", category: "Mangueras y sujeción", qty: 1, hotspots: [{ x: 68.7, y: 21.8 }] },
+        { item: 19, partNumber: "223198", description: "Screw, Hex, M5 X 0.80 X 10, Fmg", category: "Tornillería", qty: 6, hotspots: [{ x: 68.7, y: 18.5 }, { x: 38.5, y: 74.6 }, { x: 60.9, y: 81.8 }, { x: 17.6, y: 44.2 }, { x: 48.9, y: 61 }] },
+        { item: 20, partNumber: "391365", description: "Fitting, Plstc, E90, Bm10/Bm10", category: "Mangueras y sujeción", qty: 1, hotspots: [{ x: 76.5, y: 34.5 }] },
+        { item: 21, partNumber: "1015026", description: "Hose, Afmkt, Pvc, Brd, 0.62id, 03ft, Clr", category: "Mangueras y sujeción", qty: 1, hotspots: [{ x: 72.4, y: 23.4 }, { x: 95.6, y: 23.1 }] },
+        { item: 22, partNumber: "63810", description: "Clamp, Hose, Wormdrive, 0.56-1.06d, .56w", category: "Mangueras y sujeción", qty: 4, hotspots: [{ x: 67.6, y: 32.7 }, { x: 82.1, y: 32.5 }, { x: 87.7, y: 7.2 }] },
+        { item: 23, partNumber: "54333", description: "Clamp, Hose, Wormdrive, 0.31-0.88d, .31w", category: "Mangueras y sujeción", qty: 1, hotspots: [{ x: 45.1, y: 22.2 }] },
+        { item: 24, partNumber: "1016354", description: "Clamp, Cable, Ss, 0.50d X 0.50w [Insul]", category: "Mangueras y sujeción", qty: 2, hotspots: [{ x: 38.6, y: 69.2 }, { x: 60.7, y: 77.2 }] },
+        { item: 25, partNumber: "630371", description: "Fitting, Plstc, E90, Bm10/Pm08", category: "Mangueras y sujeción", qty: 1, hotspots: [{ x: 92.2, y: 5.1 }] },
+        { item: 26, partNumber: "1205975", description: "Pin, Clevis, 0.37d X 5.00l", category: "Pasadores y bujes", qty: 2, hotspots: [{ x: 61.7, y: 73 }, { x: 8.2, y: 54.5 }] },
+        { item: 27, partNumber: "08236", description: "Pin, Cotter, .156 X 1.25", category: "Pasadores y bujes", qty: 2, hotspots: [{ x: 23.7, y: 44.7 }, { x: 48.9, y: 63.7 }] }
+      ]
+    },
+    "data/t12/scrub_head_cyl.json": {
+      machine: "Tennant T12",
+      group: "Scrub Head Frame Group, Cylindrical",
+      figure: "Fig. 13",
+      image: "assets/t12/scrub_head_cyl.png",
+      categories: ["Tornillería", "Pasadores y bujes", "Mangueras y sujeción", "Escobillas y hojas", "Estructura y cubiertas"],
+      parts: [
+        { item: 1, partNumber: "1200292", description: "Head Wldt, Scb, Cyl", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 90, y: 61.5 }] },
+        { item: 2, partNumber: "1200012", description: "Tube, Distribution, T12", category: "Mangueras y sujeción", qty: 1, hotspots: [{ x: 43.7, y: 84.2 }] },
+        { item: 3, partNumber: "63810", description: "Clamp, Hose, Wormdrive, 0.56-1.06d, .56w", category: "Mangueras y sujeción", qty: 3, hotspots: [{ x: 34.5, y: 80.7 }, { x: 64.9, y: 57.5 }, { x: 82, y: 9.2 }] },
+        { item: 4, partNumber: "1201447", description: "Bracket, Scrbr, Watertube", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 6.4, y: 87.5 }] },
+        { item: 5, partNumber: "223198", description: "Screw, Hex, M5 X 0.80 X 10, Fmg", category: "Tornillería", qty: 6, hotspots: [{ x: 16, y: 90.8 }, { x: 47.6, y: 47.3 }, { x: 68.3, y: 66.5 }, { x: 11.5, y: 47.5 }] },
+        { item: 6, partNumber: "1054795", description: "Valve, Water, Solenoid, 36vdc Bm12/Bm12", category: "Mangueras y sujeción", qty: 1, hotspots: [{ x: 44.2, y: 51.1 }] },
+        { item: 7, partNumber: "1204335", description: "Bumper, Rbr, 1.0 Hex", category: "Estructura y cubiertas", qty: 2, hotspots: [{ x: 38.4, y: 28.1 }, { x: 74, y: 69.4 }] },
+        { item: 8, partNumber: "01685", description: "Washer, Flat, 0.38b 0.88d .08, Ss", category: "Tornillería", qty: 2, hotspots: [{ x: 35.1, y: 26.7 }, { x: 77.1, y: 71.1 }] },
+        { item: 9, partNumber: "07786", description: "Nut, Hex, Std, M8 X 1", category: "Tornillería", qty: 2, hotspots: [{ x: 31.6, y: 25.2 }, { x: 81.4, y: 73.2 }] },
+        { item: 10, partNumber: "1205975", description: "Pin, Clevis, 0.37d X 5.00l", category: "Pasadores y bujes", qty: 2, hotspots: [{ x: 13.1, y: 63.5 }, { x: 53.9, y: 89.2 }] },
+        { item: 11, partNumber: "1202301", description: "Bracket, Retainer, Pin", category: "Pasadores y bujes", qty: 2, hotspots: [{ x: 68, y: 78.6 }, { x: 9.5, y: 57.2 }] },
+        { item: 12, partNumber: "08236", description: "Pin, Cotter, .156 X 1.25", category: "Pasadores y bujes", qty: 2, hotspots: [{ x: 9.5, y: 53.7 }, { x: 68.1, y: 75.3 }] },
+        { item: 13, partNumber: "01684", description: "Washer, Flat, 0.27b 0.69d .05, Ss", category: "Tornillería", qty: 2, hotspots: [{ x: 64.3, y: 63.8 }, { x: 29.3, y: 53 }] },
+        { item: 14, partNumber: "08716", description: "Screw, Hex, M6 X 1.00 X 20, Ss", category: "Tornillería", qty: 2, hotspots: [{ x: 60.3, y: 61.3 }, { x: 27.9, y: 44.2 }] },
+        { item: 15, partNumber: "1015026", description: "Hose, Afmkt, Pvc, Brd, 0.62id, 03ft, Clr", category: "Mangueras y sujeción", qty: 1, hotspots: [{ x: 68.6, y: 14.6 }] },
+        { item: 16, partNumber: "9010927", description: "Debris Tray, Cyl, Afmkt [T12]", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 60.2, y: 18.4 }] },
+        { item: 17, partNumber: "1201574", description: "Angle, Stl, Perforated .03 1.4 1.4 22l", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 46.5, y: 21.8 }] },
+        { item: 18, partNumber: "1201126", description: "Lip, Tray, Debris", category: "Escobillas y hojas", qty: 1, hotspots: [{ x: 44.9, y: 26.5 }] },
+        { item: 19, partNumber: "32548", description: "Rivet, Blind, .188d X 0.45 X .62d, Alm", category: "Tornillería", qty: 5, hotspots: [{ x: 84.1, y: 57.8 }] },
+        { item: 20, partNumber: "630371", description: "Fitting, Plstc, E90, Bm10/Pm08", category: "Mangueras y sujeción", qty: 1, hotspots: [{ x: 90.9, y: 6.7 }] }
+      ]
+    },
+    "data/t12/scrub_head_cyl_drive.json": {
+      machine: "Tennant T12",
+      group: "Scrub Head Drive Motor Group, Cylindrical",
+      figure: "Fig. 14",
+      image: "assets/t12/scrub_head_cyl_drive.png",
+      categories: ["Tornillería", "Pasadores y bujes", "Mangueras y sujeción", "Sellos y empaques", "Motores y actuadores", "Transmisión", "Eléctrico", "Escobillas y hojas", "Estructura y cubiertas"],
+      parts: [
+        { item: 1, partNumber: "1200900", description: "Plate, Side, Scrubhead, Lh", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 85.3, y: 40 }] },
+        { item: 2, partNumber: "01684", description: "Washer, Flat, 0.27b 0.69d .05, Ss", category: "Tornillería", qty: 4, hotspots: [{ x: 73.4, y: 68.7 }] },
+        { item: 3, partNumber: "08716", description: "Screw, Hex, M6 X 1.00 X 20, Ss", category: "Tornillería", qty: 4, hotspots: [{ x: 77.8, y: 70.9 }] },
+        { item: 4, partNumber: "1200334", description: "Belt, Drive", category: "Transmisión", qty: 1, hotspots: [{ x: 81.7, y: 72.9 }] },
+        { item: 5, partNumber: "1200215", description: "Sheave, 07grv, 2.96pd 0.63b [Pj]", category: "Transmisión", qty: 1, hotspots: [{ x: 87.4, y: 55.3 }] },
+        { item: 6, partNumber: "1200281", description: "Shaft, Drive", category: "Pasadores y bujes", qty: 1, hotspots: [{ x: 60.8, y: 95.1 }] },
+        { item: 7, partNumber: "41360", description: "Bearing, Ball, 0.59b 1.26d 0.35w[2seal]", category: "Pasadores y bujes", qty: 2, hotspots: [{ x: 53.4, y: 92 }, { x: 48.3, y: 89.1 }] },
+        { item: 8, partNumber: "00961", description: "Key, Sq, 0.19 X 0.19, 0.50l", category: "Pasadores y bujes", qty: 1, hotspots: [{ x: 57.6, y: 97.6 }] },
+        { item: 9, partNumber: "1002077", description: "Tube, 0.59id 0.81od 00.5l", category: "Mangueras y sujeción", qty: 1, hotspots: [{ x: 50.9, y: 90.1 }] },
+        { item: 10, partNumber: "41186", description: "Washer, Flat, Belleville, .31", category: "Tornillería", qty: 1, hotspots: [{ x: 41.8, y: 85.8 }] },
+        { item: 11, partNumber: "1020341", description: "Screw, Hex, M8 X 1.25 X 20, Ss, Sems", category: "Tornillería", qty: 2, hotspots: [{ x: 37.9, y: 83.7 }, { x: 82.5, y: 66.7 }, { x: 10.2, y: 21.2 }] },
+        { item: 12, partNumber: "00911", description: "Key, Sq, 0.19 X 0.19, 0.75l", category: "Pasadores y bujes", qty: 1, hotspots: [{ x: 54.2, y: 95.7 }] },
+        { item: 13, partNumber: "378805", description: "Plug, Drive, Brush, Mach", category: "Mangueras y sujeción", qty: 1, hotspots: [{ x: 45.3, y: 87.7 }] },
+        { item: 14, partNumber: "1203758", description: "Tool, Installation, Belt", category: "Transmisión", qty: 1, hotspots: [{ x: 89.9, y: 39 }] },
+        { item: 14, partNumber: "9010940", description: "Side Panel Assy, Cyl, Rh, Afmkt [T12]", category: "Estructura y cubiertas", qty: 1, hotspots: [] },
+        { item: 15, partNumber: "01684", description: "Washer, Flat, 0.27b 0.69d .05, Ss", category: "Tornillería", qty: 4, hotspots: [{ x: 10.2, y: 33 }] },
+        { item: 16, partNumber: "08716", description: "Screw, Hex, M6 X 1.00 X 20, Ss", category: "Tornillería", qty: 4, hotspots: [{ x: 6.2, y: 30.5 }] },
+        { item: 17, partNumber: "1200334", description: "Belt, Drive", category: "Transmisión", qty: 1, hotspots: [{ x: 18.5, y: 3.8 }] },
+        { item: 18, partNumber: "1200215", description: "Sheave, 07grv, 2.96pd 0.63b [Pj]", category: "Transmisión", qty: 1, hotspots: [{ x: 24.3, y: 8.1 }] },
+        { item: 19, partNumber: "1200281", description: "Shaft, Drive", category: "Pasadores y bujes", qty: 1, hotspots: [{ x: 20, y: 49.8 }] },
+        { item: 20, partNumber: "41360", description: "Bearing, Ball, 0.59b 1.26d 0.35w[2seal]", category: "Pasadores y bujes", qty: 2, hotspots: [{ x: 27.8, y: 53.4 }, { x: 34.5, y: 57.3 }] },
+        { item: 21, partNumber: "00961", description: "Key, Sq, 0.19 X 0.19, 0.50l", category: "Pasadores y bujes", qty: 1, hotspots: [{ x: 22.9, y: 47.1 }] },
+        { item: 22, partNumber: "1002077", description: "Tube, 0.59id 0.81od 00.5l", category: "Mangueras y sujeción", qty: 1, hotspots: [{ x: 31.8, y: 54.4 }] },
+        { item: 23, partNumber: "41186", description: "Washer, Flat, Belleville, .31", category: "Tornillería", qty: 1, hotspots: [{ x: 41.7, y: 60.3 }] },
+        { item: 24, partNumber: "1020341", description: "Screw, Hex, M8 X 1.25 X 20, Ss, Sems", category: "Tornillería", qty: 2, hotspots: [{ x: 45.6, y: 62.1 }] },
+        { item: 25, partNumber: "00911", description: "Key, Sq, 0.19 X 0.19, 0.75l", category: "Pasadores y bujes", qty: 1, hotspots: [{ x: 26.8, y: 49.7 }] },
+        { item: 26, partNumber: "378805", description: "Plug, Drive, Brush, Mach", category: "Mangueras y sujeción", qty: 1, hotspots: [{ x: 38.1, y: 58.6 }] },
+        { item: 27, partNumber: "1200898", description: "Plate, Side, Scrubhead, Rh", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 10.4, y: 24.8 }] },
+        { item: 28, partNumber: "1203758", description: "Tool, Installation, Belt", category: "Transmisión", qty: 1, hotspots: [{ x: 93.5, y: 40.5 }] },
+        { item: 29, partNumber: "1014328", description: "Key, Sq, 05mm X 05mm, 25mml", category: "Pasadores y bujes", qty: 2, hotspots: [{ x: 40.6, y: 4.3 }, { x: 70, y: 18.9 }] },
+        { item: 30, partNumber: "1054581", description: "Sheave, 07grv, 1.22pd 0.55b [Pj]", category: "Transmisión", qty: 2, hotspots: [{ x: 36.1, y: 3.1 }, { x: 77.7, y: 29.6 }] },
+        { item: 31, partNumber: "222818", description: "Screw, Set, Soc, 08- 32 X 0.25, Nl", category: "Tornillería", qty: 4, hotspots: [{ x: 32.5, y: 2.2 }, { x: 74.2, y: 23.1 }] },
+        { item: 32, partNumber: "1200283", description: "Cover, Belt", category: "Transmisión", qty: 2, hotspots: [{ x: 93.2, y: 75.6 }, { x: 10.4, y: 1.8 }] },
+        { item: 32, partNumber: "222752", description: "Plug Assy, Idler, Brush", category: "Mangueras y sujeción", qty: 2, note: "S/N 10000000-19999999", hotspots: [] },
+        { item: 33, partNumber: "1201341", description: "Gasket, Cover, Belt", category: "Sellos y empaques", qty: 1, note: "S/N 10000000-19999999", hotspots: [{ x: 89, y: 74.4 }, { x: 14.5, y: 3.1 }] },
+        { item: 34, partNumber: "1057629", description: "Plug, Idler, Brush [Sgl Brg]", category: "Mangueras y sujeción", qty: 1, note: "S/N 10000000-19999999", hotspots: [{ x: 22.3, y: 75.6 }, { x: 59.3, y: 67.4 }] },
+        { item: 35, partNumber: "222184", description: "Pin, Roll, .094d X 0.25l, .094/.097", category: "Pasadores y bujes", qty: 1, note: "S/N 10000000-19999999", hotspots: [{ x: 14.2, y: 71.2 }, { x: 67.8, y: 73.6 }] },
+        { item: 36, partNumber: "222177", description: "Shaft, Plug, Idler", category: "Pasadores y bujes", qty: 1, note: "S/N 10000000-19999999", hotspots: [{ x: 18, y: 73.6 }, { x: 61.6, y: 71.6 }] },
+        { item: 37, partNumber: "01516", description: "Ring, Retaining, Ext, 0.59d, Basic", category: "Pasadores y bujes", qty: 1, note: "S/N 10000000-19999999", hotspots: [{ x: 26.4, y: 76.6 }, { x: 55.4, y: 65.8 }] },
+        { item: 38, partNumber: "390996", description: "Screw, Flt, Soc, M10 X 1.50 X 20,10.9,Nl", category: "Tornillería", qty: 2, hotspots: [{ x: 5.4, y: 61.8 }, { x: 81.7, y: 83 }] },
+        { item: 39, partNumber: "1200309", description: "Door, Brush", category: "Escobillas y hojas", qty: 2, hotspots: [{ x: 8.7, y: 67.3 }, { x: 78, y: 76.9 }] },
+        { item: 40, partNumber: "1059170", description: "Harness, Wire, Adapter [Deutsch, Dtp]", category: "Eléctrico", qty: 1, hotspots: [{ x: 62.2, y: 6.1 }] },
+        { item: 41, partNumber: "1053342", description: "Motor, Ele, 36vdc 1750rpm 1.00hp 22.0a (See Breakdowns)", category: "Motores y actuadores", qty: 2, hotspots: [{ x: 62.9, y: 16.7 }, { x: 45, y: 6.2 }] },
+        { item: 42, partNumber: "1034731", description: "Screw, Hex, M6 X 1.00 X 16, Ss, Sems", category: "Tornillería", qty: 12, hotspots: [{ x: 81.1, y: 41.3 }, { x: 97.1, y: 74.8 }, { x: 2.7, y: 13.7 }, { x: 26.1, y: 11.5 }] },
+        { item: 42, partNumber: "9010935", description: "Belt, Cyl Head, W/Too;l, Afmkt", category: "Transmisión", qty: 1, hotspots: [] },
+        { item: 43, partNumber: "1200334", description: "Belt, Drive", category: "Transmisión", qty: 2, hotspots: [{ x: 22, y: 5.1 }, { x: 85.1, y: 73.9 }] },
+        { item: 44, partNumber: "1203758", description: "Tool, Installation, Belt", category: "Transmisión", qty: 1, hotspots: [{ x: 97.2, y: 42.3 }] }
+      ]
+    },
+    "data/t12/side_squeegee_rh.json": {
+      machine: "Tennant T12",
+      group: "Scrub Head Side Squeegee Group, Right Hand",
+      figure: "Fig. 15",
+      image: "assets/t12/side_squeegee_rh.png",
+      categories: ["Tornillería", "Pasadores y bujes", "Resortes", "Mangueras y sujeción", "Escobillas y hojas", "Estructura y cubiertas"],
+      parts: [
+        { item: 1, partNumber: "1202243", description: "Door, Casting, Squeegee, Rh", category: "Escobillas y hojas", qty: 1, hotspots: [{ x: 16.9, y: 57.3 }] },
+        { item: 2, partNumber: "1065134", description: "Latch, Cmpr, Yel Grip", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 72.4, y: 20.6 }] },
+        { item: 3, partNumber: "363469", description: "Spring, Extn, 0.75od 0.10wir 03.0l", category: "Resortes", qty: 1, hotspots: [{ x: 18.2, y: 46.7 }] },
+        { item: 4, partNumber: "10120", description: "Clevis, 0.31d X 0.75l", category: "Tornillería", qty: 1, hotspots: [{ x: 13.4, y: 37.4 }] },
+        { item: 5, partNumber: "1202100", description: "Bellcrank, Lift, Sqge [T12]", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 32.3, y: 12.9 }] },
+        { item: 6, partNumber: "71607", description: "Bushing, Sleeve, 0.63b 0.72d 0.38l", category: "Pasadores y bujes", qty: 2, hotspots: [{ x: 38.5, y: 20 }, { x: 26.9, y: 38.9 }] },
+        { item: 7, partNumber: "64425", description: "Washer, Thrust, 0.61b 1.25d .06, Fgl", category: "Tornillería", qty: 4, hotspots: [{ x: 41.7, y: 21.8 }, { x: 30.3, y: 44.5 }, { x: 24.3, y: 9.4 }, { x: 10.4, y: 26.6 }] },
+        { item: 8, partNumber: "1200525", description: "Nut, T, M8 X 1.25", category: "Tornillería", qty: 2, hotspots: [{ x: 20.9, y: 5.6 }, { x: 6.8, y: 23.2 }] },
+        { item: 9, partNumber: "79246", description: "Screw, Flt, Soc, M8 X 1.25 X 20, 18-8,Ss", category: "Tornillería", qty: 2, hotspots: [{ x: 45.3, y: 55.5 }, { x: 90, y: 83.1 }] },
+        { item: 10, partNumber: "09088", description: "Pin, Clevis, 0.37d X 1.00l", category: "Pasadores y bujes", qty: 1, hotspots: [{ x: 9.1, y: 2.6 }] },
+        { item: 11, partNumber: "44906", description: "Pin, Cotter, Hair, 0.38d .093 Wir", category: "Pasadores y bujes", qty: 1, hotspots: [{ x: 12.1, y: 6.9 }] },
+        { item: 12, partNumber: "1201455", description: "Block, Sqge, Guide, Rh", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 71, y: 88.4 }] },
+        { item: 13, partNumber: "1016421", description: "Screw, Flt, M6 X 1.0 X 20, Ss", category: "Tornillería", qty: 2, hotspots: [{ x: 45.8, y: 88.1 }] },
+        { item: 14, partNumber: "08708", description: "Nut, Hex, Lock, M6 X 1.00, Nl", category: "Tornillería", qty: 2, hotspots: [{ x: 75.6, y: 92.8 }] },
+        { item: 15, partNumber: "1201453", description: "Strap Wldt, Sqge", category: "Mangueras y sujeción", qty: 1, hotspots: [{ x: 79.8, y: 36.5 }] },
+        { item: 16, partNumber: "1054312", description: "Hook Wldt, Latch", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 89.5, y: 40.3 }] },
+        { item: 17, partNumber: "1200221", description: "Frame, Sqge, Side, Rh", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 79.9, y: 84.5 }] },
+        { item: 18, partNumber: "1200430", description: "Blade, Sqge, Side, 22.50l, Linatex (Standard)", category: "Escobillas y hojas", qty: 1, hotspots: [{ x: 89, y: 55.5 }] },
+        { item: 18, partNumber: "1202159", description: "Blade, Sqge, Side, 22.50l, Urethane (Option)", category: "Escobillas y hojas", qty: 1, hotspots: [] },
+        { item: 18, partNumber: "1202160", description: "Blade, Sqge, Side, 22.50l, Gum (Option)", category: "Escobillas y hojas", qty: 1, hotspots: [] }
+      ]
+    },
+    "data/t12/side_squeegee_lh.json": {
+      machine: "Tennant T12",
+      group: "Scrub Head Side Squeegee Group, Left Hand",
+      figure: "Fig. 16",
+      image: "assets/t12/side_squeegee_lh.png",
+      categories: ["Tornillería", "Pasadores y bujes", "Resortes", "Mangueras y sujeción", "Escobillas y hojas", "Estructura y cubiertas"],
+      parts: [
+        { item: 1, partNumber: "1202221", description: "Door, Casting, Squeegee, Lh", category: "Escobillas y hojas", qty: 1, hotspots: [{ x: 4.9, y: 37.5 }] },
+        { item: 2, partNumber: "1065134", description: "Latch, Cmpr, Yel Grip", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 44.8, y: 2.8 }] },
+        { item: 3, partNumber: "363469", description: "Spring, Extn, 0.75od 0.10wir 03.0l", category: "Resortes", qty: 1, hotspots: [{ x: 61.7, y: 88.4 }] },
+        { item: 4, partNumber: "10120", description: "Clevis, 0.31d X 0.75l", category: "Tornillería", qty: 1, hotspots: [{ x: 71.3, y: 91.2 }] },
+        { item: 5, partNumber: "1200213", description: "Bellcrank, Lift, Sqge [T12]", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 80.1, y: 53.2 }] },
+        { item: 6, partNumber: "71607", description: "Bushing, Sleeve, 0.63b 0.72d 0.38l", category: "Pasadores y bujes", qty: 2, hotspots: [{ x: 79, y: 88.8 }, { x: 90.2, y: 66.2 }] },
+        { item: 7, partNumber: "64425", description: "Washer, Thrust, 0.61b 1.25d .06, Fgl", category: "Tornillería", qty: 4, hotspots: [{ x: 84.1, y: 92.7 }, { x: 93.6, y: 68.2 }, { x: 74.9, y: 46.8 }] },
+        { item: 8, partNumber: "1200525", description: "Nut, T, M8 X 1.25", category: "Tornillería", qty: 2, hotspots: [{ x: 89.2, y: 96.8 }, { x: 96.9, y: 70.7 }] },
+        { item: 9, partNumber: "79246", description: "Screw, Flt, Soc, M8 X 1.25 X 20, 18-8,Ss", category: "Tornillería", qty: 2, hotspots: [{ x: 41.5, y: 28.4 }, { x: 18, y: 19.2 }] },
+        { item: 10, partNumber: "09088", description: "Pin, Clevis, 0.37d X 1.00l", category: "Pasadores y bujes", qty: 1, hotspots: [{ x: 94.7, y: 50.5 }] },
+        { item: 11, partNumber: "44906", description: "Pin, Cotter, Hair, 0.38d .093 Wir", category: "Pasadores y bujes", qty: 1, hotspots: [{ x: 94.7, y: 43.9 }] },
+        { item: 12, partNumber: "1200689", description: "Block, Guide, Sqge", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 14.8, y: 56.7 }] },
+        { item: 13, partNumber: "1016421", description: "Screw, Flt, M6 X 1.0 X 20, Ss", category: "Tornillería", qty: 2, hotspots: [{ x: 16.1, y: 78.2 }] },
+        { item: 14, partNumber: "08708", description: "Nut, Hex, Lock, M6 X 1.00, Nl", category: "Tornillería", qty: 2, hotspots: [{ x: 10.3, y: 54.3 }] },
+        { item: 15, partNumber: "1201453", description: "Strap Wldt, Sqge", category: "Mangueras y sujeción", qty: 1, hotspots: [{ x: 73.8, y: 39.1 }] },
+        { item: 16, partNumber: "1054312", description: "Hook Wldt, Latch", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 73.7, y: 33.1 }] },
+        { item: 17, partNumber: "1200011", description: "Frame, Sqge, Side, Lh", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 55.9, y: 33.4 }] },
+        { item: 18, partNumber: "1200430", description: "Blade, Sqge, Side, 22.50l, Linatex (Standard)", category: "Escobillas y hojas", qty: 1, hotspots: [{ x: 15.7, y: 87.1 }] },
+        { item: 18, partNumber: "1202159", description: "Blade, Sqge, Side, 22.50l, Urethane (Option)", category: "Escobillas y hojas", qty: 1, hotspots: [] },
+        { item: 18, partNumber: "1202160", description: "Blade, Sqge, Side, 22.50l, Gum (Option)", category: "Escobillas y hojas", qty: 1, hotspots: [] }
+      ]
+    },
+    "data/t12/scrub_head_lift.json": {
+      machine: "Tennant T12",
+      group: "Scrub Head Lift Group",
+      figure: "Fig. 11",
+      image: "assets/t12/scrub_head_lift.png",
+      categories: ["Tornillería", "Pasadores y bujes", "Resortes", "Mangueras y sujeción", "Motores y actuadores", "Escobillas y hojas", "Estructura y cubiertas"],
+      parts: [
+        { item: 1, partNumber: "1200774", description: "Actuator, 36vdc, 3.9strk, 450lb", category: "Motores y actuadores", qty: 1, hotspots: [{ x: 31, y: 33.6 }] },
+        { item: 2, partNumber: "29584", description: "Pin, Clevis, 0.37d X 2.00l", category: "Pasadores y bujes", qty: 2, hotspots: [{ x: 60.3, y: 8.1 }, { x: 48.8, y: 52.5 }] },
+        { item: 3, partNumber: "44906", description: "Pin, Cotter, Hair, 0.38d .093 Wir", category: "Pasadores y bujes", qty: 3, hotspots: [{ x: 60.1, y: 11.3 }, { x: 45.3, y: 24.4 }, { x: 44.7, y: 61.9 }] },
+        { item: 4, partNumber: "1200735", description: "Arm Wldt, Pivot (Replaced by 9013613)", category: "Estructura y cubiertas", qty: 1, note: "S/N 30000000-30049481", hotspots: [{ x: 11.4, y: 86.4 }] },
+        { item: 5, partNumber: "1200440", description: "Pad, Stop, Rbr (Replaced by 9013613)", category: "Escobillas y hojas", qty: 1, note: "S/N 30000000-30049481", hotspots: [{ x: 14.8, y: 86 }] },
+        { item: 6, partNumber: "04843", description: "Bushing, Flng, 0.63b 0.72d 0.25l", category: "Pasadores y bujes", qty: 4, note: "S/N 30000000-30049481", hotspots: [{ x: 3.3, y: 89 }, { x: 11.8, y: 59.1 }, { x: 41.6, y: 71.6 }] },
+        { item: 7, partNumber: "80409", description: "Sleeve, P/M, 0.34b 0.63d 0.6l, Bnz", category: "Pasadores y bujes", qty: 4, note: "S/N 30000000-30049481", hotspots: [{ x: 9.1, y: 97.8 }] },
+        { item: 8, partNumber: "01685", description: "Washer, Flat, 0.38b 0.88d .08, Ss", category: "Tornillería", qty: 6, hotspots: [{ x: 31.2, y: 24.6 }, { x: 39.9, y: 18.8 }, { x: 5.3, y: 56.2 }, { x: 48.1, y: 74.6 }, { x: 82, y: 32.9 }, { x: 60.5, y: 40.2 }] },
+        { item: 9, partNumber: "09011", description: "Screw, Hex, M8 X 1.25 X 30, Ss", category: "Tornillería", qty: 6, hotspots: [{ x: 28.6, y: 23.4 }, { x: 36.7, y: 17.4 }, { x: 2.8, y: 54.5 }, { x: 51, y: 75.6 }, { x: 85.2, y: 35 }, { x: 66.6, y: 39.4 }] },
+        { item: 10, partNumber: "1054662", description: "Bushing, Flng, 0.50b 0.59d 0.25l", category: "Pasadores y bujes", qty: 2, hotspots: [{ x: 34.7, y: 26.7 }, { x: 43.3, y: 20.4 }, { x: 8.4, y: 57.9 }, { x: 44.8, y: 73 }] },
+        { item: 11, partNumber: "222516", description: "Sleeve, P/M, 0.32b 0.50d 0.3l [430ss]", category: "Pasadores y bujes", qty: 2, hotspots: [{ x: 79, y: 31.1 }, { x: 58.6, y: 37.8 }] },
+        { item: 12, partNumber: "1200764", description: "Bracket, Pivot, Spring", category: "Resortes", qty: 1, hotspots: [{ x: 80.4, y: 15.2 }] },
+        { item: 13, partNumber: "365180", description: "Pin, Clevis, 0.38d X 2.50l", category: "Pasadores y bujes", qty: 1, hotspots: [{ x: 58, y: 20.1 }] },
+        { item: 14, partNumber: "1203336", description: "Spring, Cmpr, .73od 2.5l", category: "Resortes", qty: 2, hotspots: [{ x: 77.9, y: 19 }, { x: 82.8, y: 11.8 }] },
+        { item: 15, partNumber: "1204185", description: "Tube, Bumper", category: "Mangueras y sujeción", qty: 1, hotspots: [{ x: 85.2, y: 9.1 }] },
+        { item: 16, partNumber: "1201996", description: "Screw, Hex, M8 X 1.25 X 140, Ss", category: "Tornillería", qty: 1, hotspots: [{ x: 49.9, y: 37.7 }] },
+        { item: 17, partNumber: "379829", description: "Washer, Flat, 0.34b 1.50d .12, Stl, Pl", category: "Tornillería", qty: 1, hotspots: [{ x: 87.6, y: 6.2 }] },
+        { item: 18, partNumber: "08713", description: "Nut, Hex, Lock, M8 X 1.25, Nl, Ss", category: "Tornillería", qty: 1, hotspots: [{ x: 88.3, y: 3.6 }] },
+        { item: 19, partNumber: "1201033", description: "Link, Head Scb", category: "Estructura y cubiertas", qty: 2, hotspots: [{ x: 19.1, y: 62.2 }, { x: 37.7, y: 70.4 }, { x: 29.2, y: 91.6 }] },
+        { item: 20, partNumber: "367313", description: "Bushing, Flng, 1.00b 1.13d 0.50l", category: "Pasadores y bujes", qty: 2, hotspots: [{ x: 22.5, y: 47.9 }, { x: 58.8, y: 63.3 }, { x: 47.8, y: 81.3 }, { x: 50.2, y: 94.9 }] },
+        { item: 21, partNumber: "1201080", description: "Pivot Wldt", category: "Estructura y cubiertas", qty: 2, hotspots: [{ x: 14.9, y: 43.2 }, { x: 68.5, y: 64.6 }] },
+        { item: 22, partNumber: "09026", description: "Screw, Hex, M8 X 1.25 X 40, Ss", category: "Tornillería", qty: 2, hotspots: [{ x: 6.8, y: 40.5 }, { x: 71.7, y: 70.1 }, { x: 23.5, y: 79.6 }, { x: 83.4, y: 95.6 }] },
+        { item: 23, partNumber: "01685", description: "Washer, Flat, 0.38b 0.88d .08, Ss", category: "Tornillería", qty: 2, hotspots: [{ x: 10.8, y: 42 }, { x: 67.8, y: 68.2 }, { x: 23.8, y: 82.2 }, { x: 59.4, y: 98 }] },
+        { item: 24, partNumber: "41141", description: "Washer, Lock, Int- Ext, 0.31", category: "Tornillería", qty: 2, hotspots: [{ x: 18.7, y: 45.3 }, { x: 62.5, y: 65.1 }, { x: 43.1, y: 81.4 }, { x: 55.1, y: 96.3 }] },
+        { item: 25, partNumber: "1201354", description: "Pivot, Lift", category: "Estructura y cubiertas", qty: 2, hotspots: [{ x: 28.3, y: 87.4 }, { x: 71.6, y: 89.7 }] },
+        { item: 26, partNumber: "379829", description: "Washer, Flat, 0.34b 1.50d .12, Stl, Pl", category: "Tornillería", qty: 2, hotspots: [{ x: 25.9, y: 84.9 }, { x: 76.1, y: 90.6 }] },
+        { item: 27, partNumber: "9013613", description: "Arm Kit, Lift, Scb [T12]", category: "Estructura y cubiertas", qty: 1, note: "S/N 30049482-39999999", hotspots: [{ x: 77.8, y: 24.8 }] },
+        { item: 28, partNumber: "1054662", description: "Bushing, Flng, 0.50B 0.59D 0.25L", category: "Pasadores y bujes", qty: 2, note: "S/N 30049482-39999999", hotspots: [{ x: 79.5, y: 27.6 }, { x: 52.3, y: 34.3 }] },
+        { item: 29, partNumber: "04843", description: "Bushing, Flng, 0.63B 0.72D 0.25L", category: "Pasadores y bujes", qty: 2, note: "S/N 30049482-39999999", hotspots: [{ x: 47.6, y: 32.7 }] },
+        { item: 30, partNumber: "1020168", description: "Molding, Afmkt, Trim , Pvc, .08 .11, 01Ft", category: "Estructura y cubiertas", qty: 1, note: "S/N 30049482-39999999", hotspots: [{ x: 78.4, y: 21.3 }] }
+      ]
+    },
+    "data/t12/squeegee_lift.json": {
+      machine: "Tennant T12",
+      group: "Rear Squeegee Lift Group",
+      figure: "Fig. 20",
+      image: "assets/t12/squeegee_lift.png",
+      categories: ["Tornillería", "Pasadores y bujes", "Resortes", "Mangueras y sujeción", "Motores y actuadores", "Ruedas", "Estructura y cubiertas"],
+      parts: [
+        { item: 1, partNumber: "1053815", description: "Bushing, Flex, Ure", category: "Pasadores y bujes", qty: 2, hotspots: [{ x: 31.3, y: 60.2 }] },
+        { item: 2, partNumber: "1053870", description: "Arm, Lift, Sqge", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 50.2, y: 54.8 }] },
+        { item: 3, partNumber: "1053814", description: "Clamp, Pivot, Link", category: "Mangueras y sujeción", qty: 1, hotspots: [{ x: 27.3, y: 92.4 }] },
+        { item: 4, partNumber: "09010", description: "Screw, Hex, M8 X 1.25 X 25, Ss", category: "Tornillería", qty: 1, hotspots: [{ x: 37.6, y: 29.4 }] },
+        { item: 5, partNumber: "1017218", description: "Washer, Flat, 0.32b 1.00d .12, Ss", category: "Tornillería", qty: 1, hotspots: [{ x: 37.3, y: 32.6 }] },
+        { item: 6, partNumber: "08713", description: "Nut, Hex, Lock, M8 X 1.25, Nl, Ss", category: "Tornillería", qty: 3, hotspots: [{ x: 32, y: 97.6 }] },
+        { item: 7, partNumber: "1201489", description: "Actuator, 36vdc, 02.0strk, 0180lb", category: "Motores y actuadores", qty: 1, hotspots: [{ x: 16.4, y: 54.4 }] },
+        { item: 8, partNumber: "94877", description: "Pin, Clevis, 10mmd X", category: "Pasadores y bujes", qty: 1, hotspots: [{ x: 3.5, y: 17.5 }] },
+        { item: 9, partNumber: "44906", description: "Pin, Cotter, Hair, 0.38d .093 Wir", category: "Pasadores y bujes", qty: 4, hotspots: [{ x: 28.3, y: 28.5 }, { x: 60.6, y: 56.4 }, { x: 46.4, y: 1.7 }, { x: 52.9, y: 24.8 }] },
+        { item: 10, partNumber: "1059969", description: "Washer, Thrust, 1.81b 2.93d .06w, Plstc", category: "Tornillería", qty: 2, hotspots: [{ x: 25.1, y: 56.9 }, { x: 44.3, y: 65.7 }] },
+        { item: 11, partNumber: "1059316", description: "Link, Tensioner, Spring", category: "Resortes", qty: 1, hotspots: [{ x: 32, y: 12.2 }] },
+        { item: 12, partNumber: "1201370", description: "Spring, Extn, 1.26od 0.162wir 03.3l", category: "Resortes", qty: 1, hotspots: [{ x: 26.4, y: 15.1 }] },
+        { item: 13, partNumber: "1059498", description: "Pin, Clevis, 0.50d X 2.25l", category: "Pasadores y bujes", qty: 1, hotspots: [{ x: 23.3, y: 37.8 }] },
+        { item: 14, partNumber: "32493", description: "Washer, Flat, 0.50, Std", category: "Tornillería", qty: 1, hotspots: [{ x: 56.6, y: 54.9 }] },
+        { item: 15, partNumber: "1059338", description: "Pin, Clevis, 0.37d X 5.25l", category: "Pasadores y bujes", qty: 2, hotspots: [{ x: 60.7, y: 8.7 }, { x: 23, y: 6.4 }] },
+        { item: 16, partNumber: "01686", description: "Washer, Flat, 0.44b 1.00d .08, Ss", category: "Tornillería", qty: 5, hotspots: [{ x: 49.7, y: 3.9 }, { x: 49.8, y: 23.2 }, { x: 26.1, y: 25.8 }] },
+        { item: 17, partNumber: "1018151", description: "Washer, Flat, 0.44b 0.88d .06, Nyl", category: "Tornillería", qty: 2, hotspots: [{ x: 29.4, y: 38 }] },
+        { item: 18, partNumber: "1204957", description: "Coupling, Sqge", category: "Mangueras y sujeción", qty: 1, hotspots: [{ x: 92.5, y: 23.1 }] },
+        { item: 19, partNumber: "1054662", description: "Bushing, Flng, 0.50b 0.59d 0.25l", category: "Pasadores y bujes", qty: 2, hotspots: [{ x: 78.8, y: 36.4 }] },
+        { item: 20, partNumber: "1059990", description: "Sleeve, Flng, 0.32b 1.00/0.50d 0.6l, Ss", category: "Pasadores y bujes", qty: 2, hotspots: [{ x: 91.1, y: 42.6 }, { x: 61.5, y: 27.4 }] },
+        { item: 21, partNumber: "09011", description: "Screw, Hex, M8 X 1.25 X 30, Ss", category: "Tornillería", qty: 2, hotspots: [{ x: 95.1, y: 44.3 }, { x: 57.8, y: 25.5 }] },
+        { item: 22, partNumber: "08713", description: "Nut, Hex, Lock, M8 X 1.25, Nl, Ss", category: "Tornillería", qty: 2, hotspots: [{ x: 58.1, y: 39.7 }] },
+        { item: 23, partNumber: "9010937", description: "Turnbuckle Replmt, Afmkt [T12]", category: "Tornillería", qty: 1, hotspots: [{ x: 66.5, y: 76.3 }] },
+        { item: 24, partNumber: "01686", description: "Washer, Flat, 0.44b 1.00d .08, Ss", category: "Tornillería", qty: 2, hotspots: [{ x: 56, y: 78.7 }, { x: 94.6, y: 26.8 }] },
+        { item: 25, partNumber: "08714", description: "Nut, Hex, Lock, M10 X 1.5, Nl, Ss", category: "Tornillería", qty: 2, hotspots: [{ x: 60.2, y: 80.9 }, { x: 97.3, y: 29.5 }] },
+        { item: 26, partNumber: "1205850", description: "Caster Assy, Swivel", category: "Ruedas", qty: 2, hotspots: [{ x: 81.6, y: 47.6 }, { x: 64.4, y: 38.4 }] },
+        { item: 27, partNumber: "1055516", description: "Knob Assy, Star, 3.21d 5ear M12", category: "Estructura y cubiertas", qty: 2, hotspots: [{ x: 79.5, y: 12.2 }] },
+        { item: 28, partNumber: "578430", description: "Washer, Flat, 0.50d, Pl [Spring-Disc]", category: "Tornillería", qty: 2, hotspots: [{ x: 77.4, y: 15.7 }] }
+      ]
+    },
+    "data/t12/main_frame.json": {
+      machine: "Tennant T12",
+      group: "Main Frame and Wheels Group",
+      figure: "Fig. 3",
+      image: "assets/t12/main_frame.png",
+      categories: ["Tornillería", "Pasadores y bujes", "Mangueras y sujeción", "Eléctrico", "Ruedas", "Estructura y cubiertas"],
+      parts: [
+        { item: 1, partNumber: "1200025", description: "Frame Wldt [T12]", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 21.4, y: 28.9 }] },
+        { item: 2, partNumber: "71579", description: "Strap, Static, W/Grommet, .19 1.1w 25.0l", category: "Mangueras y sujeción", qty: 1, hotspots: [{ x: 69.2, y: 57.9 }] },
+        { item: 3, partNumber: "09011", description: "Screw, Hex, M8 X 1.25 X 30, Ss", category: "Tornillería", qty: 1, hotspots: [{ x: 58.8, y: 46.3 }] },
+        { item: 4, partNumber: "41141", description: "Washer, Lock, Int-Ext, 0.31", category: "Tornillería", qty: 1, hotspots: [{ x: 65.1, y: 45.3 }] },
+        { item: 5, partNumber: "01685", description: "Washer, Flat, 0.38b 0.88d .08, Ss", category: "Tornillería", qty: 1, hotspots: [{ x: 69, y: 42.9 }] },
+        { item: 6, partNumber: "1200298", description: "Stabilizer Wldt [Cassoday]", category: "Estructura y cubiertas", qty: 2, hotspots: [{ x: 59.5, y: 68.5 }, { x: 15.4, y: 27.1 }] },
+        { item: 7, partNumber: "12317", description: "Screw, Hex, M10 X 1.50 X 30, Ss", category: "Tornillería", qty: 6, hotspots: [{ x: 58.1, y: 53.5 }, { x: 6.3, y: 22.8 }] },
+        { item: 8, partNumber: "01686", description: "Washer, Flat, 0.44b 1.00d .08, Ss", category: "Tornillería", qty: 6, hotspots: [{ x: 54.7, y: 51.1 }, { x: 10.6, y: 24.7 }] },
+        { item: 9, partNumber: "1200150", description: "Wheel, Drive, Ac (See Breakdown)", category: "Ruedas", qty: 1, hotspots: [{ x: 11.3, y: 80.3 }] },
+        { item: 10, partNumber: "1200203", description: "Steer-Control Assy, Wheel Drive (See Breakdown)", category: "Ruedas", qty: 1, hotspots: [{ x: 10.4, y: 65.6 }] },
+        { item: 11, partNumber: "09028", description: "Screw, Hex, M10 X 1.50 X 25, Ss", category: "Tornillería", qty: 4, hotspots: [{ x: 38.1, y: 75.5 }] },
+        { item: 12, partNumber: "01686", description: "Washer, Flat, 0.44b 1.00d .08, Ss", category: "Tornillería", qty: 4, hotspots: [{ x: 37.4, y: 71.2 }] },
+        { item: 13, partNumber: "69234", description: "Clamp, Cable, Stl, 1.00d X 0.75w, 1hole", category: "Mangueras y sujeción", qty: 2, hotspots: [{ x: 39.8, y: 78.8 }] },
+        { item: 14, partNumber: "1020341", description: "Screw, Hex, M8 X 1.25 X 20, Ss, Sems", category: "Tornillería", qty: 3, hotspots: [{ x: 54.6, y: 89.6 }, { x: 80.8, y: 52.9 }] },
+        { item: 15, partNumber: "1060626", description: "Tire Assy, Solid, 300mm X 100mm, Ure", category: "Ruedas", qty: 2, hotspots: [{ x: 16.2, y: 14.2 }, { x: 86.5, y: 56.7 }] },
+        { item: 16, partNumber: "1059019", description: "Ring, Retaining, Ext, 1.375od", category: "Pasadores y bujes", qty: 2, hotspots: [{ x: 16.1, y: 10.1 }, { x: 90.5, y: 52.6 }] },
+        { item: 17, partNumber: "1057780", description: "Horn, 36vdc, 110dba", category: "Eléctrico", qty: 1, hotspots: [{ x: 77.7, y: 59.2 }] },
+        { item: 18, partNumber: "82833", description: "Sleeve, Nyl, 1.22id 35.0l", category: "Pasadores y bujes", qty: 1, hotspots: [{ x: 57, y: 77.4 }] },
+        { item: 19, partNumber: "09570", description: "Clamp, Cable, Stl, 0.9x1.8x0.62w, 1hole", category: "Mangueras y sujeción", qty: 1, hotspots: [{ x: 49.8, y: 46.5 }] },
+        { item: 20, partNumber: "1034731", description: "Screw, Hex, M6 X 1.00 X 16, Ss, Sems", category: "Tornillería", qty: 1, hotspots: [{ x: 49.9, y: 50.2 }] },
+        { item: 21, partNumber: "130773", description: "Tie, Cable, Nyl, 11.0l, .14w, 3.0 Max. D", category: "Mangueras y sujeción", qty: 3, hotspots: [{ x: 58, y: 82.9 }] },
+        { item: 22, partNumber: "1207171", description: "Rod, Sppt", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 64, y: 86.8 }] },
+        { item: 23, partNumber: "33924", description: "Washer, Flat, M10, Ss", category: "Tornillería", qty: 1, hotspots: [{ x: 64.2, y: 91.7 }] },
+        { item: 24, partNumber: "41358", description: "Screw, Soc, M10X1.50X35, 12.9", category: "Tornillería", qty: 1, hotspots: [{ x: 67.9, y: 94.1 }] },
+        { item: 25, partNumber: "9011872", description: "Cap, Hub, Wheel [For 1060626]", category: "Mangueras y sujeción", qty: 2, hotspots: [{ x: 93.7, y: 54.4 }, { x: 10.8, y: 8.3 }] }
+      ]
+    },
+    "data/t12/front_bumper.json": {
+      machine: "Tennant T12",
+      group: "Front Bumper and Side Door Group",
+      figure: "Fig. 4",
+      image: "assets/t12/front_bumper.png",
+      categories: ["Tornillería", "Pasadores y bujes", "Ruedas", "Escobillas y hojas", "Estructura y cubiertas"],
+      parts: [
+        { item: 1, partNumber: "9010924", description: "Bumper, Lh, Afmkt [T12]", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 35.3, y: 52.6 }] },
+        { item: 2, partNumber: "9010925", description: "Bumper, Rh, Afmkt [T12]", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 14.1, y: 40.7 }] },
+        { item: 3, partNumber: "1020341", description: "Screw, Hex, M8 X 1.25 X 20, Ss, Sems", category: "Tornillería", qty: 15, hotspots: [{ x: 41.6, y: 14.6 }, { x: 80.3, y: 36.2 }, { x: 58.6, y: 11.5 }, { x: 75.8, y: 29.2 }, { x: 24.9, y: 83.2 }, { x: 44.6, y: 97.1 }, { x: 59.6, y: 95.7 }] },
+        { item: 4, partNumber: "1200869", description: "Channel Wldt, Rlr", category: "Estructura y cubiertas", qty: 2, hotspots: [{ x: 7.2, y: 31.7 }, { x: 59.2, y: 59.1 }] },
+        { item: 5, partNumber: "1200870", description: "Plate, Backing, Roller", category: "Estructura y cubiertas", qty: 2, hotspots: [{ x: 52.1, y: 30.6 }, { x: 39, y: 25.3 }] },
+        { item: 6, partNumber: "1054100", description: "Wheel, 04.0d 2.56w 0.41b", category: "Ruedas", qty: 2, hotspots: [{ x: 78.2, y: 56.6 }, { x: 2.3, y: 12.2 }] },
+        { item: 7, partNumber: "57598", description: "Pin, Clevis, 0.37d X 3.25l", category: "Pasadores y bujes", qty: 2, hotspots: [{ x: 70.1, y: 44.5 }, { x: 6.6, y: 10.8 }] },
+        { item: 8, partNumber: "01685", description: "Washer, Flat, 0.38b 0.88d .08, Ss", category: "Tornillería", qty: 6, hotspots: [{ x: 70.9, y: 50.6 }, { x: 49.5, y: 29.7 }, { x: 41.9, y: 26.7 }, { x: 6.4, y: 15.2 }] },
+        { item: 9, partNumber: "08713", description: "Nut, Hex, Lock, M8 X 1.25, Nl, Ss", category: "Tornillería", qty: 4, hotspots: [{ x: 46.8, y: 28.4 }] },
+        { item: 10, partNumber: "44906", description: "Pin, Cotter, Hair, 0.38d .093 Wir", category: "Pasadores y bujes", qty: 2, hotspots: [{ x: 73.6, y: 47.3 }, { x: 19.9, y: 16.1 }] },
+        { item: 11, partNumber: "1202289", description: "Panel, Door, Rh", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 29.2, y: 1.7 }] },
+        { item: 12, partNumber: "1202392", description: "Panel, Door, Lh", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 95, y: 48.9 }] },
+        { item: 13, partNumber: "1202349", description: "Hinge, Brush Door, Bent", category: "Escobillas y hojas", qty: 2, hotspots: [{ x: 37.9, y: 12.8 }, { x: 75.8, y: 34.7 }] },
+        { item: 14, partNumber: "06941", description: "Screw, Hex, M6 X 1.00 X 10, 8.8", category: "Tornillería", qty: 4, hotspots: [{ x: 50.2, y: 20.6 }, { x: 68.8, y: 31.2 }] },
+        { item: 15, partNumber: "01684", description: "Washer, Flat, 0.27b 0.69d .05, Ss", category: "Tornillería", qty: 4, hotspots: [{ x: 46.6, y: 18.5 }, { x: 72.4, y: 32.6 }] },
+        { item: 16, partNumber: "1202941", description: "Plate, Latch", category: "Estructura y cubiertas", qty: 2, hotspots: [{ x: 47.8, y: 2.2 }, { x: 96.9, y: 28.4 }] },
+        { item: 17, partNumber: "1203025", description: "Screw, Pan, Phl, 08-16 X 0.25, F/Plstc", category: "Tornillería", qty: 8, hotspots: [{ x: 43, y: 11.5 }, { x: 84.2, y: 35.2 }] },
+        { item: 18, partNumber: "1200984", description: "Bracket Wldt, Latch, Lh", category: "Estructura y cubiertas", qty: 2, hotspots: [{ x: 58.7, y: 6.9 }, { x: 87.1, y: 21.8 }] },
+        { item: 19, partNumber: "1202779", description: "Magnet, Latch, Brush Door", category: "Escobillas y hojas", qty: 2, hotspots: [{ x: 51.4, y: 3.6 }, { x: 93.6, y: 25.9 }] },
+        { item: 20, partNumber: "32520", description: "Nut, Hex, Jam, .25-20", category: "Tornillería", qty: 2, hotspots: [{ x: 55.1, y: 4.7 }, { x: 90.8, y: 23.1 }] },
+        { item: 21, partNumber: "1200460", description: "Bracket, Bumper, Right", category: "Estructura y cubiertas", qty: 2, hotspots: [{ x: 31.7, y: 72.6 }, { x: 60.5, y: 91.5 }] },
+        { item: 22, partNumber: "09028", description: "Screw, Hex, M10 X 1.50 X 25, Ss", category: "Tornillería", qty: 2, hotspots: [{ x: 24, y: 77.8 }, { x: 48.1, y: 97.6 }] },
+        { item: 23, partNumber: "01686", description: "Washer, Flat, 0.44b 1.00d .08, Ss", category: "Tornillería", qty: 2, hotspots: [{ x: 27.5, y: 74.8 }, { x: 51.6, y: 97 }] }
+      ]
+    },
+    "data/t12/seat_support.json": {
+      machine: "Tennant T12",
+      group: "Seat Support Group",
+      figure: "Fig. 5",
+      image: "assets/t12/seat_support.png",
+      categories: ["Tornillería", "Pasadores y bujes", "Etiquetas", "Estructura y cubiertas"],
+      parts: [
+        { item: 1, partNumber: "9011057", description: "Plate Wldt, Mtg, W/Label, Aftmkt, Na", category: "Etiquetas", qty: 1, hotspots: [{ x: 66.2, y: 74.7 }] },
+        { item: 1, partNumber: "9011058", description: "Plate Wldt, Mtg, W/Label, Aftmkt, JP", category: "Etiquetas", qty: 1, hotspots: [] },
+        { item: 2, partNumber: "1020341", description: "Screw, Hex, M8 X 1.25 X 20, Ss, Sems", category: "Tornillería", qty: 10, hotspots: [{ x: 53.9, y: 68.8 }, { x: 40.7, y: 78.1 }] },
+        { item: 3, partNumber: "1200827", description: "Link, Oprtr Station", category: "Estructura y cubiertas", qty: 2, hotspots: [{ x: 73, y: 60.9 }, { x: 48.3, y: 48.3 }] },
+        { item: 4, partNumber: "1200828", description: "Link, Oprtr Station", category: "Estructura y cubiertas", qty: 2, hotspots: [{ x: 94, y: 63.1 }, { x: 34.4, y: 41.7 }] },
+        { item: 5, partNumber: "1201103", description: "Link Wldt, Oprtr Station", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 39.4, y: 27 }] },
+        { item: 6, partNumber: "1202957", description: "Grip, Handle, .25d .90l Yel", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 36.5, y: 25.9 }] },
+        { item: 7, partNumber: "1202156", description: "Sleeve, Flange", category: "Pasadores y bujes", qty: 9, hotspots: [{ x: 75.8, y: 62.3 }, { x: 87, y: 66.1 }, { x: 92.4, y: 52 }, { x: 83.2, y: 53.9 }, { x: 33.8, y: 38.6 }, { x: 44.1, y: 46.5 }, { x: 56.4, y: 36.9 }, { x: 51.3, y: 32.4 }] },
+        { item: 8, partNumber: "19066", description: "Washer, Flat, 0.25b 0.56d .05, Pl, 10", category: "Tornillería", qty: 10, hotspots: [{ x: 70.3, y: 59.4 }, { x: 83.9, y: 65 }, { x: 95.1, y: 53.8 }, { x: 86.5, y: 55.9 }, { x: 32, y: 36.2 }, { x: 39.6, y: 42.8 }, { x: 50.7, y: 49.8 }, { x: 52.8, y: 35.4 }, { x: 47.9, y: 30.5 }] },
+        { item: 9, partNumber: "08716", description: "Screw, Hex, M6 X 1.00 X 20, Ss", category: "Tornillería", qty: 9, hotspots: [{ x: 67.6, y: 57.9 }, { x: 81.1, y: 63.6 }, { x: 97.7, y: 55 }, { x: 29.5, y: 34.6 }, { x: 42.1, y: 44.2 }, { x: 53.8, y: 50.9 }, { x: 45, y: 28.4 }] },
+        { item: 10, partNumber: "08708", description: "Nut, Hex, Lock, M6 X 1.00, Nl", category: "Tornillería", qty: 1, hotspots: [{ x: 48.2, y: 37.8 }] },
+        { item: 11, partNumber: "1200210", description: "Channel Wldt, Seat", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 64.3, y: 55.2 }] },
+        { item: 12, partNumber: "20802", description: "Bumper, Rbr, 1.0d 0.38th .25-20", category: "Estructura y cubiertas", qty: 2, hotspots: [{ x: 88.1, y: 39.5 }, { x: 97, y: 49.4 }] },
+        { item: 13, partNumber: "32520", description: "Nut, Hex, Jam, .25-20", category: "Tornillería", qty: 2, hotspots: [{ x: 88.1, y: 36.7 }, { x: 97.3, y: 46 }] },
+        { item: 14, partNumber: "381962", description: "Handle, Container", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 55.6, y: 7 }] },
+        { item: 15, partNumber: "382726", description: "Screw, Pan, Phl, M6 X 1.00 X 25, 4.8", category: "Tornillería", qty: 2, hotspots: [{ x: 55.5, y: 2.7 }] },
+        { item: 16, partNumber: "41178", description: "Washer, Flat, 0.25, Fendr", category: "Tornillería", qty: 2, hotspots: [{ x: 95.9, y: 1.5 }] },
+        { item: 17, partNumber: "08712", description: "Nut, Hex, Lock, M6 X 1.00, Nl, Ss", category: "Tornillería", qty: 2, hotspots: [{ x: 95.7, y: 4.1 }] },
+        { item: 18, partNumber: "9009632", description: "Part Kit, Station, Oprtn, Plstc [2Pc=1Kit]", category: "Estructura y cubiertas", qty: 1, note: "S/N 10000000-19999999", hotspots: [{ x: 30.9, y: 19 }] },
+        { item: 19, partNumber: "1200612", description: "Angle, Support", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 15.8, y: 85.7 }] },
+        { item: 20, partNumber: "09026", description: "Screw, Hex, M8 X 1.25 X 40, Ss", category: "Tornillería", qty: 4, hotspots: [{ x: 63.1, y: 52.4 }] }
+      ]
+    },
+    "data/t12/seat.json": {
+      machine: "Tennant T12",
+      group: "Seat Group, Standard",
+      figure: "Fig. 6",
+      image: "assets/t12/seat.png",
+      categories: ["Tornillería", "Pasadores y bujes", "Eléctrico", "Estructura y cubiertas"],
+      parts: [
+        { item: 1, partNumber: "1201894", description: "Seat, Std [Milsco]", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 46.5, y: 19.3 }] },
+        { item: 2, partNumber: "1051052", description: "Spacer, Rnd, .38b .88d .38l", category: "Pasadores y bujes", qty: 4, hotspots: [{ x: 3.2, y: 57.8 }, { x: 38.3, y: 46.5 }, { x: 14.8, y: 66.3 }] },
+        { item: 3, partNumber: "360370", description: "Track, Slide, Seat Adj, 12.5l, W/Latch", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 12.4, y: 52.9 }] },
+        { item: 4, partNumber: "360369", description: "Track, Slide, Seat Adj, 12.5l", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 35.1, y: 66 }] },
+        { item: 5, partNumber: "1048955", description: "Switch, Seat, No [Delta 6440-04]", category: "Eléctrico", qty: 1, hotspots: [{ x: 31.3, y: 48.9 }] },
+        { item: 6, partNumber: "1035038", description: "Screw, Hex, .31-18 X 1.38, Ss, Nl", category: "Tornillería", qty: 4, hotspots: [{ x: 9.8, y: 81.5 }] },
+        { item: 7, partNumber: "01685", description: "Washer, Flat, 0.38b 0.88d .08, Ss", category: "Tornillería", qty: 4, hotspots: [{ x: 57.3, y: 81.2 }, { x: 49.3, y: 75 }] },
+        { item: 8, partNumber: "41437", description: "Nut, Hex, Lock, .31-18, Nl, Ss", category: "Tornillería", qty: 4, hotspots: [{ x: 57.2, y: 86 }, { x: 49.1, y: 79.9 }] }
+      ]
+    },
+    "data/t12/steering_panel.json": {
+      machine: "Tennant T12",
+      group: "Steering and Instrument Panel Group, T12",
+      figure: "Fig. 8",
+      image: "assets/t12/steering_panel.png",
+      categories: ["Tornillería", "Pasadores y bujes", "Mangueras y sujeción", "Eléctrico", "Ruedas", "Etiquetas", "Estructura y cubiertas"],
+      parts: [
+        { item: 1, partNumber: "1202600", description: "Shaft Assy, Steering, Basic", category: "Pasadores y bujes", qty: 1, hotspots: [{ x: 51.5, y: 76.5 }] },
+        { item: 2, partNumber: "1201253", description: "Bracket, Mtg, Brg", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 66.8, y: 50.8 }] },
+        { item: 3, partNumber: "1205753", description: "Bracket Wldt, Sppt, Brg", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 79.1, y: 87.7 }] },
+        { item: 4, partNumber: "223065", description: "Bearing, Flng, 2hole, 0.75b [Nyl]", category: "Pasadores y bujes", qty: 2, hotspots: [{ x: 65.8, y: 71.1 }, { x: 79.2, y: 90.2 }] },
+        { item: 5, partNumber: "16931", description: "Screw, Hex, M8 X 1.25 X 20, 8.8", category: "Tornillería", qty: 5, hotspots: [{ x: 69.6, y: 72 }, { x: 55.3, y: 67.2 }, { x: 72.8, y: 96.5 }, { x: 75.5, y: 73.4 }, { x: 40.8, y: 87 }, { x: 75.6, y: 46.5 }] },
+        { item: 6, partNumber: "32491", description: "Washer, Flat, 0.31, Std", category: "Tornillería", qty: 8, hotspots: [{ x: 58.4, y: 53.8 }, { x: 57, y: 64.8 }, { x: 75.8, y: 95.7 }, { x: 75.6, y: 76.5 }, { x: 44.9, y: 85 }, { x: 55.1, y: 91 }] },
+        { item: 7, partNumber: "08709", description: "Nut, Hex, Lock, M8 X 1.25, Nl", category: "Tornillería", qty: 6, hotspots: [{ x: 55.6, y: 52.4 }, { x: 79.4, y: 92.9 }, { x: 46.3, y: 56.3 }] },
+        { item: 8, partNumber: "1036490", description: "Wheel, Steering, 14.0d, Taper Bore", category: "Ruedas", qty: 1, hotspots: [{ x: 31.3, y: 40.1 }] },
+        { item: 9, partNumber: "00912", description: "Key, Sq, 0.19 X 0.19, 1.00l", category: "Pasadores y bujes", qty: 1, hotspots: [{ x: 54.3, y: 63.1 }] },
+        { item: 10, partNumber: "08711", description: "Nut, Hex, Lock, M12 X 1.75, Nl", category: "Tornillería", qty: 1, hotspots: [{ x: 15.5, y: 41.6 }] },
+        { item: 11, partNumber: "32493", description: "Washer, Flat, 0.50, Std", category: "Tornillería", qty: 1, hotspots: [{ x: 11.9, y: 39.4 }] },
+        { item: 12, partNumber: "1038966", description: "Cap, Wheel, Steering", category: "Mangueras y sujeción", qty: 1, hotspots: [{ x: 7.6, y: 37.5 }] },
+        { item: 13, partNumber: "1057554", description: "Bearing, Flng, 2hole, 0.75b", category: "Pasadores y bujes", qty: 1, hotspots: [{ x: 28.8, y: 66.1 }] },
+        { item: 14, partNumber: "09570", description: "Clamp, Cable, Stl, 0.9x1.8x0.62w, 1hole", category: "Mangueras y sujeción", qty: 1, hotspots: [{ x: 46.6, y: 81.4 }] },
+        { item: 15, partNumber: "9013277", description: "Panel kit, Cntrl, Replmt [T12]", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 90, y: 16.5 }] },
+        { item: 16, partNumber: "1201180", description: "Panel, Console, Lh", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 79.1, y: 9.6 }] },
+        { item: 17, partNumber: "1204177", description: "Label, Opertnl, Console, Lh", category: "Etiquetas", qty: 1, hotspots: [{ x: 75.5, y: 7.7 }] },
+        { item: 18, partNumber: "361076", description: "Switch, Ignition [Merit Gmbh]", category: "Eléctrico", qty: 1, hotspots: [{ x: 38.5, y: 9.6 }] },
+        { item: 18, partNumber: "361144", description: "Key, ignition, Sgl", category: "Pasadores y bujes", qty: 1, hotspots: [] },
+        { item: 19, partNumber: "82226", description: "Washer, Flat, 0.91b 1.38d .06, Stl, Pl", category: "Tornillería", qty: 1, hotspots: [{ x: 42.4, y: 12.8 }] },
+        { item: 20, partNumber: "1011735", description: "Switch, Safety, Shutoff", category: "Eléctrico", qty: 1, hotspots: [{ x: 52.3, y: 1.4 }] },
+        { item: 21, partNumber: "1058679", description: "Switch, Rocker, Dpdt, On / None / On", category: "Eléctrico", qty: 1, hotspots: [{ x: 40.1, y: 4.2 }] },
+        { item: 22, partNumber: "140825", description: "Screw, Pan, Phl, 06 X 0.50, Fmg/Ab, Blk", category: "Tornillería", qty: 10, hotspots: [{ x: 48.2, y: 15.4 }, { x: 63.5, y: 22.6 }] },
+        { item: 23, partNumber: "398501", description: "Plug, Hole, Rt, Rocker Switch, .87 X 1.7", category: "Mangueras y sujeción", qty: 3, hotspots: [{ x: 58.6, y: 1.6 }] },
+        { item: 24, partNumber: "39277", description: "Screw, Hex, M8 X 1.25 X 25, 8.8", category: "Tornillería", qty: 1, hotspots: [{ x: 50.4, y: 93.2 }] },
+        { item: 25, partNumber: "36428", description: "Plate, Lintel Backing", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 34.3, y: 68.3 }] }
+      ]
+    },
+    "data/t12/steering_panel_xp.json": {
+      machine: "Tennant T12",
+      group: "Steering and Instrument Panel Group, T12XP",
+      figure: "Fig. 9",
+      image: "assets/t12/steering_panel_xp.png",
+      categories: ["Tornillería", "Pasadores y bujes", "Mangueras y sujeción", "Transmisión", "Eléctrico", "Ruedas", "Etiquetas", "Estructura y cubiertas"],
+      parts: [
+        { item: 1, partNumber: "1208622", description: "Bracket Wldt, Brg", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 73.4, y: 81.8 }] },
+        { item: 2, partNumber: "16931", description: "Screw, Hex, M8 X 1.25 X 20, 8.8", category: "Tornillería", qty: 7, hotspots: [{ x: 96.4, y: 94.5 }, { x: 34.2, y: 81 }, { x: 60.7, y: 61 }, { x: 55.4, y: 93.7 }] },
+        { item: 3, partNumber: "32490", description: "Washer, Flat, 0.25, Std", category: "Tornillería", qty: 2, hotspots: [{ x: 96.9, y: 91.4 }] },
+        { item: 4, partNumber: "9010942", description: "Sprocket Kit, 1.12b, Afmkt [T12]", category: "Transmisión", qty: 1, hotspots: [{ x: 70.2, y: 83 }] },
+        { item: 5, partNumber: "00912", description: "Key, Sq, 0.19 X 0.19, 1.00l", category: "Pasadores y bujes", qty: 2, hotspots: [{ x: 55.6, y: 90.8 }, { x: 42.9, y: 58.9 }] },
+        { item: 6, partNumber: "09162", description: "Screw, Set, M6 X 1.00 X 8, Nl", category: "Tornillería", qty: 6, hotspots: [{ x: 64.8, y: 96.6 }, { x: 64.5, y: 81 }, { x: 13, y: 67.3 }, { x: 73, y: 84.7 }, { x: 89.3, y: 95.9 }] },
+        { item: 7, partNumber: "1057572", description: "Plate Wldt, Sppt, Brg", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 29.4, y: 48.2 }] },
+        { item: 8, partNumber: "32491", description: "Washer, Flat, 0.31, Std", category: "Tornillería", qty: 10, hotspots: [{ x: 30.3, y: 61.6 }, { x: 39, y: 79.5 }, { x: 58.8, y: 74.6 }, { x: 60.9, y: 63.9 }, { x: 41.8, y: 86 }] },
+        { item: 9, partNumber: "08709", description: "Nut, Hex, Lock, M8 X 1.25, Nl", category: "Tornillería", qty: 10, hotspots: [{ x: 27.9, y: 64.4 }, { x: 55.7, y: 76.5 }, { x: 79.2, y: 43 }] },
+        { item: 10, partNumber: "1057554", description: "Bearing, Flng, 2hole, 0.75b", category: "Pasadores y bujes", qty: 2, hotspots: [{ x: 37.8, y: 53.8 }, { x: 12.4, y: 54.7 }] },
+        { item: 11, partNumber: "16735", description: "Screw, Hex, M8 X 1.25 X 16, 8.8", category: "Tornillería", qty: 4, hotspots: [{ x: 16.1, y: 58.3 }] },
+        { item: 12, partNumber: "07791", description: "Nut, Hex, Flng, M8 X 1.25", category: "Tornillería", qty: 4, hotspots: [{ x: 8.9, y: 52.1 }, { x: 38.7, y: 56.9 }] },
+        { item: 13, partNumber: "1202601", description: "Shaft Assy, Steering [T12]", category: "Pasadores y bujes", qty: 1, hotspots: [{ x: 44, y: 83.6 }] },
+        { item: 14, partNumber: "9010943", description: "Sprocket Kit, 0.75b, Afmkt [T12]", category: "Transmisión", qty: 1, hotspots: [{ x: 21.1, y: 68 }] },
+        { item: 15, partNumber: "1208612", description: "Tube, Column, Steering", category: "Mangueras y sujeción", qty: 1, hotspots: [{ x: 59.7, y: 36.2 }] },
+        { item: 16, partNumber: "1057785", description: "Bearing, Journal, 0.75b 0.88d 0.75l", category: "Pasadores y bujes", qty: 2, hotspots: [{ x: 52.6, y: 31.8 }, { x: 68.5, y: 40.5 }] },
+        { item: 17, partNumber: "1056412", description: "Wheel, Steering, 14.4d", category: "Ruedas", qty: 1, hotspots: [{ x: 47.8, y: 18.1 }] },
+        { item: 18, partNumber: "1059073", description: "Nut, Hex, Jam, 1.12-12", category: "Tornillería", qty: 1, hotspots: [{ x: 30.4, y: 20.2 }] },
+        { item: 19, partNumber: "04846", description: "Washer, Thrust, 0.79b 1.42d 0.06[Garlok]", category: "Tornillería", qty: 1, hotspots: [{ x: 25.5, y: 18.1 }] },
+        { item: 20, partNumber: "1057043", description: "Bearing, Flng, 2hole, 1.25b", category: "Pasadores y bujes", qty: 1, hotspots: [{ x: 60.6, y: 81.1 }] },
+        { item: 21, partNumber: "1054654", description: "Bearing, Pillowblock, 1.12b", category: "Pasadores y bujes", qty: 1, hotspots: [{ x: 82.4, y: 96.4 }] },
+        { item: 22, partNumber: "06961", description: "Screw, Hex, M10 X 1.5", category: "Tornillería", qty: 2, hotspots: [{ x: 73, y: 98 }] },
+        { item: 23, partNumber: "32485", description: "Washer, Flat, 0.38, Sae", category: "Tornillería", qty: 2, hotspots: [{ x: 76.9, y: 97.1 }] },
+        { item: 24, partNumber: "1053977", description: "Chain, Rlr, 35 X 35 Pitches", category: "Transmisión", qty: 1, hotspots: [{ x: 33.1, y: 74 }] },
+        { item: 25, partNumber: "14799", description: "Link, Chain, Rlr, 35", category: "Transmisión", qty: 1, hotspots: [{ x: 20.5, y: 72.9 }] },
+        { item: 26, partNumber: "223065", description: "Bearing, Flng, 2hole, 0.75b [Nyl]", category: "Pasadores y bujes", qty: 1, hotspots: [{ x: 44.3, y: 76 }] },
+        { item: 27, partNumber: "1205753", description: "Bracket Wldt, Sppt, Brg", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 51.3, y: 63.2 }] },
+        { item: 28, partNumber: "09570", description: "Clamp, Cable, Stl, 0.9x1.8x0.62w, 1hole", category: "Mangueras y sujeción", qty: 1, hotspots: [{ x: 39.1, y: 66.9 }] },
+        { item: 29, partNumber: "9010934", description: "Instr Panel, Pod, Afmkt [T12]", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 16.8, y: 8.7 }] },
+        { item: 30, partNumber: "1201534", description: "Panel, Console, Lh", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 71.5, y: 4.4 }] },
+        { item: 31, partNumber: "1204170", description: "Label, Opertnl, Console, Lh", category: "Etiquetas", qty: 1, hotspots: [{ x: 67.9, y: 2.3 }] },
+        { item: 32, partNumber: "361076", description: "Switch, Ignition [Merit Gmbh]", category: "Eléctrico", qty: 1, hotspots: [{ x: 39.3, y: 4.5 }] },
+        { item: 32, partNumber: "361144", description: "Key, ignition, Sgl", category: "Pasadores y bujes", qty: 1, hotspots: [] },
+        { item: 33, partNumber: "82226", description: "Washer, Flat, 0.91b 1.38d .06, Stl, Pl", category: "Tornillería", qty: 1, hotspots: [{ x: 42.2, y: 8.1 }] },
+        { item: 34, partNumber: "1011735", description: "Switch, Safety, Shutoff", category: "Eléctrico", qty: 1, hotspots: [{ x: 61.2, y: 1.4 }] },
+        { item: 35, partNumber: "1058679", description: "Switch, Rocker, Dpdt, On / None / On", category: "Eléctrico", qty: 1, hotspots: [{ x: 41.9, y: 1.7 }] },
+        { item: 36, partNumber: "1201535", description: "Panel, Console, Rh", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 83.1, y: 18.7 }] },
+        { item: 37, partNumber: "1204176", description: "Label, Opertnl, Console, Rh", category: "Etiquetas", qty: 1, hotspots: [{ x: 83.4, y: 15.6 }] },
+        { item: 38, partNumber: "140825", description: "Screw, Pan, Phl, 06 X 0.50, Fmg/Ab, Blk", category: "Tornillería", qty: 10, hotspots: [{ x: 61.5, y: 17.2 }, { x: 46.2, y: 10.7 }] },
+        { item: 39, partNumber: "398501", description: "Plug, Hole, Rt, Rocker Switch, .87 X 1.7", category: "Mangueras y sujeción", qty: 3, hotspots: [{ x: 72.5, y: 7.5 }] },
+        { item: 40, partNumber: "70651", description: "Ring, Retaining, Ext, 1.12d", category: "Pasadores y bujes", qty: 1, hotspots: [{ x: 91.5, y: 86.3 }] },
+        { item: 41, partNumber: "39277", description: "Screw, Hex, M8 X 1.25 X 25, 8.8", category: "Tornillería", qty: 1, hotspots: [{ x: 38.7, y: 87.7 }] },
+        { item: 42, partNumber: "1208625", description: "Plate Wldt, Brg", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 88, y: 83.8 }] },
+        { item: 43, partNumber: "1034731", description: "Screw, Hex, m6 X 1.00 X 16, Sems, Ss", category: "Tornillería", qty: 2, hotspots: [{ x: 71.8, y: 87.1 }] }
+      ]
+    },
+    "data/t12/front_cover.json": {
+      machine: "Tennant T12",
+      group: "Front Cover and Directional Pedal Group",
+      figure: "Fig. 10",
+      image: "assets/t12/front_cover.png",
+      categories: ["Tornillería", "Mangueras y sujeción", "Eléctrico", "Etiquetas", "Estructura y cubiertas"],
+      parts: [
+        { item: 1, partNumber: "1200146", description: "Channel Wldt, Steering, Pntd", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 41.3, y: 15.4 }] },
+        { item: 2, partNumber: "1200253", description: "Pedal Assy, Accelerator, Brake (See Breakdowns)", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 33.2, y: 51.9 }] },
+        { item: 3, partNumber: "1020341", description: "Screw, Hex, M8 X 1.25 X 20, Ss, Sems", category: "Tornillería", qty: 5, hotspots: [{ x: 75.8, y: 50.6 }, { x: 8.8, y: 42.6 }, { x: 81.6, y: 41.5 }] },
+        { item: 4, partNumber: "9010930", description: "Panel, Access, Front, Afmkt [T12]", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 3.1, y: 51 }] },
+        { item: 4, partNumber: "9011168", description: "Panel, Access, Front, Afmkt [Jp]", category: "Estructura y cubiertas", qty: 1, hotspots: [] },
+        { item: 5, partNumber: "19676", description: "Cable, Glv .09d 013.0l .38eye /.38eye", category: "Eléctrico", qty: 1, hotspots: [{ x: 14.7, y: 35.8 }] },
+        { item: 6, partNumber: "398806", description: "Latch", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 3, y: 55.9 }] },
+        { item: 7, partNumber: "9010928", description: "Shroud, Front, Afmkt [T12]", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 54.6, y: 12.5 }] },
+        { item: 8, partNumber: "15675", description: "Screw, Hex, M8 X 1.25 X 16, Ss", category: "Tornillería", qty: 5, hotspots: [{ x: 30.2, y: 31.3 }, { x: 39.4, y: 41.5 }, { x: 39.4, y: 50 }] },
+        { item: 9, partNumber: "32491", description: "Washer, Flat, 0.31, Std", category: "Tornillería", qty: 5, hotspots: [{ x: 27, y: 28.7 }, { x: 37.3, y: 38.6 }, { x: 38.6, y: 46.9 }] },
+        { item: 10, partNumber: "1202868", description: "Clip, Tie, 0.25d, Plstc", category: "Mangueras y sujeción", qty: 7, hotspots: [{ x: 39.6, y: 26.5 }, { x: 72.6, y: 36.5 }, { x: 57.2, y: 18.1 }] },
+        { item: 11, partNumber: "1202308", description: "Controller, 36vdc, 200a [Ac Propel]", category: "Eléctrico", qty: 1, hotspots: [{ x: 89.3, y: 67.6 }] },
+        { item: 12, partNumber: "24265", description: "Screw, Pan, Phl, M4 X 0.70 X 16, Ss", category: "Tornillería", qty: 4, hotspots: [{ x: 66.9, y: 63.6 }] },
+        { item: 13, partNumber: "01683", description: "Washer, Flat, 10, Ss", category: "Tornillería", qty: 4, hotspots: [{ x: 71.2, y: 64.2 }] },
+        { item: 14, partNumber: "130773", description: "Tie, Cable, Nyl, 11.0l, .14w, 3.0 Max. D", category: "Mangueras y sujeción", qty: 7, hotspots: [{ x: 51.4, y: 18 }, { x: 38.6, y: 33.7 }] },
+        { item: 15, partNumber: "1201212", description: "Bracket, Ele, Cb [T12]", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 94, y: 33.7 }] },
+        { item: 16, partNumber: "1201864", description: "Label, Circuitbreaker", category: "Etiquetas", qty: 1, hotspots: [{ x: 80.3, y: 45.7 }] },
+        { item: 17, partNumber: "1052726", description: "Alarm, 9-48vdc, 95 Db(A) [Ec-H20]", category: "Eléctrico", qty: 1, hotspots: [{ x: 96.7, y: 57.8 }] },
+        { item: 18, partNumber: "1052120", description: "Inductor, 25Mmid [218 Imp At 25Mhz] (Australia Only)", category: "Eléctrico", qty: 1, hotspots: [{ x: 91.9, y: 58.4 }] },
+        { item: 19, partNumber: "1052123", description: "Inductor, 18Mmid [156 Imp At 25Mhz] (Australia Only)", category: "Eléctrico", qty: 1, hotspots: [{ x: 87.1, y: 61.6 }] },
+        { item: 20, partNumber: "39283", description: "Screw, Hex, M10x 1.50 x 25, 8.8", category: "Tornillería", qty: "-", hotspots: [{ x: 50, y: 63.8 }, { x: 46.1, y: 44.5 }] },
+        { item: 21, partNumber: "32492", description: "Washer, Flat, 0.38, Std", category: "Tornillería", qty: "-", hotspots: [{ x: 56.1, y: 60.9 }, { x: 45.4, y: 49.8 }] }
+      ]
+    },
+    "data/t12/recovery_tank.json": {
+      machine: "Tennant T12",
+      group: "Recovery Tank Group",
+      figure: "Fig. 17",
+      image: "assets/t12/recovery_tank.png",
+      categories: ["Tornillería", "Pasadores y bujes", "Mangueras y sujeción", "Sellos y empaques", "Eléctrico", "Escobillas y hojas", "Estructura y cubiertas"],
+      parts: [
+        { item: 1, partNumber: "1037821", description: "Filter, Panl, Dust, 2.3 X 04.5 X 06.4", category: "Escobillas y hojas", qty: 1, hotspots: [{ x: 67.3, y: 40.6 }] },
+        { item: 2, partNumber: "1026014", description: "Screen, Vacuum", category: "Escobillas y hojas", qty: 1, hotspots: [{ x: 57, y: 32.1 }] },
+        { item: 3, partNumber: "1201157", description: "Plate, Mtg, Gasket", category: "Sellos y empaques", qty: 1, hotspots: [{ x: 67.5, y: 18.3 }] },
+        { item: 4, partNumber: "140825", description: "Screw, Pan, Phl, 06 X 0.50, Fmg/Ab, Blk", category: "Tornillería", qty: 2, hotspots: [{ x: 62.4, y: 29.5 }] },
+        { item: 5, partNumber: "1016392", description: "Gasket, Ure, .50, 03.74w 05.31l, Adh", category: "Sellos y empaques", qty: 1, hotspots: [{ x: 67.1, y: 28.2 }] },
+        { item: 6, partNumber: "1201340", description: "Tray, Debris", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 20.1, y: 35.7 }] },
+        { item: 7, partNumber: "1066720", description: "Sleeve, P/M, 0.32b 0.44d 0.2l [430ss]", category: "Pasadores y bujes", qty: 2, hotspots: [{ x: 22.7, y: 38 }] },
+        { item: 8, partNumber: "09737", description: "Screw, Pan, Phl, M8 X 1.25 X 20, 4.8", category: "Tornillería", qty: 2, hotspots: [{ x: 23.9, y: 40.4 }] },
+        { item: 9, partNumber: "9010920", description: "Recovery Tank, Afmkt [T12]", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 20.3, y: 46.1 }] },
+        { item: 9, partNumber: "9011173", description: "Recovery Tank, Afmkt, Jp [T12]", category: "Estructura y cubiertas", qty: 1, hotspots: [] },
+        { item: 10, partNumber: "1200458", description: "Bracket, Mtg, Tank", category: "Estructura y cubiertas", qty: 3, hotspots: [{ x: 18.4, y: 67.7 }, { x: 30, y: 74.1 }] },
+        { item: 11, partNumber: "1020341", description: "Screw, Hex, M8 X 1.25 X 20, Ss, Sems", category: "Tornillería", qty: 18, hotspots: [{ x: 12.7, y: 70.6 }, { x: 22.8, y: 65.2 }, { x: 26.6, y: 76.6 }, { x: 33.1, y: 70.7 }, { x: 42.5, y: 74.7 }] },
+        { item: 12, partNumber: "1054823", description: "Angle, Mtg, Tank", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 51.3, y: 88.3 }, { x: 27.3, y: 34.8 }, { x: 20.6, y: 24.9 }] },
+        { item: 13, partNumber: "385685", description: "Sensor, Level, Liq, 14vdc 01a .62-11", category: "Eléctrico", qty: 1, hotspots: [{ x: 62.2, y: 62 }] },
+        { item: 14, partNumber: "1019285", description: "Bracket, Protector, Float Switch", category: "Eléctrico", qty: 1, hotspots: [{ x: 64.7, y: 58.7 }] },
+        { item: 15, partNumber: "1200746", description: "Clip, Hose, Plstc 1.88-2.12", category: "Mangueras y sujeción", qty: 3, hotspots: [{ x: 86.7, y: 42.8 }, { x: 87.1, y: 32.3 }, { x: 72.9, y: 26 }] },
+        { item: 16, partNumber: "49697", description: "Screw, Pan, Phl, M4 X 0.70 X 10, Ss", category: "Tornillería", qty: 6, hotspots: [{ x: 91.4, y: 40.7 }, { x: 91, y: 30.6 }, { x: 77.3, y: 23.9 }] },
+        { item: 17, partNumber: "9010921", description: "Cover, Recovery Tank, Afmkt [T12]", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 66.2, y: 3.6 }] },
+        { item: 18, partNumber: "1200519", description: "Bracket, Mtg, Cover", category: "Estructura y cubiertas", qty: 2, hotspots: [{ x: 30.2, y: 31.4 }, { x: 24.6, y: 21.5 }] },
+        { item: 19, partNumber: "1057214", description: "Plate, Arm, Prop", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 48.4, y: 17.7 }] },
+        { item: 20, partNumber: "360460", description: "Sleeve, P/M, 0.34b 0.63d 0.4l, Ss / Oil", category: "Pasadores y bujes", qty: 1, hotspots: [{ x: 35, y: 23.6 }] },
+        { item: 21, partNumber: "12333", description: "Screw, Hex, M8 X 1.25 X 25, Ss, Nl", category: "Tornillería", qty: 1, hotspots: [{ x: 44.8, y: 28.2 }] },
+        { item: 22, partNumber: "1017218", description: "Washer, Flat, 0.32b 1.00d .12, Ss", category: "Tornillería", qty: 2, hotspots: [{ x: 39.4, y: 26.7 }, { x: 43.1, y: 17.7 }] },
+        { item: 23, partNumber: "230735", description: "Sleeve, P/M, Flng, 0.33b 0.75/0.50d 0.8l", category: "Pasadores y bujes", qty: 1, hotspots: [{ x: 52, y: 21.2 }] },
+        { item: 24, partNumber: "59658", description: "Screw, Hex, M8 X 1.25 X 35, Nl, Ss", category: "Tornillería", qty: 1, hotspots: [{ x: 37.9, y: 15.9 }] },
+        { item: 25, partNumber: "1200834", description: "Hose Assy, Drain, 2.0 Id X 32.2 L, Blk (Solution Tank)", category: "Mangueras y sujeción", qty: 1, hotspots: [{ x: 96.8, y: 61.9 }] },
+        { item: 26, partNumber: "1201434", description: "Clamp, Hose, Wormdrive, 4.63-5.50, 0.5w", category: "Mangueras y sujeción", qty: 2, hotspots: [{ x: 91, y: 63.6 }, { x: 73.4, y: 37 }] },
+        { item: 27, partNumber: "1200737", description: "Hose Assy, Drain, 2.0 Id X 26.2l, Blk (Recovery Tank)", category: "Mangueras y sujeción", qty: 1, hotspots: [{ x: 78.3, y: 35.5 }] },
+        { item: 28, partNumber: "1066063", description: "Plug, Hole, Rnd, 0.25H 0.43L, Brb, Nyl", category: "Mangueras y sujeción", qty: 1, hotspots: [{ x: 28.3, y: 38.1 }] },
+        { item: 29, partNumber: "1066433", description: "Seal, Afmkt, Bulb, Dual, 08ft [F/.30gap]", category: "Sellos y empaques", qty: 1, hotspots: [{ x: 6, y: 59.3 }] }
+      ]
+    },
+    "data/t12/vacuum_fan.json": {
+      machine: "Tennant T12",
+      group: "Vacuum Fan Group",
+      figure: "Fig. 18",
+      image: "assets/t12/vacuum_fan.png",
+      categories: ["Tornillería", "Pasadores y bujes", "Mangueras y sujeción", "Sellos y empaques", "Motores y actuadores", "Eléctrico", "Escobillas y hojas", "Estructura y cubiertas"],
+      parts: [
+        { item: 1, partNumber: "1200149", description: "Fan, Vac, 6.6 Dia, Ametek", category: "Motores y actuadores", qty: 1, hotspots: [{ x: 36.9, y: 46.8 }] },
+        { item: 1, partNumber: "1206774", description: "Brush Kit, Motor, Fan", category: "Escobillas y hojas", qty: 1, hotspots: [] },
+        { item: 2, partNumber: "1201267", description: "Assy, Seal, Mtg, Vacfan", category: "Sellos y empaques", qty: 1, hotspots: [{ x: 43.3, y: 43.7 }] },
+        { item: 3, partNumber: "49891", description: "Clamp, Hose, Wormdrive, 5.56-6.50d, .56w", category: "Mangueras y sujeción", qty: 1, hotspots: [{ x: 48.9, y: 41.8 }] },
+        { item: 4, partNumber: "08716", description: "Screw, Hex, M6 X 1.00 X 20, Ss", category: "Tornillería", qty: 5, hotspots: [{ x: 24.7, y: 54.7 }] },
+        { item: 5, partNumber: "29570", description: "Washer, Flat, 0.28b 1.00d .06, Stl", category: "Tornillería", qty: 5, hotspots: [{ x: 29.1, y: 52.2 }] },
+        { item: 6, partNumber: "1203848", description: "Muffler, Vacfan, 11.0 L", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 53.5, y: 78.8 }] },
+        { item: 7, partNumber: "130773", description: "Tie, Cable, Nyl, 11.0l, .14w, 3.0 Max. D", category: "Mangueras y sujeción", qty: 1, hotspots: [{ x: 51.8, y: 67.7 }] },
+        { item: 8, partNumber: "1200369", description: "Insulation, Acstc, 0.5, 10.4 X 13.0 C-0", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 17.1, y: 57.3 }] },
+        { item: 9, partNumber: "1200649", description: "Cover, Fan, Vacuum", category: "Motores y actuadores", qty: 1, hotspots: [{ x: 9.3, y: 57.3 }] },
+        { item: 10, partNumber: "140154", description: "Sleeve, P/M, 0.25b 0.38d 0.3l, Pl", category: "Pasadores y bujes", qty: 2, hotspots: [{ x: 16.3, y: 97.3 }] },
+        { item: 11, partNumber: "15678", description: "Screw, Hex, M6 X 1.00 X 16, Ss", category: "Tornillería", qty: 2, hotspots: [{ x: 9, y: 93.6 }, { x: 2.6, y: 88.7 }] },
+        { item: 12, partNumber: "01684", description: "Washer, Flat, 0.27b 0.69d .05, Ss", category: "Tornillería", qty: 2, hotspots: [{ x: 12.6, y: 95.7 }, { x: 5.8, y: 91.4 }] },
+        { item: 13, partNumber: "1201875", description: "Hose, Vacuum, 1.75id X 68.6l, 2 Cuff", category: "Mangueras y sujeción", qty: 1, hotspots: [{ x: 10.4, y: 29.2 }] },
+        { item: 14, partNumber: "1067964", description: "Fastener, 25.0 [Hook & Loop]", category: "Tornillería", qty: 1, hotspots: [{ x: 9.5, y: 37.5 }] },
+        { item: 15, partNumber: "1052126", description: "Inductor, 12.7Mmid [156 Imp At 25Mz] (Australia On- ly)", category: "Eléctrico", qty: 1, hotspots: [{ x: 34.9, y: 78.3 }] },
+        { item: 16, partNumber: "16944", description: "Screw, hex, m4 X 0.70 X 10, Fmg", category: "Tornillería", qty: 1, hotspots: [{ x: 32.5, y: 49.5 }] }
+      ]
+    },
+    "data/t12/solution_tank.json": {
+      machine: "Tennant T12",
+      group: "Solution Tank Group",
+      figure: "Fig. 19",
+      image: "assets/t12/solution_tank.png",
+      categories: ["Tornillería", "Mangueras y sujeción", "Eléctrico", "Escobillas y hojas", "Estructura y cubiertas"],
+      parts: [
+        { item: 1, partNumber: "9010919", description: "Solution Tank, Afmkt [T12]", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 5.2, y: 27.1 }] },
+        { item: 2, partNumber: "1059317", description: "Fitting Assy, Soltn, Bh", category: "Mangueras y sujeción", qty: 1, hotspots: [{ x: 78.6, y: 47.4 }] },
+        { item: 3, partNumber: "1011885", description: "Cap, Tank", category: "Mangueras y sujeción", qty: 1, hotspots: [{ x: 11.3, y: 8 }] },
+        { item: 4, partNumber: "1201588", description: "Sensor, Level, Liq, 30watt, Spst", category: "Eléctrico", qty: 1, hotspots: [{ x: 52.9, y: 62.7 }] },
+        { item: 5, partNumber: "1201077", description: "Bracket, Sppt, Tank, Lh", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 93.8, y: 62.5 }] },
+        { item: 6, partNumber: "1201079", description: "Bracket, Sppt, Tank, Rh", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 14.1, y: 46.7 }] },
+        { item: 7, partNumber: "12317", description: "Screw, Hex, M10 X 1.50 X 30, Ss", category: "Tornillería", qty: 4, hotspots: [{ x: 32.2, y: 64 }, { x: 86.6, y: 90.1 }] },
+        { item: 8, partNumber: "01686", description: "Washer, Flat, 0.44b 1.00d .08, Ss", category: "Tornillería", qty: 8, hotspots: [{ x: 34.9, y: 66.7 }, { x: 82.2, y: 88.6 }, { x: 83.4, y: 65.6 }, { x: 27.2, y: 55.4 }] },
+        { item: 9, partNumber: "08714", description: "Nut, Hex, Lock, M10 X 1.5, Nl, Ss", category: "Tornillería", qty: 4, hotspots: [{ x: 79.7, y: 64.7 }, { x: 31.1, y: 57 }] },
+        { item: 10, partNumber: "1020341", description: "Screw, Hex, M8 X 1.25 X 20, Ss, Sems", category: "Tornillería", qty: 12, hotspots: [{ x: 97, y: 76.8 }, { x: 14.4, y: 49.8 }, { x: 56.7, y: 1.4 }, { x: 55.9, y: 89.9 }, { x: 3.4, y: 76.4 }] },
+        { item: 11, partNumber: "1205727", description: "Bracket Wldt, Sppt, Seat", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 67.5, y: 9.7 }] },
+        { item: 12, partNumber: "630146", description: "Fitting, Plug, Pm06, Nyl", category: "Mangueras y sujeción", qty: 3, hotspots: [{ x: 49.9, y: 56.5 }, { x: 79.9, y: 52.8 }] },
+        { item: 13, partNumber: "1027290", description: "Filter, Soltn, 020Mesh, Pm12 3.1D 02.6L", category: "Escobillas y hojas", qty: 1, hotspots: [{ x: 84.9, y: 26 }] }
+      ]
+    },
+    "data/t12/circuit_board.json": {
+      machine: "Tennant T12",
+      group: "Electrical Circuit Board Group",
+      figure: "Fig. 22",
+      image: "assets/t12/circuit_board.png",
+      categories: ["Tornillería", "Mangueras y sujeción", "Sellos y empaques", "Eléctrico", "Estructura y cubiertas"],
+      parts: [
+        { item: 1, partNumber: "1200918", description: "Plate Wldt, Mtg, Electronic Component", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 68.5, y: 60.3 }] },
+        { item: 2, partNumber: "1020341", description: "Screw, Hex, M8 X 1.25 X 20, Ss, Sems", category: "Tornillería", qty: 5, hotspots: [{ x: 92, y: 60.2 }, { x: 2.9, y: 46 }, { x: 46.4, y: 85.2 }] },
+        { item: 3, partNumber: "1202868", description: "Clip, Tie, 0.25d, Plstc", category: "Mangueras y sujeción", qty: 7, hotspots: [{ x: 55.6, y: 60.3 }] },
+        { item: 4, partNumber: "130773", description: "Tie, Cable, Nyl, 11.0l, .14w, 3.0 Max. D", category: "Mangueras y sujeción", qty: 7, hotspots: [{ x: 80.9, y: 70.2 }] },
+        { item: 5, partNumber: "1203717", description: "Bracket, Stiffener", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 12.4, y: 8.6 }] },
+        { item: 6, partNumber: "1034731", description: "Screw, Hex, M6 X 1.00 X 16, Ss, Sems", category: "Tornillería", qty: 4, hotspots: [{ x: 8.3, y: 5.5 }, { x: 22.1, y: 9.6 }] },
+        { item: 7, partNumber: "9010931", description: "Circuit Board Kit, Scrub, Afmkt [T12]", category: "Eléctrico", qty: 1, hotspots: [{ x: 63.5, y: 93 }] },
+        { item: 8, partNumber: "9010932", description: "Circuit board Kit, H20_Sba, Afmkt [T12]", category: "Eléctrico", qty: 1, hotspots: [{ x: 69, y: 96.6 }] },
+        { item: 9, partNumber: "1016825", description: "Support, Circuitboard", category: "Estructura y cubiertas", qty: 4, hotspots: [{ x: 66.3, y: 95 }] },
+        { item: 10, partNumber: "1202869", description: "Support, Circuitboard [0.5\"]", category: "Estructura y cubiertas", qty: 4, hotspots: [{ x: 60.2, y: 90.9 }] },
+        { item: 11, partNumber: "3701.6", description: "Screw, Pan, Phl, 06-32 x 0.38, Shmtl, Ss", category: "Tornillería", qty: 8, hotspots: [{ x: 42.6, y: 73.9 }] },
+        { item: 12, partNumber: "1202862", description: "Washer, Flat, .21b .39d .04, Brs", category: "Tornillería", qty: 2, hotspots: [{ x: 92.2, y: 81.1 }] },
+        { item: 13, partNumber: "07514", description: "Washer, Lock, Int, 10, Ss", category: "Tornillería", qty: 1, hotspots: [{ x: 95.1, y: 83.6 }] },
+        { item: 14, partNumber: "1202864", description: "Nut, Hex, Std, M5 X 0.80, Brs", category: "Tornillería", qty: 1, hotspots: [{ x: 97.2, y: 85.9 }] },
+        { item: 15, partNumber: "1061918", description: "Washer, Flat, 0.25b 0.47d .06, Brs", category: "Tornillería", qty: 2, hotspots: [{ x: 84.1, y: 93.3 }] },
+        { item: 16, partNumber: "07515", description: "Washer, Lock, Int, 0.25, Ss", category: "Tornillería", qty: 1, hotspots: [{ x: 87.7, y: 94.4 }] },
+        { item: 17, partNumber: "1061910", description: "Nut, Hex, Std, M6 X 1.00, Brs", category: "Tornillería", qty: 1, hotspots: [{ x: 91.7, y: 95.6 }] },
+        { item: 18, partNumber: "1200792", description: "Cover, Box, Circuitboard", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 56.6, y: 5.6 }] },
+        { item: 19, partNumber: "1201210", description: "Gasket, Cover, Circuitboard", category: "Sellos y empaques", qty: 1, hotspots: [{ x: 26.6, y: 2.4 }] },
+        { item: 20, partNumber: "06934", description: "Screw, Pan, Phl, M5 X 0.80 X 20, 4.8", category: "Tornillería", qty: 6, hotspots: [{ x: 55.8, y: 13.9 }] },
+        { item: 21, partNumber: "140011", description: "Washer, Flat, 0.21b 0.45d .03, Ss", category: "Tornillería", qty: 6, hotspots: [{ x: 55.5, y: 11.3 }] },
+        { item: 22, partNumber: "9010922", description: "Side Cover, Std, Afmkt [T12]", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 84.7, y: 33.4 }] },
+        { item: 23, partNumber: "1201024", description: "Bracket, Mtg, Panel", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 13.6, y: 37.2 }] },
+        { item: 24, partNumber: "222290", description: "Diode, Ele, Plug", category: "Eléctrico", qty: 3, hotspots: [{ x: 92.3, y: 64.6 }] },
+        { item: 25, partNumber: "06929", description: "Screw, Pan, Phl, M4 X 0.70 X 25, 4.8", category: "Tornillería", qty: 2, hotspots: [{ x: 91.3, y: 78 }] },
+        { item: 26, partNumber: "1202860", description: "Washer, Flat, 0.17b 0.31d .03, Nyl", category: "Tornillería", qty: 3, hotspots: [{ x: 87.7, y: 76.4 }, { x: 76.4, y: 96.7 }] },
+        { item: 27, partNumber: "24199", description: "Screw, Hex, M5 X 0.80 X 16, Ss", category: "Tornillería", qty: 1, hotspots: [{ x: 50.3, y: 98.1 }] },
+        { item: 28, partNumber: "41140", description: "Washer, Lock, Int-Ext, 0.25", category: "Tornillería", qty: 1, hotspots: [{ x: 46.3, y: 96.2 }] },
+        { item: 29, partNumber: "24265", description: "Screw, Pan, Phl, M4 X 0.70 X 16, Ss", category: "Tornillería", qty: 1, hotspots: [{ x: 80.5, y: 98 }] }
+      ]
+    },
+    "data/t12/contactor_wires.json": {
+      machine: "Tennant T12",
+      group: "Electrical Contactor and Wires Group",
+      figure: "Fig. 23",
+      image: "assets/t12/contactor_wires.png",
+      categories: ["Tornillería", "Eléctrico", "Etiquetas", "Estructura y cubiertas"],
+      parts: [
+        { item: 1, partNumber: "1200897", description: "Plate, Electrical", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 85.8, y: 45.5 }] },
+        { item: 2, partNumber: "1020341", description: "Screw, Hex, M8 X 1.25 X 20, Ss, Sems", category: "Tornillería", qty: 2, hotspots: [{ x: 69.8, y: 55.8 }] },
+        { item: 3, partNumber: "1200913", description: "Label, Circuitbreaker", category: "Etiquetas", qty: 1, hotspots: [{ x: 48.6, y: 30 }] },
+        { item: 4, partNumber: "76062", description: "Stand-Off, Wir, 0.25, Insulator, Panel", category: "Tornillería", qty: 3, hotspots: [{ x: 84.3, y: 58.5 }, { x: 68.1, y: 51.3 }] },
+        { item: 5, partNumber: "01684", description: "Washer, Flat, 0.27b 0.69d .05, Ss", category: "Tornillería", qty: 3, hotspots: [{ x: 93.1, y: 45.3 }, { x: 90.6, y: 40 }] },
+        { item: 6, partNumber: "58670", description: "Screw, Hex, .25-20 X 0.50, Nl", category: "Tornillería", qty: 3, hotspots: [{ x: 97.7, y: 43.8 }, { x: 95.4, y: 37.8 }] },
+        { item: 7, partNumber: "41702", description: "Rod, Thrd, Full, .25-20 01.5l", category: "Estructura y cubiertas", qty: 3, hotspots: [{ x: 78.8, y: 59.9 }, { x: 62.8, y: 53 }] },
+        { item: 8, partNumber: "32490", description: "Washer, Flat, 0.25, Std", category: "Tornillería", qty: 6, hotspots: [{ x: 58.5, y: 68.8 }, { x: 71.1, y: 62.7 }, { x: 42.5, y: 62 }, { x: 49.6, y: 56.9 }] },
+        { item: 9, partNumber: "32982", description: "Washer, Lock, Int, 0.25", category: "Tornillería", qty: 3, hotspots: [{ x: 56, y: 69.6 }, { x: 39.7, y: 62.8 }] },
+        { item: 10, partNumber: "01690", description: "Nut, Hex, Std, .25-20", category: "Tornillería", qty: 6, hotspots: [{ x: 52.8, y: 70.5 }, { x: 74.7, y: 61.2 }, { x: 36.6, y: 63.9 }, { x: 57.9, y: 55.3 }] },
+        { item: 11, partNumber: "397609", description: "Contactor, 36vdc, No", category: "Eléctrico", qty: 1, hotspots: [{ x: 29.3, y: 52 }] },
+        { item: 12, partNumber: "09738", description: "Screw, Hex, M5 X 0.80 X 12, Ss", category: "Tornillería", qty: 2, hotspots: [{ x: 96.3, y: 23.1 }] },
+        { item: 13, partNumber: "140011", description: "Washer, Flat, 0.21b 0.45d .03, Ss", category: "Tornillería", qty: 4, hotspots: [{ x: 92.1, y: 24.5 }, { x: 14.4, y: 58.4 }] },
+        { item: 14, partNumber: "09739", description: "Nut, Hex, Lock, M5 X 0.80, Nl, Ss", category: "Tornillería", qty: 2, hotspots: [{ x: 10.2, y: 59.5 }] },
+        { item: 15, partNumber: "87318", description: "Fuse, 080a, 0.88 2.4l, 125volt,Slow-Blow", category: "Eléctrico", qty: 1, hotspots: [{ x: 41.5, y: 46.9 }] },
+        { item: 16, partNumber: "1016314", description: "Boot, 90deg .50id 1.00id 2.50l, Red", category: "Estructura y cubiertas", qty: 4, hotspots: [{ x: 27.2, y: 66.2 }, { x: 23, y: 30.2 }] },
+        { item: 17, partNumber: "1069894", description: "Cable, 06ga 5.5l Brown .25ring /.312ring", category: "Eléctrico", qty: 1, hotspots: [{ x: 27.4, y: 42.9 }] },
+        { item: 18, partNumber: "1069897", description: "Cable, Battery, 4ga, .25ring / .312ring", category: "Eléctrico", qty: 1, hotspots: [{ x: 18.3, y: 95.9 }] },
+        { item: 19, partNumber: "33944", description: "Screw, Pan, Phl, M6 X 1.00 X 35, 4.8", category: "Tornillería", qty: 2, hotspots: [{ x: 3.5, y: 84.1 }] },
+        { item: 20, partNumber: "1064184", description: "Circuitbreaker, 02.5a, Resetable", category: "Eléctrico", qty: 5, hotspots: [{ x: 41.1, y: 32.3 }, { x: 37.9, y: 44.3 }] },
+        { item: 21, partNumber: "383724", description: "Circuitbreaker, 25.0a, Resetable", category: "Eléctrico", qty: 1, hotspots: [{ x: 73.3, y: 22.8 }] },
+        { item: 22, partNumber: "1206757", description: "Circuitbreaker, 60.0a, resetable", category: "Eléctrico", qty: 1, hotspots: [{ x: 73.2, y: 27.5 }] },
+        { item: 23, partNumber: "600437", description: "Switch, Snap, 15a, Rlr", category: "Eléctrico", qty: 1, hotspots: [{ x: 36.2, y: 20.9 }] },
+        { item: 24, partNumber: "601359", description: "Plate, Backing, Switch", category: "Eléctrico", qty: 1, hotspots: [{ x: 35.8, y: 23.7 }] },
+        { item: 25, partNumber: "06922", description: "Screw, Pan, Phl, M3 X 0.50 X 20, 4.8", category: "Tornillería", qty: 2, hotspots: [{ x: 35.8, y: 26.1 }] },
+        { item: 26, partNumber: "01754", description: "Nut, Hex, Std, M3 X 0", category: "Tornillería", qty: 2, hotspots: [{ x: 57.5, y: 16.9 }] },
+        { item: 27, partNumber: "1059169", description: "Cable Assy, 10ga .25ring /.31ring, 050a", category: "Eléctrico", qty: 1, hotspots: [{ x: 92.6, y: 7.9 }] },
+        { item: 28, partNumber: "25005", description: "Screw, Pan, Phl, 06-32 X 1.00, G1", category: "Tornillería", qty: 2, hotspots: [{ x: 52.8, y: 15 }] },
+        { item: 29, partNumber: "75939", description: "Nut, Hex, Lock, #06-32, Nl", category: "Tornillería", qty: 2, hotspots: [{ x: 88.2, y: 14 }] }
+      ]
+    },
+    "data/t12/battery_240.json": {
+      machine: "Tennant T12",
+      group: "Battery Group, 240Ah",
+      figure: "Fig. 24",
+      image: "assets/t12/battery_240.png",
+      categories: ["Tornillería", "Pasadores y bujes", "Mangueras y sujeción", "Eléctrico", "Estructura y cubiertas"],
+      parts: [
+        { item: 1, partNumber: "222280", description: "Battery, Wet, 06vdc 0240ah", category: "Eléctrico", qty: 6, hotspots: [{ x: 97.5, y: 57.1 }, { x: 48.7, y: 42.3 }] },
+        { item: 2, partNumber: "1041030", description: "Cap, Battery", category: "Mangueras y sujeción", qty: 12, hotspots: [{ x: 10.9, y: 28.6 }, { x: 7.9, y: 18.3 }, { x: 36.1, y: 21.8 }, { x: 22.8, y: 12.8 }, { x: 48.7, y: 18.1 }, { x: 46.4, y: 10.6 }, { x: 88.7, y: 23.1 }, { x: 91.9, y: 30.8 }, { x: 63.9, y: 24 }, { x: 53.3, y: 29.6 }, { x: 76.5, y: 34.5 }, { x: 64.3, y: 39.6 }] },
+        { item: 3, partNumber: "83415", description: "Spacer, Battery, Foam, 2.00 X 2.0 X 11.0", category: "Pasadores y bujes", qty: 4, hotspots: [{ x: 14.1, y: 57.2 }] },
+        { item: 4, partNumber: "223355", description: "Cable, 04ga 08.0l Blk .34ring /.34ring", category: "Eléctrico", qty: 4, hotspots: [{ x: 34.6, y: 10.4 }, { x: 22.2, y: 16 }, { x: 75.7, y: 22.1 }, { x: 63.7, y: 26.9 }] },
+        { item: 5, partNumber: "223356", description: "Cable, 04ga 12.0l Blk .34ring /.34ring", category: "Eléctrico", qty: 1, hotspots: [{ x: 23.6, y: 22.5 }] },
+        { item: 6, partNumber: "87435", description: "Nut, Hex, Flexlock, .31-18", category: "Tornillería", qty: 12, hotspots: [{ x: 10.9, y: 26 }, { x: 7.9, y: 15.2 }, { x: 36, y: 19.4 }, { x: 22.6, y: 10.4 }, { x: 48.7, y: 15.7 }, { x: 46.5, y: 8.3 }, { x: 88.7, y: 20.8 }, { x: 91.9, y: 28.4 }, { x: 63.8, y: 21.7 }, { x: 54.3, y: 26.8 }, { x: 76, y: 31.9 }, { x: 63.8, y: 37 }] },
+        { item: 7, partNumber: "1016314", description: "Boot, 90deg .50id 1.00id 2.50l, Red", category: "Estructura y cubiertas", qty: 1, hotspots: [{ x: 51.7, y: 6.4 }] },
+        { item: 8, partNumber: "611221", description: "Boot, Terminal, Battery, 25.4mm, Blk", category: "Eléctrico", qty: 11, hotspots: [{ x: 8, y: 12.7 }, { x: 11, y: 23.5 }, { x: 36, y: 17.1 }, { x: 22.6, y: 8.2 }, { x: 48.8, y: 13.2 }, { x: 88.8, y: 18.3 }, { x: 92, y: 25.9 }, { x: 63.8, y: 19.4 }, { x: 55.7, y: 24 }, { x: 75.9, y: 29.5 }, { x: 63.8, y: 34.6 }] },
+        { item: 9, partNumber: "1201303", description: "Tray Wldt, Battery", category: "Eléctrico", qty: 1, hotspots: [{ x: 66.9, y: 62.5 }] },
+        { item: 10, partNumber: "1006401", description: "Hose, Afmkt, Pvc, Brd, 0.50id, 03ft, Clr", category: "Mangueras y sujeción", qty: 1, hotspots: [{ x: 66.3, y: 94.6 }] },
+        { item: 11, partNumber: "54333", description: "Clamp, Hose, Wormdrive, 0.31-0.88d, .31w", category: "Mangueras y sujeción", qty: 2, hotspots: [{ x: 62.3, y: 88.8 }] },
+        { item: 12, partNumber: "223361", description: "Cable Assy, 04ga .34ring /.34ring, 175a", category: "Eléctrico", qty: 1, hotspots: [{ x: 61.4, y: 10.5 }] },
+        { item: 13, partNumber: "130773", description: "Tie, Cable, Nyl, 11.0l, .14w, 3.0 Max. D", category: "Mangueras y sujeción", qty: 1, hotspots: [{ x: 39, y: 2.7 }] }
+      ]
     }
   };
 
@@ -723,10 +1466,17 @@
     // Comunes
     toast: $("#toast"),
     themeToggle: $("#theme-toggle"),
+    crumbMachine: $("#crumb-machine"),
     crumbSep: $("#crumb-sep"),
     crumbAssembly: $("#crumb-assembly"),
+    machineSwitch: $("#machine-switch"),
+    titleMachine: $("#title-machine"),
     // Nivel 1
     machineView: $("#view-machine"),
+    heroEyebrow: $("#hero-eyebrow"),
+    heroExamples: $("#hero-examples"),
+    tbMachine: $("#tb-machine"),
+    tbManual: $("#tb-manual"),
     globalSearch: $("#global-search"),
     globalDropdown: $("#global-dropdown"),
     globalSummary: $("#global-summary"),
@@ -738,6 +1488,8 @@
     zoneCount: $("#zone-count"),
     // Nivel 2
     assemblyView: $("#view-assembly"),
+    backBtn: $("#back-btn"),
+    backLabel: $("#back-label"),
     diagram: $("#diagram"),
     img: $("#diagram-img"),
     hotspots: $("#hotspots"),
@@ -842,6 +1594,52 @@
   }
 
   /* ==========================================================
+     Máquinas (T7, T12, ...)
+     ========================================================== */
+  let machines = [];     // entradas de data/machines.json
+  let current = null;    // máquina seleccionada
+  let defaultId = "t7";
+  const home = (m = current) => `#/${m.id}/`;
+  const zoneHref = (zone, n, m = current) => `${home(m)}zona/${zone.id}${n ? `/${n}` : ""}`;
+
+  function savedMachineId() {
+    try { return localStorage.getItem("t7-machine"); } catch { return null; }
+  }
+
+  function renderMachineSwitch() {
+    els.machineSwitch.innerHTML = machines
+      .map((m) => `<button type="button" role="radio" class="machine-option" data-machine="${m.id}"
+                  aria-checked="${m === current}" tabindex="${m === current ? 0 : -1}"
+                  title="${escapeHtml(m.name)} · Manual ${escapeHtml(m.manual || "")}"><span class="machine-option-brand">Tennant </span>${escapeHtml(m.short || m.name)}</button>`)
+      .join("");
+  }
+
+  // Cambia la máquina activa: plano general, zonas, textos y buscador
+  async function setMachine(id) {
+    const m = machines.find((x) => x.id === id) || machines.find((x) => x.id === defaultId) || machines[0];
+    if (m === current) return;
+    await MachineView.load(m.data);
+    current = m;
+    try { localStorage.setItem("t7-machine", m.id); } catch {}
+
+    const name = m.name, short = m.short || m.name;
+    els.titleMachine.textContent = name;
+    els.crumbMachine.textContent = `${short} Completa`;
+    els.crumbMachine.href = home(m);
+    els.backBtn.href = home(m);
+    els.backLabel.textContent = `Volver a la ${short} Completa`;
+    els.heroEyebrow.textContent = `${name} · Manual de partes ${m.manual || ""}`;
+    els.tbMachine.textContent = name;
+    els.tbManual.textContent = m.manual || "—";
+    els.machineImg.alt = `Fregadora ${name}, vista general`;
+    els.heroExamples.innerHTML = (m.examples || []).length
+      ? `<span>Prueba:</span>` + m.examples.map((x) => `<button type="button" class="example-chip" data-example="${escapeHtml(x)}">${escapeHtml(x)}</button>`).join("")
+      : "";
+    renderMachineSwitch();
+    GlobalSearch.reset();
+  }
+
+  /* ==========================================================
      NIVEL 1 · Máquina completa
      ========================================================== */
   // Íconos de los sistemas en la portada (SVG en línea, heredan el color del texto)
@@ -857,11 +1655,13 @@
   const MachineView = {
     data: null,
 
-    async init() {
-      this.data = await loadJSON(MACHINE_URL);
+    async load(url) {
+      this.data = await loadJSON(url);
       if (this.data.image) els.machineImg.src = this.data.image;
       this.render();
+    },
 
+    init() {
       const onZone = (e) => {
         const el = e.target.closest("[data-zone]");
         if (el) this.openZone(el.dataset.zone);
@@ -967,7 +1767,7 @@
         showToast(`${z.name}: despiece próximamente`);
         return;
       }
-      location.hash = `#/zona/${z.id}`;
+      location.hash = zoneHref(z);
     }
   };
 
@@ -1232,7 +2032,7 @@
     els.crumbSep.hidden = !zone;
     els.crumbAssembly.hidden = !zone;
     els.crumbAssembly.textContent = zone ? zone.name : "";
-    document.title = zone ? `Tennant T7 · ${zone.name}` : "Tennant T7 · Visor de despiece";
+    document.title = zone ? `${current.name} · ${zone.name}` : `${current.name} · Visor de despiece`;
   }
 
   // Una zona puede tener una sola figura ("data") o varias ("figures"), p. ej. Tanques: Fig. 27 y Fig. 29
@@ -1243,7 +2043,7 @@
     els.figureTabs.hidden = figures.length < 2;
     els.figureTabs.innerHTML = figures
       .map(
-        (f, i) => `<a role="tab" class="figure-tab" href="#/zona/${zone.id}/${i + 1}"
+        (f, i) => `<a role="tab" class="figure-tab" href="${zoneHref(zone, i + 1)}"
                      aria-selected="${i === index}">${escapeHtml(f.label || `Figura ${i + 1}`)}</a>`
       )
       .join("");
@@ -1255,18 +2055,30 @@
   const MAX_RESULTS = 50;
 
   const GlobalSearch = {
-    index: [],     // { zone, figureIndex, figure, part, haystack }
+    index: [],     // { zone, figureIndex, figure, part, haystack } de la máquina activa
     ready: null,   // promesa de construcción del índice
+    cache: new Map(), // índice ya construido por máquina
     results: [],
     active: -1,
 
     init() {
-      this.ready = this.buildIndex();
       this.bindEvents();
     },
 
-    async buildIndex() {
-      const jobs = MachineView.data.zones
+    // Al cambiar de máquina: índice propio de esa máquina (se reutiliza si ya se construyó)
+    reset() {
+      const id = current.id;
+      this.close();
+      els.globalSearch.value = "";
+      if (!this.cache.has(id)) {
+        const index = [];
+        this.cache.set(id, { index, ready: this.buildIndex(MachineView.data, index) });
+      }
+      ({ index: this.index, ready: this.ready } = this.cache.get(id));
+    },
+
+    async buildIndex(machineData, index) {
+      const jobs = machineData.zones
         .filter((z) => z.status === "available")
         .flatMap((zone) =>
           figuresOf(zone).map(async (figure, figureIndex) => {
@@ -1281,7 +2093,7 @@
           })
         );
       const settled = await Promise.allSettled(jobs);
-      settled.forEach((r) => (r.status === "fulfilled" ? this.index.push(...r.value) : console.error(r.reason)));
+      settled.forEach((r) => (r.status === "fulfilled" ? index.push(...r.value) : console.error(r.reason)));
     },
 
     // Todas las palabras deben aparecer. Orden: Part Number exacto, Part Number que empieza igual, resto.
@@ -1366,7 +2178,7 @@
       const params = new URLSearchParams({ item: r.part.item, pn: r.part.partNumber });
       this.close();
       els.globalSearch.value = "";
-      location.hash = `#/zona/${r.zone.id}/${r.figureIndex + 1}?${params}`;
+      location.hash = `${zoneHref(r.zone, r.figureIndex + 1)}?${params}`;
     },
 
     bindEvents() {
@@ -1406,14 +2218,14 @@
         }
       });
 
-      // Botones de ejemplo bajo el buscador
-      document.querySelectorAll("[data-example]").forEach((btn) =>
-        btn.addEventListener("click", () => {
-          els.globalSearch.value = btn.dataset.example;
-          els.globalSearch.focus();
-          this.update();
-        })
-      );
+      // Botones de ejemplo bajo el buscador (cambian con la máquina)
+      els.heroExamples.addEventListener("click", (e) => {
+        const btn = e.target.closest("[data-example]");
+        if (!btn) return;
+        els.globalSearch.value = btn.dataset.example;
+        els.globalSearch.focus();
+        this.update();
+      });
 
       // Cierra al hacer clic fuera
       document.addEventListener("click", (e) => {
@@ -1430,11 +2242,26 @@
   };
 
   async function route() {
-    // #/zona/<id>  o  #/zona/<id>/<n.º de figura, desde 1>
+    // #/<máquina>/zona/<id>  o  #/<máquina>/zona/<id>/<n.º de figura, desde 1>
     // Opcional: ?item=<n>&pn=<part number> selecciona ese repuesto (lo usa el buscador global)
-    const match = location.hash.match(/^#\/zona\/([\w-]+)(?:\/(\d+))?/);
+    const [path, query = ""] = location.hash.replace(/^#\/?/, "").split("?");
+    const segs = path.split("/").filter(Boolean);
+    const params = new URLSearchParams(query);
+
+    let machineId = null;
+    if (segs.length && machines.some((m) => m.id === segs[0])) machineId = segs.shift();
+    // Sin máquina en la ruta: la portada abre la última elegida; los enlaces antiguos #/zona/... son de la T7
+    if (!machineId) machineId = segs.length ? defaultId : savedMachineId() || defaultId;
+    try {
+      await setMachine(machineId);
+    } catch (err) {
+      console.error(err);
+      showToast("No se pudieron cargar los datos de la máquina");
+      return;
+    }
+
+    const match = segs[0] === "zona" && segs[1] ? [null, segs[1], segs[2]] : null;
     const zone = match && MachineView.zone(match[1]);
-    const params = new URLSearchParams(location.hash.split("?")[1] || "");
 
     if (zone && zone.status === "available") {
       const figures = figuresOf(zone);
@@ -1445,7 +2272,7 @@
       } catch (err) {
         console.error(err);
         showToast(`No se pudo cargar el despiece de ${zone.name}`);
-        location.hash = "#/";
+        location.hash = home();
         return;
       }
       renderFigureTabs(zone, index);
@@ -1464,7 +2291,7 @@
         );
       }
     } else {
-      if (match) history.replaceState(null, "", "#/"); // zona inexistente o no disponible
+      if (match) history.replaceState(null, "", home()); // zona inexistente o no disponible
       setBreadcrumb(null);
       showView(els.machineView);
     }
@@ -1494,10 +2321,28 @@
 
     // Ambas vistas arrancan ocultas para que la primera tenga animación de entrada
     els.machineView.hidden = true;
-    await MachineView.init();
+    const registry = await loadJSON(MACHINES_URL);
+    machines = registry.machines;
+    defaultId = registry.default || machines[0].id;
+    MachineView.init();
     GlobalSearch.init();
+
+    // Selector de máquina en la cabecera: abre la portada de la máquina elegida
+    els.machineSwitch.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-machine]");
+      if (btn && btn.dataset.machine !== current.id) location.hash = `#/${btn.dataset.machine}/`;
+    });
+    els.machineSwitch.addEventListener("keydown", (e) => {
+      if (!["ArrowLeft", "ArrowRight"].includes(e.key)) return;
+      e.preventDefault();
+      const i = machines.indexOf(current) + (e.key === "ArrowRight" ? 1 : -1);
+      const next = machines[(i + machines.length) % machines.length];
+      location.hash = `#/${next.id}/`;
+      setTimeout(() => els.machineSwitch.querySelector(`[data-machine="${next.id}"]`)?.focus(), 150);
+    });
+
     window.addEventListener("hashchange", route);
-    route();
+    await route();
   }
 
   init();

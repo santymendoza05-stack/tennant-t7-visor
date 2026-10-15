@@ -1,13 +1,17 @@
-# Visor de despiece · Tennant T7
+# Visor de despiece · Tennant T7 y T12
 
-Visor web interactivo de repuestos para la fregadora Tennant T7, basado en los diagramas 2D del manual de partes (9013606).
+Visor web interactivo de repuestos para las fregadoras Tennant **T7** (manual de partes 9013606) y **T12** (manual 9012729), basado en los diagramas 2D de cada manual.
 
 **Sitio:** https://santymendoza05-stack.github.io/tennant-t7-visor/
 
 ## Navegación
 
-1. **Nivel 1 · T7 completa:** vista general de la máquina con las zonas clave y un **buscador global** que busca en todas las zonas. Al elegir un resultado se abre la zona, se selecciona el repuesto y se ilumina su punto en el diagrama.
+El **selector de la cabecera** (Tennant T7 / Tennant T12) cambia el plano general, las zonas, los despieces y el buscador global a los de la máquina elegida. El navegador recuerda la última máquina usada.
+
+1. **Nivel 1 · Máquina completa:** vista general de la máquina con las zonas clave y un **buscador global** que busca en todas las zonas. Al elegir un resultado se abre la zona, se selecciona el repuesto y se ilumina su punto en el diagrama.
 2. **Nivel 2 · Despiece:** diagrama con puntos numerados, buscador y tabla de repuestos con "Copiar Ref".
+
+### Tennant T7 · manual 9013606
 
 | Zona | Figura del manual | Datos |
 |---|---|---|
@@ -25,6 +29,29 @@ Visor web interactivo de repuestos para la fregadora Tennant T7, basado en los d
 | Sistema de Baterías y Alimentación | Fig. 32 · Battery Group, 235Ah (S/N 10523206-) | `data/battery_group.json` |
 | Mecanismo de Elevación de Racleta | Fig. 34 · Rear Squeegee Lift Group, Disk Scrub Head<br>Fig. 35 · Rear Squeegee Lift Group, Cylindrical Scrub Head | `data/squeegee_lift.json`<br>`data/squeegee_lift_cyl.json` |
 
+### Tennant T12 · manual 9012729 (S/N 30000000-39999999)
+
+Datos en `data/t12/` e imágenes en `assets/t12/`.
+
+| Zona | Figura del manual |
+|---|---|
+| Racleta Trasera / Escobillas de Secado | Fig. 21 · Rear Squeegee Kit |
+| Cabezal de Cepillos | Fig. 12 · Disk<br>Fig. 13 · Cylindrical Frame<br>Fig. 14 · Cylindrical Drive Motor |
+| Escobillas Laterales del Cabezal | Fig. 15 · Right Hand<br>Fig. 16 · Left Hand |
+| Mecanismo de Elevación del Cabezal | Fig. 11 · Scrub Head Lift Group |
+| Mecanismo de Elevación de Racleta | Fig. 20 · Rear Squeegee Lift Group |
+| Chasis y Ruedas | Fig. 3 · Main Frame and Wheels Group |
+| Parachoques y Puerta Lateral | Fig. 4 · Front Bumper and Side Door Group |
+| Asiento y Soporte | Fig. 5 · Seat Support Group<br>Fig. 6 · Seat Group, Standard |
+| Dirección y Panel de Instrumentos | Fig. 8 · T12<br>Fig. 9 · T12XP |
+| Cubierta Frontal y Pedal | Fig. 10 · Front Cover and Directional Pedal Group |
+| Tanque de Recuperación | Fig. 17 · Recovery Tank Group |
+| Motor de Aspiración | Fig. 18 · Vacuum Fan Group |
+| Tanque de Solución | Fig. 19 · Solution Tank Group |
+| Tarjeta de Control | Fig. 22 · Electrical Circuit Board Group |
+| Contactor y Cableado | Fig. 23 · Electrical Contactor and Wires Group |
+| Sistema de Baterías | Fig. 24 · Battery Group, 240Ah |
+
 ## Uso local
 
 ```
@@ -35,8 +62,8 @@ Luego abre http://localhost:8000. También funciona abriendo `index.html` con do
 
 ## Agregar o editar una zona
 
-1. Crea el JSON de la figura en `data/`, con el mismo formato que los existentes, y su imagen en `assets/`.
-2. Regístrala en `data/machine.json`: `"status": "available"` y `"data"`, o `"figures"` si tiene varias.
+1. Crea el JSON de la figura con el mismo formato que los existentes (`data/` para la T7, `data/t12/` para la T12) y su imagen en `assets/` (o `assets/t12/`).
+2. Regístrala en el `machine.json` de la máquina (`data/machine.json` o `data/t12/machine.json`): `"status": "available"` y `"data"`, o `"figures"` si tiene varias.
 3. Sincroniza la copia de respaldo:
    ```
    node tools/sync-fallback.js
@@ -45,10 +72,10 @@ Luego abre http://localhost:8000. También funciona abriendo `index.html` con do
 
 Para calibrar la posición de un punto, haz **Alt+clic** sobre el diagrama. Eso copia las coordenadas en formato JSON.
 
+## Agregar otra máquina
+
+Añádela a `data/machines.json` con su `id`, `name`, `short`, `manual`, la ruta a su `machine.json` y las búsquedas de ejemplo (`examples`). El selector de la cabecera la muestra automáticamente; su portada queda en `#/<id>/`.
+
 ---
 
-Diagramas y referencias © Tennant Company, tomados del manual de partes de la T7. Este proyecto es una herramienta de consulta y no está afiliado a Tennant.
-
-## Guía 3D (experimental)
-
-`guia-3d.html` es una escena 3D esquemática (Three.js r128) de la T7 y la T12 con algunos repuestos de ejemplo, enlazada desde el botón **Guía 3D** de la barra superior. Los modelos se construyen en código combinando geometrías de Three.js (chasis, ruedas, tanques, consola con volante, asiento, cabezal de restregado de discos en la T7 y cilíndrico en la T12, racleta trasera curva con manguera de aspiración); son esquemáticos y no reproducen medidas exactas. Los códigos de esa página **no** salen del manual 9013606 (salvo 1037821) y deben verificarse antes de pedir repuestos.
+Diagramas y referencias © Tennant Company, tomados de los manuales de partes de la T7 y la T12. Este proyecto es una herramienta de consulta y no está afiliado a Tennant.

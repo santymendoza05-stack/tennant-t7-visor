@@ -1,0 +1,273 @@
+{
+  "machine": "Tennant T12",
+  "group": "Main Frame and Wheels Group",
+  "figure": "Fig. 3",
+  "image": "assets/t12/main_frame.png",
+  "categories": [
+    "Tornillería",
+    "Pasadores y bujes",
+    "Mangueras y sujeción",
+    "Eléctrico",
+    "Ruedas",
+    "Estructura y cubiertas"
+  ],
+  "parts": [
+    {
+      "item": 1,
+      "partNumber": "1200025",
+      "description": "Frame Wldt [T12]",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 21.4, "y": 28.9 }
+      ]
+    },
+    {
+      "item": 2,
+      "partNumber": "71579",
+      "description": "Strap, Static, W/Grommet, .19 1.1w 25.0l",
+      "category": "Mangueras y sujeción",
+      "qty": 1,
+      "hotspots": [
+        { "x": 69.2, "y": 57.9 }
+      ]
+    },
+    {
+      "item": 3,
+      "partNumber": "09011",
+      "description": "Screw, Hex, M8 X 1.25 X 30, Ss",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 58.8, "y": 46.3 }
+      ]
+    },
+    {
+      "item": 4,
+      "partNumber": "41141",
+      "description": "Washer, Lock, Int-Ext, 0.31",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 65.1, "y": 45.3 }
+      ]
+    },
+    {
+      "item": 5,
+      "partNumber": "01685",
+      "description": "Washer, Flat, 0.38b 0.88d .08, Ss",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 69.0, "y": 42.9 }
+      ]
+    },
+    {
+      "item": 6,
+      "partNumber": "1200298",
+      "description": "Stabilizer Wldt [Cassoday]",
+      "category": "Estructura y cubiertas",
+      "qty": 2,
+      "hotspots": [
+        { "x": 59.5, "y": 68.5 },
+        { "x": 15.4, "y": 27.1 }
+      ]
+    },
+    {
+      "item": 7,
+      "partNumber": "12317",
+      "description": "Screw, Hex, M10 X 1.50 X 30, Ss",
+      "category": "Tornillería",
+      "qty": 6,
+      "hotspots": [
+        { "x": 58.1, "y": 53.5 },
+        { "x": 6.3, "y": 22.8 }
+      ]
+    },
+    {
+      "item": 8,
+      "partNumber": "01686",
+      "description": "Washer, Flat, 0.44b 1.00d .08, Ss",
+      "category": "Tornillería",
+      "qty": 6,
+      "hotspots": [
+        { "x": 54.7, "y": 51.1 },
+        { "x": 10.6, "y": 24.7 }
+      ]
+    },
+    {
+      "item": 9,
+      "partNumber": "1200150",
+      "description": "Wheel, Drive, Ac (See Breakdown)",
+      "category": "Ruedas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 11.3, "y": 80.3 }
+      ]
+    },
+    {
+      "item": 10,
+      "partNumber": "1200203",
+      "description": "Steer-Control Assy, Wheel Drive (See Breakdown)",
+      "category": "Ruedas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 10.4, "y": 65.6 }
+      ]
+    },
+    {
+      "item": 11,
+      "partNumber": "09028",
+      "description": "Screw, Hex, M10 X 1.50 X 25, Ss",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 38.1, "y": 75.5 }
+      ]
+    },
+    {
+      "item": 12,
+      "partNumber": "01686",
+      "description": "Washer, Flat, 0.44b 1.00d .08, Ss",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 37.4, "y": 71.2 }
+      ]
+    },
+    {
+      "item": 13,
+      "partNumber": "69234",
+      "description": "Clamp, Cable, Stl, 1.00d X 0.75w, 1hole",
+      "category": "Mangueras y sujeción",
+      "qty": 2,
+      "hotspots": [
+        { "x": 39.8, "y": 78.8 }
+      ]
+    },
+    {
+      "item": 14,
+      "partNumber": "1020341",
+      "description": "Screw, Hex, M8 X 1.25 X 20, Ss, Sems",
+      "category": "Tornillería",
+      "qty": 3,
+      "hotspots": [
+        { "x": 54.6, "y": 89.6 },
+        { "x": 80.8, "y": 52.9 }
+      ]
+    },
+    {
+      "item": 15,
+      "partNumber": "1060626",
+      "description": "Tire Assy, Solid, 300mm X 100mm, Ure",
+      "category": "Ruedas",
+      "qty": 2,
+      "hotspots": [
+        { "x": 16.2, "y": 14.2 },
+        { "x": 86.5, "y": 56.7 }
+      ]
+    },
+    {
+      "item": 16,
+      "partNumber": "1059019",
+      "description": "Ring, Retaining, Ext, 1.375od",
+      "category": "Pasadores y bujes",
+      "qty": 2,
+      "hotspots": [
+        { "x": 16.1, "y": 10.1 },
+        { "x": 90.5, "y": 52.6 }
+      ]
+    },
+    {
+      "item": 17,
+      "partNumber": "1057780",
+      "description": "Horn, 36vdc, 110dba",
+      "category": "Eléctrico",
+      "qty": 1,
+      "hotspots": [
+        { "x": 77.7, "y": 59.2 }
+      ]
+    },
+    {
+      "item": 18,
+      "partNumber": "82833",
+      "description": "Sleeve, Nyl, 1.22id 35.0l",
+      "category": "Pasadores y bujes",
+      "qty": 1,
+      "hotspots": [
+        { "x": 57.0, "y": 77.4 }
+      ]
+    },
+    {
+      "item": 19,
+      "partNumber": "09570",
+      "description": "Clamp, Cable, Stl, 0.9x1.8x0.62w, 1hole",
+      "category": "Mangueras y sujeción",
+      "qty": 1,
+      "hotspots": [
+        { "x": 49.8, "y": 46.5 }
+      ]
+    },
+    {
+      "item": 20,
+      "partNumber": "1034731",
+      "description": "Screw, Hex, M6 X 1.00 X 16, Ss, Sems",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 49.9, "y": 50.2 }
+      ]
+    },
+    {
+      "item": 21,
+      "partNumber": "130773",
+      "description": "Tie, Cable, Nyl, 11.0l, .14w, 3.0 Max. D",
+      "category": "Mangueras y sujeción",
+      "qty": 3,
+      "hotspots": [
+        { "x": 58.0, "y": 82.9 }
+      ]
+    },
+    {
+      "item": 22,
+      "partNumber": "1207171",
+      "description": "Rod, Sppt",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 64.0, "y": 86.8 }
+      ]
+    },
+    {
+      "item": 23,
+      "partNumber": "33924",
+      "description": "Washer, Flat, M10, Ss",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 64.2, "y": 91.7 }
+      ]
+    },
+    {
+      "item": 24,
+      "partNumber": "41358",
+      "description": "Screw, Soc, M10X1.50X35, 12.9",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 67.9, "y": 94.1 }
+      ]
+    },
+    {
+      "item": 25,
+      "partNumber": "9011872",
+      "description": "Cap, Hub, Wheel [For 1060626]",
+      "category": "Mangueras y sujeción",
+      "qty": 2,
+      "hotspots": [
+        { "x": 93.7, "y": 54.4 },
+        { "x": 10.8, "y": 8.3 }
+      ]
+    }
+  ]
+}

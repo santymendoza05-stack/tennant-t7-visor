@@ -1,0 +1,21 @@
+{
+  "default": "t7",
+  "machines": [
+    {
+      "id": "t7",
+      "name": "Tennant T7",
+      "short": "T7",
+      "manual": "9013606",
+      "data": "data/machine.json",
+      "examples": ["1010560", "motor", "squeegee blade", "sensor level"]
+    },
+    {
+      "id": "t12",
+      "name": "Tennant T12",
+      "short": "T12",
+      "manual": "9012729",
+      "data": "data/t12/machine.json",
+      "examples": ["1200384", "motor", "squeegee blade", "battery"]
+    }
+  ]
+}

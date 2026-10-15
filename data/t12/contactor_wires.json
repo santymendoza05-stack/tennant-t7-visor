@@ -1,0 +1,318 @@
+{
+  "machine": "Tennant T12",
+  "group": "Electrical Contactor and Wires Group",
+  "figure": "Fig. 23",
+  "image": "assets/t12/contactor_wires.png",
+  "categories": [
+    "Tornillería",
+    "Eléctrico",
+    "Etiquetas",
+    "Estructura y cubiertas"
+  ],
+  "parts": [
+    {
+      "item": 1,
+      "partNumber": "1200897",
+      "description": "Plate, Electrical",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 85.8, "y": 45.5 }
+      ]
+    },
+    {
+      "item": 2,
+      "partNumber": "1020341",
+      "description": "Screw, Hex, M8 X 1.25 X 20, Ss, Sems",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 69.8, "y": 55.8 }
+      ]
+    },
+    {
+      "item": 3,
+      "partNumber": "1200913",
+      "description": "Label, Circuitbreaker",
+      "category": "Etiquetas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 48.6, "y": 30.0 }
+      ]
+    },
+    {
+      "item": 4,
+      "partNumber": "76062",
+      "description": "Stand-Off, Wir, 0.25, Insulator, Panel",
+      "category": "Tornillería",
+      "qty": 3,
+      "hotspots": [
+        { "x": 84.3, "y": 58.5 },
+        { "x": 68.1, "y": 51.3 }
+      ]
+    },
+    {
+      "item": 5,
+      "partNumber": "01684",
+      "description": "Washer, Flat, 0.27b 0.69d .05, Ss",
+      "category": "Tornillería",
+      "qty": 3,
+      "hotspots": [
+        { "x": 93.1, "y": 45.3 },
+        { "x": 90.6, "y": 40.0 }
+      ]
+    },
+    {
+      "item": 6,
+      "partNumber": "58670",
+      "description": "Screw, Hex, .25-20 X 0.50, Nl",
+      "category": "Tornillería",
+      "qty": 3,
+      "hotspots": [
+        { "x": 97.7, "y": 43.8 },
+        { "x": 95.4, "y": 37.8 }
+      ]
+    },
+    {
+      "item": 7,
+      "partNumber": "41702",
+      "description": "Rod, Thrd, Full, .25-20 01.5l",
+      "category": "Estructura y cubiertas",
+      "qty": 3,
+      "hotspots": [
+        { "x": 78.8, "y": 59.9 },
+        { "x": 62.8, "y": 53.0 }
+      ]
+    },
+    {
+      "item": 8,
+      "partNumber": "32490",
+      "description": "Washer, Flat, 0.25, Std",
+      "category": "Tornillería",
+      "qty": 6,
+      "hotspots": [
+        { "x": 58.5, "y": 68.8 },
+        { "x": 71.1, "y": 62.7 },
+        { "x": 42.5, "y": 62.0 },
+        { "x": 49.6, "y": 56.9 }
+      ]
+    },
+    {
+      "item": 9,
+      "partNumber": "32982",
+      "description": "Washer, Lock, Int, 0.25",
+      "category": "Tornillería",
+      "qty": 3,
+      "hotspots": [
+        { "x": 56.0, "y": 69.6 },
+        { "x": 39.7, "y": 62.8 }
+      ]
+    },
+    {
+      "item": 10,
+      "partNumber": "01690",
+      "description": "Nut, Hex, Std, .25-20",
+      "category": "Tornillería",
+      "qty": 6,
+      "hotspots": [
+        { "x": 52.8, "y": 70.5 },
+        { "x": 74.7, "y": 61.2 },
+        { "x": 36.6, "y": 63.9 },
+        { "x": 57.9, "y": 55.3 }
+      ]
+    },
+    {
+      "item": 11,
+      "partNumber": "397609",
+      "description": "Contactor, 36vdc, No",
+      "category": "Eléctrico",
+      "qty": 1,
+      "hotspots": [
+        { "x": 29.3, "y": 52.0 }
+      ]
+    },
+    {
+      "item": 12,
+      "partNumber": "09738",
+      "description": "Screw, Hex, M5 X 0.80 X 12, Ss",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 96.3, "y": 23.1 }
+      ]
+    },
+    {
+      "item": 13,
+      "partNumber": "140011",
+      "description": "Washer, Flat, 0.21b 0.45d .03, Ss",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 92.1, "y": 24.5 },
+        { "x": 14.4, "y": 58.4 }
+      ]
+    },
+    {
+      "item": 14,
+      "partNumber": "09739",
+      "description": "Nut, Hex, Lock, M5 X 0.80, Nl, Ss",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 10.2, "y": 59.5 }
+      ]
+    },
+    {
+      "item": 15,
+      "partNumber": "87318",
+      "description": "Fuse, 080a, 0.88 2.4l, 125volt,Slow-Blow",
+      "category": "Eléctrico",
+      "qty": 1,
+      "hotspots": [
+        { "x": 41.5, "y": 46.9 }
+      ]
+    },
+    {
+      "item": 16,
+      "partNumber": "1016314",
+      "description": "Boot, 90deg .50id 1.00id 2.50l, Red",
+      "category": "Estructura y cubiertas",
+      "qty": 4,
+      "hotspots": [
+        { "x": 27.2, "y": 66.2 },
+        { "x": 23.0, "y": 30.2 }
+      ]
+    },
+    {
+      "item": 17,
+      "partNumber": "1069894",
+      "description": "Cable, 06ga 5.5l Brown .25ring /.312ring",
+      "category": "Eléctrico",
+      "qty": 1,
+      "hotspots": [
+        { "x": 27.4, "y": 42.9 }
+      ]
+    },
+    {
+      "item": 18,
+      "partNumber": "1069897",
+      "description": "Cable, Battery, 4ga, .25ring / .312ring",
+      "category": "Eléctrico",
+      "qty": 1,
+      "hotspots": [
+        { "x": 18.3, "y": 95.9 }
+      ]
+    },
+    {
+      "item": 19,
+      "partNumber": "33944",
+      "description": "Screw, Pan, Phl, M6 X 1.00 X 35, 4.8",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 3.5, "y": 84.1 }
+      ]
+    },
+    {
+      "item": 20,
+      "partNumber": "1064184",
+      "description": "Circuitbreaker, 02.5a, Resetable",
+      "category": "Eléctrico",
+      "qty": 5,
+      "hotspots": [
+        { "x": 41.1, "y": 32.3 },
+        { "x": 37.9, "y": 44.3 }
+      ]
+    },
+    {
+      "item": 21,
+      "partNumber": "383724",
+      "description": "Circuitbreaker, 25.0a, Resetable",
+      "category": "Eléctrico",
+      "qty": 1,
+      "hotspots": [
+        { "x": 73.3, "y": 22.8 }
+      ]
+    },
+    {
+      "item": 22,
+      "partNumber": "1206757",
+      "description": "Circuitbreaker, 60.0a, resetable",
+      "category": "Eléctrico",
+      "qty": 1,
+      "hotspots": [
+        { "x": 73.2, "y": 27.5 }
+      ]
+    },
+    {
+      "item": 23,
+      "partNumber": "600437",
+      "description": "Switch, Snap, 15a, Rlr",
+      "category": "Eléctrico",
+      "qty": 1,
+      "hotspots": [
+        { "x": 36.2, "y": 20.9 }
+      ]
+    },
+    {
+      "item": 24,
+      "partNumber": "601359",
+      "description": "Plate, Backing, Switch",
+      "category": "Eléctrico",
+      "qty": 1,
+      "hotspots": [
+        { "x": 35.8, "y": 23.7 }
+      ]
+    },
+    {
+      "item": 25,
+      "partNumber": "06922",
+      "description": "Screw, Pan, Phl, M3 X 0.50 X 20, 4.8",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 35.8, "y": 26.1 }
+      ]
+    },
+    {
+      "item": 26,
+      "partNumber": "01754",
+      "description": "Nut, Hex, Std, M3 X 0",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 57.5, "y": 16.9 }
+      ]
+    },
+    {
+      "item": 27,
+      "partNumber": "1059169",
+      "description": "Cable Assy, 10ga .25ring /.31ring, 050a",
+      "category": "Eléctrico",
+      "qty": 1,
+      "hotspots": [
+        { "x": 92.6, "y": 7.9 }
+      ]
+    },
+    {
+      "item": 28,
+      "partNumber": "25005",
+      "description": "Screw, Pan, Phl, 06-32 X 1.00, G1",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 52.8, "y": 15.0 }
+      ]
+    },
+    {
+      "item": 29,
+      "partNumber": "75939",
+      "description": "Nut, Hex, Lock, #06-32, Nl",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 88.2, "y": 14.0 }
+      ]
+    }
+  ]
+}

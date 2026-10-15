@@ -1,0 +1,249 @@
+{
+  "machine": "Tennant T12",
+  "group": "Seat Support Group",
+  "figure": "Fig. 5",
+  "image": "assets/t12/seat_support.png",
+  "categories": [
+    "Tornillería",
+    "Pasadores y bujes",
+    "Etiquetas",
+    "Estructura y cubiertas"
+  ],
+  "parts": [
+    {
+      "item": 1,
+      "partNumber": "9011057",
+      "description": "Plate Wldt, Mtg, W/Label, Aftmkt, Na",
+      "category": "Etiquetas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 66.2, "y": 74.7 }
+      ]
+    },
+    {
+      "item": 1,
+      "partNumber": "9011058",
+      "description": "Plate Wldt, Mtg, W/Label, Aftmkt, JP",
+      "category": "Etiquetas",
+      "qty": 1,
+      "hotspots": []
+    },
+    {
+      "item": 2,
+      "partNumber": "1020341",
+      "description": "Screw, Hex, M8 X 1.25 X 20, Ss, Sems",
+      "category": "Tornillería",
+      "qty": 10,
+      "hotspots": [
+        { "x": 53.9, "y": 68.8 },
+        { "x": 40.7, "y": 78.1 }
+      ]
+    },
+    {
+      "item": 3,
+      "partNumber": "1200827",
+      "description": "Link, Oprtr Station",
+      "category": "Estructura y cubiertas",
+      "qty": 2,
+      "hotspots": [
+        { "x": 73.0, "y": 60.9 },
+        { "x": 48.3, "y": 48.3 }
+      ]
+    },
+    {
+      "item": 4,
+      "partNumber": "1200828",
+      "description": "Link, Oprtr Station",
+      "category": "Estructura y cubiertas",
+      "qty": 2,
+      "hotspots": [
+        { "x": 94.0, "y": 63.1 },
+        { "x": 34.4, "y": 41.7 }
+      ]
+    },
+    {
+      "item": 5,
+      "partNumber": "1201103",
+      "description": "Link Wldt, Oprtr Station",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 39.4, "y": 27.0 }
+      ]
+    },
+    {
+      "item": 6,
+      "partNumber": "1202957",
+      "description": "Grip, Handle, .25d .90l Yel",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 36.5, "y": 25.9 }
+      ]
+    },
+    {
+      "item": 7,
+      "partNumber": "1202156",
+      "description": "Sleeve, Flange",
+      "category": "Pasadores y bujes",
+      "qty": 9,
+      "hotspots": [
+        { "x": 75.8, "y": 62.3 },
+        { "x": 87.0, "y": 66.1 },
+        { "x": 92.4, "y": 52.0 },
+        { "x": 83.2, "y": 53.9 },
+        { "x": 33.8, "y": 38.6 },
+        { "x": 44.1, "y": 46.5 },
+        { "x": 56.4, "y": 36.9 },
+        { "x": 51.3, "y": 32.4 }
+      ]
+    },
+    {
+      "item": 8,
+      "partNumber": "19066",
+      "description": "Washer, Flat, 0.25b 0.56d .05, Pl, 10",
+      "category": "Tornillería",
+      "qty": 10,
+      "hotspots": [
+        { "x": 70.3, "y": 59.4 },
+        { "x": 83.9, "y": 65.0 },
+        { "x": 95.1, "y": 53.8 },
+        { "x": 86.5, "y": 55.9 },
+        { "x": 32.0, "y": 36.2 },
+        { "x": 39.6, "y": 42.8 },
+        { "x": 50.7, "y": 49.8 },
+        { "x": 52.8, "y": 35.4 },
+        { "x": 47.9, "y": 30.5 }
+      ]
+    },
+    {
+      "item": 9,
+      "partNumber": "08716",
+      "description": "Screw, Hex, M6 X 1.00 X 20, Ss",
+      "category": "Tornillería",
+      "qty": 9,
+      "hotspots": [
+        { "x": 67.6, "y": 57.9 },
+        { "x": 81.1, "y": 63.6 },
+        { "x": 97.7, "y": 55.0 },
+        { "x": 29.5, "y": 34.6 },
+        { "x": 42.1, "y": 44.2 },
+        { "x": 53.8, "y": 50.9 },
+        { "x": 45.0, "y": 28.4 }
+      ]
+    },
+    {
+      "item": 10,
+      "partNumber": "08708",
+      "description": "Nut, Hex, Lock, M6 X 1.00, Nl",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 48.2, "y": 37.8 }
+      ]
+    },
+    {
+      "item": 11,
+      "partNumber": "1200210",
+      "description": "Channel Wldt, Seat",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 64.3, "y": 55.2 }
+      ]
+    },
+    {
+      "item": 12,
+      "partNumber": "20802",
+      "description": "Bumper, Rbr, 1.0d 0.38th .25-20",
+      "category": "Estructura y cubiertas",
+      "qty": 2,
+      "hotspots": [
+        { "x": 88.1, "y": 39.5 },
+        { "x": 97.0, "y": 49.4 }
+      ]
+    },
+    {
+      "item": 13,
+      "partNumber": "32520",
+      "description": "Nut, Hex, Jam, .25-20",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 88.1, "y": 36.7 },
+        { "x": 97.3, "y": 46.0 }
+      ]
+    },
+    {
+      "item": 14,
+      "partNumber": "381962",
+      "description": "Handle, Container",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 55.6, "y": 7.0 }
+      ]
+    },
+    {
+      "item": 15,
+      "partNumber": "382726",
+      "description": "Screw, Pan, Phl, M6 X 1.00 X 25, 4.8",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 55.5, "y": 2.7 }
+      ]
+    },
+    {
+      "item": 16,
+      "partNumber": "41178",
+      "description": "Washer, Flat, 0.25, Fendr",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 95.9, "y": 1.5 }
+      ]
+    },
+    {
+      "item": 17,
+      "partNumber": "08712",
+      "description": "Nut, Hex, Lock, M6 X 1.00, Nl, Ss",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 95.7, "y": 4.1 }
+      ]
+    },
+    {
+      "item": 18,
+      "partNumber": "9009632",
+      "description": "Part Kit, Station, Oprtn, Plstc [2Pc=1Kit]",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "note": "S/N 10000000-19999999",
+      "hotspots": [
+        { "x": 30.9, "y": 19.0 }
+      ]
+    },
+    {
+      "item": 19,
+      "partNumber": "1200612",
+      "description": "Angle, Support",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 15.8, "y": 85.7 }
+      ]
+    },
+    {
+      "item": 20,
+      "partNumber": "09026",
+      "description": "Screw, Hex, M8 X 1.25 X 40, Ss",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 63.1, "y": 52.4 }
+      ]
+    }
+  ]
+}

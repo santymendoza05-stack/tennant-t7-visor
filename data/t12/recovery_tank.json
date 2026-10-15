@@ -1,0 +1,329 @@
+{
+  "machine": "Tennant T12",
+  "group": "Recovery Tank Group",
+  "figure": "Fig. 17",
+  "image": "assets/t12/recovery_tank.png",
+  "categories": [
+    "Tornillería",
+    "Pasadores y bujes",
+    "Mangueras y sujeción",
+    "Sellos y empaques",
+    "Eléctrico",
+    "Escobillas y hojas",
+    "Estructura y cubiertas"
+  ],
+  "parts": [
+    {
+      "item": 1,
+      "partNumber": "1037821",
+      "description": "Filter, Panl, Dust, 2.3 X 04.5 X 06.4",
+      "category": "Escobillas y hojas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 67.3, "y": 40.6 }
+      ]
+    },
+    {
+      "item": 2,
+      "partNumber": "1026014",
+      "description": "Screen, Vacuum",
+      "category": "Escobillas y hojas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 57.0, "y": 32.1 }
+      ]
+    },
+    {
+      "item": 3,
+      "partNumber": "1201157",
+      "description": "Plate, Mtg, Gasket",
+      "category": "Sellos y empaques",
+      "qty": 1,
+      "hotspots": [
+        { "x": 67.5, "y": 18.3 }
+      ]
+    },
+    {
+      "item": 4,
+      "partNumber": "140825",
+      "description": "Screw, Pan, Phl, 06 X 0.50, Fmg/Ab, Blk",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 62.4, "y": 29.5 }
+      ]
+    },
+    {
+      "item": 5,
+      "partNumber": "1016392",
+      "description": "Gasket, Ure, .50, 03.74w 05.31l, Adh",
+      "category": "Sellos y empaques",
+      "qty": 1,
+      "hotspots": [
+        { "x": 67.1, "y": 28.2 }
+      ]
+    },
+    {
+      "item": 6,
+      "partNumber": "1201340",
+      "description": "Tray, Debris",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 20.1, "y": 35.7 }
+      ]
+    },
+    {
+      "item": 7,
+      "partNumber": "1066720",
+      "description": "Sleeve, P/M, 0.32b 0.44d 0.2l [430ss]",
+      "category": "Pasadores y bujes",
+      "qty": 2,
+      "hotspots": [
+        { "x": 22.7, "y": 38.0 }
+      ]
+    },
+    {
+      "item": 8,
+      "partNumber": "09737",
+      "description": "Screw, Pan, Phl, M8 X 1.25 X 20, 4.8",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 23.9, "y": 40.4 }
+      ]
+    },
+    {
+      "item": 9,
+      "partNumber": "9010920",
+      "description": "Recovery Tank, Afmkt [T12]",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 20.3, "y": 46.1 }
+      ]
+    },
+    {
+      "item": 9,
+      "partNumber": "9011173",
+      "description": "Recovery Tank, Afmkt, Jp [T12]",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": []
+    },
+    {
+      "item": 10,
+      "partNumber": "1200458",
+      "description": "Bracket, Mtg, Tank",
+      "category": "Estructura y cubiertas",
+      "qty": 3,
+      "hotspots": [
+        { "x": 18.4, "y": 67.7 },
+        { "x": 30.0, "y": 74.1 }
+      ]
+    },
+    {
+      "item": 11,
+      "partNumber": "1020341",
+      "description": "Screw, Hex, M8 X 1.25 X 20, Ss, Sems",
+      "category": "Tornillería",
+      "qty": 18,
+      "hotspots": [
+        { "x": 12.7, "y": 70.6 },
+        { "x": 22.8, "y": 65.2 },
+        { "x": 26.6, "y": 76.6 },
+        { "x": 33.1, "y": 70.7 },
+        { "x": 42.5, "y": 74.7 }
+      ]
+    },
+    {
+      "item": 12,
+      "partNumber": "1054823",
+      "description": "Angle, Mtg, Tank",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 51.3, "y": 88.3 },
+        { "x": 27.3, "y": 34.8 },
+        { "x": 20.6, "y": 24.9 }
+      ]
+    },
+    {
+      "item": 13,
+      "partNumber": "385685",
+      "description": "Sensor, Level, Liq, 14vdc 01a .62-11",
+      "category": "Eléctrico",
+      "qty": 1,
+      "hotspots": [
+        { "x": 62.2, "y": 62.0 }
+      ]
+    },
+    {
+      "item": 14,
+      "partNumber": "1019285",
+      "description": "Bracket, Protector, Float Switch",
+      "category": "Eléctrico",
+      "qty": 1,
+      "hotspots": [
+        { "x": 64.7, "y": 58.7 }
+      ]
+    },
+    {
+      "item": 15,
+      "partNumber": "1200746",
+      "description": "Clip, Hose, Plstc 1.88-2.12",
+      "category": "Mangueras y sujeción",
+      "qty": 3,
+      "hotspots": [
+        { "x": 86.7, "y": 42.8 },
+        { "x": 87.1, "y": 32.3 },
+        { "x": 72.9, "y": 26.0 }
+      ]
+    },
+    {
+      "item": 16,
+      "partNumber": "49697",
+      "description": "Screw, Pan, Phl, M4 X 0.70 X 10, Ss",
+      "category": "Tornillería",
+      "qty": 6,
+      "hotspots": [
+        { "x": 91.4, "y": 40.7 },
+        { "x": 91.0, "y": 30.6 },
+        { "x": 77.3, "y": 23.9 }
+      ]
+    },
+    {
+      "item": 17,
+      "partNumber": "9010921",
+      "description": "Cover, Recovery Tank, Afmkt [T12]",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 66.2, "y": 3.6 }
+      ]
+    },
+    {
+      "item": 18,
+      "partNumber": "1200519",
+      "description": "Bracket, Mtg, Cover",
+      "category": "Estructura y cubiertas",
+      "qty": 2,
+      "hotspots": [
+        { "x": 30.2, "y": 31.4 },
+        { "x": 24.6, "y": 21.5 }
+      ]
+    },
+    {
+      "item": 19,
+      "partNumber": "1057214",
+      "description": "Plate, Arm, Prop",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 48.4, "y": 17.7 }
+      ]
+    },
+    {
+      "item": 20,
+      "partNumber": "360460",
+      "description": "Sleeve, P/M, 0.34b 0.63d 0.4l, Ss / Oil",
+      "category": "Pasadores y bujes",
+      "qty": 1,
+      "hotspots": [
+        { "x": 35.0, "y": 23.6 }
+      ]
+    },
+    {
+      "item": 21,
+      "partNumber": "12333",
+      "description": "Screw, Hex, M8 X 1.25 X 25, Ss, Nl",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 44.8, "y": 28.2 }
+      ]
+    },
+    {
+      "item": 22,
+      "partNumber": "1017218",
+      "description": "Washer, Flat, 0.32b 1.00d .12, Ss",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 39.4, "y": 26.7 },
+        { "x": 43.1, "y": 17.7 }
+      ]
+    },
+    {
+      "item": 23,
+      "partNumber": "230735",
+      "description": "Sleeve, P/M, Flng, 0.33b 0.75/0.50d 0.8l",
+      "category": "Pasadores y bujes",
+      "qty": 1,
+      "hotspots": [
+        { "x": 52.0, "y": 21.2 }
+      ]
+    },
+    {
+      "item": 24,
+      "partNumber": "59658",
+      "description": "Screw, Hex, M8 X 1.25 X 35, Nl, Ss",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 37.9, "y": 15.9 }
+      ]
+    },
+    {
+      "item": 25,
+      "partNumber": "1200834",
+      "description": "Hose Assy, Drain, 2.0 Id X 32.2 L, Blk (Solution Tank)",
+      "category": "Mangueras y sujeción",
+      "qty": 1,
+      "hotspots": [
+        { "x": 96.8, "y": 61.9 }
+      ]
+    },
+    {
+      "item": 26,
+      "partNumber": "1201434",
+      "description": "Clamp, Hose, Wormdrive, 4.63-5.50, 0.5w",
+      "category": "Mangueras y sujeción",
+      "qty": 2,
+      "hotspots": [
+        { "x": 91.0, "y": 63.6 },
+        { "x": 73.4, "y": 37.0 }
+      ]
+    },
+    {
+      "item": 27,
+      "partNumber": "1200737",
+      "description": "Hose Assy, Drain, 2.0 Id X 26.2l, Blk (Recovery Tank)",
+      "category": "Mangueras y sujeción",
+      "qty": 1,
+      "hotspots": [
+        { "x": 78.3, "y": 35.5 }
+      ]
+    },
+    {
+      "item": 28,
+      "partNumber": "1066063",
+      "description": "Plug, Hole, Rnd, 0.25H 0.43L, Brb, Nyl",
+      "category": "Mangueras y sujeción",
+      "qty": 1,
+      "hotspots": [
+        { "x": 28.3, "y": 38.1 }
+      ]
+    },
+    {
+      "item": 29,
+      "partNumber": "1066433",
+      "description": "Seal, Afmkt, Bulb, Dual, 08ft [F/.30gap]",
+      "category": "Sellos y empaques",
+      "qty": 1,
+      "hotspots": [
+        { "x": 6.0, "y": 59.3 }
+      ]
+    }
+  ]
+}

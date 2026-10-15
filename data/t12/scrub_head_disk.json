@@ -1,0 +1,316 @@
+{
+  "machine": "Tennant T12",
+  "group": "Scrub Head and Drive Motor Group, Disk",
+  "figure": "Fig. 12",
+  "image": "assets/t12/scrub_head_disk.png",
+  "categories": [
+    "Tornillería",
+    "Pasadores y bujes",
+    "Mangueras y sujeción",
+    "Motores y actuadores",
+    "Escobillas y hojas",
+    "Estructura y cubiertas"
+  ],
+  "parts": [
+    {
+      "item": 1,
+      "partNumber": "1202430",
+      "description": "Head Wldt, Scrbr, Disc",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 29.5, "y": 41.3 }
+      ]
+    },
+    {
+      "item": 2,
+      "partNumber": "1200168",
+      "description": "Motor, Ele, 36vdc 0315rpm",
+      "category": "Motores y actuadores",
+      "qty": 2,
+      "hotspots": [
+        { "x": 29.9, "y": 26.6 },
+        { "x": 68.7, "y": 37.2 }
+      ]
+    },
+    {
+      "item": 2,
+      "partNumber": "9009577",
+      "description": "Brush Kit, Motor",
+      "category": "Escobillas y hojas",
+      "qty": 2,
+      "hotspots": []
+    },
+    {
+      "item": 3,
+      "partNumber": "01685",
+      "description": "Washer, Flat, 0.38b 0.88d .08, Ss",
+      "category": "Tornillería",
+      "qty": 8,
+      "hotspots": [
+        { "x": 32.5, "y": 64.9 },
+        { "x": 46.7, "y": 76.2 }
+      ]
+    },
+    {
+      "item": 4,
+      "partNumber": "09011",
+      "description": "Screw, Hex, M8 X 1.25 X 30, Ss",
+      "category": "Tornillería",
+      "qty": 8,
+      "hotspots": [
+        { "x": 32.4, "y": 67.9 },
+        { "x": 46.6, "y": 78.9 }
+      ]
+    },
+    {
+      "item": 5,
+      "partNumber": "377364",
+      "description": "Hub, Drive, Brush, Disk, 0.75b [6t]",
+      "category": "Escobillas y hojas",
+      "qty": 2,
+      "hotspots": [
+        { "x": 33.8, "y": 81.9 },
+        { "x": 47.7, "y": 89.6 }
+      ]
+    },
+    {
+      "item": 6,
+      "partNumber": "00928",
+      "description": "Key, Sq, 0.25 X 0.25, 1.00l",
+      "category": "Pasadores y bujes",
+      "qty": 2,
+      "hotspots": [
+        { "x": 46.2, "y": 39.4 }
+      ]
+    },
+    {
+      "item": 7,
+      "partNumber": "09010",
+      "description": "Screw, Hex, M8 X 1.25 X 25, Ss",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 34.1, "y": 90.7 },
+        { "x": 47.7, "y": 97.8 }
+      ]
+    },
+    {
+      "item": 8,
+      "partNumber": "01685",
+      "description": "Washer, Flat, 0.38b 0.88d .08, Ss",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 34.0, "y": 87.7 },
+        { "x": 47.7, "y": 95.4 }
+      ]
+    },
+    {
+      "item": 9,
+      "partNumber": "41186",
+      "description": "Washer, Flat, Belleville, .31",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 34.1, "y": 85.4 },
+        { "x": 47.6, "y": 93.1 }
+      ]
+    },
+    {
+      "item": 10,
+      "partNumber": "1201053",
+      "description": "Skirt, Rbr, Front, Disc",
+      "category": "Escobillas y hojas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 24.4, "y": 65.3 }
+      ]
+    },
+    {
+      "item": 11,
+      "partNumber": "1201190",
+      "description": "Strip, Retainer, Front",
+      "category": "Escobillas y hojas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 18.1, "y": 78.2 }
+      ]
+    },
+    {
+      "item": 12,
+      "partNumber": "1201127",
+      "description": "Skirt, Rbr, Rear, Disc",
+      "category": "Escobillas y hojas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 93.0, "y": 52.4 }
+      ]
+    },
+    {
+      "item": 13,
+      "partNumber": "1201185",
+      "description": "Strip, Skirt, Rear, Disc",
+      "category": "Escobillas y hojas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 93.0, "y": 47.8 }
+      ]
+    },
+    {
+      "item": 14,
+      "partNumber": "01684",
+      "description": "Washer, Flat, 0.27b 0.69d .05, Ss",
+      "category": "Tornillería",
+      "qty": 11,
+      "hotspots": [
+        { "x": 80.2, "y": 40.8 },
+        { "x": 10.0, "y": 75.7 },
+        { "x": 38.4, "y": 71.8 },
+        { "x": 60.7, "y": 79.4 }
+      ]
+    },
+    {
+      "item": 15,
+      "partNumber": "09007",
+      "description": "Screw, Hex, M6 X 1.00 X 25, Ss",
+      "category": "Tornillería",
+      "qty": 9,
+      "hotspots": [
+        { "x": 85.0, "y": 38.9 },
+        { "x": 5.0, "y": 76.8 }
+      ]
+    },
+    {
+      "item": 16,
+      "partNumber": "08708",
+      "description": "Nut, Hex, Lock, M6 X 1.00, Nl",
+      "category": "Tornillería",
+      "qty": 9,
+      "hotspots": [
+        { "x": 25.8, "y": 57.6 },
+        { "x": 74.4, "y": 60.5 }
+      ]
+    },
+    {
+      "item": 17,
+      "partNumber": "1201215",
+      "description": "Tube, Distribution, Disc",
+      "category": "Mangueras y sujeción",
+      "qty": 1,
+      "hotspots": [
+        { "x": 51.0, "y": 5.2 }
+      ]
+    },
+    {
+      "item": 18,
+      "partNumber": "1054795",
+      "description": "Valve, Water, Solenoid, 36vdc Bm12/Bm12",
+      "category": "Mangueras y sujeción",
+      "qty": 1,
+      "hotspots": [
+        { "x": 68.7, "y": 21.8 }
+      ]
+    },
+    {
+      "item": 19,
+      "partNumber": "223198",
+      "description": "Screw, Hex, M5 X 0.80 X 10, Fmg",
+      "category": "Tornillería",
+      "qty": 6,
+      "hotspots": [
+        { "x": 68.7, "y": 18.5 },
+        { "x": 38.5, "y": 74.6 },
+        { "x": 60.9, "y": 81.8 },
+        { "x": 17.6, "y": 44.2 },
+        { "x": 48.9, "y": 61.0 }
+      ]
+    },
+    {
+      "item": 20,
+      "partNumber": "391365",
+      "description": "Fitting, Plstc, E90, Bm10/Bm10",
+      "category": "Mangueras y sujeción",
+      "qty": 1,
+      "hotspots": [
+        { "x": 76.5, "y": 34.5 }
+      ]
+    },
+    {
+      "item": 21,
+      "partNumber": "1015026",
+      "description": "Hose, Afmkt, Pvc, Brd, 0.62id, 03ft, Clr",
+      "category": "Mangueras y sujeción",
+      "qty": 1,
+      "hotspots": [
+        { "x": 72.4, "y": 23.4 },
+        { "x": 95.6, "y": 23.1 }
+      ]
+    },
+    {
+      "item": 22,
+      "partNumber": "63810",
+      "description": "Clamp, Hose, Wormdrive, 0.56-1.06d, .56w",
+      "category": "Mangueras y sujeción",
+      "qty": 4,
+      "hotspots": [
+        { "x": 67.6, "y": 32.7 },
+        { "x": 82.1, "y": 32.5 },
+        { "x": 87.7, "y": 7.2 }
+      ]
+    },
+    {
+      "item": 23,
+      "partNumber": "54333",
+      "description": "Clamp, Hose, Wormdrive, 0.31-0.88d, .31w",
+      "category": "Mangueras y sujeción",
+      "qty": 1,
+      "hotspots": [
+        { "x": 45.1, "y": 22.2 }
+      ]
+    },
+    {
+      "item": 24,
+      "partNumber": "1016354",
+      "description": "Clamp, Cable, Ss, 0.50d X 0.50w [Insul]",
+      "category": "Mangueras y sujeción",
+      "qty": 2,
+      "hotspots": [
+        { "x": 38.6, "y": 69.2 },
+        { "x": 60.7, "y": 77.2 }
+      ]
+    },
+    {
+      "item": 25,
+      "partNumber": "630371",
+      "description": "Fitting, Plstc, E90, Bm10/Pm08",
+      "category": "Mangueras y sujeción",
+      "qty": 1,
+      "hotspots": [
+        { "x": 92.2, "y": 5.1 }
+      ]
+    },
+    {
+      "item": 26,
+      "partNumber": "1205975",
+      "description": "Pin, Clevis, 0.37d X 5.00l",
+      "category": "Pasadores y bujes",
+      "qty": 2,
+      "hotspots": [
+        { "x": 61.7, "y": 73.0 },
+        { "x": 8.2, "y": 54.5 }
+      ]
+    },
+    {
+      "item": 27,
+      "partNumber": "08236",
+      "description": "Pin, Cotter, .156 X 1.25",
+      "category": "Pasadores y bujes",
+      "qty": 2,
+      "hotspots": [
+        { "x": 23.7, "y": 44.7 },
+        { "x": 48.9, "y": 63.7 }
+      ]
+    }
+  ]
+}

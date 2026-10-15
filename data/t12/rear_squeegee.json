@@ -1,0 +1,255 @@
+{
+  "machine": "Tennant T12",
+  "group": "Rear Squeegee Kit",
+  "figure": "Fig. 21",
+  "image": "assets/t12/rear_squeegee.png",
+  "categories": [
+    "Tornillería",
+    "Pasadores y bujes",
+    "Resortes",
+    "Mangueras y sujeción",
+    "Ruedas",
+    "Escobillas y hojas",
+    "Estructura y cubiertas"
+  ],
+  "parts": [
+    {
+      "item": 1,
+      "partNumber": "1200219",
+      "description": "Frame, Sqge, Outer",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 42.0, "y": 40.8 }
+      ]
+    },
+    {
+      "item": 2,
+      "partNumber": "1200218",
+      "description": "Frame, Sqge, Inner",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 20.9, "y": 65.8 }
+      ]
+    },
+    {
+      "item": 3,
+      "partNumber": "1200466",
+      "description": "Clamp Wldt, Retainer, Sqge",
+      "category": "Mangueras y sujeción",
+      "qty": 1,
+      "hotspots": [
+        { "x": 47.3, "y": 44.9 }
+      ]
+    },
+    {
+      "item": 4,
+      "partNumber": "363162",
+      "description": "Wheel, 04.0d 0.89w 0.64b",
+      "category": "Ruedas",
+      "qty": 2,
+      "hotspots": [
+        { "x": 17.6, "y": 17.9 },
+        { "x": 97.7, "y": 41.0 }
+      ]
+    },
+    {
+      "item": 5,
+      "partNumber": "363301",
+      "description": "Sleeve, P/M, 0.34b 0.63d 1.2l, Bnz",
+      "category": "Pasadores y bujes",
+      "qty": 2,
+      "hotspots": [
+        { "x": 23.0, "y": 11.8 },
+        { "x": 94.4, "y": 36.3 }
+      ]
+    },
+    {
+      "item": 6,
+      "partNumber": "49694",
+      "description": "Screw, Hex, M8 X 1.25 X 50, Ss",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 23.0, "y": 6.1 },
+        { "x": 94.6, "y": 29.2 }
+      ]
+    },
+    {
+      "item": 7,
+      "partNumber": "08713",
+      "description": "Nut, Hex, Lock, M8 X 1.25, Nl, Ss",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 22.6, "y": 34.4 },
+        { "x": 93.6, "y": 59.0 }
+      ]
+    },
+    {
+      "item": 8,
+      "partNumber": "1017218",
+      "description": "Washer, Flat, 0.32b 1.00d .12, Ss",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 23.0, "y": 8.8 },
+        { "x": 22.5, "y": 22.2 },
+        { "x": 94.5, "y": 32.5 },
+        { "x": 93.2, "y": 46.1 }
+      ]
+    },
+    {
+      "item": 9,
+      "partNumber": "1052532",
+      "description": "Grip, Lock",
+      "category": "Estructura y cubiertas",
+      "qty": 2,
+      "hotspots": [
+        { "x": 82.8, "y": 15.0 },
+        { "x": 63.6, "y": 6.7 }
+      ]
+    },
+    {
+      "item": 10,
+      "partNumber": "1055396",
+      "description": "Pin, 0.63d, 02.0l [W/Cbore, M8 Screw]",
+      "category": "Pasadores y bujes",
+      "qty": 2,
+      "hotspots": [
+        { "x": 80.5, "y": 22.8 },
+        { "x": 61.3, "y": 14.6 }
+      ]
+    },
+    {
+      "item": 11,
+      "partNumber": "07786",
+      "description": "Nut, Hex, Std, M8 X 1",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 80.7, "y": 19.8 },
+        { "x": 61.5, "y": 11.6 }
+      ]
+    },
+    {
+      "item": 12,
+      "partNumber": "1057407",
+      "description": "Rod, Thrd, 2end, M8x1.25/ M10x1.5 04.7l",
+      "category": "Estructura y cubiertas",
+      "qty": 2,
+      "hotspots": [
+        { "x": 80.3, "y": 27.5 },
+        { "x": 61.1, "y": 19.3 }
+      ]
+    },
+    {
+      "item": 13,
+      "partNumber": "1055506",
+      "description": "Ring, Mtg, Sqge, .38l",
+      "category": "Pasadores y bujes",
+      "qty": 2,
+      "hotspots": [
+        { "x": 80.2, "y": 33.2 },
+        { "x": 60.9, "y": 24.9 }
+      ]
+    },
+    {
+      "item": 14,
+      "partNumber": "1064770",
+      "description": "Spring, Cmpr, 0.98od .13wir 01.3l, Ss",
+      "category": "Resortes",
+      "qty": 2,
+      "hotspots": [
+        { "x": 40.3, "y": 70.5 },
+        { "x": 58.4, "y": 78.1 }
+      ]
+    },
+    {
+      "item": 15,
+      "partNumber": "391345",
+      "description": "Nut, T, M10 X 1.50 X 0.62od X 0.5l",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 40.0, "y": 73.4 },
+        { "x": 57.7, "y": 81.5 }
+      ]
+    },
+    {
+      "item": 16,
+      "partNumber": "1200383",
+      "description": "Blade, Sqge, Front, 42.59l [Linard]",
+      "category": "Escobillas y hojas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 5.9, "y": 58.7 }
+      ]
+    },
+    {
+      "item": 17,
+      "partNumber": "1200384",
+      "description": "Blade, Sqge, Rear, Linatex",
+      "category": "Escobillas y hojas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 25.3, "y": 49.0 }
+      ]
+    },
+    {
+      "item": 18,
+      "partNumber": "1054312",
+      "description": "Hook Wldt, Latch",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 35.5, "y": 43.0 }
+      ]
+    },
+    {
+      "item": 19,
+      "partNumber": "1201825",
+      "description": "Blade, Sqge, Front, 43.19L [Gum] (Option)",
+      "category": "Escobillas y hojas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 11.4, "y": 59.3 }
+      ]
+    },
+    {
+      "item": 19,
+      "partNumber": "1201823",
+      "description": "Blade, Sqge, Front, 43.19l [Urethane] (Option)",
+      "category": "Escobillas y hojas",
+      "qty": 1,
+      "hotspots": []
+    },
+    {
+      "item": 19,
+      "partNumber": "1212213",
+      "description": "Blade, Sqge, Front, Tile, Tile, 42.59L [Linard} (Option)",
+      "category": "Escobillas y hojas",
+      "qty": 1,
+      "hotspots": []
+    },
+    {
+      "item": 20,
+      "partNumber": "1201826",
+      "description": "Blade, Sqge, Rear, Gum (Option)",
+      "category": "Escobillas y hojas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 30.9, "y": 48.8 }
+      ]
+    },
+    {
+      "item": 20,
+      "partNumber": "1201824",
+      "description": "Blade, Sqge, Rear, Urethane (Option)",
+      "category": "Escobillas y hojas",
+      "qty": 1,
+      "hotspots": []
+    }
+  ]
+}
