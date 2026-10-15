@@ -185,10 +185,19 @@
       "id": "elevacion-racleta",
       "name": "Mecanismo de Elevación de Racleta",
       "system": "lavado",
-      "description": "Rear Squeegee Lift Group, Disk Scrub Head",
-      "figure": "Fig. 34",
+      "description": "Rear Squeegee Lift Group",
+      "figure": "Fig. 34 / 35",
       "status": "available",
-      "data": "data/squeegee_lift.json",
+      "figures": [
+        {
+          "label": "Fig. 34 · Cabezal de disco",
+          "data": "data/squeegee_lift.json"
+        },
+        {
+          "label": "Fig. 35 · Cabezal cilíndrico",
+          "data": "data/squeegee_lift_cyl.json"
+        }
+      ],
       "hotspot": { "x": 80, "y": 77 },
       "labelSide": "left"
     }

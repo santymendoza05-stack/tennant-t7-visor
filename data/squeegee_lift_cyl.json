@@ -1,0 +1,379 @@
+{
+  "machine": "Tennant T7",
+  "group": "Rear Squeegee Lift Group, Cylindrical Scrub Head",
+  "figure": "Fig. 35",
+  "image": "assets/squeegee_lift_cyl.png",
+  "categories": [
+    "Actuador",
+    "Rodachinas",
+    "Resortes",
+    "Pasadores y bujes",
+    "Brazo y soportes",
+    "Tornillería"
+  ],
+  "parts": [
+    {
+      "item": 1,
+      "partNumber": "1028997",
+      "description": "Support, Frame, Sqge",
+      "category": "Brazo y soportes",
+      "qty": 1,
+      "hotspots": [
+        { "x": 27.6, "y": 32.9 }
+      ]
+    },
+    {
+      "item": 2,
+      "partNumber": "1028998",
+      "description": "Support, Frame, Sqge",
+      "category": "Brazo y soportes",
+      "qty": 1,
+      "hotspots": [
+        { "x": 85.5, "y": 41.7 }
+      ]
+    },
+    {
+      "item": 3,
+      "partNumber": "09291",
+      "description": "Screw, Hex, M10 x 1.5 x 20, SS",
+      "category": "Tornillería",
+      "qty": 6,
+      "hotspots": [
+        { "x": 56.2, "y": 3.1 },
+        { "x": 65.7, "y": 7.3 },
+        { "x": 37.7, "y": 5.7 }
+      ]
+    },
+    {
+      "item": 4,
+      "partNumber": "01686",
+      "description": "Washer, Flat, 0.44b 1.00d .08, SS",
+      "category": "Tornillería",
+      "qty": 7,
+      "hotspots": [
+        { "x": 63.2, "y": 63.4 },
+        { "x": 51.8, "y": 4.6 },
+        { "x": 60.7, "y": 9.4 },
+        { "x": 35.5, "y": 7.5 }
+      ]
+    },
+    {
+      "item": 5,
+      "partNumber": "1029072",
+      "description": "Bracket Wldt, Actuator",
+      "category": "Actuador",
+      "qty": 1,
+      "hotspots": [
+        { "x": 8.6, "y": 58.3 }
+      ]
+    },
+    {
+      "item": 6,
+      "partNumber": "86866",
+      "description": "Pin, Cotter, Hair, 0.38d .072 Wir",
+      "category": "Pasadores y bujes",
+      "qty": 1,
+      "hotspots": [
+        { "x": 12.5, "y": 42.3 }
+      ]
+    },
+    {
+      "item": 7,
+      "partNumber": "1020341",
+      "description": "Screw, Hex, M8 x 1.25 x 20, SS, Sems",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 18.5, "y": 42.5 }
+      ]
+    },
+    {
+      "item": 8,
+      "partNumber": "1009268",
+      "description": "Actuator, 12VDC, 40mm Strk [750N] (Replaced by Kit 9010845 - Includes Actuator & Housing)",
+      "category": "Actuador",
+      "qty": 1,
+      "note": "S/N 10000000-10627040",
+      "hotspots": [
+        { "x": 28.4, "y": 41.5 }
+      ]
+    },
+    {
+      "item": 8,
+      "partNumber": "9010845",
+      "description": "Actuator Kit, Replmt [T7/SSR]",
+      "category": "Actuador",
+      "qty": 1,
+      "note": "S/N 10627041- · incluye actuador y carcasa 1031028",
+      "hotspots": []
+    },
+    {
+      "item": 9,
+      "partNumber": "1031028",
+      "description": "Housing, Sqge, Spring, Actuator",
+      "category": "Actuador",
+      "qty": 1,
+      "note": "Incluido en el kit 9010845",
+      "hotspots": [
+        { "x": 45, "y": 40.9 }
+      ]
+    },
+    {
+      "item": 10,
+      "partNumber": "1032539",
+      "description": "Arm, Spring, Mtg",
+      "category": "Brazo y soportes",
+      "qty": 1,
+      "hotspots": [
+        { "x": 47.6, "y": 25.6 }
+      ]
+    },
+    {
+      "item": 11,
+      "partNumber": "1016639",
+      "description": "Spring, Extn, 0.75OD 0.11wir 04.5L",
+      "category": "Resortes",
+      "qty": 2,
+      "hotspots": [
+        { "x": 21, "y": 66.7 }
+      ]
+    },
+    {
+      "item": 12,
+      "partNumber": "1018483",
+      "description": "Pin, Clevis, 12mmD x 100mmL",
+      "category": "Pasadores y bujes",
+      "qty": 1,
+      "hotspots": [
+        { "x": 50, "y": 95.9 }
+      ]
+    },
+    {
+      "item": 13,
+      "partNumber": "08182",
+      "description": "Pin, Cotter, .125 x 1.00",
+      "category": "Pasadores y bujes",
+      "qty": 1,
+      "hotspots": [
+        { "x": 50, "y": 90.2 }
+      ]
+    },
+    {
+      "item": 14,
+      "partNumber": "1032452",
+      "description": "Arm Wldt, Sqge, Rear, Cylrcl",
+      "category": "Brazo y soportes",
+      "qty": 1,
+      "hotspots": [
+        { "x": 19.3, "y": 78.5 }
+      ]
+    },
+    {
+      "item": 15,
+      "partNumber": "1013515",
+      "description": "Bushing, Flex, Ure",
+      "category": "Pasadores y bujes",
+      "qty": 2,
+      "hotspots": [
+        { "x": 39.1, "y": 98.9 },
+        { "x": 23.4, "y": 89.5 }
+      ]
+    },
+    {
+      "item": 16,
+      "partNumber": "1073476",
+      "description": "Caster, Swivel, 50mmD, M10 x 30, Clr Pl",
+      "category": "Rodachinas",
+      "qty": 2,
+      "hotspots": [
+        { "x": 60.3, "y": 85.9 },
+        { "x": 76.5, "y": 92.6 }
+      ]
+    },
+    {
+      "item": 17,
+      "partNumber": "07787",
+      "description": "Nut, Hex, Std, M10 x 1.50, SS",
+      "category": "Rodachinas",
+      "qty": 2,
+      "hotspots": [
+        { "x": 74.4, "y": 63.5 },
+        { "x": 45, "y": 59.7 }
+      ]
+    },
+    {
+      "item": 18,
+      "partNumber": "1018725",
+      "description": "Channel, Arm, Lower Sqge",
+      "category": "Brazo y soportes",
+      "qty": 1,
+      "hotspots": [
+        { "x": 80.9, "y": 72.8 }
+      ]
+    },
+    {
+      "item": 19,
+      "partNumber": "12138",
+      "description": "Screw, Hex, M12 x 1.75 x 120, 8.8",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 42.4, "y": 66.6 }
+      ]
+    },
+    {
+      "item": 20,
+      "partNumber": "09741",
+      "description": "Nut, Hex, Lock, M12 x 1.75, NL, SS",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 64.7, "y": 77.7 }
+      ]
+    },
+    {
+      "item": 21,
+      "partNumber": "1020182",
+      "description": "Spring, Cmpr, 0.70OD, 01.7L",
+      "category": "Resortes",
+      "qty": 1,
+      "hotspots": [
+        { "x": 49.3, "y": 80.4 }
+      ]
+    },
+    {
+      "item": 22,
+      "partNumber": "04417",
+      "description": "Screw, Hex, M10 x 1.5 x 60, SS",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 63.7, "y": 58.9 }
+      ]
+    },
+    {
+      "item": 23,
+      "partNumber": "1010401",
+      "description": "Pin, Clevis, 16mmD x 150mmL",
+      "category": "Pasadores y bujes",
+      "qty": 1,
+      "hotspots": [
+        { "x": 83.8, "y": 54.8 }
+      ]
+    },
+    {
+      "item": 24,
+      "partNumber": "02942",
+      "description": "Pin, Cotter, Hair, 0.62d .120 Wir",
+      "category": "Pasadores y bujes",
+      "qty": 1,
+      "hotspots": [
+        { "x": 82.7, "y": 48.7 }
+      ]
+    },
+    {
+      "item": 25,
+      "partNumber": "41619",
+      "description": "Washer, Flat, 0.56b 1.38d .11, SS",
+      "category": "Rodachinas",
+      "qty": 2,
+      "hotspots": [
+        { "x": 58.7, "y": 81.3 },
+        { "x": 75.3, "y": 88.5 }
+      ]
+    },
+    {
+      "item": 26,
+      "partNumber": "01686",
+      "description": "Washer, Flat, 0.44b 1.00d .08, SS",
+      "category": "Rodachinas",
+      "qty": 2,
+      "hotspots": [
+        { "x": 74.8, "y": 65.3 },
+        { "x": 44.3, "y": 61.5 }
+      ]
+    },
+    {
+      "item": 27,
+      "partNumber": "32716",
+      "description": "Nut, Hex, Jam, M10 x 1.5, SS",
+      "category": "Rodachinas",
+      "qty": 2,
+      "hotspots": [
+        { "x": 74.4, "y": 61.5 },
+        { "x": 45.2, "y": 57.8 }
+      ]
+    },
+    {
+      "item": 28,
+      "partNumber": "94877",
+      "description": "Pin, Clevis, 10mmD x 050mmL",
+      "category": "Pasadores y bujes",
+      "qty": 1,
+      "hotspots": [
+        { "x": 7.7, "y": 42.7 }
+      ]
+    },
+    {
+      "item": 29,
+      "partNumber": "1032733",
+      "description": "Pin, Clevis, 10mmD x 070mmL, Pl",
+      "category": "Pasadores y bujes",
+      "qty": 1,
+      "hotspots": [
+        { "x": 59.1, "y": 40.5 }
+      ]
+    },
+    {
+      "item": 30,
+      "partNumber": "1032732",
+      "description": "Pin, Clevis, 12mmD x 070mmL, Pl",
+      "category": "Pasadores y bujes",
+      "qty": 1,
+      "hotspots": [
+        { "x": 13.7, "y": 1.1 }
+      ]
+    },
+    {
+      "item": 31,
+      "partNumber": "41619",
+      "description": "Washer, Flat, 0.56b 1.38d .11, SS",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 38.5, "y": 21.2 }
+      ]
+    },
+    {
+      "item": 32,
+      "partNumber": "01686",
+      "description": "Washer, Flat, 0.44b 1.00d .08, SS",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 17.8, "y": 59 }
+      ]
+    },
+    {
+      "item": 33,
+      "partNumber": "08182",
+      "description": "Pin, Cotter, .125 x 1.00",
+      "category": "Pasadores y bujes",
+      "qty": 2,
+      "hotspots": [
+        { "x": 59.6, "y": 38.4 },
+        { "x": 20.2, "y": 2.1 }
+      ]
+    },
+    {
+      "item": 34,
+      "partNumber": "08713",
+      "description": "Nut, Hex, Lock, M8 x 1.25, NL, SS",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 9.3, "y": 9 }
+      ]
+    }
+  ]
+}
