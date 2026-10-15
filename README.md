@@ -51,4 +51,4 @@ Diagramas y referencias © Tennant Company, tomados del manual de partes de la T
 
 ## Guía 3D (experimental)
 
-`guia-3d.html` es una escena 3D esquemática (Three.js r128) de la T7 y la T12 con algunos repuestos de ejemplo, enlazada desde el botón **Guía 3D** de la barra superior. Las cajas son representaciones genéricas, no modelos reales. Los códigos de esa página **no** salen del manual 9013606 (salvo 1037821) y deben verificarse antes de pedir repuestos.
+`guia-3d.html` es una escena 3D esquemática (Three.js r128) de la T7 y la T12 con algunos repuestos de ejemplo, enlazada desde el botón **Guía 3D** de la barra superior. Los modelos se construyen en código combinando geometrías de Three.js (chasis, ruedas, tanques, consola con volante, asiento, cabezal de restregado de discos en la T7 y cilíndrico en la T12, racleta trasera curva con manguera de aspiración); son esquemáticos y no reproducen medidas exactas. Los códigos de esa página **no** salen del manual 9013606 (salvo 1037821) y deben verificarse antes de pedir repuestos.

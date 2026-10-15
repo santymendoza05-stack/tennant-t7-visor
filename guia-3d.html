@@ -20,6 +20,7 @@
     }
     h2 { font-size: 1.1rem; color: #00d2ff; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
     p.subtitle { font-size: 0.75rem; color: #aaa; margin-bottom: 12px; }
+    p.hint { font-size: 0.72rem; color: #8a8f99; line-height: 1.4; }
     .back-link { display: inline-block; font-size: 0.78rem; color: #aaa; text-decoration: none; margin-bottom: 10px; }
     .back-link:hover { color: #00d2ff; }
 
@@ -63,6 +64,7 @@
       <button class="btn-view" onclick="setView('T12', this)">Ver T12</button>
       <button class="btn-view active" onclick="setView('BOTH', this)">Ver Ambas</button>
     </div>
+    <p class="hint">Arrastra para girar · rueda o pellizco para acercar · clic en un punto azul para ver el repuesto. Modelos esquemáticos de referencia, no a escala exacta.</p>
   </div>
 
   <div id="part-card">
@@ -76,30 +78,35 @@
   <div id="canvas-container"></div>
 
   <script>
+    // Posiciones `pos` en coordenadas locales del modelo base (metros):
+    // x = lado (+ derecho), y = altura, z = largo (+ hacia el frente).
     const database = {
       T7: {
         name: "Tennant T7",
-        color: 0x0088cc,
-        size: [1.6, 1.3, 1.1],
-        offset: [-1.8, 0, 0],
+        label: "T7",
+        head: "disk",            // cabezal de discos
+        scale: [1, 1, 1],
+        position: [-1.45, 0, 0],
         parts: [
-          { name: "Filtro Polvo Panel T7", code: "1037821", desc: "Panel filtrante de polvo para tanque de recolección T7.", pos: [-1.8, 0.7, 0.3] },
-          { name: "Escobilla Linatex Lateral T7", code: "86859", desc: "Conjunto de escobilla lateral Linatex estándar T7.", pos: [-1.2, -0.4, 0] },
-          { name: "Relé de Potencia 24V", code: "2424", desc: "Relay 24VDC 100A SP N/O para sistema eléctrico T7.", pos: [-1.8, 0.2, -0.4] }
+          { name: "Filtro Polvo Panel T7", code: "1037821", desc: "Panel filtrante de polvo para tanque de recolección T7.", pos: [0.12, 0.97, -0.5] },
+          { name: "Escobilla Linatex Lateral T7", code: "86859", desc: "Conjunto de escobilla lateral Linatex estándar T7.", pos: [0.47, 0.09, 0.1] },
+          { name: "Relé de Potencia 24V", code: "2424", desc: "Relay 24VDC 100A SP N/O para sistema eléctrico T7.", pos: [0.33, 0.75, 0.5] }
         ]
       },
       T12: {
         name: "Tennant T12",
-        color: 0x005588,
-        size: [2.3, 1.7, 1.5],
-        offset: [1.8, 0, 0],
+        label: "T12",
+        head: "cyl",             // cabezal cilíndrico
+        beacon: true,
+        scale: [1.12, 1.08, 1.2],
+        position: [1.5, 0, 0],
         parts: [
-          { name: "Llama / Escobilla Trasera Linatex", code: "1200384", desc: "Escobilla trasera principal Linatex para cabezal de secado T12.", pos: [1.8, -0.6, -0.9] },
-          { name: "Llama / Escobilla Delantera Linard", code: "1200383", desc: "Escobilla delantera principal Linard (42.59 pulgadas).", pos: [1.8, -0.6, -0.7] },
-          { name: "Escobilla Lateral Linatex 22.5\"", code: "1200430", desc: "Escobilla de goma lateral Linatex de protección T12.", pos: [2.6, -0.5, 0] },
-          { name: "Motor / Ventilador Vacío 36V", code: "1200149", desc: "Motor de aspiración Ametek 36VDC de alto rendimiento.", pos: [1.8, 0.6, 0.2] },
-          { name: "Filtro Panel Tanque Recuperación", code: "1037822", desc: "Panel filtrante de polvo específico para la Tennant T12.", pos: [1.8, 0.9, -0.3] },
-          { name: "Manguera de Drenaje Solución", code: "1216347", desc: "Manguera de drenaje 2.0\" DI x 32.2\" para tanque T12.", pos: [1.0, -0.3, 0.5] }
+          { name: "Llama / Escobilla Trasera Linatex", code: "1200384", desc: "Escobilla trasera principal Linatex para cabezal de secado T12.", pos: [-0.15, 0.03, -1.0] },
+          { name: "Llama / Escobilla Delantera Linard", code: "1200383", desc: "Escobilla delantera principal Linard (42.59 pulgadas).", pos: [0.2, 0.03, -0.92] },
+          { name: "Escobilla Lateral Linatex 22.5\"", code: "1200430", desc: "Escobilla de goma lateral Linatex de protección T12.", pos: [0.47, 0.1, 0.1] },
+          { name: "Motor / Ventilador Vacío 36V", code: "1200149", desc: "Motor de aspiración Ametek 36VDC de alto rendimiento.", pos: [0.22, 0.97, -0.6] },
+          { name: "Filtro Panel Tanque Recuperación", code: "1037822", desc: "Panel filtrante de polvo específico para la Tennant T12.", pos: [-0.15, 0.97, -0.42] },
+          { name: "Manguera de Drenaje Solución", code: "1216347", desc: "Manguera de drenaje 2.0\" DI x 32.2\" para tanque T12.", pos: [-0.3, 0.56, -0.8] }
         ]
       }
     };
@@ -109,33 +116,371 @@
     let mouse = new THREE.Vector2();
     let machineGroups = {};
     let partMeshes = [];
+    let hovered = null, selected = null;
+    let camGoal = null;          // transición suave de cámara
+    let downAt = null;           // para distinguir clic de arrastre
+    let viewMode = 'BOTH';
+
+    // En pantallas angostas la cámara general se aleja para que quepan ambas máquinas
+    function overviewPos() {
+      const k = Math.min(Math.max(1.25 / camera.aspect, 1), 2.4);
+      return new THREE.Vector3(0.4, 2.3, 5.6).multiplyScalar(k);
+    }
+    const clock = new THREE.Clock();
+
+    // ---------- Materiales ----------
+    const std = (color, roughness, metalness, extra) =>
+      new THREE.MeshStandardMaterial(Object.assign({ color, roughness, metalness }, extra || {}));
+    const MAT = {
+      body:     std(0x3a3f46, 0.42, 0.15),
+      bodyDark: std(0x24282d, 0.5, 0.2),
+      chassis:  std(0x1c1f23, 0.55, 0.45),
+      yellow:   std(0xf5b301, 0.38, 0.1),
+      seat:     std(0x161616, 0.8, 0.0),
+      tire:     std(0x0f0f10, 0.92, 0.0),
+      hub:      std(0xa9aeb4, 0.3, 0.7),
+      rubber:   std(0x111111, 0.85, 0.0),
+      hose:     std(0x25282c, 0.7, 0.05),
+      brushDisk: std(0x1d4f9c, 0.95, 0.0),
+      brushCyl: std(0xb3261e, 0.95, 0.0),
+      dash:     std(0x101214, 0.6, 0.2),
+      screen:   std(0x0b2a33, 0.3, 0.0, { emissive: 0x13a6c9, emissiveIntensity: 0.55 }),
+      lamp:     std(0xfff6d8, 0.2, 0.0, { emissive: 0xffe2a0, emissiveIntensity: 0.8 }),
+      beacon:   std(0xff8a00, 0.3, 0.0, { emissive: 0xff7a00, emissiveIntensity: 1.0, transparent: true, opacity: 0.9 })
+    };
+
+    // ---------- Utilidades de geometría ----------
+    function mesh(geo, mat) {
+      const m = new THREE.Mesh(geo, mat);
+      m.castShadow = true; m.receiveShadow = true;
+      return m;
+    }
+
+    // Polígono con esquinas redondeadas (r puede ser número o lista por vértice)
+    function roundedShape(pts, r) {
+      const s = new THREE.Shape(), n = pts.length;
+      for (let i = 0; i < n; i++) {
+        const P = pts[i], A = pts[(i - 1 + n) % n], B = pts[(i + 1) % n];
+        const rr = Array.isArray(r) ? r[i] : r;
+        const da = Math.hypot(A[0] - P[0], A[1] - P[1]), db = Math.hypot(B[0] - P[0], B[1] - P[1]);
+        const k = Math.min(rr, da / 2, db / 2);
+        const p1 = [P[0] + (A[0] - P[0]) / da * k, P[1] + (A[1] - P[1]) / da * k];
+        const p2 = [P[0] + (B[0] - P[0]) / db * k, P[1] + (B[1] - P[1]) / db * k];
+        if (i === 0) s.moveTo(p1[0], p1[1]); else s.lineTo(p1[0], p1[1]);
+        s.quadraticCurveTo(P[0], P[1], p2[0], p2[1]);
+      }
+      s.closePath();
+      return s;
+    }
+
+    // Extruye un perfil lateral (u = largo, v = altura) a lo ancho de la máquina, con bordes biselados
+    function sideExtrude(pts, r, width, mat, bevel) {
+      bevel = bevel === undefined ? 0.025 : bevel;
+      const g = new THREE.ExtrudeGeometry(roundedShape(pts, r), {
+        depth: Math.max(width - 2 * bevel, 0.001), bevelEnabled: true,
+        bevelThickness: bevel, bevelSize: bevel, bevelSegments: 4, curveSegments: 10
+      });
+      g.translate(0, 0, -(width - 2 * bevel) / 2);
+      g.rotateY(-Math.PI / 2);   // u → eje z (frente), ancho → eje x
+      return mesh(g, mat);
+    }
+
+    function roundedBox(w, h, d, r, mat) {
+      const b = Math.min(r, w / 4, 0.02), hd = d / 2 - b, hh = h / 2 - b;
+      return sideExtrude([[-hd, -hh], [hd, -hh], [hd, hh], [-hd, hh]], Math.max(r - b, 0.001), w, mat, b);
+    }
+
+    function tube(points, radius, mat, segments) {
+      const curve = new THREE.CatmullRomCurve3(points.map(p => new THREE.Vector3(...p)));
+      return mesh(new THREE.TubeGeometry(curve, segments || 48, radius, 12, false), mat);
+    }
+
+    function cylBetween(a, b, r, mat) {
+      const va = new THREE.Vector3(...a), vb = new THREE.Vector3(...b);
+      const dir = vb.clone().sub(va);
+      const m = mesh(new THREE.CylinderGeometry(r, r, dir.length(), 16), mat);
+      m.position.copy(va).add(vb).multiplyScalar(0.5);
+      m.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), dir.normalize());
+      return m;
+    }
+
+    function wheel(r, w) {
+      const g = new THREE.Group();
+      const tire = mesh(new THREE.CylinderGeometry(r, r, w, 36), MAT.tire);
+      const hub = mesh(new THREE.CylinderGeometry(r * 0.55, r * 0.55, w * 1.04, 24), MAT.hub);
+      const cap = mesh(new THREE.CylinderGeometry(r * 0.18, r * 0.18, w * 1.1, 12), MAT.chassis);
+      [tire, hub, cap].forEach(m => { m.rotation.z = Math.PI / 2; g.add(m); });
+      return g;
+    }
+
+    // Texto pintado en un plano (logotipos laterales)
+    function textPlane(text, w, h, color, weight) {
+      const c = document.createElement('canvas');
+      c.width = 512; c.height = Math.round(512 * h / w);
+      const ctx = c.getContext('2d');
+      ctx.fillStyle = color;
+      ctx.font = (weight || '800') + ' ' + Math.round(c.height * 0.72) + 'px "Segoe UI", Arial, sans-serif';
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText(text, c.width / 2, c.height / 2 + 2);
+      const tex = new THREE.CanvasTexture(c);
+      tex.anisotropy = 4;
+      return new THREE.Mesh(new THREE.PlaneGeometry(w, h),
+        new THREE.MeshBasicMaterial({ map: tex, transparent: true, depthWrite: false }));
+    }
+
+    function addSideDecal(g, text, w, h, x, y, z, color, weight) {
+      [-1, 1].forEach(side => {
+        const p = textPlane(text, w, h, color, weight);
+        p.position.set(side * x, y, z);
+        p.rotation.y = side * Math.PI / 2;
+        g.add(p);
+      });
+    }
+
+    // ---------- Fregadora (conducida) ----------
+    function buildScrubber(cfg) {
+      const g = new THREE.Group();
+      const W = 0.78;
+
+      // Chasis / bastidor
+      const chassis = roundedBox(W + 0.04, 0.12, 1.42, 0.03, MAT.chassis);
+      chassis.position.set(0, 0.22, -0.02);
+      g.add(chassis);
+
+      // Cuerpo principal: tanques de solución/recuperación y compartimiento de baterías
+      g.add(sideExtrude([[-0.72, 0.26], [-0.74, 0.84], [-0.55, 0.88], [0.26, 0.88], [0.38, 0.6], [0.38, 0.26]],
+        [0.03, 0.08, 0.06, 0.08, 0.08, 0.03], W, MAT.body));
+
+      // Franja amarilla lateral
+      const stripe = roundedBox(W + 0.06, 0.035, 1.0, 0.01, MAT.yellow);
+      stripe.position.set(0, 0.34, -0.17);
+      g.add(stripe);
+
+      // Tapa del tanque de recuperación + manijas amarillas
+      const lid = roundedBox(W - 0.1, 0.07, 0.38, 0.03, MAT.bodyDark);
+      lid.position.set(0, 0.92, -0.5);
+      g.add(lid);
+      [-0.22, 0.22].forEach(x => {
+        const latch = roundedBox(0.08, 0.04, 0.05, 0.012, MAT.yellow);
+        latch.position.set(x, 0.92, -0.71);
+        g.add(latch);
+      });
+
+      // Asiento del operario
+      const pedestal = roundedBox(0.32, 0.06, 0.3, 0.02, MAT.chassis);
+      pedestal.position.set(0, 0.91, -0.03);
+      g.add(pedestal);
+      const cushion = roundedBox(0.48, 0.09, 0.44, 0.04, MAT.seat);
+      cushion.position.set(0, 0.98, -0.03);
+      g.add(cushion);
+      const back = roundedBox(0.48, 0.36, 0.09, 0.04, MAT.seat);
+      back.position.set(0, 1.2, -0.24);
+      back.rotation.x = -0.18;
+      g.add(back);
+
+      // Consola delantera (columna de dirección y panel)
+      g.add(sideExtrude([[0.28, 0.3], [0.3, 0.98], [0.44, 1.1], [0.64, 1.06], [0.76, 0.6], [0.74, 0.3]],
+        [0.03, 0.08, 0.06, 0.08, 0.06, 0.03], 0.6, MAT.body));
+      const dash = roundedBox(0.5, 0.035, 0.22, 0.015, MAT.dash);
+      dash.position.set(0, 1.11, 0.54);
+      dash.rotation.x = 0.2;
+      g.add(dash);
+      const screen = new THREE.Mesh(new THREE.PlaneGeometry(0.12, 0.07), MAT.screen);
+      screen.position.set(0.1, 1.13, 0.53);
+      screen.rotation.x = -Math.PI / 2 + 0.2;
+      g.add(screen);
+
+      // Volante
+      const colA = [0, 1.02, 0.4], colB = [0, 1.28, 0.27];
+      g.add(cylBetween(colA, colB, 0.028, MAT.chassis));
+      const dir = new THREE.Vector3(...colB).sub(new THREE.Vector3(...colA)).normalize();
+      const rim = mesh(new THREE.TorusGeometry(0.15, 0.017, 12, 40), MAT.dash);
+      rim.position.set(...colB);
+      rim.quaternion.setFromUnitVectors(new THREE.Vector3(0, 0, 1), dir);
+      g.add(rim);
+      [0, 2.1, 4.2].forEach(a => {
+        const spoke = new THREE.Vector3(Math.cos(a) * 0.14, Math.sin(a) * 0.14, 0).applyQuaternion(rim.quaternion);
+        g.add(cylBetween(colB, [colB[0] + spoke.x, colB[1] + spoke.y, colB[2] + spoke.z], 0.01, MAT.dash));
+      });
+
+      // Faros y parachoques delanteros
+      [-0.17, 0.17].forEach(x => {
+        const lamp = roundedBox(0.11, 0.035, 0.03, 0.012, MAT.lamp);
+        lamp.rotation.x = -0.25;
+        lamp.position.set(x, 0.86, 0.73);
+        g.add(lamp);
+      });
+      const bumper = roundedBox(W + 0.06, 0.09, 0.08, 0.03, MAT.rubber);
+      bumper.position.set(0, 0.25, 0.75);
+      g.add(bumper);
+
+      // Ruedas: motriz delantera y dos traseras
+      const front = wheel(0.15, 0.11);
+      front.position.set(0, 0.15, 0.56);
+      g.add(front);
+      [-1, 1].forEach(s => {
+        const rw = wheel(0.13, 0.08);
+        rw.position.set(s * (W / 2 - 0.02), 0.13, -0.5);
+        g.add(rw);
+      });
+
+      // Cabezal de restregado
+      const head = new THREE.Group();
+      head.position.set(0, 0, 0.1);
+      if (cfg.head === 'disk') {
+        const deck = roundedBox(W + 0.1, 0.1, 0.5, 0.04, MAT.bodyDark);
+        deck.position.y = 0.13;
+        head.add(deck);
+        const cover = roundedBox(W - 0.1, 0.02, 0.3, 0.01, MAT.yellow);
+        cover.position.y = 0.19;
+        head.add(cover);
+        [-0.21, 0.21].forEach(x => {
+          const brush = mesh(new THREE.CylinderGeometry(0.22, 0.22, 0.05, 40), MAT.brushDisk);
+          brush.position.set(x, 0.035, 0);
+          head.add(brush);
+          const driver = mesh(new THREE.CylinderGeometry(0.08, 0.08, 0.03, 20), MAT.chassis);
+          driver.position.set(x, 0.075, 0);
+          head.add(driver);
+        });
+      } else {
+        const housing = sideExtrude([[-0.27, 0.06], [-0.24, 0.24], [0.24, 0.24], [0.27, 0.06]], 0.07, W + 0.1, MAT.bodyDark);
+        head.add(housing);
+        const cover = roundedBox(W - 0.1, 0.02, 0.26, 0.01, MAT.yellow);
+        cover.position.y = 0.255;
+        head.add(cover);
+        [-0.12, 0.12].forEach(z => {
+          const brush = mesh(new THREE.CylinderGeometry(0.085, 0.085, W - 0.02, 32), MAT.brushCyl);
+          brush.rotation.z = Math.PI / 2;
+          brush.position.set(0, 0.085, z);
+          head.add(brush);
+        });
+        const hopper = roundedBox(W - 0.08, 0.07, 0.1, 0.02, MAT.chassis);
+        hopper.position.set(0, 0.06, -0.27);
+        head.add(hopper);
+      }
+      // Escobillas laterales del cabezal
+      [-1, 1].forEach(s => {
+        const skirt = roundedBox(0.025, 0.1, 0.48, 0.01, MAT.rubber);
+        skirt.position.set(s * (W / 2 + 0.07), 0.07, 0);
+        head.add(skirt);
+      });
+      g.add(head);
+
+      // Conjunto de racleta trasera (curvada, con el centro hacia atrás)
+      const sqz = t => -0.82 - 0.16 * (1 - t * t);
+      const arc = (y, dz) => Array.from({ length: 13 }, (_, i) => {
+        const t = -1 + i / 6;
+        return [t * 0.52, y, sqz(t) + dz];
+      });
+      g.add(tube(arc(0.09, 0), 0.035, MAT.bodyDark));
+      g.add(tube(arc(0.035, -0.03), 0.016, MAT.rubber));   // hoja trasera
+      g.add(tube(arc(0.035, 0.03), 0.014, MAT.rubber));    // hoja delantera
+      [-1, 1].forEach(s => {
+        const caster = wheel(0.035, 0.03);
+        caster.position.set(s * 0.53, 0.035, sqz(s) + 0.07);
+        g.add(caster);
+      });
+      const outlet = mesh(new THREE.CylinderGeometry(0.045, 0.045, 0.1, 20), MAT.yellow);
+      outlet.position.set(0, 0.15, sqz(0));
+      g.add(outlet);
+      g.add(cylBetween([0, 0.22, -0.72], [0, 0.11, -0.94], 0.022, MAT.chassis));    // brazo de elevación
+      // Manguera de aspiración hacia el tanque de recuperación
+      g.add(tube([[0, 0.19, sqz(0)], [0.02, 0.42, -0.98], [0.1, 0.62, -0.86], [0.12, 0.76, -0.77]], 0.032, MAT.hose));
+
+      // Mangueras de drenaje en la parte trasera (con tapón amarillo)
+      g.add(tube([[-0.3, 0.3, -0.755], [-0.31, 0.45, -0.785], [-0.3, 0.68, -0.785]], 0.028, MAT.hose));
+      const plug = mesh(new THREE.CylinderGeometry(0.034, 0.034, 0.04, 16), MAT.yellow);
+      plug.position.set(-0.3, 0.7, -0.785);
+      g.add(plug);
+      g.add(tube([[0.3, 0.3, -0.755], [0.31, 0.42, -0.775], [0.3, 0.58, -0.775]], 0.02, MAT.chassis));
+
+      // Baliza (T12)
+      if (cfg.beacon) {
+        g.add(cylBetween([0.3, 0.9, -0.66], [0.3, 1.22, -0.66], 0.018, MAT.chassis));
+        const dome = mesh(new THREE.SphereGeometry(0.05, 20, 12, 0, Math.PI * 2, 0, Math.PI / 2), MAT.beacon);
+        dome.position.set(0.3, 1.22, -0.66);
+        g.add(dome);
+      }
+
+      // Logotipos
+      addSideDecal(g, 'TENNANT', 0.4, 0.09, W / 2 + 0.027, 0.62, -0.28, '#f2f2f2', '800');
+      addSideDecal(g, cfg.label, 0.16, 0.1, 0.33, 0.86, 0.5, '#f5b301', '800');
+
+      return g;
+    }
+
+    // ---------- Marcadores de repuestos ----------
+    const haloTexture = (() => {
+      const c = document.createElement('canvas'); c.width = c.height = 128;
+      const ctx = c.getContext('2d');
+      ctx.strokeStyle = '#00d2ff'; ctx.lineWidth = 10;
+      ctx.beginPath(); ctx.arc(64, 64, 52, 0, Math.PI * 2); ctx.stroke();
+      return new THREE.CanvasTexture(c);
+    })();
+
+    function addMarker(group, part, machineName, scale) {
+      const m = new THREE.Mesh(new THREE.SphereGeometry(0.035, 20, 16),
+        new THREE.MeshStandardMaterial({ color: 0x00d2ff, emissive: 0x0090c0, emissiveIntensity: 0.9 }));
+      m.position.set(...part.pos);
+      m.scale.set(1 / scale[0], 1 / scale[1], 1 / scale[2]);    // que no se deforme con la escala del modelo
+      m.userData = { ...part, machine: machineName };
+      const halo = new THREE.Sprite(new THREE.SpriteMaterial({ map: haloTexture, transparent: true, depthWrite: false }));
+      halo.scale.set(0.13, 0.13, 1);
+      halo.userData.phase = Math.random() * Math.PI * 2;
+      m.add(halo);
+      m.userData.halo = halo;
+      group.add(m);
+      partMeshes.push(m);
+    }
 
     function init() {
       const container = document.getElementById('canvas-container');
 
       scene = new THREE.Scene();
       scene.background = new THREE.Color(0x121214);
+      scene.fog = new THREE.Fog(0x121214, 14, 30);
 
-      camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
-      camera.position.set(0, 3, 7.5);
+      camera = new THREE.PerspectiveCamera(42, window.innerWidth / window.innerHeight, 0.05, 100);
+      camera.position.copy(overviewPos());
 
       renderer = new THREE.WebGLRenderer({ antialias: true });
       renderer.setSize(window.innerWidth, window.innerHeight);
-      renderer.setPixelRatio(window.devicePixelRatio);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.shadowMap.enabled = true;
+      renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+      renderer.outputEncoding = THREE.sRGBEncoding;
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.1;
       container.appendChild(renderer.domElement);
 
       controls = new THREE.OrbitControls(camera, renderer.domElement);
       controls.enableDamping = true;
+      controls.target.set(0, 0.55, 0);
+      controls.maxPolarAngle = Math.PI / 2 - 0.05;   // no pasar bajo el piso
+      controls.minDistance = 1.2;
+      controls.maxDistance = 16;
 
-      const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
-      scene.add(ambientLight);
-
-      const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
-      dirLight.position.set(5, 10, 7);
+      scene.add(new THREE.HemisphereLight(0xdfe8ff, 0x1a1a1f, 0.6));
+      const dirLight = new THREE.DirectionalLight(0xffffff, 1.2);
+      dirLight.position.set(4, 7, 5);
+      dirLight.castShadow = true;
+      dirLight.shadow.mapSize.set(2048, 2048);
+      Object.assign(dirLight.shadow.camera, { left: -4, right: 4, top: 4, bottom: -4, near: 1, far: 20 });
+      dirLight.shadow.bias = -0.0005;
       scene.add(dirLight);
+      const rim = new THREE.DirectionalLight(0x7fd8ff, 0.45);
+      rim.position.set(-5, 3, -4);
+      scene.add(rim);
 
-      const grid = new THREE.GridHelper(12, 12, 0x00d2ff, 0x333344);
-      grid.position.y = -0.9;
+      const floor = new THREE.Mesh(new THREE.PlaneGeometry(40, 40),
+        new THREE.MeshStandardMaterial({ color: 0x0b0c0f, roughness: 0.95 }));
+      floor.rotation.x = -Math.PI / 2;
+      floor.receiveShadow = true;
+      scene.add(floor);
+      const grid = new THREE.GridHelper(12, 24, 0x00d2ff, 0x2a2a34);
+      grid.position.y = 0.002;
+      grid.material.transparent = true;
+      grid.material.opacity = 0.35;
       scene.add(grid);
 
       buildMachine('T7');
@@ -143,7 +488,9 @@
 
       window.addEventListener('resize', onWindowResize);
       // Solo clics sobre el lienzo 3D (no sobre los paneles)
+      renderer.domElement.addEventListener('pointerdown', e => { downAt = [e.clientX, e.clientY]; });
       renderer.domElement.addEventListener('click', onPointerClick);
+      renderer.domElement.addEventListener('pointermove', onPointerMove);
 
       animate();
     }
@@ -151,62 +498,55 @@
     function buildMachine(key) {
       const data = database[key];
       const group = new THREE.Group();
-
-      const geometry = new THREE.BoxGeometry(...data.size);
-      // Carrocería translúcida para que se vean los repuestos que quedan dentro
-      const material = new THREE.MeshStandardMaterial({ color: data.color, roughness: 0.35, metalness: 0.3, transparent: true, opacity: 0.35, depthWrite: false });
-      const body = new THREE.Mesh(geometry, material);
-      body.position.set(...data.offset);
-      group.add(body);
-      group.add(new THREE.LineSegments(new THREE.EdgesGeometry(geometry), new THREE.LineBasicMaterial({ color: 0x00d2ff })).translateX(data.offset[0]));
-
-      data.parts.forEach(part => {
-        const pGeo = new THREE.SphereGeometry(0.1, 16, 16);
-        const pMat = new THREE.MeshStandardMaterial({ color: 0x00d2ff, emissive: 0x003355 });
-        const pMesh = new THREE.Mesh(pGeo, pMat);
-        pMesh.position.set(...part.pos);
-        pMesh.userData = { ...part, machine: data.name };
-        group.add(pMesh);
-        partMeshes.push(pMesh);
-      });
-
+      const model = buildScrubber(data);
+      model.scale.set(...data.scale);
+      data.parts.forEach(part => addMarker(model, part, data.name, data.scale));
+      group.add(model);
+      group.position.set(...data.position);
+      group.rotation.y = -1.05;    // vista 3/4: costado derecho y frente hacia la cámara
       machineGroups[key] = group;
       scene.add(group);
     }
 
-    function setView(viewMode, btn) {
+    function setView(mode, btn) {
+      viewMode = mode;
       document.querySelectorAll('.btn-view').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
 
-      if (viewMode === 'T7') {
-        focusCamera(-1.8, 0.5, 3.8);
-      } else if (viewMode === 'T12') {
-        focusCamera(1.8, 0.5, 4.2);
+      if (viewMode === 'BOTH') {
+        camGoal = { pos: overviewPos(), target: new THREE.Vector3(0, 0.55, 0) };
       } else {
-        focusCamera(0, 1.5, 7.5);
+        const p = machineGroups[viewMode].position;
+        const d = viewMode === 'T12' ? 1.15 : 1;
+        camGoal = {
+          pos: new THREE.Vector3(p.x - 0.6 * d, 1.5 * d, 2.6 * d),
+          target: new THREE.Vector3(p.x, 0.55, 0)
+        };
       }
     }
 
-    function focusCamera(x, y, z) {
-      camera.position.set(x, y, z);
-      controls.target.set(x > 0 ? 1.8 : (x < 0 ? -1.8 : 0), 0, 0);
-      controls.update();
+    function pickPart(event) {
+      const rect = renderer.domElement.getBoundingClientRect();
+      mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+      mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+      raycaster.setFromCamera(mouse, camera);
+      // Solo los repuestos son seleccionables (la carrocería no tapa el clic)
+      const hit = raycaster.intersectObjects(partMeshes, false)[0];
+      return hit ? hit.object : null;
+    }
+
+    function onPointerMove(event) {
+      hovered = pickPart(event);
+      renderer.domElement.style.cursor = hovered ? 'pointer' : '';
     }
 
     function onPointerClick(event) {
-      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-
-      raycaster.setFromCamera(mouse, camera);
-
-      // Solo los repuestos son seleccionables (la carrocería no tapa el clic)
-      const intersects = raycaster.intersectObjects(partMeshes);
-
-      if (intersects.length > 0) {
-        const hit = intersects[0].object;
-        if (hit.userData && hit.userData.name) {
-          showCard(hit.userData);
-        }
+      // Ignora el "clic" que termina un arrastre de la cámara
+      if (downAt && Math.hypot(event.clientX - downAt[0], event.clientY - downAt[1]) > 5) return;
+      const hit = pickPart(event);
+      if (hit) {
+        selected = hit;
+        showCard(hit.userData);
       }
     }
 
@@ -220,16 +560,36 @@
 
     function closePartCard() {
       document.getElementById('part-card').style.display = 'none';
+      selected = null;
     }
 
     function onWindowResize() {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(window.innerWidth, window.innerHeight);
+      if (viewMode === 'BOTH') camGoal = { pos: overviewPos(), target: new THREE.Vector3(0, 0.55, 0) };
     }
 
     function animate() {
       requestAnimationFrame(animate);
+      const t = clock.getElapsedTime();
+
+      if (camGoal) {
+        camera.position.lerp(camGoal.pos, 0.08);
+        controls.target.lerp(camGoal.target, 0.08);
+        if (camera.position.distanceTo(camGoal.pos) < 0.01) camGoal = null;
+      }
+
+      partMeshes.forEach(m => {
+        const active = m === hovered || m === selected;
+        m.material.color.setHex(m === selected ? 0xf5b301 : 0x00d2ff);
+        m.material.emissive.setHex(m === selected ? 0xc07a00 : 0x0090c0);
+        const halo = m.userData.halo;
+        const k = active ? 1.6 : 1 + 0.35 * Math.sin(t * 3 + halo.userData.phase);
+        halo.scale.set(0.13 * k, 0.13 * k, 1);
+        halo.material.opacity = active ? 1 : 0.55 + 0.35 * Math.sin(t * 3 + halo.userData.phase);
+      });
+
       controls.update();
       renderer.render(scene, camera);
     }
