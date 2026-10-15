@@ -1460,7 +1460,7 @@
     },
     "data/ct110/machine.json": {
       machine: "IPC CT110",
-      image: "assets/ct110/ct110_full.png",
+      image: "assets/ct110/ct110_full.svg",
       systems: [
         { id: "lavado", name: "Lavado y Secado", icon: "brush" },
         { id: "traccion", name: "Tracción y Chasis", icon: "wheel" },
@@ -2178,6 +2178,12 @@
       };
       els.zoneHotspots.addEventListener("click", onZone);
       els.zoneList.addEventListener("click", onZone);
+
+      // Proporción del plano para que el CSS limite su alto sin deformarlo
+      els.machineImg.addEventListener("load", () => {
+        const { naturalWidth: w, naturalHeight: h } = els.machineImg;
+        if (w && h) els.machineDiagram.style.setProperty("--plan-ar", (w / h).toFixed(4));
+      });
 
       // Mostrar/ocultar todos los nombres sobre el plano (se recuerda por navegador)
       const toggle = document.getElementById("labels-toggle");

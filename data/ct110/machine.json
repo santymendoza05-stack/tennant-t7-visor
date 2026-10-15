@@ -1,6 +1,6 @@
 {
   "machine": "IPC CT110",
-  "image": "assets/ct110/ct110_full.png",
+  "image": "assets/ct110/ct110_full.svg",
   "systems": [
     { "id": "lavado", "name": "Lavado y Secado", "icon": "brush" },
     { "id": "traccion", "name": "Tracción y Chasis", "icon": "wheel" },
