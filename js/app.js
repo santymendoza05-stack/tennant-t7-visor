@@ -2032,8 +2032,8 @@
     cartTotals: $("#cart-totals"),
     cartClear: $("#cart-clear"),
     cartXlsx: $("#cart-xlsx"),
-    cartPrint: $("#cart-print"),
-    printSheet: $("#print-sheet"),
+    cartCsv: $("#cart-csv"),
+    cartPdf: $("#cart-pdf"),
     // Nivel 1
     machineView: $("#view-machine"),
     heroEyebrow: $("#hero-eyebrow"),
@@ -3111,6 +3111,36 @@
     slogan: "Ingeniería para un Mantenimiento Integral"
   };
 
+  const LOGO_URL = "assets/logo.png";
+
+  // html2pdf.js (html2canvas + jsPDF) se carga solo la primera vez que se pide un PDF
+  const HTML2PDF_URL = "https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js";
+  let html2pdfLoading = null;
+  function loadHtml2pdf() {
+    if (window.html2pdf) return Promise.resolve(window.html2pdf);
+    html2pdfLoading = html2pdfLoading || new Promise((resolve, reject) => {
+      const s = document.createElement("script");
+      s.src = HTML2PDF_URL;
+      s.crossOrigin = "anonymous";
+      s.onload = () => (window.html2pdf ? resolve(window.html2pdf) : reject(new Error("html2pdf.js no disponible")));
+      s.onerror = () => {
+        html2pdfLoading = null; // permite reintentar
+        s.remove();
+        reject(new Error(`No se pudo cargar ${HTML2PDF_URL}`));
+      };
+      document.head.appendChild(s);
+    });
+    return html2pdfLoading;
+  }
+
+  // Espera a que la imagen esté en caché para que aparezca en el PDF
+  const imageReady = (src) =>
+    new Promise((resolve) => {
+      const img = new Image();
+      img.onload = img.onerror = () => resolve();
+      img.src = src;
+    });
+
   const pad2 = (n) => String(n).padStart(2, "0");
   const dateShort = (d) => `${pad2(d.getDate())}/${pad2(d.getMonth() + 1)}/${d.getFullYear()}`;
   const dateIso = (d) => `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}`;
@@ -3179,7 +3209,8 @@
         this.render();
       });
       els.cartXlsx.addEventListener("click", () => this.downloadXlsx());
-      els.cartPrint.addEventListener("click", () => this.print());
+      els.cartCsv.addEventListener("click", () => this.downloadCsv());
+      els.cartPdf.addEventListener("click", () => this.downloadPdf());
 
       // Otra pestaña del visor modificó la lista
       window.addEventListener("storage", (e) => {
@@ -3321,6 +3352,7 @@
       els.cartDate.textContent = dateLong(new Date());
       this.render();
       els.cartDialog.showModal();
+      if (this.items.length) loadHtml2pdf().catch(() => {}); // precarga: el PDF sale más rápido
     },
 
     renderTotals() {
@@ -3328,7 +3360,7 @@
       els.cartTotals.innerHTML = refs
         ? `<strong>${refs}</strong> referencia${refs === 1 ? "" : "s"} · <strong>${units}</strong> unidad${units === 1 ? "" : "es"}`
         : "";
-      [els.cartClear, els.cartXlsx, els.cartPrint].forEach((b) => (b.disabled = !refs));
+      [els.cartClear, els.cartCsv, els.cartXlsx, els.cartPdf].forEach((b) => (b.disabled = !refs || (b === els.cartPdf && this.pdfBusy)));
     },
 
     render() {
@@ -3373,22 +3405,99 @@
       return `Lista_repuestos_INGPAR_${dateIso(date)}${project ? `_${project}` : ""}${ext}`;
     },
 
-    // ---------- Formato imprimible (Imprimir / Guardar como PDF) ----------
-    print() {
+    saveBlob(blob, name) {
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = name;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+    },
+
+    // ---------- PDF: descarga directa con html2pdf.js (sin encabezados ni pies del navegador) ----------
+    async downloadPdf() {
+      if (!this.items.length || this.pdfBusy) return;
+      this.pdfBusy = true;
+      const btn = els.cartPdf, label = btn.textContent;
+      btn.textContent = "Generando PDF…";
+      btn.disabled = true;
+
+      const now = new Date();
+      const sheet = document.createElement("div");
+      sheet.className = "print-sheet pdf-render";
+      sheet.innerHTML = this.sheetHtml(now);
+      try {
+        const [html2pdf] = await Promise.all([loadHtml2pdf(), imageReady(LOGO_URL), document.fonts && document.fonts.ready]);
+        const name = this.fileName(now, ".pdf");
+        const worker = html2pdf()
+          .set({
+            margin: [12, 12, 14, 12],
+            filename: name,
+            image: { type: "jpeg", quality: 0.97 },
+            html2canvas: { scale: 2, useCORS: true, backgroundColor: "#ffffff", scrollX: 0, scrollY: 0 },
+            jsPDF: { unit: "mm", format: "letter", orientation: "portrait" },
+            pagebreak: { mode: ["css", "legacy"], avoid: ["tr", ".ps-head", ".ps-info", ".ps-group h2", ".ps-signs"] }
+          })
+          .from(sheet)
+          .toPdf();
+        // Pie propio en cada página (documento y numeración), en el margen inferior
+        const pdf = await worker.get("pdf");
+        const pages = pdf.internal.getNumberOfPages();
+        const { width, height } = pdf.internal.pageSize;
+        pdf.setFont("helvetica", "normal");
+        pdf.setFontSize(7);
+        pdf.setTextColor(107, 118, 132);
+        for (let p = 1; p <= pages; p++) {
+          pdf.setPage(p);
+          pdf.text(`${COMPANY.name} · Solicitud de Repuestos · ${dateShort(now)}`, 12, height - 7);
+          pdf.text(`Página ${p} de ${pages}`, width - 12, height - 7, { align: "right" });
+        }
+        await worker.save();
+        showToast(`PDF descargado: ${name}`);
+      } catch (err) {
+        console.error(err);
+        showToast("No se pudo generar el PDF. Revisa la conexión a internet e inténtalo de nuevo.");
+      } finally {
+        this.pdfBusy = false;
+        btn.textContent = label;
+        btn.disabled = !this.items.length;
+      }
+    },
+
+    // ---------- CSV: tabla plana para cualquier hoja de cálculo ----------
+    downloadCsv() {
       if (!this.items.length) return;
       const now = new Date();
-      els.printSheet.innerHTML = this.sheetHtml(now);
-      const root = document.documentElement;
-      const title = document.title;
-      document.title = this.fileName(now, ""); // nombre sugerido al guardar como PDF
-      root.classList.add("printing-cart");
-      const done = () => {
-        root.classList.remove("printing-cart");
-        document.title = title;
-        window.removeEventListener("afterprint", done);
+      const cell = (v) => {
+        const s = String(v ?? "");
+        return /[";\r\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
       };
-      window.addEventListener("afterprint", done);
-      window.print();
+      // Texto escrito a mano: no debe interpretarse como fórmula
+      const typed = (v) => cell(/^[=+\-@]/.test(v) ? `'${v}` : v);
+      // Part Numbers solo numéricos: Excel conserva los ceros a la izquierda y no los vuelve fecha
+      const pn = (v) => (/^[\d.\-/]+$/.test(v) ? `="${v}"` : cell(v));
+
+      const lines = [
+        [COMPANY.name, COMPANY.nit, COMPANY.slogan].map(cell).join(";"),
+        ["Solicitud de Repuestos", "Fecha", dateShort(now)].map(cell).join(";"),
+        [cell("Técnico / Solicitante"), typed(this.info.requester)].join(";"),
+        [cell("N.º OP / Proyecto"), typed(this.info.project)].join(";"),
+        "",
+        ["Máquina", "Subensamble", "#", "Ítem", "Part Number", "Descripción", "Categoría", "Cantidad"].map(cell).join(";")
+      ];
+      let n = 0;
+      for (const g of this.groups()) {
+        for (const sub of this.subassemblies(g.items)) {
+          for (const i of sub.items) {
+            lines.push([cell(g.name), cell(sub.name), ++n, i.item ?? "", pn(i.pn), cell(i.description), cell(i.category), i.qty].join(";"));
+          }
+        }
+      }
+      // BOM: Excel abre el archivo en UTF-8 (tildes y ñ correctas); ";" es el separador de Excel en español
+      const name = this.fileName(now, ".csv");
+      this.saveBlob(new Blob(["﻿" + lines.join("\r\n") + "\r\n"], { type: "text/csv;charset=utf-8" }), name);
+      showToast(`CSV descargado: ${name}`);
     },
 
     sheetHtml(now) {
@@ -3397,7 +3506,7 @@
       let n = 0;
       return `<header class="ps-head">
           <div class="ps-brand">
-            <span class="ps-mark">IP</span>
+            <img class="ps-logo" src="${LOGO_URL}" alt="${COMPANY.name}" />
             <div>
               <strong>${COMPANY.name}</strong>
               <span class="ps-nit">${COMPANY.nit}</span>
@@ -3447,14 +3556,9 @@
     downloadXlsx() {
       if (!this.items.length) return;
       const now = new Date();
-      const a = document.createElement("a");
-      a.href = URL.createObjectURL(buildXlsx(this.sheetRows(now)));
-      a.download = this.fileName(now, ".xlsx");
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      setTimeout(() => URL.revokeObjectURL(a.href), 4000);
-      showToast(`Excel descargado: ${a.download}`);
+      const name = this.fileName(now, ".xlsx");
+      this.saveBlob(buildXlsx(this.sheetRows(now)), name);
+      showToast(`Excel descargado: ${name}`);
     },
 
     // Filas de la hoja (columnas A–F); s = índice de estilo en XLSX_STYLES
@@ -3519,20 +3623,20 @@
 
   /* ---------- Generador mínimo de .xlsx (sin librerías) ----------
      Un .xlsx es un ZIP de archivos XML; aquí se empaqueta sin compresión.
-     Colores corporativos de INGPAR: azul FF0B3D6B, verde FF2E8B3E. */
+     Colores del logo de INGPAR: azul FF084880, verde FF1D6B2F. */
   const XLSX_STYLES = [
     // [fuente, relleno, borde, alineación]
     [0, 0, 0, ""],                                                       // 0 normal
     [2, 0, 0, '<alignment vertical="center"/>'],                         // 1 nombre de la empresa (azul)
     [3, 0, 0, ""],                                                       // 2 texto gris
     [8, 5, 1, '<alignment vertical="center"/>'],                         // 3 etiqueta (fondo azul claro)
-    [5, 2, 1, '<alignment horizontal="center" vertical="center"/>'],     // 4 encabezado de tabla (verde)
+    [5, 3, 1, '<alignment horizontal="center" vertical="center"/>'],     // 4 encabezado de tabla (azul marino)
     [0, 0, 1, '<alignment vertical="top" wrapText="1"/>'],               // 5 celda
     [1, 0, 1, '<alignment horizontal="center" vertical="top"/>'],        // 6 número / ítem / cantidad
-    [4, 3, 1, '<alignment horizontal="left" vertical="center"/>'],       // 7 máquina y título del documento (azul)
+    [4, 5, 1, '<alignment horizontal="left" vertical="center"/>'],       // 7 máquina y título del documento (azul claro)
     [1, 0, 1, '<alignment vertical="top"/>'],                            // 8 Part Number
     [1, 0, 2, '<alignment horizontal="center"/>'],                       // 9 línea de firma
-    [6, 4, 1, '<alignment vertical="center"/>'],                         // 10 subensamble (verde claro)
+    [6, 0, 3, '<alignment vertical="bottom"/>'],                         // 10 subensamble (rótulo verde con línea fina)
     [7, 0, 0, ""],                                                       // 11 eslogan
     [0, 0, 1, '<alignment vertical="center" wrapText="1"/>'],            // 12 valor de la cabecera
     [8, 0, 0, ""],                                                       // 13 NIT (azul)
@@ -3581,26 +3685,27 @@ ${merges.length ? `<mergeCells count="${merges.length}">${merges.map((m) => `<me
 <fonts count="9">
 <font><sz val="11"/><name val="Calibri"/></font>
 <font><b/><sz val="11"/><name val="Calibri"/></font>
-<font><b/><sz val="18"/><color rgb="FF0B3D6B"/><name val="Calibri"/></font>
+<font><b/><sz val="18"/><color rgb="FF084880"/><name val="Calibri"/></font>
 <font><sz val="10"/><color rgb="FF5A6474"/><name val="Calibri"/></font>
-<font><b/><sz val="12"/><color rgb="FFFFFFFF"/><name val="Calibri"/></font>
+<font><b/><sz val="12"/><color rgb="FF084880"/><name val="Calibri"/></font>
 <font><b/><sz val="10"/><color rgb="FFFFFFFF"/><name val="Calibri"/></font>
-<font><b/><sz val="11"/><color rgb="FF1F6B2E"/><name val="Calibri"/></font>
-<font><i/><sz val="10"/><color rgb="FF2E8B3E"/><name val="Calibri"/></font>
-<font><b/><sz val="10"/><color rgb="FF0B3D6B"/><name val="Calibri"/></font>
+<font><b/><sz val="11"/><color rgb="FF1D6B2F"/><name val="Calibri"/></font>
+<font><i/><sz val="10"/><color rgb="FF1D6B2F"/><name val="Calibri"/></font>
+<font><b/><sz val="10"/><color rgb="FF084880"/><name val="Calibri"/></font>
 </fonts>
 <fills count="6">
 <fill><patternFill patternType="none"/></fill>
 <fill><patternFill patternType="gray125"/></fill>
-<fill><patternFill patternType="solid"><fgColor rgb="FF2E8B3E"/><bgColor indexed="64"/></patternFill></fill>
-<fill><patternFill patternType="solid"><fgColor rgb="FF0B3D6B"/><bgColor indexed="64"/></patternFill></fill>
+<fill><patternFill patternType="solid"><fgColor rgb="FF1D6B2F"/><bgColor indexed="64"/></patternFill></fill>
+<fill><patternFill patternType="solid"><fgColor rgb="FF084880"/><bgColor indexed="64"/></patternFill></fill>
 <fill><patternFill patternType="solid"><fgColor rgb="FFE7F3EA"/><bgColor indexed="64"/></patternFill></fill>
-<fill><patternFill patternType="solid"><fgColor rgb="FFE6EEF7"/><bgColor indexed="64"/></patternFill></fill>
+<fill><patternFill patternType="solid"><fgColor rgb="FFEEF3F9"/><bgColor indexed="64"/></patternFill></fill>
 </fills>
-<borders count="3">
+<borders count="4">
 <border><left/><right/><top/><bottom/><diagonal/></border>
 <border>${box}<diagonal/></border>
 <border><left/><right/>${line("top", "FF000000")}<bottom/><diagonal/></border>
+<border><left/><right/><top/>${line("bottom", "FF1D6B2F")}<diagonal/></border>
 </borders>
 <cellStyleXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0"/></cellStyleXfs>
 <cellXfs count="${XLSX_STYLES.length}">${XLSX_STYLES.map(([font, fill, border, align]) =>

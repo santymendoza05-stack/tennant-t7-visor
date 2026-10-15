@@ -16,7 +16,11 @@ El **selector de la cabecera** (Tennant T7 / Tennant T12 / IPC CT110) cambia el 
 - **+ Agregar a la lista** en cada fila de la tabla y en cada resultado del buscador global. Si el repuesto ya está en la lista, el botón muestra la cantidad y suma una unidad más.
 - **🛒 Mi Lista (n)** en la cabecera abre el resumen, clasificado automáticamente por máquina (Tennant T7, Tennant T12, IPC CT110) con Part Number, descripción, categoría, subensamble y **cantidad editable**.
 - Campos de trazabilidad: **Nombre del Técnico / Solicitante** y **Número de OP / Proyecto**. La fecha del día se pone sola.
-- **Descargar Excel** (.xlsx real, generado en el navegador sin librerías) e **Imprimir / PDF** (formato carta; para PDF, elige "Guardar como PDF" en el diálogo de impresión). Ambos usan la plantilla formal de INGPAR S.A.S. (NIT 900.919.023-1, "Ingeniería para un Mantenimiento Integral", azul y verde corporativos) con el orden técnico **máquina → subensamble (orden del plano general) → ítem del manual**, y firmas de **Solicitante** y **Bodega**. Los datos de la empresa están en `COMPANY` y los colores en `.print-sheet` (CSS) y `XLSX_STYLES` (JS).
+- Exportación:
+  - **Descargar PDF:** descarga directa con [html2pdf.js](https://github.com/eKoopmans/html2pdf.js) 0.10.1 (se carga desde cdnjs la primera vez que se abre la lista), sin los encabezados y pies que agrega el navegador al imprimir. Tamaño carta, con el logo oficial (`assets/logo.png`) y numeración "Página X de Y". El PDF es una imagen de la plantilla: el texto no se puede seleccionar, y requiere conexión a internet.
+  - **Descargar Excel (.xlsx):** formato completo con encabezado y firmas, generado en el navegador sin librerías.
+  - **Exportar a Excel (.csv):** tabla plana separada por `;` (UTF-8 con BOM, para que Excel en español muestre bien tildes y columnas).
+- El PDF y el .xlsx usan la plantilla formal de INGPAR S.A.S. (NIT 900.919.023-1, "Ingeniería para un Mantenimiento Integral", azul y verde del logo) con el orden técnico **máquina → subensamble (orden del plano general) → ítem del manual**, y firmas de **Solicitante** y **Bodega**. Los datos de la empresa están en `COMPANY`; los colores en `.print-sheet` (CSS) y `XLSX_STYLES` (JS).
 - La lista y los campos se guardan en este navegador (`localStorage`) y se sincronizan entre pestañas abiertas del visor.
 
 ### Puntos del diagrama

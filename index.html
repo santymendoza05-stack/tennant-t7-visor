@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" />
   <!-- ?v= evita que el navegador use un CSS/JS viejo en caché tras publicar cambios -->
-  <link rel="stylesheet" href="css/styles.css?v=2026-10-15j" />
+  <link rel="stylesheet" href="css/styles.css?v=2026-10-15k" />
 </head>
 <body>
   <!-- Íconos SVG reutilizables -->
@@ -235,17 +235,15 @@
       <p id="cart-totals" class="cart-totals"></p>
       <div class="cart-actions">
         <button type="button" id="cart-clear" class="cart-btn cart-btn-ghost">Vaciar lista</button>
-        <button type="button" id="cart-xlsx" class="cart-btn">Descargar Excel</button>
-        <button type="button" id="cart-print" class="cart-btn cart-btn-primary">Imprimir / PDF</button>
+        <button type="button" id="cart-csv" class="cart-btn" title="Tabla de repuestos en texto separado por ;">Exportar a Excel (.csv)</button>
+        <button type="button" id="cart-xlsx" class="cart-btn" title="Formato completo con encabezado y firmas">Descargar Excel (.xlsx)</button>
+        <button type="button" id="cart-pdf" class="cart-btn cart-btn-primary">Descargar PDF</button>
       </div>
     </footer>
   </dialog>
 
-  <!-- Formato imprimible de la lista: solo se ve al imprimir desde el modal -->
-  <section id="print-sheet" class="print-sheet" aria-hidden="true"></section>
-
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
-  <script src="js/app.js?v=2026-10-15j"></script>
+  <script src="js/app.js?v=2026-10-15k"></script>
 </body>
 </html>
