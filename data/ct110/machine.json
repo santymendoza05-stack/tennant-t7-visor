@@ -16,7 +16,7 @@
       "figure": "SQUEEGEE",
       "status": "available",
       "data": "data/ct110/squeegee.json",
-      "hotspot": { "x": 89.9, "y": 65.9 }
+      "hotspot": { "x": 90.4, "y": 83.7 }
     },
     {
       "id": "cabezal-cepillos",
@@ -26,7 +26,7 @@
       "figure": "HEAD",
       "status": "available",
       "data": "data/ct110/head.json",
-      "hotspot": { "x": 58.7, "y": 72.3 }
+      "hotspot": { "x": 53, "y": 89.8 }
     },
     {
       "id": "tanques",
@@ -36,7 +36,7 @@
       "figure": "TANK",
       "status": "available",
       "data": "data/ct110/tank.json",
-      "hotspot": { "x": 80.2, "y": 57.3 }
+      "hotspot": { "x": 72.7, "y": 30.2 }
     },
     {
       "id": "instalacion-electrica",
@@ -46,7 +46,7 @@
       "figure": "ELECTRI.",
       "status": "available",
       "data": "data/ct110/electrical.json",
-      "hotspot": { "x": 22, "y": 21.9 }
+      "hotspot": { "x": 16.5, "y": 51.8 }
     },
     {
       "id": "motor-traccion",
@@ -59,7 +59,7 @@
         { "label": "DRIVE ASSEMBLY · Motor rueda", "data": "data/ct110/drive_assembly.json" },
         { "label": "TRACTION MOTOR · Dirección y chasis", "data": "data/ct110/traction_motor.json" }
       ],
-      "hotspot": { "x": 20.3, "y": 91.6 }
+      "hotspot": { "x": 20.7, "y": 85.7 }
     }
   ]
 }
