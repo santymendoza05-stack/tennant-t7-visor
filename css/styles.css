@@ -156,16 +156,26 @@ mark { background: var(--accent); color: var(--accent-ink); border-radius: 3px; 
   text-decoration: none;
   flex-shrink: 0;
 }
+/* Logo oficial INGPAR (PNG transparente, 370×271) directo sobre la barra oscura;
+   la altura manda y el ancho sigue la proporción. El contorno claro mantiene
+   visible el rayo negro y el texto azul sobre #0d1117. */
 .brand-mark {
-  display: grid;
-  place-items: center;
-  width: 42px; height: 42px;
-  border-radius: 11px;
-  background: var(--grad);
-  color: var(--accent-ink);
-  font: 800 1.15rem var(--font-display);
-  letter-spacing: 0.02em;
-  box-shadow: 0 0 0 3px rgba(245, 179, 1, 0.18), 0 6px 16px rgba(255, 122, 26, 0.35);
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  height: 44px;
+}
+.brand-mark img {
+  display: block;
+  height: 100%;
+  width: auto;
+  max-width: none;
+  aspect-ratio: 370 / 271;
+  object-fit: contain;
+  filter:
+    drop-shadow(0 0 0.6px rgba(255, 255, 255, 0.95))
+    drop-shadow(0 0 0.6px rgba(255, 255, 255, 0.95))
+    drop-shadow(0 0 3px rgba(255, 255, 255, 0.25));
 }
 .brand-text { display: flex; flex-direction: column; line-height: 1.1; }
 .brand-text strong { font: 800 1.25rem var(--font-display); letter-spacing: 0.04em; }
