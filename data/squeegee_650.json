@@ -1,0 +1,222 @@
+{
+  "machine": "Tennant T7",
+  "group": "Rear Squeegee Group, 650 mm (26 in)",
+  "figure": "Fig. 36",
+  "image": "assets/rear_squeegee_650.png",
+  "categories": [
+    "Escobillas y hojas",
+    "Estructura y cubiertas",
+    "Tornillería",
+    "Pasadores y bujes",
+    "Ruedas y rodillos"
+  ],
+  "parts": [
+    {
+      "item": 1,
+      "partNumber": "9000139",
+      "description": "Squeegee Assy Kit, 650mm, Ci [T7/Ssr]",
+      "category": "Escobillas y hojas",
+      "qty": 1,
+      "note": "Kit · incluye ítems 1–13",
+      "hotspots": []
+    },
+    {
+      "item": 1,
+      "partNumber": "1001468",
+      "description": "Frame, Sqge, 700mm",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 36.9, "y": 46.2 }
+      ]
+    },
+    {
+      "item": 2,
+      "partNumber": "1012934",
+      "description": "Plate Wldt, Sqge, Retainer, 700mm",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 85.5, "y": 98.8 }
+      ]
+    },
+    {
+      "item": 3,
+      "partNumber": "1074204",
+      "description": "Knob,Star,2.75d 4ear 1.1l M8x1.25,Thru,Y",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 37.5, "y": 4.2 },
+        { "x": 79.6, "y": 11.2 },
+        { "x": 36.3, "y": 31.6 },
+        { "x": 75.1, "y": 36.4 }
+      ]
+    },
+    {
+      "item": 4,
+      "partNumber": "390943",
+      "description": "Blade, Sqge, Front, 35.00l [Linx, 700mm]",
+      "category": "Escobillas y hojas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 53.0, "y": 86.5 }
+      ]
+    },
+    {
+      "item": 5,
+      "partNumber": "390942",
+      "description": "Blade, Sqge, Rear, 37.50l Linatex[700mm]",
+      "category": "Escobillas y hojas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 95.1, "y": 94.8 }
+      ]
+    },
+    {
+      "item": 6,
+      "partNumber": "1245861",
+      "description": "Strap Assy, Squge, 700mm [T7/T7amr], Yl",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 60.6, "y": 57.2 }
+      ]
+    },
+    {
+      "item": 7,
+      "partNumber": "1012643",
+      "description": "Strap Wldt, Sqge, Wedge, Ss [T3]",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "note": "Componente de 1245861",
+      "hotspots": [
+        { "x": 33.9, "y": 53.2 }
+      ]
+    },
+    {
+      "item": 8,
+      "partNumber": "09011",
+      "description": "Screw, Hex, M8 X 1.25 X 30, Ss",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 10.2, "y": 41.3 },
+        { "x": 90.6, "y": 67.9 }
+      ]
+    },
+    {
+      "item": 9,
+      "partNumber": "140027",
+      "description": "Washer, Flat, 0.35b 0.75d .04, Ss",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 9.6, "y": 18.3 },
+        { "x": 91.4, "y": 44.4 }
+      ]
+    },
+    {
+      "item": 10,
+      "partNumber": "222460",
+      "description": "Sleeve, P/M, 0.496d 0.318b 0.50l 430ss",
+      "category": "Pasadores y bujes",
+      "qty": 2,
+      "hotspots": [
+        { "x": 9.4, "y": 28.5 },
+        { "x": 91.3, "y": 54.5 }
+      ]
+    },
+    {
+      "item": 11,
+      "partNumber": "08713",
+      "description": "Nut, Hex, Lock, M8 X 1.25, Nl, Ss",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 9.3, "y": 15.5 },
+        { "x": 91.4, "y": 41.5 }
+      ]
+    },
+    {
+      "item": 12,
+      "partNumber": "01685",
+      "description": "Washer, Flat, 0.38b 0.88d .08, Ss",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 8.6, "y": 31.1 },
+        { "x": 92.3, "y": 56.6 }
+      ]
+    },
+    {
+      "item": 13,
+      "partNumber": "1010560",
+      "description": "Wheel, Bmpr, 80d X 25w, Non- Marking",
+      "category": "Ruedas y rodillos",
+      "qty": 2,
+      "hotspots": [
+        { "x": 5.1, "y": 23.7 },
+        { "x": 96.1, "y": 48.4 }
+      ]
+    },
+    {
+      "item": 14,
+      "partNumber": "391384",
+      "description": "Squeegee Kit, 700mm, Ure",
+      "category": "Escobillas y hojas",
+      "qty": 1,
+      "note": "Kit · incluye ítems 14–15",
+      "hotspots": []
+    },
+    {
+      "item": 14,
+      "partNumber": "391377",
+      "description": "Blade, Sqge, Front, 35.00l Ure [700mm]",
+      "category": "Escobillas y hojas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 57.2, "y": 88.3 }
+      ]
+    },
+    {
+      "item": 15,
+      "partNumber": "391378",
+      "description": "Blade, Sqge, Rear, 37.50l Pyu [700mm]",
+      "category": "Escobillas y hojas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 95.7, "y": 97.3 }
+      ]
+    },
+    {
+      "item": 16,
+      "partNumber": "391386",
+      "description": "Squeegee Kit, 700mm, Gum",
+      "category": "Escobillas y hojas",
+      "qty": 1,
+      "note": "Kit · incluye ítems 16–17",
+      "hotspots": []
+    },
+    {
+      "item": 16,
+      "partNumber": "390943",
+      "description": "Blade, Sqge, Front, 35.00l [Linx, 700mm]",
+      "category": "Escobillas y hojas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 60.8, "y": 90.6 }
+      ]
+    },
+    {
+      "item": 17,
+      "partNumber": "390936",
+      "description": "Blade, Sqge, Rear, 37.50l Gum [700mm]",
+      "category": "Escobillas y hojas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 95.7, "y": 99.3 }
+      ]
+    }
+  ]
+}

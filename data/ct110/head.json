@@ -8,6 +8,7 @@
     "Pasadores y bujes",
     "Resortes",
     "Mangueras y conexiones",
+    "Filtro y electroválvula de agua",
     "Sellos y empaques",
     "Motores y actuadores",
     "Transmisión",
@@ -92,7 +93,7 @@
       "item": 7,
       "partNumber": "MPVR02897",
       "description": "REDUCTION D.10-6.5 PER ELETTROVALV.",
-      "category": "Motores y actuadores",
+      "category": "Filtro y electroválvula de agua",
       "qty": 1,
       "note": "Hasta 10/2011",
       "hotspots": [
@@ -676,7 +677,7 @@
       "item": 60,
       "partNumber": "MEEV00018",
       "description": "SOLENOID VALVE",
-      "category": "Motores y actuadores",
+      "category": "Filtro y electroválvula de agua",
       "qty": 1,
       "note": "Hasta 10/2011",
       "hotspots": [
@@ -709,7 +710,7 @@
       "item": 63,
       "partNumber": "LAFN05835",
       "description": "BRACKET PORTAELETTROVALVOLA",
-      "category": "Estructura y cubiertas",
+      "category": "Filtro y electroválvula de agua",
       "qty": 1,
       "hotspots": [
         { "x": 4.5, "y": 30.3 }
@@ -810,7 +811,7 @@
       "item": 73,
       "partNumber": "FTAC00038",
       "description": "FILTER G1/2 INOX",
-      "category": "Escobillas y hojas",
+      "category": "Filtro y electroválvula de agua",
       "qty": 1,
       "hotspots": [
         { "x": 8.9, "y": 13.0 }
@@ -840,7 +841,7 @@
       "item": 76,
       "partNumber": "RCGR00078",
       "description": "TAP",
-      "category": "Mangueras y conexiones",
+      "category": "Filtro y electroválvula de agua",
       "qty": 1,
       "hotspots": [
         { "x": 17.8, "y": 11.9 }
@@ -1223,7 +1224,7 @@
       "item": 113,
       "partNumber": "MEEV00044",
       "description": "SOLENOID VALVE",
-      "category": "Motores y actuadores",
+      "category": "Filtro y electroválvula de agua",
       "qty": 1,
       "note": "Desde 10/2011",
       "hotspots": [
@@ -1234,7 +1235,7 @@
       "item": 114,
       "partNumber": "MEEV00044",
       "description": "SOLENOID VALVE",
-      "category": "Motores y actuadores",
+      "category": "Filtro y electroválvula de agua",
       "qty": 1,
       "note": "Desde 10/2011",
       "hotspots": [

@@ -1,0 +1,487 @@
+{
+  "machine": "Tennant T7",
+  "group": "Cylindrical Scrub Head Drive Group, Left Side",
+  "figure": "Fig. 25",
+  "image": "assets/scrub_head_cyl_drive_lh.png",
+  "categories": [
+    "Motores y actuadores",
+    "Transmisión",
+    "Eléctrico",
+    "Estructura y cubiertas",
+    "Sellos y empaques",
+    "Tornillería",
+    "Rodamientos",
+    "Mangueras y fluido",
+    "Pasadores y bujes"
+  ],
+  "parts": [
+    {
+      "item": 1,
+      "partNumber": "1042228",
+      "description": "Motor, Ele, 24vdc 1500rpm 0.75hp 23.0a",
+      "category": "Motores y actuadores",
+      "qty": 1,
+      "note": "S/N 10415584-",
+      "hotspots": [
+        { "x": 29.3, "y": 10.5 },
+        { "x": 91.5, "y": 10.7 }
+      ]
+    },
+    {
+      "item": 1,
+      "partNumber": "1049739",
+      "description": "Brush Kit, Carbon, Motor, Replmt [4pcs]",
+      "category": "Motores y actuadores",
+      "qty": 1,
+      "note": "Componente de 1042228 · S/N 10415584-",
+      "hotspots": []
+    },
+    {
+      "item": 2,
+      "partNumber": "00954",
+      "description": "Key, Sq, 0.12 X 0.12, 1.00l",
+      "category": "Transmisión",
+      "qty": 1,
+      "note": "Componente de 1042228",
+      "hotspots": [
+        { "x": 36.5, "y": 11.5 },
+        { "x": 96.5, "y": 12.0 }
+      ]
+    },
+    {
+      "item": 1,
+      "partNumber": "1050372",
+      "description": "Motor Kit, Cylrcl, Replmt, F/604980 [T7]",
+      "category": "Motores y actuadores",
+      "qty": 1,
+      "note": "S/N 10000000-10415583",
+      "hotspots": []
+    },
+    {
+      "item": 2,
+      "partNumber": "00954",
+      "description": "Key, Sq, 0.12 X 0.12, 1.00l",
+      "category": "Transmisión",
+      "qty": 1,
+      "note": "Componente de 1050372",
+      "hotspots": []
+    },
+    {
+      "item": 3,
+      "partNumber": "1052892",
+      "description": "Harness, Adapter, Motor [T7]",
+      "category": "Eléctrico",
+      "qty": 1,
+      "note": "S/N 10415584-",
+      "hotspots": [
+        { "x": 9.8, "y": 3.4 }
+      ]
+    },
+    {
+      "item": 4,
+      "partNumber": "1044386",
+      "description": "Bracket, Mtg, Motor",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 73.2, "y": 25.8 },
+        { "x": 6.6, "y": 27.3 }
+      ]
+    },
+    {
+      "item": 5,
+      "partNumber": "608964",
+      "description": "Boot, 90deg .27id 0.64id 1.79l, Blk",
+      "category": "Sellos y empaques",
+      "qty": 1,
+      "note": "S/N 10000000-10415583",
+      "hotspots": [
+        { "x": 68.5, "y": 18.7 }
+      ]
+    },
+    {
+      "item": 6,
+      "partNumber": "608963",
+      "description": "Boot, 90deg .27id 0.64id 1.79l, Red",
+      "category": "Sellos y empaques",
+      "qty": 1,
+      "note": "S/N 10000000-10415583",
+      "hotspots": [
+        { "x": 69.6, "y": 5.6 }
+      ]
+    },
+    {
+      "item": 7,
+      "partNumber": "140027",
+      "description": "Washer, Flat, 0.35b 0.75d .04, Ss",
+      "category": "Tornillería",
+      "qty": 2,
+      "note": "S/N 10000000-10415583",
+      "hotspots": [
+        { "x": 82.3, "y": 7.9 }
+      ]
+    },
+    {
+      "item": 8,
+      "partNumber": "43952",
+      "description": "Washer, Lock, Int, 0.31, Ss",
+      "category": "Tornillería",
+      "qty": 2,
+      "note": "S/N 10000000-10415583",
+      "hotspots": [
+        { "x": 85.8, "y": 9.1 }
+      ]
+    },
+    {
+      "item": 9,
+      "partNumber": "1032496",
+      "description": "Harness, Adapter, Motor, Cylrcl",
+      "category": "Eléctrico",
+      "qty": 1,
+      "note": "S/N 10000000-10415583",
+      "hotspots": [
+        { "x": 82.3, "y": 4.4 }
+      ]
+    },
+    {
+      "item": 10,
+      "partNumber": "1020341",
+      "description": "Screw, Hex, M8 X 1.25 X 20, Ss, Sems",
+      "category": "Tornillería",
+      "qty": 8,
+      "hotspots": [
+        { "x": 13.3, "y": 20.4 },
+        { "x": 41.3, "y": 65.5 },
+        { "x": 33.8, "y": 70.6 },
+        { "x": 94.7, "y": 76.9 }
+      ]
+    },
+    {
+      "item": 11,
+      "partNumber": "01685",
+      "description": "Washer, Flat, 0.31, Ss",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 10.2, "y": 18.7 },
+        { "x": 35.1, "y": 28.4 }
+      ]
+    },
+    {
+      "item": 12,
+      "partNumber": "1025026",
+      "description": "Screw, Hex, M8 X 1.25 X 180, Ss",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 43.3, "y": 32.2 }
+      ]
+    },
+    {
+      "item": 13,
+      "partNumber": "08713",
+      "description": "Nut, Hex, Lock, M8 X 1.25, Nl, Ss",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 6.5, "y": 18.1 }
+      ]
+    },
+    {
+      "item": 14,
+      "partNumber": "578717",
+      "description": "Screw, Hex, M8 X 1.25 X 50, Ss",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 40.4, "y": 40.0 }
+      ]
+    },
+    {
+      "item": 15,
+      "partNumber": "07786",
+      "description": "Nut, Hex, Std, M8 X 1.25, Ss",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 40.7, "y": 42.8 }
+      ]
+    },
+    {
+      "item": 16,
+      "partNumber": "1033528",
+      "description": "Sheave, 06grv, 1.33pd 0.50b, Alm [Pj]",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "note": "S/N 10346425-",
+      "hotspots": [
+        { "x": 37.3, "y": 31.6 }
+      ]
+    },
+    {
+      "item": 17,
+      "partNumber": "222818",
+      "description": "Screw, Set, #08- 32 X 0.25, Nl",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 45.3, "y": 19.6 }
+      ]
+    },
+    {
+      "item": 18,
+      "partNumber": "1035888",
+      "description": "Belt, Drive, 6grv, 508 L X 14 W, [6pj]",
+      "category": "Transmisión",
+      "qty": 1,
+      "note": "S/N 10346425-",
+      "hotspots": [
+        { "x": 85.5, "y": 69.7 }
+      ]
+    },
+    {
+      "item": 19,
+      "partNumber": "1021036",
+      "description": "Bracket, Motor [Machined]",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 73.8, "y": 58.3 }
+      ]
+    },
+    {
+      "item": 20,
+      "partNumber": "41360",
+      "description": "Bearing, Ball, 0.59b 1.26d 0.35w[2seal]",
+      "category": "Rodamientos",
+      "qty": 2,
+      "hotspots": [
+        { "x": 46.8, "y": 70.2 },
+        { "x": 85.9, "y": 72.9 }
+      ]
+    },
+    {
+      "item": 21,
+      "partNumber": "1002077",
+      "description": "Tube, 0.81d 0.59b 00.5l",
+      "category": "Mangueras y fluido",
+      "qty": 1,
+      "hotspots": [
+        { "x": 55.7, "y": 59.7 }
+      ]
+    },
+    {
+      "item": 22,
+      "partNumber": "1021050",
+      "description": "Shaft, Drive",
+      "category": "Transmisión",
+      "qty": 1,
+      "hotspots": [
+        { "x": 58.6, "y": 61.7 }
+      ]
+    },
+    {
+      "item": 23,
+      "partNumber": "378805",
+      "description": "Plug, Drive, Brush, Mach",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 42.8, "y": 69.4 }
+      ]
+    },
+    {
+      "item": 24,
+      "partNumber": "00911",
+      "description": "Key, Sq, 0.19 X 0.19, 0.75l",
+      "category": "Transmisión",
+      "qty": 1,
+      "hotspots": [
+        { "x": 50.1, "y": 71.9 }
+      ]
+    },
+    {
+      "item": 25,
+      "partNumber": "79246",
+      "description": "Screw, Flt, M8 X 1.25 X 20, Ss 18- 8",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 86.1, "y": 97.1 }
+      ]
+    },
+    {
+      "item": 26,
+      "partNumber": "1035173",
+      "description": "Sheave, 06grv, 2.96pd 0.59b, Alm [Pj]",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "note": "S/N 10346425-",
+      "hotspots": [
+        { "x": 91.5, "y": 73.6 }
+      ]
+    },
+    {
+      "item": 27,
+      "partNumber": "00961",
+      "description": "Key, Sq, 0.19 X 0.19, 0.50l",
+      "category": "Transmisión",
+      "qty": 1,
+      "hotspots": [
+        { "x": 54.5, "y": 73.5 }
+      ]
+    },
+    {
+      "item": 28,
+      "partNumber": "1022401",
+      "description": "Gasket, Cover, Belt",
+      "category": "Transmisión",
+      "qty": 1,
+      "hotspots": [
+        { "x": 57.1, "y": 77.8 }
+      ]
+    },
+    {
+      "item": 29,
+      "partNumber": "1022807",
+      "description": "Cover, Belt",
+      "category": "Transmisión",
+      "qty": 1,
+      "hotspots": [
+        { "x": 79.8, "y": 83.0 }
+      ]
+    },
+    {
+      "item": 30,
+      "partNumber": "1057922",
+      "description": "Door Assy, Cyl Head [7100]",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "note": "Kit · incluye ítems 30–35",
+      "hotspots": []
+    },
+    {
+      "item": 30,
+      "partNumber": "390996",
+      "description": "Screw, Flt, M10 X 1.5 X 20, 10.9, Nl",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 44.5, "y": 95.6 }
+      ]
+    },
+    {
+      "item": 31,
+      "partNumber": "1044145",
+      "description": "Door, Brush",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 32.1, "y": 97.1 }
+      ]
+    },
+    {
+      "item": 1,
+      "partNumber": "222752",
+      "description": "Plug Assy, Idler, Brush",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "note": "Componente de 1050372",
+      "hotspots": []
+    },
+    {
+      "item": 32,
+      "partNumber": "222184",
+      "description": "Pin, Roll, .094 D X 0.25l, .094/.097",
+      "category": "Pasadores y bujes",
+      "qty": 1,
+      "hotspots": [
+        { "x": 31.0, "y": 92.0 }
+      ]
+    },
+    {
+      "item": 33,
+      "partNumber": "222177",
+      "description": "Shaft, Idler Plug",
+      "category": "Transmisión",
+      "qty": 1,
+      "hotspots": [
+        { "x": 28.6, "y": 89.9 }
+      ]
+    },
+    {
+      "item": 34,
+      "partNumber": "1057629",
+      "description": "Plug, Idler, Brush [Sgl Brg]",
+      "category": "Transmisión",
+      "qty": 1,
+      "hotspots": [
+        { "x": 22.0, "y": 88.6 }
+      ]
+    },
+    {
+      "item": 35,
+      "partNumber": "01516",
+      "description": "Ring, Retaining, Ext, 0.59d, Basic",
+      "category": "Pasadores y bujes",
+      "qty": 1,
+      "hotspots": [
+        { "x": 18.6, "y": 85.3 }
+      ]
+    },
+    {
+      "item": 36,
+      "partNumber": "1034845",
+      "description": "Strip, Pye, Hi- dns, 0.25 01.75w 05.6l",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 88.9, "y": 92.7 }
+      ]
+    },
+    {
+      "item": 37,
+      "partNumber": "1034731",
+      "description": "Screw, Hex, M6 X 1.00 X 16, Sems, Ss",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 83.1, "y": 63.7 },
+        { "x": 89.6, "y": 87.2 }
+      ]
+    },
+    {
+      "item": 38,
+      "partNumber": "1024636",
+      "description": "Sprocket, 48t, 5p",
+      "category": "Transmisión",
+      "qty": 1,
+      "note": "S/N 10000000-10346424",
+      "hotspots": [
+        { "x": 96.2, "y": 42.1 }
+      ]
+    },
+    {
+      "item": 39,
+      "partNumber": "375195",
+      "description": "Sprocket, Timing, 22tooth, 0.50b, [Gt/2]",
+      "category": "Transmisión",
+      "qty": 1,
+      "note": "S/N 10000000-10346424",
+      "hotspots": [
+        { "x": 93.5, "y": 37.9 }
+      ]
+    },
+    {
+      "item": 40,
+      "partNumber": "377500",
+      "description": "Belt, Synchronous, 05mm 500l[05p,Plychn]",
+      "category": "Transmisión",
+      "qty": 1,
+      "note": "S/N 10000000-10346424",
+      "hotspots": [
+        { "x": 85.5, "y": 35.4 }
+      ]
+    }
+  ]
+}

@@ -7,10 +7,10 @@
     "Tornillería",
     "Pasadores y bujes",
     "Mangueras y conexiones",
+    "Filtro y electroválvula de agua",
     "Sellos y empaques",
     "Motores y actuadores",
     "Eléctrico",
-    "Escobillas y hojas",
     "Estructura y cubiertas"
   ],
   "parts": [
@@ -336,7 +336,7 @@
       "item": 31,
       "partNumber": "FTDP00133",
       "description": "FILTER",
-      "category": "Escobillas y hojas",
+      "category": "Filtro y electroválvula de agua",
       "qty": 1,
       "hotspots": [
         { "x": 86.8, "y": 18.0 }

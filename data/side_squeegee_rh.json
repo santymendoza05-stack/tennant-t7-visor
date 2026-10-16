@@ -27,7 +27,7 @@
       "qty": 1,
       "note": "Soporte metálico de la racleta derecha",
       "hotspots": [
-        { "x": 40.9, "y": 33.1 }
+        { "x": 39.9, "y": 22.8 }
       ]
     },
     {
@@ -38,7 +38,7 @@
       "subsystem": "Soporte y racleta lateral",
       "qty": 1,
       "hotspots": [
-        { "x": 25.0, "y": 25.5 }
+        { "x": 26.5, "y": 36.5 }
       ]
     },
     {
@@ -50,8 +50,8 @@
       "qty": 2,
       "note": "Pasador de liberación rápida",
       "hotspots": [
-        { "x": 3.5, "y": 28.7 },
-        { "x": 64.8, "y": 7.6 }
+        { "x": 71.9, "y": 6.1 },
+        { "x": 2.4, "y": 19.1 }
       ]
     },
     {
@@ -62,7 +62,7 @@
       "subsystem": "Pasador de liberación rápida",
       "qty": 1,
       "hotspots": [
-        { "x": 5.7, "y": 53.4 }
+        { "x": 10.7, "y": 51.6 }
       ]
     },
     {
@@ -73,7 +73,7 @@
       "subsystem": "Pasador de liberación rápida",
       "qty": 1,
       "hotspots": [
-        { "x": 2.7, "y": 49.3 }
+        { "x": 1.6, "y": 61.7 }
       ]
     },
     {
@@ -84,7 +84,7 @@
       "subsystem": "Pasador de liberación rápida",
       "qty": 1,
       "hotspots": [
-        { "x": 27.6, "y": 45.3 }
+        { "x": 22.9, "y": 43.1 }
       ]
     },
     {
@@ -95,7 +95,7 @@
       "subsystem": "Pasador de liberación rápida",
       "qty": 1,
       "hotspots": [
-        { "x": 27.9, "y": 62.9 }
+        { "x": 24.2, "y": 70.9 }
       ]
     },
     {
@@ -107,7 +107,7 @@
       "qty": 1,
       "note": "Estándar",
       "hotspots": [
-        { "x": 9.9, "y": 19.8 }
+        { "x": 8.6, "y": 10.1 }
       ]
     },
     {
@@ -139,7 +139,7 @@
       "qty": 1,
       "note": "Eslabón articulado delantero",
       "hotspots": [
-        { "x": 32.7, "y": 67.2 }
+        { "x": 30.4, "y": 76.1 }
       ]
     },
     {
@@ -151,7 +151,7 @@
       "qty": 1,
       "note": "Eslabón articulado trasero",
       "hotspots": [
-        { "x": 75.2, "y": 31.3 }
+        { "x": 75.2, "y": 20.8 }
       ]
     },
     {
@@ -162,7 +162,7 @@
       "subsystem": "Resortes de torsión",
       "qty": 1,
       "hotspots": [
-        { "x": 52.9, "y": 89.0 }
+        { "x": 48.9, "y": 96.9 }
       ]
     },
     {
@@ -173,7 +173,7 @@
       "subsystem": "Resortes de torsión",
       "qty": 1,
       "hotspots": [
-        { "x": 57.2, "y": 20.3 }
+        { "x": 56.0, "y": 34.3 }
       ]
     },
     {
@@ -184,8 +184,8 @@
       "subsystem": "Resortes de torsión",
       "qty": 2,
       "hotspots": [
-        { "x": 54.3, "y": 17.9 },
-        { "x": 55.0, "y": 90.5 }
+        { "x": 51.9, "y": 35.3 },
+        { "x": 52.1, "y": 98.0 }
       ]
     },
     {
@@ -197,10 +197,9 @@
       "qty": 4,
       "note": "Buje de los eslabones",
       "hotspots": [
-        { "x": 77.9, "y": 35.1 },
-        { "x": 75.7, "y": 39.4 },
-        { "x": 39.9, "y": 63.1 },
-        { "x": 36.0, "y": 69.5 }
+        { "x": 78.6, "y": 23.4 },
+        { "x": 44.2, "y": 55.4 },
+        { "x": 33.8, "y": 79.2 }
       ]
     },
     {
@@ -211,14 +210,11 @@
       "subsystem": "Eslabones articulados",
       "qty": 8,
       "hotspots": [
-        { "x": 24.0, "y": 55.7 },
-        { "x": 31.6, "y": 58.0 },
-        { "x": 39.2, "y": 69.8 },
-        { "x": 41.2, "y": 66.4 },
-        { "x": 68.1, "y": 32.8 },
-        { "x": 70.5, "y": 30.5 },
-        { "x": 76.4, "y": 44.7 },
-        { "x": 80.2, "y": 38.2 }
+        { "x": 82.8, "y": 27.5 },
+        { "x": 66.8, "y": 47.6 },
+        { "x": 18.5, "y": 59.2 },
+        { "x": 29.1, "y": 68.8 },
+        { "x": 41.0, "y": 84.3 }
       ]
     },
     {
@@ -229,8 +225,8 @@
       "subsystem": "Eslabones articulados",
       "qty": 2,
       "hotspots": [
-        { "x": 20.8, "y": 51.5 },
-        { "x": 96.0, "y": 49.3 }
+        { "x": 97.1, "y": 39.9 },
+        { "x": 15.7, "y": 54.7 }
       ]
     },
     {
@@ -241,8 +237,8 @@
       "subsystem": "Eslabones articulados",
       "qty": 2,
       "hotspots": [
-        { "x": 40.2, "y": 51.1 },
-        { "x": 83.6, "y": 42.9 }
+        { "x": 85.4, "y": 32.4 },
+        { "x": 46.0, "y": 49.1 }
       ]
     },
     {
@@ -253,8 +249,8 @@
       "subsystem": "Resortes de torsión",
       "qty": 2,
       "hotspots": [
-        { "x": 30.2, "y": 40.5 },
-        { "x": 59.5, "y": 14.5 }
+        { "x": 59.8, "y": 4.6 },
+        { "x": 31.5, "y": 29.8 }
       ]
     }
   ]

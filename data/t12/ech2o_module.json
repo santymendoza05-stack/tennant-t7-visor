@@ -1,0 +1,270 @@
+{
+  "machine": "Tennant T12",
+  "group": "ec-H2O Module Assembly Breakdown, 9010933",
+  "figure": "Fig. 1",
+  "image": "assets/t12/ech2o_module.png",
+  "categories": [
+    "Estructura y cubiertas",
+    "Eléctrico",
+    "Tornillería",
+    "Mangueras y fluido",
+    "Etiquetas",
+    "Sellos y empaques"
+  ],
+  "parts": [
+    {
+      "item": 1,
+      "partNumber": "9010933",
+      "description": "Ec−H2o Module Kit, Afmkt [T12]",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "note": "Conjunto completo de la figura",
+      "hotspots": [
+        { "x": 64.7, "y": 79.7 }
+      ]
+    },
+    {
+      "item": 1,
+      "partNumber": "9020262",
+      "description": "Circuit Board Kit, Ec−H2o, Afmkt [T12]",
+      "category": "Eléctrico",
+      "qty": 1,
+      "hotspots": []
+    },
+    {
+      "item": 2,
+      "partNumber": "1018155",
+      "description": "Screw, Pan, Phl, M5 X 0.80 X 16, Tcut,Ss",
+      "category": "Tornillería",
+      "qty": 8,
+      "hotspots": [
+        { "x": 9.9, "y": 61.2 },
+        { "x": 74.9, "y": 74.0 }
+      ]
+    },
+    {
+      "item": 3,
+      "partNumber": "1057637",
+      "description": "Electrode, 5 Plate, High Flow",
+      "category": "Eléctrico",
+      "qty": 1,
+      "hotspots": [
+        { "x": 29.1, "y": 28.6 }
+      ]
+    },
+    {
+      "item": 4,
+      "partNumber": "1069708",
+      "description": "Harness, Ele, Ech2o [T12 Module]",
+      "category": "Eléctrico",
+      "qty": 1,
+      "hotspots": [
+        { "x": 7.5, "y": 76.9 }
+      ]
+    },
+    {
+      "item": 5,
+      "partNumber": "9006268",
+      "description": "Hose, Pvc, Brd, 0.38id, 01Ft, Clr",
+      "category": "Mangueras y fluido",
+      "qty": 1,
+      "hotspots": [
+        { "x": 56.4, "y": 16.5 }
+      ]
+    },
+    {
+      "item": 6,
+      "partNumber": "1014971",
+      "description": "Hose, Afmkt, Pvc, Brd, 01Ft, Clr",
+      "category": "Mangueras y fluido",
+      "qty": 1,
+      "hotspots": [
+        { "x": 79.7, "y": 38.5 }
+      ]
+    },
+    {
+      "item": 7,
+      "partNumber": "54333",
+      "description": "Clamp, Hose, Wormdrive, 0.31−0.88d, .31w",
+      "category": "Mangueras y fluido",
+      "qty": 1,
+      "hotspots": [
+        { "x": 79.0, "y": 22.1 }
+      ]
+    },
+    {
+      "item": 8,
+      "partNumber": "1049637",
+      "description": "Label, Direction [Ec−H2o]",
+      "category": "Etiquetas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 43.5, "y": 25.4 }
+      ]
+    },
+    {
+      "item": 9,
+      "partNumber": "1051519",
+      "description": "Housing, Upper, Module, High Flow",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 3.2, "y": 42.3 }
+      ]
+    },
+    {
+      "item": 10,
+      "partNumber": "32509",
+      "description": "Screw, Hex, M4 X 0.70 X 50, Ss",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 2.6, "y": 55.4 }
+      ]
+    },
+    {
+      "item": 11,
+      "partNumber": "41579",
+      "description": "Washer, Flat, 08, Ss",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 61.5, "y": 16.8 },
+        { "x": 42.5, "y": 39.2 }
+      ]
+    },
+    {
+      "item": 12,
+      "partNumber": "33932",
+      "description": "Nut, Hex, Lock, M4 X 0.70, Nl, Ss",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 66.2, "y": 15.3 },
+        { "x": 46.6, "y": 38.1 }
+      ]
+    },
+    {
+      "item": 13,
+      "partNumber": "1046041",
+      "description": "Label, Module [Nsf, Ec−H2o]",
+      "category": "Etiquetas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 18.2, "y": 24.4 }
+      ]
+    },
+    {
+      "item": 14,
+      "partNumber": "1044393",
+      "description": "Switch, Rocker, Spst, Mom",
+      "category": "Eléctrico",
+      "qty": 1,
+      "hotspots": [
+        { "x": 3.8, "y": 30.0 }
+      ]
+    },
+    {
+      "item": 15,
+      "partNumber": "1048741",
+      "description": "Bracket, Valve, Large",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 66.7, "y": 31.9 }
+      ]
+    },
+    {
+      "item": 16,
+      "partNumber": "1062006",
+      "description": "Electrode, Cylindrical",
+      "category": "Eléctrico",
+      "qty": 1,
+      "hotspots": [
+        { "x": 62.2, "y": 6.2 }
+      ]
+    },
+    {
+      "item": 17,
+      "partNumber": "130773",
+      "description": "Tie, Cable, Nyl, 11.0l, .14w, 3.0 Max. D",
+      "category": "Eléctrico",
+      "qty": 1,
+      "hotspots": [
+        { "x": 62.2, "y": 9.7 }
+      ]
+    },
+    {
+      "item": 18,
+      "partNumber": "1055552",
+      "description": "Fitting, Brs, Str, Bm06/Pm02",
+      "category": "Mangueras y fluido",
+      "qty": 1,
+      "hotspots": [
+        { "x": 79.1, "y": 17.9 }
+      ]
+    },
+    {
+      "item": 19,
+      "partNumber": "1051268",
+      "description": "Fitting, Plstc, E90, Bm05/Pm02, Nyl",
+      "category": "Mangueras y fluido",
+      "qty": 1,
+      "hotspots": [
+        { "x": 62.0, "y": 2.2 }
+      ]
+    },
+    {
+      "item": 20,
+      "partNumber": "43844",
+      "description": "Clamp, Hose, Wormdrive, 0.25−0.62d, .31w",
+      "category": "Mangueras y fluido",
+      "qty": 3,
+      "hotspots": [
+        { "x": 79.6, "y": 8.0 },
+        { "x": 57.3, "y": 8.4 },
+        { "x": 97.4, "y": 17.0 }
+      ]
+    },
+    {
+      "item": 21,
+      "partNumber": "1014971",
+      "description": "Hose, Afmkt, Pvc, Brd, 01Ft, Clr",
+      "category": "Mangueras y fluido",
+      "qty": 1,
+      "hotspots": [
+        { "x": 96.8, "y": 6.6 }
+      ]
+    },
+    {
+      "item": 22,
+      "partNumber": "1068763",
+      "description": "Label, Date Code [Ec−H2o]",
+      "category": "Etiquetas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 23.6, "y": 25.5 }
+      ]
+    },
+    {
+      "item": 23,
+      "partNumber": "1037032",
+      "description": "Housing, Bottom",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 42.0, "y": 88.7 }
+      ]
+    },
+    {
+      "item": 24,
+      "partNumber": "1054776",
+      "description": "Grommet, Blind",
+      "category": "Sellos y empaques",
+      "qty": 1,
+      "hotspots": [
+        { "x": 32.7, "y": 57.1 }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "machine": "Tennant T7",
+  "group": "Brushes, Replacement, Cylindrical",
+  "figure": "Fig. 1",
+  "image": "assets/brushes_cyl.png",
+  "categories": [
+    "Cepillos y pads"
+  ],
+  "parts": [
+    {
+      "item": 1,
+      "partNumber": "222305",
+      "description": "Brush, Scb, 28l, 18sr, Nyl, Spl",
+      "category": "Cepillos y pads",
+      "qty": 2,
+      "hotspots": [
+        { "x": 48.0, "y": 4.5 }
+      ]
+    },
+    {
+      "item": 1,
+      "partNumber": "222306",
+      "description": "Brush, Scb, 28l, 18sr, Abr, Spl",
+      "category": "Cepillos y pads",
+      "qty": 2,
+      "hotspots": []
+    },
+    {
+      "item": 1,
+      "partNumber": "222304",
+      "description": "Brush, Scb, 28l, 18sr, Pyp, Spl",
+      "category": "Cepillos y pads",
+      "qty": 2,
+      "hotspots": []
+    },
+    {
+      "item": 1,
+      "partNumber": "374041",
+      "description": "Brush, Scb, 28l, 18sr, Hd Pyp, Spl",
+      "category": "Cepillos y pads",
+      "qty": 2,
+      "hotspots": []
+    },
+    {
+      "item": 1,
+      "partNumber": "222308",
+      "description": "Brush, Scb, 32l, 18sr, Nyl, Spl",
+      "category": "Cepillos y pads",
+      "qty": 2,
+      "hotspots": []
+    },
+    {
+      "item": 1,
+      "partNumber": "222309",
+      "description": "Brush, Scb, 32l, 18sr, Abr, Spl",
+      "category": "Cepillos y pads",
+      "qty": 2,
+      "hotspots": []
+    },
+    {
+      "item": 1,
+      "partNumber": "222307",
+      "description": "Brush, Scb, 32l, 18sr, Pyp, Spl [Grout]",
+      "category": "Cepillos y pads",
+      "qty": 2,
+      "hotspots": []
+    },
+    {
+      "item": 1,
+      "partNumber": "374042",
+      "description": "Brush, Scb, 32l, 18sr, Hd Pyp, Spl",
+      "category": "Cepillos y pads",
+      "qty": 2,
+      "hotspots": []
+    }
+  ]
+}

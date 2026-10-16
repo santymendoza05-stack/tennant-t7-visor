@@ -28,10 +28,19 @@
       "id": "racleta-trasera",
       "name": "Racleta Trasera / Escobillas de Secado",
       "system": "lavado",
-      "description": "Rear Squeegee Kit",
-      "figure": "Fig. 21",
+      "description": "Rear Squeegee Kit / Squeegee Guard Group",
+      "figure": "Fig. 21 / 4",
       "status": "available",
-      "data": "data/t12/rear_squeegee.json",
+      "figures": [
+        {
+          "label": "Fig. 21 · Kit de racleta trasera",
+          "data": "data/t12/rear_squeegee.json"
+        },
+        {
+          "label": "Fig. 4 (accesorios) · Protector de racleta",
+          "data": "data/t12/squeegee_guard.json"
+        }
+      ],
       "hotspot": { "x": 94, "y": 68 },
       "labelSide": "left"
     },
@@ -40,7 +49,7 @@
       "name": "Cabezal de Cepillos",
       "system": "lavado",
       "description": "Scrub Head Group, Disk / Cylindrical",
-      "figure": "Fig. 12 / 13 / 14 / 2",
+      "figure": "Fig. 12 / 13 / 14 / 2 / 1",
       "status": "available",
       "figures": [
         {
@@ -58,6 +67,10 @@
         {
           "label": "Fig. 2 · Cepillo lateral (repuestos)",
           "data": "data/t12/side_brush_replacement.json"
+        },
+        {
+          "label": "Fig. 1 · Cepillos y pads de repuesto",
+          "data": "data/t12/brushes_replacement.json"
         }
       ],
       "hotspot": { "x": 50, "y": 94 }
@@ -200,10 +213,23 @@
       "id": "tanque-solucion",
       "name": "Tanque de Solución",
       "system": "agua",
-      "description": "Solution Tank Group",
-      "figure": "Fig. 19",
+      "description": "Solution Tank Group / ec-H2O Module",
+      "figure": "Fig. 19 / 7 / 1",
       "status": "available",
-      "data": "data/t12/solution_tank.json",
+      "figures": [
+        {
+          "label": "Fig. 19 · Tanque de solución",
+          "data": "data/t12/solution_tank.json"
+        },
+        {
+          "label": "Fig. 7 (accesorios) · Bomba ec-H2O",
+          "data": "data/t12/ech2o_pump.json"
+        },
+        {
+          "label": "Fig. 1 (despieces) · Módulo ec-H2O 9010933",
+          "data": "data/t12/ech2o_module.json"
+        }
+      ],
       "hotspot": { "x": 73, "y": 64 },
       "labelSide": "left"
     },

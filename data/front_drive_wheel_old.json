@@ -1,0 +1,184 @@
+{
+  "machine": "Tennant T7",
+  "group": "Front Drive Wheel Group (S/N 10000000-10518138)",
+  "figure": "Fig. 12",
+  "image": "assets/front_drive_wheel_old.png",
+  "categories": [
+    "Transmisión",
+    "Estructura y cubiertas",
+    "Tornillería",
+    "Eléctrico",
+    "Motores y actuadores",
+    "Pasadores y bujes"
+  ],
+  "parts": [
+    {
+      "item": 1,
+      "partNumber": "1019724",
+      "description": "Steer- Control Assy, Wheel Drive (See Breakdown)",
+      "category": "Transmisión",
+      "qty": 1,
+      "hotspots": [
+        { "x": 47.0, "y": 39.2 }
+      ]
+    },
+    {
+      "item": 2,
+      "partNumber": "1019224",
+      "description": "Strap, Nyl",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 77.6, "y": 78.7 }
+      ]
+    },
+    {
+      "item": 3,
+      "partNumber": "09010",
+      "description": "Screw, Hex, M8 X 1.25 X 25, Ss (Disk Brush)",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 23.3, "y": 40.6 }
+      ]
+    },
+    {
+      "item": 3,
+      "partNumber": "09026",
+      "description": "Screw, Hex, M8 X 1.25 X 40, Ss (Cylindrical Brush)",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": []
+    },
+    {
+      "item": 4,
+      "partNumber": "01685",
+      "description": "Washer, Flat, 0.31 Ss",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 23.3, "y": 45.3 }
+      ]
+    },
+    {
+      "item": 5,
+      "partNumber": "00912",
+      "description": "Key, Sq, 0.19 X 0.19, 1.00l",
+      "category": "Transmisión",
+      "qty": 1,
+      "hotspots": [
+        { "x": 42.0, "y": 39.0 }
+      ]
+    },
+    {
+      "item": 6,
+      "partNumber": "391914",
+      "description": "Harness, Motor, #10- 2, 48.0 L, [T7] (Replaced By 9008400)",
+      "category": "Eléctrico",
+      "qty": 1,
+      "note": "Anterior · reemplazado por 9008400 · S/N 10000000-10518138",
+      "hotspots": [
+        { "x": 78.7, "y": 85.2 }
+      ]
+    },
+    {
+      "item": 7,
+      "partNumber": "1047186",
+      "description": "Connector, Fem, 3 Recept [Mp630]",
+      "category": "Eléctrico",
+      "qty": 1,
+      "note": "Componente de 391914",
+      "hotspots": [
+        { "x": 82.4, "y": 82.0 }
+      ]
+    },
+    {
+      "item": 8,
+      "partNumber": "40678-1",
+      "description": "Clamp, Cable, Stl, 0.88d X 0.62w, 1h",
+      "category": "Tornillería",
+      "qty": 2,
+      "note": "S/N 10000000-10518138",
+      "hotspots": [
+        { "x": 11.4, "y": 83.0 },
+        { "x": 25.5, "y": 93.0 }
+      ]
+    },
+    {
+      "item": 9,
+      "partNumber": "361339",
+      "description": "Screw, Hex, M6 X 1.0 X 16, Fmg",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 3.8, "y": 85.5 },
+        { "x": 17.2, "y": 96.0 }
+      ]
+    },
+    {
+      "item": 10,
+      "partNumber": "19066",
+      "description": "Washer, Flat, #10",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 64.8, "y": 95.8 }
+      ]
+    },
+    {
+      "item": 11,
+      "partNumber": "49263",
+      "description": "Tie, Cable, Nyl, 11.4l .19w 3.0 Max D",
+      "category": "Eléctrico",
+      "qty": 4,
+      "note": "S/N 10000000-10518138",
+      "hotspots": [
+        { "x": 8.1, "y": 54.7 }
+      ]
+    },
+    {
+      "item": 12,
+      "partNumber": "9001642",
+      "description": "Gearbox Kit, Wheel, 250Mm W/Connector (See Breakdown) (Replaced By 9009000 Includes Motor Brake Harness)",
+      "category": "Transmisión",
+      "qty": 1,
+      "note": "Anterior · reemplazado por 9009000 · S/N 10000000-10518138",
+      "hotspots": [
+        { "x": 76.3, "y": 66.0 }
+      ]
+    },
+    {
+      "item": 13,
+      "partNumber": "9008400",
+      "description": "Brake, Jumper Kit [T7]",
+      "category": "Motores y actuadores",
+      "qty": 1,
+      "note": "Componente de 9001642",
+      "hotspots": [
+        { "x": 74.8, "y": 76.1 }
+      ]
+    },
+    {
+      "item": 14,
+      "partNumber": "1028873",
+      "description": "Plate, Spacer, Drive (Cylindrical Brush)",
+      "category": "Pasadores y bujes",
+      "qty": 2,
+      "hotspots": [
+        { "x": 22.9, "y": 57.3 },
+        { "x": 64.2, "y": 60.1 }
+      ]
+    },
+    {
+      "item": 15,
+      "partNumber": "1015761",
+      "description": "Sleeve, Afmkt, Nyl, #13, 3ft",
+      "category": "Pasadores y bujes",
+      "qty": 1,
+      "note": "S/N 10000000-10518138",
+      "hotspots": [
+        { "x": 51.6, "y": 97.3 }
+      ]
+    }
+  ]
+}

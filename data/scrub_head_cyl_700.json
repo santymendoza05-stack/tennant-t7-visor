@@ -1,0 +1,339 @@
+{
+  "machine": "Tennant T7",
+  "group": "Cylindrical Scrub Head Group, 700 mm (28 in)",
+  "figure": "Fig. 22",
+  "image": "assets/scrub_head_cyl_700.png",
+  "categories": [
+    "Estructura y cubiertas",
+    "Tornillería",
+    "Pasadores y bujes",
+    "Mangueras y fluido",
+    "Escobillas y hojas"
+  ],
+  "parts": [
+    {
+      "item": 1,
+      "partNumber": "1029131",
+      "description": "Housing, Machining, Head, 70 Cm Cyl",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 23.2, "y": 43.5 }
+      ]
+    },
+    {
+      "item": 2,
+      "partNumber": "1031416",
+      "description": "Mount, Link, Mach",
+      "category": "Estructura y cubiertas",
+      "qty": 2,
+      "hotspots": [
+        { "x": 19.9, "y": 86.7 },
+        { "x": 40.6, "y": 96.5 }
+      ]
+    },
+    {
+      "item": 3,
+      "partNumber": "1020341",
+      "description": "Screw, Hex, M8 X 1.25 X 20, Ss, Sems",
+      "category": "Tornillería",
+      "qty": 12,
+      "hotspots": [
+        { "x": 49.8, "y": 17.7 },
+        { "x": 43.5, "y": 24.4 },
+        { "x": 24.6, "y": 71.6 },
+        { "x": 48.3, "y": 79.6 }
+      ]
+    },
+    {
+      "item": 4,
+      "partNumber": "1034731",
+      "description": "Screw, Hex, M6 X 1.00 X 16, Sems, Ss",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 10.2, "y": 62.4 },
+        { "x": 63.9, "y": 86.7 }
+      ]
+    },
+    {
+      "item": 5,
+      "partNumber": "1029531",
+      "description": "Channel, Lift",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 62.1, "y": 46.6 }
+      ]
+    },
+    {
+      "item": 6,
+      "partNumber": "363087",
+      "description": "Bushing, Flng, 0.44b 1.25d 0.25l",
+      "category": "Pasadores y bujes",
+      "qty": 2,
+      "hotspots": [
+        { "x": 35.9, "y": 20.9 },
+        { "x": 83.5, "y": 43.4 }
+      ]
+    },
+    {
+      "item": 7,
+      "partNumber": "1029538",
+      "description": "Bracket, Lift, Upper",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 64.9, "y": 32.2 }
+      ]
+    },
+    {
+      "item": 8,
+      "partNumber": "08714",
+      "description": "Nut, Hex, Lock, M10 X 1.5, Nl, Ss",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 48.0, "y": 20.7 }
+      ]
+    },
+    {
+      "item": 9,
+      "partNumber": "01686",
+      "description": "Washer, Flat, 0.44b 1.00d .08, Ss",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 46.5, "y": 22.8 },
+        { "x": 39.7, "y": 34.1 },
+        { "x": 70.1, "y": 39.6 }
+      ]
+    },
+    {
+      "item": 10,
+      "partNumber": "578717",
+      "description": "Screw, Hex, M8 X 1.25 X 50, Ss, Fl",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 71.3, "y": 33.5 }
+      ]
+    },
+    {
+      "item": 11,
+      "partNumber": "140027",
+      "description": "Washer, Flat, 0.35b 0.75d .04, Ss",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 67.4, "y": 37.4 }
+      ]
+    },
+    {
+      "item": 12,
+      "partNumber": "07786",
+      "description": "Nut, Hex, Std, M8 X 1.25, Ss",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 59.9, "y": 24.8 }
+      ]
+    },
+    {
+      "item": 13,
+      "partNumber": "1029215",
+      "description": "Tube Assy, Bar, Spray [70cm]",
+      "category": "Mangueras y fluido",
+      "qty": 1,
+      "hotspots": [
+        { "x": 19.6, "y": 67.1 }
+      ]
+    },
+    {
+      "item": 14,
+      "partNumber": "1025580",
+      "description": "Fitting, Pipe, Cap, P06, Nyl",
+      "category": "Mangueras y fluido",
+      "qty": 2,
+      "hotspots": [
+        { "x": 7.3, "y": 57.1 },
+        { "x": 73.9, "y": 82.5 }
+      ]
+    },
+    {
+      "item": 15,
+      "partNumber": "33584",
+      "description": "Clamp, Cable, Stl, 0.63d X 0.50w, 1h",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 14.5, "y": 53.3 },
+        { "x": 69.9, "y": 79.3 }
+      ]
+    },
+    {
+      "item": 16,
+      "partNumber": "11329",
+      "description": "Screw, Hex, M6 X 1.0 X 16, Ss, Nl",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 82.1, "y": 38.3 }
+      ]
+    },
+    {
+      "item": 17,
+      "partNumber": "01684",
+      "description": "Washer, Flat, 0.25, Ss",
+      "category": "Tornillería",
+      "qty": 8,
+      "hotspots": [
+        { "x": 90.9, "y": 10.3 },
+        { "x": 86.0, "y": 36.6 }
+      ]
+    },
+    {
+      "item": 18,
+      "partNumber": "41440",
+      "description": "Fitting, Plstc, Str, Bm10/Pm08",
+      "category": "Mangueras y fluido",
+      "qty": 1,
+      "hotspots": [
+        { "x": 34.4, "y": 64.0 }
+      ]
+    },
+    {
+      "item": 19,
+      "partNumber": "9005805",
+      "description": "Hopper, Debris, 70cm, Black, Afmkt",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 49.1, "y": 8.7 }
+      ]
+    },
+    {
+      "item": 20,
+      "partNumber": "1029274",
+      "description": "Skirt, Tray, Debris [70cm]",
+      "category": "Escobillas y hojas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 52.7, "y": 4.0 }
+      ]
+    },
+    {
+      "item": 21,
+      "partNumber": "1029272",
+      "description": "Bracket, Lip, Debris, 70cm",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 81.1, "y": 3.1 }
+      ]
+    },
+    {
+      "item": 22,
+      "partNumber": "07785",
+      "description": "Nut, Hex, Std, M6 X 1.00, A2, Ss",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 94.8, "y": 8.4 }
+      ]
+    },
+    {
+      "item": 23,
+      "partNumber": "1031132",
+      "description": "Hose, Molded",
+      "category": "Mangueras y fluido",
+      "qty": 1,
+      "hotspots": [
+        { "x": 33.0, "y": 38.4 }
+      ]
+    },
+    {
+      "item": 24,
+      "partNumber": "1031037",
+      "description": "Bracket, Mtg, Valve",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 33.2, "y": 89.2 }
+      ]
+    },
+    {
+      "item": 25,
+      "partNumber": "09738",
+      "description": "Screw, Hex, M5 X 0.8 X 12, Ss",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 47.3, "y": 76.8 }
+      ]
+    },
+    {
+      "item": 26,
+      "partNumber": "09739",
+      "description": "Nut, Hex, Lock, M5 X 0.80, Nl, Ss",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 46.1, "y": 82.5 }
+      ]
+    },
+    {
+      "item": 27,
+      "partNumber": "1214973",
+      "description": "Valve, Water, Solenoid, 24vdc, Bm10/Bm10",
+      "category": "Mangueras y fluido",
+      "qty": 1,
+      "hotspots": [
+        { "x": 31.9, "y": 84.3 }
+      ]
+    },
+    {
+      "item": 28,
+      "partNumber": "54333",
+      "description": "Clamp, Hose, Wormdrive, 0.31- 0.88d, .31w",
+      "category": "Mangueras y fluido",
+      "qty": 3,
+      "hotspots": [
+        { "x": 36.3, "y": 77.8 }
+      ]
+    },
+    {
+      "item": 29,
+      "partNumber": "222210",
+      "description": "Pin, Clevis, 0.62d X 2.12l",
+      "category": "Pasadores y bujes",
+      "qty": 2,
+      "hotspots": [
+        { "x": 9.8, "y": 78.4 },
+        { "x": 63.6, "y": 95.0 }
+      ]
+    },
+    {
+      "item": 30,
+      "partNumber": "02942",
+      "description": "Pin, Cotter, Hair, 0.62d .120 Wir",
+      "category": "Pasadores y bujes",
+      "qty": 2,
+      "hotspots": [
+        { "x": 12.9, "y": 69.7 },
+        { "x": 60.8, "y": 91.3 }
+      ]
+    },
+    {
+      "item": 31,
+      "partNumber": "09028",
+      "description": "Screw, Hex, M10 X 1.5 X 25, Ss",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 32.3, "y": 19.0 },
+        { "x": 88.1, "y": 45.6 }
+      ]
+    }
+  ]
+}

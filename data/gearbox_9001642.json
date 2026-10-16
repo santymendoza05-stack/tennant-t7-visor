@@ -1,0 +1,298 @@
+{
+  "machine": "Tennant T7",
+  "group": "Front Wheel Gearbox Breakdown, 9001642, 9009000 (S/N 00000000-10518138)",
+  "figure": "Fig. 11",
+  "image": "assets/gearbox_9001642.png",
+  "categories": [
+    "Transmisión",
+    "Motores y actuadores",
+    "Rodamientos",
+    "Sellos y empaques",
+    "Eléctrico",
+    "Tornillería",
+    "Estructura y cubiertas",
+    "Pasadores y bujes",
+    "Ruedas y rodillos"
+  ],
+  "parts": [
+    {
+      "item": 1,
+      "partNumber": "9001642",
+      "description": "Gearbox Kit, Wheel, 250mm, W/ Connector (Replaced By 9009000)",
+      "category": "Transmisión",
+      "qty": 1,
+      "note": "Conjunto completo de la figura · Anterior · reemplazado por 9009000 · S/N 00000000-10518138",
+      "hotspots": [
+        { "x": 45.9, "y": 93.6 }
+      ]
+    },
+    {
+      "item": 1,
+      "partNumber": "391261",
+      "description": "Brush Kit, Motor [Amer, 1pick=1bag] (1 Kit = 6 Brushes)",
+      "category": "Motores y actuadores",
+      "qty": 1,
+      "hotspots": []
+    },
+    {
+      "item": 2,
+      "partNumber": "1029225",
+      "description": "Brush Kit, Carbon (1 Kit = 4 Brushes)",
+      "category": "Motores y actuadores",
+      "qty": 1,
+      "hotspots": [
+        { "x": 16.7, "y": 72.6 }
+      ]
+    },
+    {
+      "item": 2,
+      "partNumber": "1029224",
+      "description": "Brush, Carbon (1 Brush)",
+      "category": "Motores y actuadores",
+      "qty": 4,
+      "hotspots": []
+    },
+    {
+      "item": 3,
+      "partNumber": "1029226",
+      "description": "Brush Kit, Carbon, Curve (1 Kit = 2 Brushes)",
+      "category": "Motores y actuadores",
+      "qty": 1,
+      "hotspots": [
+        { "x": 70.9, "y": 52.6 }
+      ]
+    },
+    {
+      "item": 3,
+      "partNumber": "398492",
+      "description": "Brush, Motor, Ele [Amer] Curve (1 Brush)",
+      "category": "Motores y actuadores",
+      "qty": 2,
+      "hotspots": []
+    },
+    {
+      "item": 4,
+      "partNumber": "1029227",
+      "description": "Bearing, Ball, Brush Side",
+      "category": "Rodamientos",
+      "qty": 1,
+      "hotspots": [
+        { "x": 37.6, "y": 75.0 }
+      ]
+    },
+    {
+      "item": 5,
+      "partNumber": "1029228",
+      "description": "Ring, Brushholder",
+      "category": "Motores y actuadores",
+      "qty": 1,
+      "hotspots": [
+        { "x": 34.5, "y": 42.8 }
+      ]
+    },
+    {
+      "item": 6,
+      "partNumber": "391262",
+      "description": "Brush Kit, Cover [Amer]",
+      "category": "Motores y actuadores",
+      "qty": 4,
+      "hotspots": [
+        { "x": 12.9, "y": 79.9 }
+      ]
+    },
+    {
+      "item": 7,
+      "partNumber": "391263",
+      "description": "Seal, Ring [Amer]",
+      "category": "Sellos y empaques",
+      "qty": 1,
+      "hotspots": [
+        { "x": 47.8, "y": 15.4 }
+      ]
+    },
+    {
+      "item": 8,
+      "partNumber": "391264",
+      "description": "Bearing, Gearbox Side [Amer]",
+      "category": "Rodamientos",
+      "qty": 1,
+      "hotspots": [
+        { "x": 81.8, "y": 19.0 }
+      ]
+    },
+    {
+      "item": 9,
+      "partNumber": "391265",
+      "description": "Bearing, Motor Side [Amer]",
+      "category": "Rodamientos",
+      "qty": 1,
+      "hotspots": [
+        { "x": 94.9, "y": 25.8 }
+      ]
+    },
+    {
+      "item": 10,
+      "partNumber": "391467",
+      "description": "Box, Ele, Connection",
+      "category": "Eléctrico",
+      "qty": 1,
+      "hotspots": [
+        { "x": 59.4, "y": 71.2 }
+      ]
+    },
+    {
+      "item": 11,
+      "partNumber": "391468",
+      "description": "Cover, Ele, Connection",
+      "category": "Eléctrico",
+      "qty": 11,
+      "hotspots": [
+        { "x": 80.6, "y": 54.3 }
+      ]
+    },
+    {
+      "item": 12,
+      "partNumber": "372867",
+      "description": "Armature",
+      "category": "Motores y actuadores",
+      "qty": 1,
+      "hotspots": [
+        { "x": 87.0, "y": 18.5 }
+      ]
+    },
+    {
+      "item": 13,
+      "partNumber": "1029218",
+      "description": "Screw, Mount, Wheel",
+      "category": "Tornillería",
+      "qty": 8,
+      "hotspots": [
+        { "x": 74.0, "y": 14.6 }
+      ]
+    },
+    {
+      "item": 14,
+      "partNumber": "9001644",
+      "description": "Brake Kit, Gearbox, W/ Connector (Replaced By 9008897)",
+      "category": "Motores y actuadores",
+      "qty": 1,
+      "note": "Anterior · reemplazado por 9008897 · S/N 00000000-10518138",
+      "hotspots": [
+        { "x": 93.6, "y": 60.3 }
+      ]
+    },
+    {
+      "item": 15,
+      "partNumber": "78950",
+      "description": "Connector, Fem, 02cav, Mp280 Sealed",
+      "category": "Eléctrico",
+      "qty": 2,
+      "note": "Componente de 9001644",
+      "hotspots": [
+        { "x": 77.9, "y": 88.1 }
+      ]
+    },
+    {
+      "item": 16,
+      "partNumber": "78952",
+      "description": "Lock, Secondary, 2cav, Mp280 Sealed",
+      "category": "Estructura y cubiertas",
+      "qty": 2,
+      "note": "Componente de 9001644",
+      "hotspots": [
+        { "x": 77.9, "y": 90.9 }
+      ]
+    },
+    {
+      "item": 17,
+      "partNumber": "25837",
+      "description": "Terminal, Fem, Mp280, Sealed, 22- 20ga",
+      "category": "Eléctrico",
+      "qty": 2,
+      "note": "Componente de 9001644",
+      "hotspots": [
+        { "x": 77.9, "y": 93.6 }
+      ]
+    },
+    {
+      "item": 18,
+      "partNumber": "25830",
+      "description": "Seal, Wire, 14ga [Wp / Mp280 Sealed]",
+      "category": "Eléctrico",
+      "qty": 2,
+      "hotspots": [
+        { "x": 77.9, "y": 96.3 }
+      ]
+    },
+    {
+      "item": 19,
+      "partNumber": "372870",
+      "description": "Vr, Disc, Brake (Set Includes Spline)",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 89.8, "y": 82.7 }
+      ]
+    },
+    {
+      "item": 20,
+      "partNumber": "372871",
+      "description": "Adapter, Brake, Spl (NLA Replaced By Set 372870)",
+      "category": "Motores y actuadores",
+      "qty": 1,
+      "note": "Anterior · reemplazado por 372870",
+      "hotspots": [
+        { "x": 91.8, "y": 63.3 }
+      ]
+    },
+    {
+      "item": 21,
+      "partNumber": "372872",
+      "description": "Sleeve, Rbr",
+      "category": "Pasadores y bujes",
+      "qty": 1,
+      "hotspots": [
+        { "x": 77.5, "y": 81.0 }
+      ]
+    },
+    {
+      "item": 22,
+      "partNumber": "372877",
+      "description": "Guide, Brushholder, Slip Ring [Amer",
+      "category": "Motores y actuadores",
+      "qty": 1,
+      "hotspots": [
+        { "x": 65.7, "y": 51.5 }
+      ]
+    },
+    {
+      "item": 23,
+      "partNumber": "372874",
+      "description": "Bearing, Steering",
+      "category": "Rodamientos",
+      "qty": 1,
+      "hotspots": [
+        { "x": 23.2, "y": 4.8 }
+      ]
+    },
+    {
+      "item": 24,
+      "partNumber": "391259",
+      "description": "Tire, Solid, 250mm X 90mm Red",
+      "category": "Ruedas y rodillos",
+      "qty": 1,
+      "hotspots": [
+        { "x": 59.0, "y": 5.9 }
+      ]
+    },
+    {
+      "item": 24,
+      "partNumber": "391463",
+      "description": "Tire, Solid, 250mm X 90mm Gray, Pyu (NLA Replaced By 391259)",
+      "category": "Ruedas y rodillos",
+      "qty": 1,
+      "note": "Anterior · reemplazado por 391259",
+      "hotspots": []
+    }
+  ]
+}

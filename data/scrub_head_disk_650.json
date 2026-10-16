@@ -1,0 +1,482 @@
+{
+  "machine": "Tennant T7",
+  "group": "Disk Scrub Head Drive Motor Group, 650 mm (26 in)",
+  "figure": "Fig. 17",
+  "image": "assets/scrub_head_disk_650.png",
+  "categories": [
+    "Estructura y cubiertas",
+    "Motores y actuadores",
+    "Transmisión",
+    "Tornillería",
+    "Mangueras y fluido",
+    "Escobillas y hojas",
+    "Ruedas y rodillos",
+    "Pasadores y bujes"
+  ],
+  "parts": [
+    {
+      "item": 1,
+      "partNumber": "1013560",
+      "description": "Head, Scb, 650mm",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 40.2, "y": 36.1 }
+      ]
+    },
+    {
+      "item": 2,
+      "partNumber": "1210864",
+      "description": "Motor, Ele, 24vdc 0260rpm",
+      "category": "Motores y actuadores",
+      "qty": 2,
+      "note": "S/N 10827968-",
+      "hotspots": [
+        { "x": 96.2, "y": 5.2 },
+        { "x": 5.3, "y": 13.2 },
+        { "x": 42.6, "y": 16.7 }
+      ]
+    },
+    {
+      "item": 2,
+      "partNumber": "372878",
+      "description": "Brush Kit, Motor, Ele",
+      "category": "Motores y actuadores",
+      "qty": 1,
+      "note": "Componente de 1210864 · S/N 10827968-",
+      "hotspots": []
+    },
+    {
+      "item": 2,
+      "partNumber": "372879",
+      "description": "Hook, Safety",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "note": "Componente de 1210864 · S/N 10827968-",
+      "hotspots": []
+    },
+    {
+      "item": 2,
+      "partNumber": "372880",
+      "description": "Cover, Brush, Ele Motor",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "note": "Componente de 1210864 · S/N 10827968-",
+      "hotspots": []
+    },
+    {
+      "item": 3,
+      "partNumber": "1212130",
+      "description": "Shaft, Drive, Brush",
+      "category": "Transmisión",
+      "qty": 1,
+      "note": "Componente de 1210864 · S/N 10827968-",
+      "hotspots": [
+        { "x": 71.5, "y": 24.3 },
+        { "x": 47.4, "y": 26.0 }
+      ]
+    },
+    {
+      "item": 4,
+      "partNumber": "1212132",
+      "description": "Cap, Motor",
+      "category": "Motores y actuadores",
+      "qty": 1,
+      "note": "Componente de 1210864 · S/N 10827968-",
+      "hotspots": [
+        { "x": 44.0, "y": 4.7 },
+        { "x": 68.3, "y": 4.7 }
+      ]
+    },
+    {
+      "item": 5,
+      "partNumber": "363503",
+      "description": "Screw, Pan, Phl, M6 X 1.00 X 12, Ss",
+      "category": "Tornillería",
+      "qty": 4,
+      "note": "Componente de 1210864 · S/N 10827968-",
+      "hotspots": [
+        { "x": 68.3, "y": 1.6 },
+        { "x": 44.2, "y": 2.1 }
+      ]
+    },
+    {
+      "item": 6,
+      "partNumber": "1212131",
+      "description": "Key, Sq, 06mm X 06mm, 60mml",
+      "category": "Transmisión",
+      "qty": 1,
+      "note": "Componente de 1210864 · S/N 10827968-",
+      "hotspots": [
+        { "x": 86.6, "y": 22.2 },
+        { "x": 62.4, "y": 23.0 }
+      ]
+    },
+    {
+      "item": 7,
+      "partNumber": "09740",
+      "description": "Screw, Hex, M8 X 1.25 X 20, Ss",
+      "category": "Tornillería",
+      "qty": 1,
+      "note": "Componente de 1210864 · S/N 10827968-",
+      "hotspots": [
+        { "x": 84.6, "y": 7.1 },
+        { "x": 47.2, "y": 9.1 }
+      ]
+    },
+    {
+      "item": 8,
+      "partNumber": "1017218",
+      "description": "Washer, Flat, 0.32b 1.00d .12, Ss",
+      "category": "Tornillería",
+      "qty": 1,
+      "note": "Componente de 1210864 · S/N 10827968-",
+      "hotspots": [
+        { "x": 85.4, "y": 9.3 },
+        { "x": 46.7, "y": 11.3 }
+      ]
+    },
+    {
+      "item": 2,
+      "partNumber": "1048884",
+      "description": "Motor, Ele, 24 Vdc 0285rpm (Replaced By 1210864)",
+      "category": "Motores y actuadores",
+      "qty": 2,
+      "note": "Anterior · reemplazado por 1210864 · S/N 10409228-10827967",
+      "hotspots": []
+    },
+    {
+      "item": 2,
+      "partNumber": "1048888",
+      "description": "Vr, Brush Kit, Motor, 1048884",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "note": "Componente de 1048884 · S/N 10409228-10827967",
+      "hotspots": []
+    },
+    {
+      "item": 2,
+      "partNumber": "1000083",
+      "description": "Motor, Ele, 24 Vdc 0285rpm (Replaced By 1048884)",
+      "category": "Motores y actuadores",
+      "qty": 2,
+      "note": "Anterior · reemplazado por 1048884 · S/N 10000000-10409227",
+      "hotspots": []
+    },
+    {
+      "item": 2,
+      "partNumber": "372878",
+      "description": "Brush Kit, Motor, Ele",
+      "category": "Motores y actuadores",
+      "qty": 1,
+      "note": "Componente de 1000083 · S/N 10000000-10409227",
+      "hotspots": []
+    },
+    {
+      "item": 2,
+      "partNumber": "372879",
+      "description": "Hook, Safety",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "note": "Componente de 1000083 · S/N 10000000-10409227",
+      "hotspots": []
+    },
+    {
+      "item": 2,
+      "partNumber": "372880",
+      "description": "Cover, Brush, Ele Motor",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "note": "Componente de 1000083 · S/N 10000000-10409227",
+      "hotspots": []
+    },
+    {
+      "item": 3,
+      "partNumber": "1008758",
+      "description": "Shaft, Drive, Brush",
+      "category": "Transmisión",
+      "qty": 2,
+      "note": "Componente de 1000083 · S/N 10000000-10409227",
+      "hotspots": []
+    },
+    {
+      "item": 4,
+      "partNumber": "1017553",
+      "description": "Cap, Motor",
+      "category": "Motores y actuadores",
+      "qty": 2,
+      "note": "Componente de 1000083 · S/N 10000000-10409227",
+      "hotspots": []
+    },
+    {
+      "item": 5,
+      "partNumber": "363503",
+      "description": "Screw, Pan, Phl, M6 X 1.00 X 12, Ss",
+      "category": "Tornillería",
+      "qty": 4,
+      "note": "Componente de 1000083 · S/N 10000000-10409227",
+      "hotspots": []
+    },
+    {
+      "item": 6,
+      "partNumber": "1014303",
+      "description": "Key, Sq, 06mm X 06mm, 60mm L",
+      "category": "Transmisión",
+      "qty": 2,
+      "note": "Componente de 1000083 · S/N 10000000-10409227",
+      "hotspots": []
+    },
+    {
+      "item": 9,
+      "partNumber": "1014228",
+      "description": "Manifold, Soltn, 650mm",
+      "category": "Mangueras y fluido",
+      "qty": 1,
+      "hotspots": [
+        { "x": 60.0, "y": 30.4 }
+      ]
+    },
+    {
+      "item": 10,
+      "partNumber": "1016520",
+      "description": "Screw, Hex, M4 X 0.7 16 Fmg, Ss",
+      "category": "Tornillería",
+      "qty": 3,
+      "hotspots": [
+        { "x": 97.1, "y": 24.1 },
+        { "x": 67.6, "y": 25.9 }
+      ]
+    },
+    {
+      "item": 11,
+      "partNumber": "1214973",
+      "description": "Valve, Water, Solenoid, 24vdc, Bm10/Bm10",
+      "category": "Mangueras y fluido",
+      "qty": 1,
+      "hotspots": [
+        { "x": 97.5, "y": 27.3 }
+      ]
+    },
+    {
+      "item": 12,
+      "partNumber": "377367",
+      "description": "Hub, Drive, Brush, Disk, 0.75b 6t (Replaced By 1071636)",
+      "category": "Transmisión",
+      "qty": 2,
+      "note": "Anterior · reemplazado por 1071636 · S/N 10000000-10624412",
+      "hotspots": []
+    },
+    {
+      "item": 12,
+      "partNumber": "1071636",
+      "description": "Hub, Drive, Brush, Disk, 0.75b [6t]",
+      "category": "Transmisión",
+      "qty": 2,
+      "note": "S/N 10624413-",
+      "hotspots": [
+        { "x": 66.6, "y": 73.0 },
+        { "x": 42.5, "y": 77.5 },
+        { "x": 6.6, "y": 87.0 }
+      ]
+    },
+    {
+      "item": 13,
+      "partNumber": "00928",
+      "description": "Key, Sq, 0.25 X 0.25, 1.00l",
+      "category": "Transmisión",
+      "qty": 2,
+      "hotspots": [
+        { "x": 23.5, "y": 21.3 },
+        { "x": 86.8, "y": 26.2 },
+        { "x": 63.2, "y": 26.6 }
+      ]
+    },
+    {
+      "item": 14,
+      "partNumber": "1020341",
+      "description": "Screw, Hex, M8 X 1.25 X 20, Ss, Sems",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 70.4, "y": 82.0 },
+        { "x": 46.7, "y": 85.6 }
+      ]
+    },
+    {
+      "item": 15,
+      "partNumber": "01684",
+      "description": "Washer, Flat, 0.27b 0.69d .05, Ss (ec-H2O Model)",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 87.9, "y": 70.1 },
+        { "x": 64.5, "y": 76.0 }
+      ]
+    },
+    {
+      "item": 16,
+      "partNumber": "1017218",
+      "description": "Washer, Flat, 0.32b 1.00d .12, Ss",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 70.8, "y": 78.6 },
+        { "x": 46.7, "y": 82.1 }
+      ]
+    },
+    {
+      "item": 17,
+      "partNumber": "1013531",
+      "description": "Skirt, Spray, 650mm",
+      "category": "Escobillas y hojas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 22.6, "y": 43.9 }
+      ]
+    },
+    {
+      "item": 18,
+      "partNumber": "1013532",
+      "description": "Retainer, Skirt, 650mm",
+      "category": "Escobillas y hojas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 17.8, "y": 46.3 }
+      ]
+    },
+    {
+      "item": 19,
+      "partNumber": "1072816",
+      "description": "Screw, Hex, M8 X 1.25 X 30, Ss, Sems",
+      "category": "Tornillería",
+      "qty": 6,
+      "hotspots": [
+        { "x": 8.1, "y": 69.8 }
+      ]
+    },
+    {
+      "item": 20,
+      "partNumber": "08713",
+      "description": "Nut, Hex, Lock, M8 X 1.25, Nl, Ss",
+      "category": "Tornillería",
+      "qty": 6,
+      "hotspots": [
+        { "x": 9.8, "y": 41.4 },
+        { "x": 45.8, "y": 56.2 }
+      ]
+    },
+    {
+      "item": 21,
+      "partNumber": "1052198",
+      "description": "Bracket, Wheel, Guiide 650mm",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 20.8, "y": 67.6 }
+      ]
+    },
+    {
+      "item": 22,
+      "partNumber": "1010560",
+      "description": "Wheel, Bumper, 80d X 25w, Non- Marking",
+      "category": "Ruedas y rodillos",
+      "qty": 1,
+      "hotspots": [
+        { "x": 13.6, "y": 45.7 }
+      ]
+    },
+    {
+      "item": 23,
+      "partNumber": "222460",
+      "description": "Sleeve, P/, 0.49D 0.318B 0.50L 430Ss",
+      "category": "Pasadores y bujes",
+      "qty": 1,
+      "hotspots": [
+        { "x": 12.5, "y": 51.8 }
+      ]
+    },
+    {
+      "item": 24,
+      "partNumber": "140027",
+      "description": "Washer, Flat, 0.35b 0.75d .04, Ss",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 11.4, "y": 43.5 }
+      ]
+    },
+    {
+      "item": 25,
+      "partNumber": "1014295",
+      "description": "Clip, Grip, Hose, 0.75- 1.12, Stl,Blk Vyl (ec-H2O Model)",
+      "category": "Mangueras y fluido",
+      "qty": 1,
+      "hotspots": [
+        { "x": 31.1, "y": 68.7 }
+      ]
+    },
+    {
+      "item": 26,
+      "partNumber": "140011",
+      "description": "Washer, Flat, 0.21b 0.45d .03, Ss (ec-H2O Model)",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 32.7, "y": 65.5 }
+      ]
+    },
+    {
+      "item": 27,
+      "partNumber": "607006",
+      "description": "Screw, Trs, M4 X 0.70 X 12, Phl, Pl (ec-H2O Model)",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 34.1, "y": 63.1 }
+      ]
+    },
+    {
+      "item": 28,
+      "partNumber": "33932",
+      "description": "Nut, Hex, Lock, M4 X 0.70, Nl, Ss (ec-H2O Model)",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 18.1, "y": 70.1 }
+      ]
+    },
+    {
+      "item": 29,
+      "partNumber": "08712",
+      "description": "Nut, Hex, Lock, M6 X 1.0, Ss, Nl",
+      "category": "Tornillería",
+      "qty": 8,
+      "hotspots": [
+        { "x": 86.5, "y": 72.8 },
+        { "x": 63.7, "y": 78.5 }
+      ]
+    },
+    {
+      "item": 30,
+      "partNumber": "1052298",
+      "description": "Bracket, Support, Hose [T7] (ec-H2O Model)",
+      "category": "Estructura y cubiertas",
+      "qty": 2,
+      "hotspots": [
+        { "x": 67.8, "y": 68.4 },
+        { "x": 46.1, "y": 72.7 }
+      ]
+    },
+    {
+      "item": 31,
+      "partNumber": "1013821",
+      "description": "Plate, Sppt",
+      "category": "Estructura y cubiertas",
+      "qty": 2,
+      "hotspots": [
+        { "x": 67.9, "y": 64.0 },
+        { "x": 44.0, "y": 68.2 }
+      ]
+    }
+  ]
+}

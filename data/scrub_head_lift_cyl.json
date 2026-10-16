@@ -1,0 +1,172 @@
+{
+  "machine": "Tennant T7",
+  "group": "Cylindrical Scrub Head Lift Group",
+  "figure": "Fig. 21",
+  "image": "assets/scrub_head_lift_cyl.png",
+  "categories": [
+    "Motores y actuadores",
+    "Pasadores y bujes",
+    "Estructura y cubiertas",
+    "Tornillería",
+    "Resortes"
+  ],
+  "parts": [
+    {
+      "item": 1,
+      "partNumber": "1056622",
+      "description": "Actuator, 24vdc, 04.5strk, 0600lb",
+      "category": "Motores y actuadores",
+      "qty": 1,
+      "hotspots": [
+        { "x": 61.9, "y": 38.9 }
+      ]
+    },
+    {
+      "item": 2,
+      "partNumber": "1009356",
+      "description": "Pin, Clevis 10mm X 40l",
+      "category": "Pasadores y bujes",
+      "qty": 1,
+      "hotspots": [
+        { "x": 71.0, "y": 22.0 }
+      ]
+    },
+    {
+      "item": 3,
+      "partNumber": "86866",
+      "description": "Pin, Hair Cotter, 0.38 D .072 Wir",
+      "category": "Pasadores y bujes",
+      "qty": 1,
+      "hotspots": [
+        { "x": 70.0, "y": 18.1 }
+      ]
+    },
+    {
+      "item": 4,
+      "partNumber": "1013278",
+      "description": "Plate, Arm, Cntr, Lift, Scb Head",
+      "category": "Estructura y cubiertas",
+      "qty": 2,
+      "hotspots": [
+        { "x": 44.4, "y": 44.6 },
+        { "x": 75.0, "y": 56.3 }
+      ]
+    },
+    {
+      "item": 5,
+      "partNumber": "1010401",
+      "description": "Pin, Clevis, 16d X 150l",
+      "category": "Pasadores y bujes",
+      "qty": 1,
+      "hotspots": [
+        { "x": 9.7, "y": 53.4 }
+      ]
+    },
+    {
+      "item": 6,
+      "partNumber": "02942",
+      "description": "Pin, Hair Cotter, 0.62 D .120 Wir",
+      "category": "Pasadores y bujes",
+      "qty": 4,
+      "hotspots": [
+        { "x": 93.1, "y": 61.4 },
+        { "x": 14.2, "y": 61.8 },
+        { "x": 69.1, "y": 84.3 }
+      ]
+    },
+    {
+      "item": 7,
+      "partNumber": "222210",
+      "description": "Pin, Clevis, 0.62 D X 2.12l",
+      "category": "Pasadores y bujes",
+      "qty": 2,
+      "hotspots": [
+        { "x": 57.9, "y": 91.6 }
+      ]
+    },
+    {
+      "item": 8,
+      "partNumber": "222027",
+      "description": "Arm, Lift, Head",
+      "category": "Estructura y cubiertas",
+      "qty": 2,
+      "hotspots": [
+        { "x": 75.3, "y": 90.6 },
+        { "x": 25.6, "y": 96.2 }
+      ]
+    },
+    {
+      "item": 9,
+      "partNumber": "01686",
+      "description": "Washer, Flat, 0.44b 1.00 .08, Ss",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 24.6, "y": 58.4 },
+        { "x": 71.7, "y": 76.4 }
+      ]
+    },
+    {
+      "item": 10,
+      "partNumber": "1015413",
+      "description": "Spring, Lift, Head, Scb",
+      "category": "Resortes",
+      "qty": 1,
+      "hotspots": [
+        { "x": 39.9, "y": 66.1 }
+      ]
+    },
+    {
+      "item": 11,
+      "partNumber": "1013281",
+      "description": "Sleeve, P/M, 18.5d 10.5b 34l 430 Ss",
+      "category": "Pasadores y bujes",
+      "qty": 2,
+      "hotspots": [
+        { "x": 37.9, "y": 62.6 },
+        { "x": 53.8, "y": 68.9 }
+      ]
+    },
+    {
+      "item": 12,
+      "partNumber": "09746",
+      "description": "Screw, Hex, M10 X 1.5 X 90, Ss",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 87.1, "y": 80.4 }
+      ]
+    },
+    {
+      "item": 13,
+      "partNumber": "08714",
+      "description": "Nut, Hex, Lock, M10 X 1.5, Nl, Ss",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 25.6, "y": 46.3 }
+      ]
+    },
+    {
+      "item": 14,
+      "partNumber": "1013356",
+      "description": "Pin, Clevis, 12mm D X 90mm L",
+      "category": "Pasadores y bujes",
+      "qty": 1,
+      "hotspots": [
+        { "x": 97.2, "y": 70.4 }
+      ]
+    },
+    {
+      "item": 15,
+      "partNumber": "57048",
+      "description": "Washer, Flat, 0.53b 2.13d .11, Stl, Pl",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 36.0, "y": 43.8 },
+        { "x": 85.2, "y": 62.7 }
+      ]
+    }
+  ]
+}

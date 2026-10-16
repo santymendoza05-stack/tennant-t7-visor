@@ -36,16 +36,17 @@ Para no tapar los números del manual, los puntos del despiece están **ocultos 
 
 | Zona | Figura del manual | Datos |
 |---|---|---|
-| Racleta Trasera | Fig. 37 · Rear Squeegee Group, 800 mm | `data/squeegee_parts.json` |
-| Cabeza de Cepillos | Fig. 18 · Disk Scrub Head Drive Motor Group, 800 mm | `data/scrub_head_disk_800.json` |
+| Racleta Trasera | Fig. 37 · Rear Squeegee Group, 800 mm<br>Fig. 36 · Rear Squeegee Group, 650 mm | `data/squeegee_parts.json`<br>`data/squeegee_650.json` |
+| Cabezal de Disco | Fig. 18 · Disk Scrub Head Drive Motor Group, 800 mm<br>Fig. 17 · Disk Scrub Head Drive Motor Group, 650 mm<br>Fig. 3 · Replacement Brushes And Pad Drivers, 800 mm<br>Fig. 2 · Replacement Brushes And Pad Drivers, 650 mm | `data/scrub_head_disk_800.json`<br>`data/scrub_head_disk_650.json`<br>`data/brushes_disk_800.json`<br>`data/brushes_disk_650.json` |
+| Cabezal Cilíndrico | Fig. 22 · Cylindrical Scrub Head Group, 700 mm (28 in)<br>Fig. 23 · Cylindrical Scrub Head Group, 800 mm (32 in)<br>Fig. 24 · Cylindrical Scrub Head Drive Group, Right Side<br>Fig. 25 · Cylindrical Scrub Head Drive Group, Left Side<br>Fig. 26 · Cylindrical Scrub Head Squeegee Group<br>Fig. 1 · Brushes, Replacement, Cylindrical | `data/scrub_head_cyl_700.json`<br>`data/scrub_head_cyl_800.json`<br>`data/scrub_head_cyl_drive_rh.json`<br>`data/scrub_head_cyl_drive_lh.json`<br>`data/scrub_head_cyl_squeegee.json`<br>`data/brushes_cyl.json` |
 | Escobillas Laterales del Cabezal | Fig. 19 · Disk Scrub Head Side Squeegee Group, Right<br>Fig. 20 · Disk Scrub Head Side Squeegee Group, Left | `data/side_squeegee_rh.json`<br>`data/side_squeegee_lh.json` |
 | Tanques | Fig. 27 · Recovery Tank Group<br>Fig. 29 · Solution Tank Group, Disk<br>Fig. 30 · Solution Tank Group, Cylindrical | `data/recovery_tank.json`<br>`data/solution_tank_disk.json`<br>`data/solution_tank_cyl.json` |
-| Rueda Motriz / Tracción | Fig. 11 · Front Drive Wheel Group (S/N 10518139-)<br>Fig. 1 · Steering Control Breakdown, 1019724 (ítem 1 de la Fig. 11) | `data/front_drive_wheel.json`<br>`data/steering_control.json` |
+| Rueda Motriz / Tracción | Fig. 11 · Front Drive Wheel Group (S/N 10518139-)<br>Fig. 12 · Front Drive Wheel Group (S/N 10000000-10518138)<br>Fig. 1 · Steering Control Breakdown, 1019724 (ítem 1 de la Fig. 11)<br>Fig. 10 · Front Wheel Gearbox Breakdown, 9008999 (sección 4)<br>Fig. 11 · Front Wheel Gearbox Breakdown, 9001642, 9009000 (sección 4) | `data/front_drive_wheel.json`<br>`data/front_drive_wheel_old.json`<br>`data/steering_control.json`<br>`data/gearbox_9008999.json`<br>`data/gearbox_9001642.json` |
 | Panel de Instrumentos / Consola | Fig. 10 · Instrument Panel Group<br>Fig. 38 · Circuit Board Group | `data/instrument_panel.json`<br>`data/circuit_board.json` |
 | Columna de Dirección / Volante | Fig. 9 · Steering Group | `data/steering_group.json` |
 | Asiento y Cubierta de Baterías | Fig. 8 · Seat Group | `data/seat_group.json` |
 | Chasis y Bastidor Principal | Fig. 4 · Main Frame Group, Disk Scrub Head<br>Fig. 7 · Main Frame Group, Cylindrical (S/N 10000000-10448498) | `data/main_frame_disk.json`<br>`data/main_frame.json` |
-| Mecanismo de Elevación del Cabezal | Fig. 16 · Disk Scrub Head Lift Group | `data/scrub_head_lift.json` |
+| Mecanismo de Elevación del Cabezal | Fig. 16 · Disk Scrub Head Lift Group<br>Fig. 21 · Cylindrical Scrub Head Lift Group | `data/scrub_head_lift.json`<br>`data/scrub_head_lift_cyl.json` |
 | Motor de Aspiración y Silenciador | Fig. 28 · Vacuum Fan Group | `data/vacuum_fan.json` |
 | Sistema de Drenaje de Tanques | Fig. 31 · Tanks Drain Group | `data/tanks_drain.json` |
 | Sistema de Baterías y Alimentación | Fig. 32 · Battery Group, 235Ah (S/N 10523206-) | `data/battery_group.json` |
@@ -57,8 +58,8 @@ Datos en `data/t12/` e imágenes en `assets/t12/`.
 
 | Zona | Figura del manual |
 |---|---|
-| Racleta Trasera / Escobillas de Secado | Fig. 21 · Rear Squeegee Kit |
-| Cabezal de Cepillos | Fig. 12 · Disk<br>Fig. 13 · Cylindrical Frame<br>Fig. 14 · Cylindrical Drive Motor<br>Fig. 2 · Replacement Brushes, Side Brush |
+| Racleta Trasera / Escobillas de Secado | Fig. 21 · Rear Squeegee Kit<br>Fig. 4 (accesorios) · Squeegee Guard Group |
+| Cabezal de Cepillos | Fig. 12 · Disk<br>Fig. 13 · Cylindrical Frame<br>Fig. 14 · Cylindrical Drive Motor<br>Fig. 2 · Replacement Brushes, Side Brush<br>Fig. 1 · Replacement Brushes, Scrub Head |
 | Escobillas Laterales del Cabezal | Fig. 15 · Right Hand<br>Fig. 16 · Left Hand |
 | Mecanismo de Elevación del Cabezal | Fig. 11 · Scrub Head Lift Group |
 | Mecanismo de Elevación de Racleta | Fig. 20 · Rear Squeegee Lift Group |
@@ -69,7 +70,7 @@ Datos en `data/t12/` e imágenes en `assets/t12/`.
 | Cubierta Frontal y Pedal | Fig. 10 · Front Cover and Directional Pedal Group |
 | Tanque de Recuperación | Fig. 17 · Recovery Tank Group |
 | Motor de Aspiración | Fig. 18 · Vacuum Fan Group |
-| Tanque de Solución | Fig. 19 · Solution Tank Group |
+| Tanque de Solución | Fig. 19 · Solution Tank Group<br>Fig. 7 (accesorios) · ec-H2O Solution Pump Group<br>Fig. 1 (despieces) · ec-H2O Module Assembly Breakdown, 9010933 |
 | Tarjeta de Control | Fig. 22 · Electrical Circuit Board Group |
 | Contactor y Cableado | Fig. 23 · Electrical Contactor and Wires Group |
 | Sistema de Baterías | Fig. 24 · Battery Group, 240Ah |
@@ -81,9 +82,9 @@ Datos en `data/ct110/` e imágenes en `assets/ct110/`. El catálogo no trae una 
 | Zona | Tabla del catálogo | Repuestos clave |
 |---|---|---|
 | Racleta | SQUEEGEE | MPVR08041 Blade XL Latex (desde 07/2013) |
-| Cabezal de Cepillos | HEAD | |
-| Tanques | TANK | MOCC00273 Motor 3 St. 24V (Ametek 116598-13) |
-| Instalación Eléctrica | ELECTRI.INSTAL. | MECE00450 Board Traction Curtis CT110 |
+| Cabezal de Cepillos | HEAD | Categoría "Filtro y electroválvula de agua" (FTAC00038, MEEV00018, MEEV00044) |
+| Tanques | TANK | MOCC00273 Motor 3 St. 24V (Ametek 116598-13) · filtro FTDP00133 |
+| Instalación Eléctrica | ELECTRI.INSTAL. | MECE00450 Board Traction Curtis CT110 · subsistemas "Panel principal" y "Acelerador / Pedal" |
 | Motor Rueda de Tracción | DRIVE ASSEMBLY<br>TRACTION MOTOR | RTRT00533 Ring Motorwheel |
 
 ## Uso local

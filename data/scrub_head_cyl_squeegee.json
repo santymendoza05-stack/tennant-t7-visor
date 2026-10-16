@@ -1,0 +1,353 @@
+{
+  "machine": "Tennant T7",
+  "group": "Cylindrical Scrub Head Squeegee Group",
+  "figure": "Fig. 26",
+  "image": "assets/scrub_head_cyl_squeegee.png",
+  "categories": [
+    "Estructura y cubiertas",
+    "Escobillas y hojas",
+    "Pasadores y bujes",
+    "Tornillería",
+    "Resortes",
+    "Rodamientos"
+  ],
+  "parts": [
+    {
+      "item": 1,
+      "partNumber": "391328",
+      "description": "Frame Wldt, Sqge, Side, Lh",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 47.4, "y": 73.3 }
+      ]
+    },
+    {
+      "item": 2,
+      "partNumber": "391334",
+      "description": "Squeegee Assy, Side [Linatex] (Standard)",
+      "category": "Escobillas y hojas",
+      "qty": 2,
+      "hotspots": [
+        { "x": 14.7, "y": 20.0 },
+        { "x": 66.2, "y": 88.9 }
+      ]
+    },
+    {
+      "item": 2,
+      "partNumber": "1058728",
+      "description": "Squeegee Assy, Cylrcl, Ure [T7/Ssr] (Optional)",
+      "category": "Escobillas y hojas",
+      "qty": 2,
+      "hotspots": []
+    },
+    {
+      "item": 2,
+      "partNumber": "1058715",
+      "description": "Squeegee Assy, Cylrcl, Gum [T7/Ssr] (Optional)",
+      "category": "Escobillas y hojas",
+      "qty": 2,
+      "hotspots": []
+    },
+    {
+      "item": 3,
+      "partNumber": "86759",
+      "description": "Retainer, Sqge",
+      "category": "Estructura y cubiertas",
+      "qty": 2,
+      "hotspots": [
+        { "x": 28.0, "y": 27.0 },
+        { "x": 27.5, "y": 80.1 }
+      ]
+    },
+    {
+      "item": 4,
+      "partNumber": "69582",
+      "description": "Pin, Clevis, 0.31d X 1.00l",
+      "category": "Pasadores y bujes",
+      "qty": 2,
+      "hotspots": [
+        { "x": 14.4, "y": 33.5 },
+        { "x": 32.1, "y": 94.9 }
+      ]
+    },
+    {
+      "item": 5,
+      "partNumber": "44906",
+      "description": "Pin, Cotter, Hair, 0.69d .092 Wir",
+      "category": "Pasadores y bujes",
+      "qty": 2,
+      "hotspots": [
+        { "x": 17.1, "y": 26.1 },
+        { "x": 40.3, "y": 85.7 }
+      ]
+    },
+    {
+      "item": 6,
+      "partNumber": "86865",
+      "description": "Guide, Sqge, Side",
+      "category": "Estructura y cubiertas",
+      "qty": 2,
+      "hotspots": [
+        { "x": 21.5, "y": 40.1 },
+        { "x": 19.9, "y": 83.2 }
+      ]
+    },
+    {
+      "item": 7,
+      "partNumber": "1029380",
+      "description": "Angle Wldt, Stop, Lh",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 53.8, "y": 58.9 }
+      ]
+    },
+    {
+      "item": 8,
+      "partNumber": "1029368",
+      "description": "Angle Wldt, Stop, Rh",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 97.3, "y": 19.6 }
+      ]
+    },
+    {
+      "item": 9,
+      "partNumber": "1020341",
+      "description": "Screw, Hex, M8 X 1.25 X 20, Ss, Sems",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 95.1, "y": 12.2 },
+        { "x": 50.6, "y": 52.2 }
+      ]
+    },
+    {
+      "item": 10,
+      "partNumber": "44906",
+      "description": "Pin, Cotter, Hair, 0.69d .092 Wir",
+      "category": "Pasadores y bujes",
+      "qty": 2,
+      "hotspots": [
+        { "x": 86.3, "y": 11.2 },
+        { "x": 42.3, "y": 65.0 }
+      ]
+    },
+    {
+      "item": 11,
+      "partNumber": "1030365",
+      "description": "Arm, Mtg, Link, Lh Sqge, Cylrcl Head",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 62.0, "y": 60.1 }
+      ]
+    },
+    {
+      "item": 12,
+      "partNumber": "69582",
+      "description": "Pin, Clevis, 0.31d X 1.00l",
+      "category": "Pasadores y bujes",
+      "qty": 2,
+      "hotspots": [
+        { "x": 59.9, "y": 38.3 },
+        { "x": 25.1, "y": 66.5 }
+      ]
+    },
+    {
+      "item": 13,
+      "partNumber": "15047",
+      "description": "Spring, Extn, 0.62od X 0.08wir, 3.0l",
+      "category": "Resortes",
+      "qty": 2,
+      "hotspots": [
+        { "x": 32.7, "y": 22.6 },
+        { "x": 59.0, "y": 88.4 }
+      ]
+    },
+    {
+      "item": 14,
+      "partNumber": "39019",
+      "description": "Pin, Clevis, 0.37d X 0.75l",
+      "category": "Pasadores y bujes",
+      "qty": 2,
+      "hotspots": [
+        { "x": 38.2, "y": 24.0 },
+        { "x": 52.5, "y": 79.3 }
+      ]
+    },
+    {
+      "item": 15,
+      "partNumber": "25709",
+      "description": "Bellcrank, Lift, Sqge",
+      "category": "Estructura y cubiertas",
+      "qty": 2,
+      "hotspots": [
+        { "x": 58.4, "y": 10.8 },
+        { "x": 76.2, "y": 72.5 }
+      ]
+    },
+    {
+      "item": 16,
+      "partNumber": "380587",
+      "description": "Screw, Flt, M10 X 1.5 X 20, Ss, 18- 8",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 80.7, "y": 24.7 },
+        { "x": 31.2, "y": 63.6 }
+      ]
+    },
+    {
+      "item": 17,
+      "partNumber": "64425",
+      "description": "Washer, Thrust, 0.61b 1.25d .06, Fgl",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 30.6, "y": 14.5 },
+        { "x": 49.7, "y": 20.5 },
+        { "x": 56.5, "y": 77.2 },
+        { "x": 73.7, "y": 86.1 }
+      ]
+    },
+    {
+      "item": 18,
+      "partNumber": "71607",
+      "description": "Bushing, Sleeve, 0.63b 0.72d 0.38l",
+      "category": "Pasadores y bujes",
+      "qty": 2,
+      "hotspots": [
+        { "x": 34.3, "y": 15.5 },
+        { "x": 69.9, "y": 83.5 }
+      ]
+    },
+    {
+      "item": 19,
+      "partNumber": "391345",
+      "description": "Nut, T, M10 X 1.50 X 0.62od X 0.5l",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 26.6, "y": 11.9 },
+        { "x": 77.7, "y": 87.7 }
+      ]
+    },
+    {
+      "item": 20,
+      "partNumber": "391346",
+      "description": "Nut, T, M8 X 1.25 X 0.50od X 0.5l",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 46.9, "y": 6.9 },
+        { "x": 90.3, "y": 77.9 }
+      ]
+    },
+    {
+      "item": 21,
+      "partNumber": "79246",
+      "description": "Screw, Flt, M8 X 1.25 X 20, Ss 18- 8",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 74.6, "y": 19.2 },
+        { "x": 61.0, "y": 65.4 }
+      ]
+    },
+    {
+      "item": 22,
+      "partNumber": "86860",
+      "description": "Bearing, Thrust, 0.50b 0.87d 0.06w",
+      "category": "Rodamientos",
+      "qty": 4,
+      "hotspots": [
+        { "x": 49.7, "y": 8.0 },
+        { "x": 62.2, "y": 12.6 },
+        { "x": 72.1, "y": 71.0 },
+        { "x": 85.2, "y": 75.9 }
+      ]
+    },
+    {
+      "item": 23,
+      "partNumber": "64173",
+      "description": "Bushing, Sleeve, 0.50b 0.59d 0.38l, Stl",
+      "category": "Pasadores y bujes",
+      "qty": 2,
+      "hotspots": [
+        { "x": 52.7, "y": 9.7 },
+        { "x": 79.6, "y": 74.0 }
+      ]
+    },
+    {
+      "item": 24,
+      "partNumber": "45280",
+      "description": "Screw, Hex, .50- 13 X 5.50, G5",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 60.8, "y": 54.3 },
+        { "x": 9.9, "y": 89.8 }
+      ]
+    },
+    {
+      "item": 25,
+      "partNumber": "33925",
+      "description": "Washer, Flat, M12, Ss",
+      "category": "Tornillería",
+      "qty": 6,
+      "hotspots": [
+        { "x": 55.6, "y": 26.4 },
+        { "x": 37.0, "y": 35.1 },
+        { "x": 60.4, "y": 41.5 },
+        { "x": 37.1, "y": 68.1 },
+        { "x": 10.0, "y": 74.4 },
+        { "x": 9.4, "y": 80.1 }
+      ]
+    },
+    {
+      "item": 26,
+      "partNumber": "1031077",
+      "description": "Bushing, Sleeve, 0.51b 0.75d 0.16l",
+      "category": "Pasadores y bujes",
+      "qty": 2,
+      "hotspots": [
+        { "x": 72.9, "y": 29.2 },
+        { "x": 25.4, "y": 77.2 }
+      ]
+    },
+    {
+      "item": 27,
+      "partNumber": "02931",
+      "description": "Nut, Hex, Lock, .50- 13, Nl, Ss",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 55.9, "y": 23.9 },
+        { "x": 36.5, "y": 66.5 }
+      ]
+    },
+    {
+      "item": 28,
+      "partNumber": "391327",
+      "description": "Frame Wldt, Sqge, Side, Rh",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 78.5, "y": 8.4 }
+      ]
+    },
+    {
+      "item": 29,
+      "partNumber": "1030026",
+      "description": "Arm, Mtg, Link, Rh Sqge, Cylrcl Head",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 54.3, "y": 37.6 }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,250 @@
+{
+  "machine": "Tennant T12",
+  "group": "Squeegee Guard Group",
+  "figure": "Fig. 4",
+  "image": "assets/t12/squeegee_guard.png",
+  "categories": [
+    "Estructura y cubiertas",
+    "Tornillería",
+    "Mangueras y fluido",
+    "Pasadores y bujes",
+    "Transmisión"
+  ],
+  "parts": [
+    {
+      "item": 1,
+      "partNumber": "1201496",
+      "description": "Channel Wldt, Bumper, Rh",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 41.3, "y": 31.4 }
+      ]
+    },
+    {
+      "item": 2,
+      "partNumber": "1201503",
+      "description": "Channel Wldt, Bumper, Lh",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 70.6, "y": 51.4 }
+      ]
+    },
+    {
+      "item": 3,
+      "partNumber": "12317",
+      "description": "Screw, Hex, M10 X 1.50 X 30, Ss",
+      "category": "Tornillería",
+      "qty": 10,
+      "hotspots": [
+        { "x": 5.0, "y": 55.3 },
+        { "x": 39.5, "y": 56.2 },
+        { "x": 70.6, "y": 75.2 },
+        { "x": 61.6, "y": 87.8 },
+        { "x": 22.8, "y": 92.6 }
+      ]
+    },
+    {
+      "item": 4,
+      "partNumber": "01686",
+      "description": "Washer, Flat, 0.44b 1.00d .08, Ss",
+      "category": "Tornillería",
+      "qty": 18,
+      "hotspots": [
+        { "x": 32.8, "y": 30.3 },
+        { "x": 42.4, "y": 58.0 },
+        { "x": 9.9, "y": 58.1 },
+        { "x": 26.5, "y": 62.3 },
+        { "x": 49.0, "y": 66.0 },
+        { "x": 70.2, "y": 71.2 },
+        { "x": 57.0, "y": 84.7 },
+        { "x": 27.4, "y": 90.0 }
+      ]
+    },
+    {
+      "item": 5,
+      "partNumber": "08714",
+      "description": "Nut, Hex, Lock, M10 X 1.5, Nl, Ss",
+      "category": "Tornillería",
+      "qty": 8,
+      "hotspots": [
+        { "x": 60.8, "y": 13.6 },
+        { "x": 77.6, "y": 19.8 },
+        { "x": 36.8, "y": 32.6 },
+        { "x": 45.6, "y": 64.1 },
+        { "x": 28.8, "y": 64.8 },
+        { "x": 52.8, "y": 81.1 }
+      ]
+    },
+    {
+      "item": 6,
+      "partNumber": "1024977",
+      "description": "Bumper, Ure, 1.50d 1.25l",
+      "category": "Estructura y cubiertas",
+      "qty": 2,
+      "hotspots": [
+        { "x": 57.4, "y": 42.2 },
+        { "x": 92.4, "y": 59.1 }
+      ]
+    },
+    {
+      "item": 7,
+      "partNumber": "32492",
+      "description": "Washer, Flat, 0.38, Std",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 57.9, "y": 11.7 },
+        { "x": 81.5, "y": 21.9 },
+        { "x": 52.4, "y": 50.9 },
+        { "x": 83.2, "y": 73.5 }
+      ]
+    },
+    {
+      "item": 8,
+      "partNumber": "69225",
+      "description": "Screw, Hex, .38−16 X 1.00, Ss",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 49.7, "y": 53.3 },
+        { "x": 79.5, "y": 75.2 }
+      ]
+    },
+    {
+      "item": 9,
+      "partNumber": "1201499",
+      "description": "Bracket, Support, Tank, Rh",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 21.1, "y": 21.0 }
+      ]
+    },
+    {
+      "item": 10,
+      "partNumber": "1201504",
+      "description": "Bracket, Support, Tank, Lh",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 64.1, "y": 50.9 }
+      ]
+    },
+    {
+      "item": 11,
+      "partNumber": "1202246",
+      "description": "Support Wldt, Guard, Rh",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 53.2, "y": 30.6 }
+      ]
+    },
+    {
+      "item": 12,
+      "partNumber": "1202247",
+      "description": "Support Wldt, Guard, Lh",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 65.8, "y": 39.8 }
+      ]
+    },
+    {
+      "item": 13,
+      "partNumber": "09028",
+      "description": "Screw, Hex, M10 X 1.50 X 25, Ss",
+      "category": "Tornillería",
+      "qty": 6,
+      "hotspots": [
+        { "x": 64.9, "y": 23.0 },
+        { "x": 65.9, "y": 31.5 }
+      ]
+    },
+    {
+      "item": 14,
+      "partNumber": "01685",
+      "description": "Washer, Flat, 0.38b 0.88d .08, Ss",
+      "category": "Tornillería",
+      "qty": 6,
+      "hotspots": [
+        { "x": 65.1, "y": 26.0 },
+        { "x": 66.0, "y": 34.8 }
+      ]
+    },
+    {
+      "item": 15,
+      "partNumber": "1204847",
+      "description": "Tube, Guard, Pntd",
+      "category": "Mangueras y fluido",
+      "qty": 1,
+      "hotspots": [
+        { "x": 72.9, "y": 9.9 }
+      ]
+    },
+    {
+      "item": 16,
+      "partNumber": "06965",
+      "description": "Screw, Hex, M10 X 1.50 X 80, 8.8",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 37.6, "y": 13.9 },
+        { "x": 85.3, "y": 43.5 }
+      ]
+    },
+    {
+      "item": 17,
+      "partNumber": "369359",
+      "description": "Pin, Hitch, .375d X 3.12l, Pl",
+      "category": "Pasadores y bujes",
+      "qty": 1,
+      "hotspots": [
+        { "x": 45.1, "y": 2.0 }
+      ]
+    },
+    {
+      "item": 18,
+      "partNumber": "19676",
+      "description": "Cable, Glv .09d 013.0l .38eye /.38eye",
+      "category": "Transmisión",
+      "qty": 1,
+      "hotspots": [
+        { "x": 28.1, "y": 20.4 }
+      ]
+    },
+    {
+      "item": 19,
+      "partNumber": "09252",
+      "description": "Screw, Hex, M5 X 0.80 X 20, 8.8",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 26.1, "y": 10.0 }
+      ]
+    },
+    {
+      "item": 20,
+      "partNumber": "01683",
+      "description": "Washer, Flat, 10, Ss",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 30.7, "y": 12.0 },
+        { "x": 37.3, "y": 18.8 }
+      ]
+    },
+    {
+      "item": 21,
+      "partNumber": "09739",
+      "description": "Nut, Hex, Lock, M5 X 0.80, Nl, Ss",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 40.4, "y": 21.6 }
+      ]
+    }
+  ]
+}

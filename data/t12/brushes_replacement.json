@@ -1,0 +1,360 @@
+{
+  "machine": "Tennant T12",
+  "group": "Replacement Brushes, Scrub Head",
+  "figure": "Fig. 1",
+  "image": "assets/t12/brushes_replacement.png",
+  "categories": [
+    "Cepillos y pads",
+    "Tornillería",
+    "Transmisión",
+    "Resortes",
+    "Estructura y cubiertas"
+  ],
+  "parts": [
+    {
+      "item": 1,
+      "partNumber": "1201572",
+      "description": "Brush, Scb, 31l, 18sr, Polypropylene, Spl",
+      "category": "Cepillos y pads",
+      "qty": 2,
+      "hotspots": [
+        { "x": 50.5, "y": 8.2 }
+      ]
+    },
+    {
+      "item": 1,
+      "partNumber": "1201926",
+      "description": "Brush, Scb, 31l, 18sr, Polypropylene, 2 Way, Spl",
+      "category": "Cepillos y pads",
+      "qty": 2,
+      "hotspots": []
+    },
+    {
+      "item": 1,
+      "partNumber": "1201927",
+      "description": "Brush, Scb, 31l, 18sr, Polyester, Spl",
+      "category": "Cepillos y pads",
+      "qty": 2,
+      "hotspots": []
+    },
+    {
+      "item": 1,
+      "partNumber": "1201928",
+      "description": "Brush, Scb, 31l, 18sr, Super Abrasive",
+      "category": "Cepillos y pads",
+      "qty": 2,
+      "hotspots": []
+    },
+    {
+      "item": 2,
+      "partNumber": "1220235",
+      "description": "Brush Assy, Disk, Scrub, 16.0D, Nylon",
+      "category": "Cepillos y pads",
+      "qty": 2,
+      "hotspots": [
+        { "x": 33.0, "y": 41.4 }
+      ]
+    },
+    {
+      "item": 3,
+      "partNumber": "9014662",
+      "description": "Brush Kit, Hub Assy, Drive, Ci [Hdpe In]",
+      "category": "Cepillos y pads",
+      "qty": 1,
+      "hotspots": [
+        { "x": 38.8, "y": 33.9 }
+      ]
+    },
+    {
+      "item": 2,
+      "partNumber": "1220241",
+      "description": "Brush Assy, Disk, Scrub, 16.0D, Polypropylene",
+      "category": "Cepillos y pads",
+      "qty": 2,
+      "hotspots": []
+    },
+    {
+      "item": 2,
+      "partNumber": "1221543",
+      "description": "Brush Assy, Disk, Scrub, 16.0D, Super Abrasive",
+      "category": "Cepillos y pads",
+      "qty": 2,
+      "hotspots": []
+    },
+    {
+      "item": 2,
+      "partNumber": "1220236",
+      "description": "Brush Assy, Disk, Scrub, 16.0D, Polyproylene Stiff",
+      "category": "Cepillos y pads",
+      "qty": 2,
+      "hotspots": []
+    },
+    {
+      "item": 4,
+      "partNumber": "1220199",
+      "description": "Driver Assy, Pad, 16.0D",
+      "category": "Cepillos y pads",
+      "qty": 2,
+      "hotspots": [
+        { "x": 57.1, "y": 54.1 }
+      ]
+    },
+    {
+      "item": 5,
+      "partNumber": "9014666",
+      "description": "Brush Kit, Hub Assy, Drive, Ci [Uhmw]",
+      "category": "Cepillos y pads",
+      "qty": 1,
+      "hotspots": [
+        { "x": 64.8, "y": 34.1 }
+      ]
+    },
+    {
+      "item": 6,
+      "partNumber": "370095",
+      "description": "Device, Centering, Clip On, Ti [Gf Pp]",
+      "category": "Cepillos y pads",
+      "qty": 1,
+      "hotspots": [
+        { "x": 89.0, "y": 58.9 }
+      ]
+    },
+    {
+      "item": 7,
+      "partNumber": "397976",
+      "description": "Disk, Driver, Pad, W/Face, 16.0D",
+      "category": "Cepillos y pads",
+      "qty": 1,
+      "hotspots": [
+        { "x": 88.0, "y": 51.5 }
+      ]
+    },
+    {
+      "item": 8,
+      "partNumber": "09198",
+      "description": "Screw, Pan, Phl, M4 X 0.70 X 35, Ss",
+      "category": "Tornillería",
+      "qty": 3,
+      "hotspots": [
+        { "x": 67.4, "y": 54.3 }
+      ]
+    },
+    {
+      "item": 9,
+      "partNumber": "41579",
+      "description": "Washer, Flat, 08, Ss",
+      "category": "Tornillería",
+      "qty": 3,
+      "hotspots": [
+        { "x": 67.2, "y": 51.9 }
+      ]
+    },
+    {
+      "item": 10,
+      "partNumber": "63248−1",
+      "description": "Pad, Stripping, 16.0d, Brown[1pick=1pad]",
+      "category": "Cepillos y pads",
+      "qty": 2,
+      "hotspots": [
+        { "x": 84.1, "y": 69.4 }
+      ]
+    },
+    {
+      "item": 10,
+      "partNumber": "63248−2",
+      "description": "Pad, Scrubbing, 16.0d, Blu [1pick=1pad]",
+      "category": "Cepillos y pads",
+      "qty": 2,
+      "hotspots": []
+    },
+    {
+      "item": 10,
+      "partNumber": "63248−3",
+      "description": "Pad, Buff, 16.0d, Red [1pick=1pad]",
+      "category": "Cepillos y pads",
+      "qty": 2,
+      "hotspots": []
+    },
+    {
+      "item": 10,
+      "partNumber": "63248−4",
+      "description": "Pad, Polish, 16.0d, White [1pick=1pad]",
+      "category": "Cepillos y pads",
+      "qty": 2,
+      "hotspots": []
+    },
+    {
+      "item": 10,
+      "partNumber": "370092",
+      "description": "Pad, Stripping, 16.0d[Hi Prod, Black, 1pick=1pad",
+      "category": "Cepillos y pads",
+      "qty": 2,
+      "hotspots": []
+    },
+    {
+      "item": 10,
+      "partNumber": "1051027",
+      "description": "Pad, Surf Prep, 16.0d [Maroon, 1pick=1pad]",
+      "category": "Cepillos y pads",
+      "qty": 2,
+      "hotspots": []
+    },
+    {
+      "item": 11,
+      "partNumber": "1017368",
+      "description": "Hub, Drive, Brush, Disk, 3hole 5.8bc",
+      "category": "Transmisión",
+      "qty": 1,
+      "note": "Pieza anterior",
+      "hotspots": [
+        { "x": 50.9, "y": 84.8 }
+      ]
+    },
+    {
+      "item": 12,
+      "partNumber": "14838",
+      "description": "Spring, Wir, 0.16d, Brush Retaining",
+      "category": "Resortes",
+      "qty": 1,
+      "note": "Pieza anterior",
+      "hotspots": [
+        { "x": 50.7, "y": 82.3 }
+      ]
+    },
+    {
+      "item": 13,
+      "partNumber": "24299",
+      "description": "Bracket, Retainer, Spring",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "note": "Pieza anterior",
+      "hotspots": [
+        { "x": 35.6, "y": 78.9 }
+      ]
+    },
+    {
+      "item": 14,
+      "partNumber": "01684",
+      "description": "Washer, Flat, 0.27b 0.69d .05, Ss",
+      "category": "Tornillería",
+      "qty": 1,
+      "note": "Pieza anterior",
+      "hotspots": [
+        { "x": 50.9, "y": 80.0 }
+      ]
+    },
+    {
+      "item": 15,
+      "partNumber": "32746",
+      "description": "Screw, Pan, Phl, M6 X 1.00 X 35, Ss",
+      "category": "Tornillería",
+      "qty": 2,
+      "note": "Pieza anterior",
+      "hotspots": [
+        { "x": 36.0, "y": 76.4 },
+        { "x": 50.8, "y": 77.5 }
+      ]
+    },
+    {
+      "item": 16,
+      "partNumber": "15539",
+      "description": "Hub, Drive, Brush, Disk, 3hole 5.8bc[6t]",
+      "category": "Transmisión",
+      "qty": 1,
+      "note": "Pieza anterior",
+      "hotspots": [
+        { "x": 6.7, "y": 83.7 }
+      ]
+    },
+    {
+      "item": 17,
+      "partNumber": "14838",
+      "description": "Spring, Wir, 0.16d, Brush Retaining",
+      "category": "Resortes",
+      "qty": 1,
+      "note": "Pieza anterior",
+      "hotspots": [
+        { "x": 6.6, "y": 81.3 }
+      ]
+    },
+    {
+      "item": 18,
+      "partNumber": "24299",
+      "description": "Bracket, Retainer, Spring",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "note": "Pieza anterior",
+      "hotspots": [
+        { "x": 6.4, "y": 76.2 }
+      ]
+    },
+    {
+      "item": 19,
+      "partNumber": "01684",
+      "description": "Washer, Flat, 0.27b 0.69d .05, Ss",
+      "category": "Tornillería",
+      "qty": 1,
+      "note": "Pieza anterior",
+      "hotspots": [
+        { "x": 26.4, "y": 77.7 }
+      ]
+    },
+    {
+      "item": 20,
+      "partNumber": "32746",
+      "description": "Screw, Pan, Phl, M6 X 1.00 X 35, Ss",
+      "category": "Tornillería",
+      "qty": 1,
+      "note": "Pieza anterior",
+      "hotspots": [
+        { "x": 6.4, "y": 73.5 },
+        { "x": 26.1, "y": 74.5 }
+      ]
+    },
+    {
+      "item": 2,
+      "partNumber": "30241",
+      "description": "Brush Assy, Disk, Scb, 16.0d, Polypropylene (Replaced by 1220241)",
+      "category": "Cepillos y pads",
+      "qty": 2,
+      "note": "Anterior · reemplazado por 1220241 · Pieza anterior",
+      "hotspots": []
+    },
+    {
+      "item": 2,
+      "partNumber": "1042500",
+      "description": "Brush Assy, Disk, Scb, 16.0d, Polypropylene Stiff (Replaced by 1220236)",
+      "category": "Cepillos y pads",
+      "qty": 2,
+      "note": "Anterior · reemplazado por 1220236 · Pieza anterior",
+      "hotspots": []
+    },
+    {
+      "item": 2,
+      "partNumber": "1042499",
+      "description": "Brush Assy, Disk, Scb, 16.0d, Nylon (Replaced by 1220235)",
+      "category": "Cepillos y pads",
+      "qty": 2,
+      "note": "Anterior · reemplazado por 1220235 · Pieza anterior",
+      "hotspots": []
+    },
+    {
+      "item": 2,
+      "partNumber": "1042504",
+      "description": "Brush Assy, Disk, Scb, 16.0d, Super Abrasive (Replaced by 1221543)",
+      "category": "Cepillos y pads",
+      "qty": 2,
+      "note": "Anterior · reemplazado por 1221543 · Pieza anterior",
+      "hotspots": []
+    },
+    {
+      "item": 4,
+      "partNumber": "397916",
+      "description": "Driver Assy, Pad, 16. (Replaced by 1220199)",
+      "category": "Cepillos y pads",
+      "qty": 2,
+      "note": "Anterior · reemplazado por 1220199 · Pieza anterior",
+      "hotspots": []
+    }
+  ]
+}

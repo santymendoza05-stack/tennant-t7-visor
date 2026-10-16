@@ -1,0 +1,412 @@
+{
+  "machine": "Tennant T12",
+  "group": "ec-H2O Solution Pump Group",
+  "figure": "Fig. 7",
+  "image": "assets/t12/ech2o_pump.png",
+  "categories": [
+    "Estructura y cubiertas",
+    "Tornillería",
+    "Mangueras y fluido",
+    "Eléctrico",
+    "Motores y actuadores"
+  ],
+  "parts": [
+    {
+      "item": 1,
+      "partNumber": "1200161",
+      "description": "Bracket, Soltn [Ec−H2o]",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 96.7, "y": 11.4 }
+      ]
+    },
+    {
+      "item": 2,
+      "partNumber": "1020341",
+      "description": "Screw, Hex, M8 X 1.25 X 20, Ss, Sems",
+      "category": "Tornillería",
+      "qty": 3,
+      "hotspots": [
+        { "x": 76.0, "y": 16.3 }
+      ]
+    },
+    {
+      "item": 3,
+      "partNumber": "9010933",
+      "description": "Ech20 Module, Afmkt [T12] (See Breakdowns)",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 39.8, "y": 13.0 }
+      ]
+    },
+    {
+      "item": 4,
+      "partNumber": "1034731",
+      "description": "Screw, Hex, M6 X 1.00 X 16, Ss, Sems",
+      "category": "Tornillería",
+      "qty": 4,
+      "hotspots": [
+        { "x": 90.9, "y": 2.9 }
+      ]
+    },
+    {
+      "item": 5,
+      "partNumber": "1059231",
+      "description": "Fitting, Stl, Pm04/Pm02/Pm04/Pm02, Spcl",
+      "category": "Mangueras y fluido",
+      "qty": 1,
+      "hotspots": [
+        { "x": 95.7, "y": 24.0 }
+      ]
+    },
+    {
+      "item": 6,
+      "partNumber": "150208",
+      "description": "Fitting, Brs, Str, Pm02, Plug [Skhd]",
+      "category": "Mangueras y fluido",
+      "qty": 1,
+      "hotspots": [
+        { "x": 95.8, "y": 19.4 }
+      ]
+    },
+    {
+      "item": 7,
+      "partNumber": "09738",
+      "description": "Screw, Hex, M5 X 0.80 X 12, Ss",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 96.9, "y": 4.0 }
+      ]
+    },
+    {
+      "item": 8,
+      "partNumber": "140011",
+      "description": "Washer, Flat, 0.21b 0.45d .03, Ss",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 97.0, "y": 6.9 }
+      ]
+    },
+    {
+      "item": 9,
+      "partNumber": "1044415",
+      "description": "Switch, Press, 20psi, Pm02",
+      "category": "Eléctrico",
+      "qty": 1,
+      "hotspots": [
+        { "x": 96.4, "y": 30.6 }
+      ]
+    },
+    {
+      "item": 10,
+      "partNumber": "1052705",
+      "description": "Fitting, Plstc, Str, Bm04/Bm04",
+      "category": "Mangueras y fluido",
+      "qty": 2,
+      "hotspots": [
+        { "x": 47.9, "y": 77.3 }
+      ]
+    },
+    {
+      "item": 11,
+      "partNumber": "43844",
+      "description": "Clamp, Hose, Wormdrive, 0.25−0.62d, .31w",
+      "category": "Mangueras y fluido",
+      "qty": 14,
+      "hotspots": [
+        { "x": 58.4, "y": 17.0 },
+        { "x": 70.0, "y": 20.6 },
+        { "x": 78.7, "y": 23.7 },
+        { "x": 73.5, "y": 28.1 },
+        { "x": 48.9, "y": 30.0 },
+        { "x": 94.3, "y": 33.3 },
+        { "x": 62.8, "y": 38.6 },
+        { "x": 77.0, "y": 54.0 },
+        { "x": 60.9, "y": 62.9 },
+        { "x": 68.6, "y": 71.4 },
+        { "x": 45.2, "y": 75.0 },
+        { "x": 55.5, "y": 85.3 }
+      ]
+    },
+    {
+      "item": 12,
+      "partNumber": "1203814",
+      "description": "Fitting, Plstc, Str, Bm06, Cplg, Male",
+      "category": "Mangueras y fluido",
+      "qty": 1,
+      "hotspots": [
+        { "x": 69.4, "y": 26.9 }
+      ]
+    },
+    {
+      "item": 13,
+      "partNumber": "1203454",
+      "description": "Fitting, Plstc, Str, Bm06, Cplg, Fem",
+      "category": "Mangueras y fluido",
+      "qty": 1,
+      "hotspots": [
+        { "x": 53.3, "y": 31.6 }
+      ]
+    },
+    {
+      "item": 14,
+      "partNumber": "1015455",
+      "description": "Valve, Check, 0005psi Bm06/Bm06",
+      "category": "Mangueras y fluido",
+      "qty": 1,
+      "hotspots": [
+        { "x": 86.4, "y": 46.2 }
+      ]
+    },
+    {
+      "item": 15,
+      "partNumber": "1203996",
+      "description": "Fitting, Plstc, Str, Bm05, Cplg, Fem",
+      "category": "Mangueras y fluido",
+      "qty": 1,
+      "hotspots": [
+        { "x": 62.1, "y": 18.5 }
+      ]
+    },
+    {
+      "item": 16,
+      "partNumber": "1204024",
+      "description": "Fitting, Plstc, E90, Bm04 Cplg Male",
+      "category": "Mangueras y fluido",
+      "qty": 1,
+      "hotspots": [
+        { "x": 66.2, "y": 19.6 }
+      ]
+    },
+    {
+      "item": 17,
+      "partNumber": "1204338",
+      "description": "Fitting, Plstc, Str, Bm04, Cplg, Male",
+      "category": "Mangueras y fluido",
+      "qty": 1,
+      "hotspots": [
+        { "x": 59.0, "y": 36.4 }
+      ]
+    },
+    {
+      "item": 18,
+      "partNumber": "1206779",
+      "description": "Hose, Afmkt, Pvc, Brd, 0.25Id, 08Ft",
+      "category": "Mangueras y fluido",
+      "qty": 2,
+      "hotspots": [
+        { "x": 94.0, "y": 39.7 },
+        { "x": 55.6, "y": 46.7 }
+      ]
+    },
+    {
+      "item": 19,
+      "partNumber": "1059534",
+      "description": "Fastener, 09.00l [Hook & Loop]",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 94.3, "y": 36.7 }
+      ]
+    },
+    {
+      "item": 20,
+      "partNumber": "1201310",
+      "description": "Bracket, Pump, Soltn",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 22.4, "y": 63.2 }
+      ]
+    },
+    {
+      "item": 21,
+      "partNumber": "1020341",
+      "description": "Screw, Hex, M8 X 1.25 X 20, Ss, Sems",
+      "category": "Tornillería",
+      "qty": 1,
+      "hotspots": [
+        { "x": 22.6, "y": 67.4 }
+      ]
+    },
+    {
+      "item": 22,
+      "partNumber": "43555",
+      "description": "Clamp, Hose, Wormdrive, 2.62−3.50d",
+      "category": "Mangueras y fluido",
+      "qty": 1,
+      "hotspots": [
+        { "x": 43.9, "y": 56.9 }
+      ]
+    },
+    {
+      "item": 23,
+      "partNumber": "1200328",
+      "description": "Pump, Soltn, Ele, 36vdc, 60psi",
+      "category": "Mangueras y fluido",
+      "qty": 1,
+      "hotspots": [
+        { "x": 51.3, "y": 60.3 }
+      ]
+    },
+    {
+      "item": 24,
+      "partNumber": "1005630",
+      "description": "Fitting, Plstc, E90, Bm06/Pm06, Nyl",
+      "category": "Mangueras y fluido",
+      "qty": 1,
+      "hotspots": [
+        { "x": 45.5, "y": 72.3 }
+      ]
+    },
+    {
+      "item": 25,
+      "partNumber": "150538",
+      "description": "Fitting, Plstc, Str, Bm06/Pm06",
+      "category": "Mangueras y fluido",
+      "qty": 1,
+      "hotspots": [
+        { "x": 57.1, "y": 64.8 }
+      ]
+    },
+    {
+      "item": 26,
+      "partNumber": "1201379",
+      "description": "Filter, Soltn, 080 Mesh, Pm12 3.2d 6.0l",
+      "category": "Mangueras y fluido",
+      "qty": 1,
+      "hotspots": [
+        { "x": 92.9, "y": 61.5 }
+      ]
+    },
+    {
+      "item": 27,
+      "partNumber": "1005630",
+      "description": "Fitting, Plstc, E90, Bm06/Pm06, Nyl",
+      "category": "Mangueras y fluido",
+      "qty": 1,
+      "hotspots": [
+        { "x": 70.8, "y": 68.1 }
+      ]
+    },
+    {
+      "item": 28,
+      "partNumber": "57248",
+      "description": "Fitting, Plstc, E90, Bm06/Pm04, Nyl",
+      "category": "Mangueras y fluido",
+      "qty": 2,
+      "hotspots": [
+        { "x": 81.4, "y": 20.8 },
+        { "x": 95.6, "y": 26.4 }
+      ]
+    },
+    {
+      "item": 29,
+      "partNumber": "1014971",
+      "description": "Hose, Afmkt, Pvc, Brd, 0.38id, 01ft, Clr",
+      "category": "Mangueras y fluido",
+      "qty": 2,
+      "hotspots": [
+        { "x": 86.4, "y": 34.1 },
+        { "x": 97.5, "y": 43.5 }
+      ]
+    },
+    {
+      "item": 30,
+      "partNumber": "1006400",
+      "description": "Hose, Afmkt, Pvc, Brd, 0.38id, 03ft, Clr",
+      "category": "Mangueras y fluido",
+      "qty": 1,
+      "hotspots": [
+        { "x": 77.3, "y": 83.3 }
+      ]
+    },
+    {
+      "item": 31,
+      "partNumber": "1014974",
+      "description": "Hose, Afmkt, Pvc, Brd, 0.38id, 02ft, Clr",
+      "category": "Mangueras y fluido",
+      "qty": 1,
+      "hotspots": [
+        { "x": 67.0, "y": 51.5 }
+      ]
+    },
+    {
+      "item": 32,
+      "partNumber": "1206778",
+      "description": "Hose, Afmkt, Pvc, Brd, 0.25Id, 03Ft",
+      "category": "Mangueras y fluido",
+      "qty": 1,
+      "hotspots": [
+        { "x": 68.4, "y": 85.9 }
+      ]
+    },
+    {
+      "item": 33,
+      "partNumber": "150713",
+      "description": "Fitting, Plstc, Tee, Bm04/Bm04/Bm04",
+      "category": "Mangueras y fluido",
+      "qty": 1,
+      "hotspots": [
+        { "x": 49.8, "y": 93.2 }
+      ]
+    },
+    {
+      "item": 34,
+      "partNumber": "1016354",
+      "description": "Clamp, Cable, Ss, 0.50D X 0.50W [Insul]",
+      "category": "Eléctrico",
+      "qty": 2,
+      "hotspots": [
+        { "x": 44.4, "y": 86.2 },
+        { "x": 61.8, "y": 93.8 }
+      ]
+    },
+    {
+      "item": 35,
+      "partNumber": "01684",
+      "description": "Washer, Flat, 0.27B 0.69D .05, Ss",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 44.3, "y": 88.7 },
+        { "x": 61.6, "y": 96.1 }
+      ]
+    },
+    {
+      "item": 36,
+      "partNumber": "223198",
+      "description": "Screw, Hex, M5 X 0.80 X 10, Fmg",
+      "category": "Tornillería",
+      "qty": 2,
+      "hotspots": [
+        { "x": 44.4, "y": 91.3 },
+        { "x": 61.5, "y": 98.3 }
+      ]
+    },
+    {
+      "item": 37,
+      "partNumber": "1040868",
+      "description": "Capacitor, Plug [.01 Uf, 200V]",
+      "category": "Motores y actuadores",
+      "qty": 1,
+      "hotspots": [
+        { "x": 52.5, "y": 53.1 }
+      ]
+    },
+    {
+      "item": 38,
+      "partNumber": "9011663",
+      "description": "Silicone Cap, Afmkt [ec−H2O]",
+      "category": "Estructura y cubiertas",
+      "qty": 1,
+      "hotspots": [
+        { "x": 25.8, "y": 4.0 }
+      ]
+    }
+  ]
+}

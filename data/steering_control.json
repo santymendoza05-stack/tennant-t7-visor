@@ -18,7 +18,7 @@
       "qty": 1,
       "note": "Componente del conjunto 1019724",
       "hotspots": [
-        { "x": 29.4, "y": 56.8 }
+        { "x": 18.0, "y": 58.5 }
       ]
     },
     {
@@ -29,7 +29,7 @@
       "qty": 1,
       "note": "Componente del conjunto 1019724",
       "hotspots": [
-        { "x": 75, "y": 70.1 }
+        { "x": 89.0, "y": 68.2 }
       ]
     },
     {
@@ -40,7 +40,7 @@
       "qty": 1,
       "note": "Eslabón de unión de la cadena 372875",
       "hotspots": [
-        { "x": 75.6, "y": 72.8 }
+        { "x": 88.6, "y": 74.4 }
       ]
     },
     {
@@ -51,7 +51,7 @@
       "qty": 1,
       "note": "Componente del conjunto 1019724",
       "hotspots": [
-        { "x": 73.6, "y": 49.8 }
+        { "x": 85.6, "y": 48.4 }
       ]
     },
     {
@@ -62,7 +62,7 @@
       "qty": 1,
       "note": "Componente del conjunto 1019724",
       "hotspots": [
-        { "x": 72, "y": 17.2 }
+        { "x": 84.0, "y": 15.9 }
       ]
     },
     {
@@ -73,7 +73,7 @@
       "qty": 1,
       "note": "Componente del conjunto 1019724",
       "hotspots": [
-        { "x": 84.5, "y": 43.2 }
+        { "x": 96.5, "y": 45.0 }
       ]
     },
     {
@@ -84,7 +84,7 @@
       "qty": 1,
       "note": "Polea tensora de la cadena",
       "hotspots": [
-        { "x": 72.6, "y": 78 }
+        { "x": 88.1, "y": 80.0 }
       ]
     },
     {
@@ -95,7 +95,7 @@
       "qty": 2,
       "note": "Componente del conjunto 1019724",
       "hotspots": [
-        { "x": 72.2, "y": 55.4 }
+        { "x": 89.5, "y": 52.9 }
       ]
     }
   ]

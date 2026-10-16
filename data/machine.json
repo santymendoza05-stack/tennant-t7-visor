@@ -29,21 +29,82 @@
       "id": "racleta-trasera",
       "name": "Racleta Trasera",
       "system": "lavado",
-      "description": "Rear Squeegee Group, 800 mm",
-      "figure": "Fig. 37",
+      "description": "Rear Squeegee Group, 800 mm / 650 mm",
+      "figure": "Fig. 37 / 36",
       "status": "available",
-      "data": "data/squeegee_parts.json",
+      "figures": [
+        {
+          "label": "Fig. 37 · 800 mm (32 in)",
+          "data": "data/squeegee_parts.json"
+        },
+        {
+          "label": "Fig. 36 · 650 mm (26 in)",
+          "data": "data/squeegee_650.json"
+        }
+      ],
       "hotspot": { "x": 91.9, "y": 69.1 }
     },
     {
       "id": "cabeza-cepillos",
-      "name": "Cabeza de Cepillos",
+      "name": "Cabezal de Disco",
       "system": "lavado",
-      "description": "Disk Scrub Head Drive Motor Group, 800 mm",
-      "figure": "Fig. 18",
+      "description": "Disk Scrub Head Drive Motor Group, 800 / 650 mm",
+      "figure": "Fig. 18 / 17 / 3 / 2",
       "status": "available",
-      "data": "data/scrub_head_disk_800.json",
+      "figures": [
+        {
+          "label": "Fig. 18 · Motor 800 mm (32 in)",
+          "data": "data/scrub_head_disk_800.json"
+        },
+        {
+          "label": "Fig. 17 · Motor 650 mm (26 in)",
+          "data": "data/scrub_head_disk_650.json"
+        },
+        {
+          "label": "Fig. 3 · Cepillos y porta pads 800 mm",
+          "data": "data/brushes_disk_800.json"
+        },
+        {
+          "label": "Fig. 2 · Cepillos y porta pads 650 mm",
+          "data": "data/brushes_disk_650.json"
+        }
+      ],
       "hotspot": { "x": 61.8, "y": 85.9 }
+    },
+    {
+      "id": "cabezal-cilindrico",
+      "name": "Cabezal Cilíndrico",
+      "system": "lavado",
+      "description": "Cylindrical Scrub Head Group, 700 / 800 mm",
+      "figure": "Fig. 22 / 23 / 24 / 25 / 26 / 1",
+      "status": "available",
+      "figures": [
+        {
+          "label": "Fig. 22 · 700 mm (28 in)",
+          "data": "data/scrub_head_cyl_700.json"
+        },
+        {
+          "label": "Fig. 23 · 800 mm (32 in)",
+          "data": "data/scrub_head_cyl_800.json"
+        },
+        {
+          "label": "Fig. 24 · Transmisión derecha",
+          "data": "data/scrub_head_cyl_drive_rh.json"
+        },
+        {
+          "label": "Fig. 25 · Transmisión izquierda",
+          "data": "data/scrub_head_cyl_drive_lh.json"
+        },
+        {
+          "label": "Fig. 26 · Racleta del cabezal",
+          "data": "data/scrub_head_cyl_squeegee.json"
+        },
+        {
+          "label": "Fig. 1 · Cepillos cilíndricos",
+          "data": "data/brushes_cyl.json"
+        }
+      ],
+      "hotspot": { "x": 64, "y": 93 }
     },
     {
       "id": "escobillas-laterales",
@@ -91,17 +152,29 @@
       "id": "rueda-motriz",
       "name": "Rueda Motriz / Tracción",
       "system": "traccion",
-      "description": "Front Drive Wheel Group (S/N 10518139-) / Steering Control Breakdown",
-      "figure": "Fig. 11 / 1",
+      "description": "Front Drive Wheel Group / Gearbox Breakdowns",
+      "figure": "Fig. 11 / 12 / 1 / 10",
       "status": "available",
       "figures": [
         {
-          "label": "Fig. 11 · Rueda motriz",
+          "label": "Fig. 11 · Rueda motriz (S/N 10518139-)",
           "data": "data/front_drive_wheel.json"
+        },
+        {
+          "label": "Fig. 12 · Rueda motriz (S/N hasta 10518138)",
+          "data": "data/front_drive_wheel_old.json"
         },
         {
           "label": "Fig. 1 · Control de dirección (1019724)",
           "data": "data/steering_control.json"
+        },
+        {
+          "label": "Fig. 10 · Motorreductor 9008999",
+          "data": "data/gearbox_9008999.json"
+        },
+        {
+          "label": "Fig. 11 · Motorreductor 9001642 / 9009000",
+          "data": "data/gearbox_9001642.json"
         }
       ],
       "hotspot": { "x": 25.7, "y": 92.3 }
@@ -169,10 +242,19 @@
       "id": "elevacion-cabezal",
       "name": "Mecanismo de Elevación del Cabezal",
       "system": "lavado",
-      "description": "Disk Scrub Head Lift Group",
-      "figure": "Fig. 16",
+      "description": "Scrub Head Lift Group, Disk / Cylindrical",
+      "figure": "Fig. 16 / 21",
       "status": "available",
-      "data": "data/scrub_head_lift.json",
+      "figures": [
+        {
+          "label": "Fig. 16 · Cabezal de disco",
+          "data": "data/scrub_head_lift.json"
+        },
+        {
+          "label": "Fig. 21 · Cabezal cilíndrico",
+          "data": "data/scrub_head_lift_cyl.json"
+        }
+      ],
       "hotspot": { "x": 46, "y": 76 },
       "labelSide": "left"
     },
