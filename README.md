@@ -38,7 +38,7 @@ Para no tapar los números del manual, los puntos del despiece están **ocultos 
 |---|---|---|
 | Racleta Trasera | Fig. 37 · Rear Squeegee Group, 800 mm | `data/squeegee_parts.json` |
 | Cabeza de Cepillos | Fig. 18 · Disk Scrub Head Drive Motor Group, 800 mm | `data/scrub_head_disk_800.json` |
-| Escobillas Laterales del Cabezal | Fig. 20 · Disk Scrub Head Side Squeegee Group, Left | `data/side_squeegee_lh.json` |
+| Escobillas Laterales del Cabezal | Fig. 19 · Disk Scrub Head Side Squeegee Group, Right<br>Fig. 20 · Disk Scrub Head Side Squeegee Group, Left | `data/side_squeegee_rh.json`<br>`data/side_squeegee_lh.json` |
 | Tanques | Fig. 27 · Recovery Tank Group<br>Fig. 29 · Solution Tank Group, Disk<br>Fig. 30 · Solution Tank Group, Cylindrical | `data/recovery_tank.json`<br>`data/solution_tank_disk.json`<br>`data/solution_tank_cyl.json` |
 | Rueda Motriz / Tracción | Fig. 11 · Front Drive Wheel Group (S/N 10518139-)<br>Fig. 1 · Steering Control Breakdown, 1019724 (ítem 1 de la Fig. 11) | `data/front_drive_wheel.json`<br>`data/steering_control.json` |
 | Panel de Instrumentos / Consola | Fig. 10 · Instrument Panel Group<br>Fig. 38 · Circuit Board Group | `data/instrument_panel.json`<br>`data/circuit_board.json` |

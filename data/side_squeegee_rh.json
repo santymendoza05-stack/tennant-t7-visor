@@ -1,0 +1,261 @@
+{
+  "machine": "Tennant T7",
+  "group": "Disk Scrub Head Side Squeegee Group, Right",
+  "figure": "Fig. 19",
+  "image": "assets/side_squeegee_rh.png",
+  "categories": [
+    "Soporte y retenedor",
+    "Láminas / racletas",
+    "Pasadores y bujes",
+    "Brazos de pivote",
+    "Resortes de torsión",
+    "Tornillería"
+  ],
+  "subsystems": [
+    "Soporte y racleta lateral",
+    "Pasador de liberación rápida",
+    "Eslabones articulados",
+    "Resortes de torsión"
+  ],
+  "parts": [
+    {
+      "item": 1,
+      "partNumber": "1017910",
+      "description": "Support Wldt, Sqge, Rh",
+      "category": "Soporte y retenedor",
+      "subsystem": "Soporte y racleta lateral",
+      "qty": 1,
+      "note": "Soporte metálico de la racleta derecha",
+      "hotspots": [
+        { "x": 40.9, "y": 33.1 }
+      ]
+    },
+    {
+      "item": 2,
+      "partNumber": "1017832",
+      "description": "Retainer, Sqge, Rh",
+      "category": "Soporte y retenedor",
+      "subsystem": "Soporte y racleta lateral",
+      "qty": 1,
+      "hotspots": [
+        { "x": 25.0, "y": 25.5 }
+      ]
+    },
+    {
+      "item": 3,
+      "partNumber": "1015989",
+      "description": "Pin, Hitch, .312d X 1.62l",
+      "category": "Pasadores y bujes",
+      "subsystem": "Pasador de liberación rápida",
+      "qty": 2,
+      "note": "Pasador de liberación rápida",
+      "hotspots": [
+        { "x": 3.5, "y": 28.7 },
+        { "x": 64.8, "y": 7.6 }
+      ]
+    },
+    {
+      "item": 4,
+      "partNumber": "1017495",
+      "description": "Sleeve, P/M, 0.496d 0.318b 1.375 Ss",
+      "category": "Pasadores y bujes",
+      "subsystem": "Pasador de liberación rápida",
+      "qty": 1,
+      "hotspots": [
+        { "x": 5.7, "y": 53.4 }
+      ]
+    },
+    {
+      "item": 5,
+      "partNumber": "1017462",
+      "description": "Block, Guard",
+      "category": "Soporte y retenedor",
+      "subsystem": "Pasador de liberación rápida",
+      "qty": 1,
+      "hotspots": [
+        { "x": 2.7, "y": 49.3 }
+      ]
+    },
+    {
+      "item": 6,
+      "partNumber": "222504",
+      "description": "Screw, Hex, M8 X 1.25 X 55, Ss",
+      "category": "Tornillería",
+      "subsystem": "Pasador de liberación rápida",
+      "qty": 1,
+      "hotspots": [
+        { "x": 27.6, "y": 45.3 }
+      ]
+    },
+    {
+      "item": 7,
+      "partNumber": "08713",
+      "description": "Nut, Hex, Lock, M8 X 1.25, Nl, Ss",
+      "category": "Tornillería",
+      "subsystem": "Pasador de liberación rápida",
+      "qty": 1,
+      "hotspots": [
+        { "x": 27.9, "y": 62.9 }
+      ]
+    },
+    {
+      "item": 8,
+      "partNumber": "86859",
+      "description": "Squeegee Assy, Side [Linatex] (Standard)",
+      "category": "Láminas / racletas",
+      "subsystem": "Soporte y racleta lateral",
+      "qty": 1,
+      "note": "Estándar",
+      "hotspots": [
+        { "x": 9.9, "y": 19.8 }
+      ]
+    },
+    {
+      "item": 8,
+      "partNumber": "1058731",
+      "description": "Squeegee Assy, Side, Disc, Ure (Optional)",
+      "category": "Láminas / racletas",
+      "subsystem": "Soporte y racleta lateral",
+      "qty": 1,
+      "note": "Opcional · uretano",
+      "hotspots": []
+    },
+    {
+      "item": 8,
+      "partNumber": "1058729",
+      "description": "Squeegee Assy, Side, Disc, Gum (Optional)",
+      "category": "Láminas / racletas",
+      "subsystem": "Soporte y racleta lateral",
+      "qty": 1,
+      "note": "Opcional · caucho (gum)",
+      "hotspots": []
+    },
+    {
+      "item": 9,
+      "partNumber": "1010876",
+      "description": "Link, Sqge",
+      "category": "Brazos de pivote",
+      "subsystem": "Eslabones articulados",
+      "qty": 1,
+      "note": "Eslabón articulado delantero",
+      "hotspots": [
+        { "x": 32.7, "y": 67.2 }
+      ]
+    },
+    {
+      "item": 10,
+      "partNumber": "1017785",
+      "description": "Link, Sqge",
+      "category": "Brazos de pivote",
+      "subsystem": "Eslabones articulados",
+      "qty": 1,
+      "note": "Eslabón articulado trasero",
+      "hotspots": [
+        { "x": 75.2, "y": 31.3 }
+      ]
+    },
+    {
+      "item": 11,
+      "partNumber": "1011344",
+      "description": "Spring, Tors",
+      "category": "Resortes de torsión",
+      "subsystem": "Resortes de torsión",
+      "qty": 1,
+      "hotspots": [
+        { "x": 52.9, "y": 89.0 }
+      ]
+    },
+    {
+      "item": 12,
+      "partNumber": "1011334",
+      "description": "Spring, Tors",
+      "category": "Resortes de torsión",
+      "subsystem": "Resortes de torsión",
+      "qty": 1,
+      "hotspots": [
+        { "x": 57.2, "y": 20.3 }
+      ]
+    },
+    {
+      "item": 13,
+      "partNumber": "1011317",
+      "description": "Retainer, Spring",
+      "category": "Resortes de torsión",
+      "subsystem": "Resortes de torsión",
+      "qty": 2,
+      "hotspots": [
+        { "x": 54.3, "y": 17.9 },
+        { "x": 55.0, "y": 90.5 }
+      ]
+    },
+    {
+      "item": 14,
+      "partNumber": "1011717",
+      "description": "Sleeve, P/M, 0.625d 0.318b 1.00 L 430ss",
+      "category": "Pasadores y bujes",
+      "subsystem": "Eslabones articulados",
+      "qty": 4,
+      "note": "Buje de los eslabones",
+      "hotspots": [
+        { "x": 77.9, "y": 35.1 },
+        { "x": 75.7, "y": 39.4 },
+        { "x": 39.9, "y": 63.1 },
+        { "x": 36.0, "y": 69.5 }
+      ]
+    },
+    {
+      "item": 15,
+      "partNumber": "1011719",
+      "description": "Washer, Flat, 0.33b 1.38d .075, Ss",
+      "category": "Tornillería",
+      "subsystem": "Eslabones articulados",
+      "qty": 8,
+      "hotspots": [
+        { "x": 24.0, "y": 55.7 },
+        { "x": 31.6, "y": 58.0 },
+        { "x": 39.2, "y": 69.8 },
+        { "x": 41.2, "y": 66.4 },
+        { "x": 68.1, "y": 32.8 },
+        { "x": 70.5, "y": 30.5 },
+        { "x": 76.4, "y": 44.7 },
+        { "x": 80.2, "y": 38.2 }
+      ]
+    },
+    {
+      "item": 16,
+      "partNumber": "49694",
+      "description": "Screw, Hex, M8 X 1.25 X 50, Ss",
+      "category": "Tornillería",
+      "subsystem": "Eslabones articulados",
+      "qty": 2,
+      "hotspots": [
+        { "x": 20.8, "y": 51.5 },
+        { "x": 96.0, "y": 49.3 }
+      ]
+    },
+    {
+      "item": 17,
+      "partNumber": "222505",
+      "description": "Screw, Hex, M8 X 1.25 X 45, Ss",
+      "category": "Tornillería",
+      "subsystem": "Eslabones articulados",
+      "qty": 2,
+      "hotspots": [
+        { "x": 40.2, "y": 51.1 },
+        { "x": 83.6, "y": 42.9 }
+      ]
+    },
+    {
+      "item": 18,
+      "partNumber": "08713",
+      "description": "Nut, Hex, Lock, M8 X 1.25, Nl, Ss",
+      "category": "Tornillería",
+      "subsystem": "Resortes de torsión",
+      "qty": 2,
+      "hotspots": [
+        { "x": 30.2, "y": 40.5 },
+        { "x": 59.5, "y": 14.5 }
+      ]
+    }
+  ]
+}

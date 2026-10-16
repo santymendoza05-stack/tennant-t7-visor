@@ -49,10 +49,19 @@
       "id": "escobillas-laterales",
       "name": "Escobillas Laterales del Cabezal",
       "system": "lavado",
-      "description": "Disk Scrub Head Side Squeegee Group, Left",
-      "figure": "Fig. 20",
+      "description": "Disk Scrub Head Side Squeegee Group, Right / Left",
+      "figure": "Fig. 19 / 20",
       "status": "available",
-      "data": "data/side_squeegee_lh.json",
+      "figures": [
+        {
+          "label": "Fig. 19 · Lado derecho",
+          "data": "data/side_squeegee_rh.json"
+        },
+        {
+          "label": "Fig. 20 · Lado izquierdo",
+          "data": "data/side_squeegee_lh.json"
+        }
+      ],
       "hotspot": { "x": 44.5, "y": 94 }
     },
     {
