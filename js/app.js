@@ -39,7 +39,7 @@
         { id: "racleta-trasera", name: "Racleta Trasera", system: "lavado", description: "Rear Squeegee Group, 800 mm", figure: "Fig. 37", status: "available", data: "data/squeegee_parts.json", hotspot: { x: 91.9, y: 69.1 } },
         { id: "cabeza-cepillos", name: "Cabeza de Cepillos", system: "lavado", description: "Disk Scrub Head Drive Motor Group, 800 mm", figure: "Fig. 18", status: "available", data: "data/scrub_head_disk_800.json", hotspot: { x: 61.8, y: 85.9 } },
         { id: "tanques", name: "Tanques de Solución y Recuperación", system: "agua", description: "Recovery & Solution Tank Group", figure: "Fig. 27 / 29 / 30", status: "available", figures: [{ label: "Fig. 27 · Tanque de recuperación", data: "data/recovery_tank.json" }, { label: "Fig. 29 · Solución (disco)", data: "data/solution_tank_disk.json" }, { label: "Fig. 30 · Solución (cilíndrico)", data: "data/solution_tank_cyl.json" }], hotspot: { x: 76.5, y: 20.1 } },
-        { id: "rueda-motriz", name: "Rueda Motriz / Tracción", system: "traccion", description: "Front Drive Wheel Group (S/N 10518139-)", figure: "Fig. 11", status: "available", data: "data/front_drive_wheel.json", hotspot: { x: 25.7, y: 92.3 } },
+        { id: "rueda-motriz", name: "Rueda Motriz / Tracción", system: "traccion", description: "Front Drive Wheel Group (S/N 10518139-) / Steering Control Breakdown", figure: "Fig. 11 / 1", status: "available", figures: [{ label: "Fig. 11 · Rueda motriz", data: "data/front_drive_wheel.json" }, { label: "Fig. 1 · Control de dirección (1019724)", data: "data/steering_control.json" }], hotspot: { x: 25.7, y: 92.3 } },
         { id: "panel-instrumentos", name: "Panel de Instrumentos / Consola", system: "electrico", description: "Instrument Panel & Circuit Board Group", figure: "Fig. 10 / 38", status: "available", figures: [{ label: "Fig. 10 · Panel de instrumentos", data: "data/instrument_panel.json" }, { label: "Fig. 38 · Tarjeta controladora", data: "data/circuit_board.json" }], hotspot: { x: 24, y: 38 } },
         { id: "columna-direccion", name: "Columna de Dirección / Volante", system: "traccion", description: "Steering Group", figure: "Fig. 9", status: "available", data: "data/steering_group.json", hotspot: { x: 34.6, y: 30.2 } },
         { id: "asiento-cubierta", name: "Asiento y Cubierta de Baterías", system: "traccion", description: "Seat Group", figure: "Fig. 8", status: "available", data: "data/seat_group.json", hotspot: { x: 55.9, y: 37.6 }, labelSide: "right" },
@@ -278,7 +278,7 @@
       image: "assets/front_drive_wheel.png",
       categories: ["Tracción", "Eléctrico", "Soportes", "Tornillería"],
       parts: [
-        { item: 1, partNumber: "1019724", description: "Steer-Control Assy, Wheel Drive (See Breakdown)", category: "Tracción", qty: 1, hotspots: [{ x: 58.1, y: 39 }] },
+        { item: 1, partNumber: "1019724", description: "Steer-Control Assy, Wheel Drive (See Breakdown)", category: "Tracción", qty: 1, note: "Despiece en Fig. 1 · Control de dirección (1019724)", hotspots: [{ x: 58.1, y: 39 }] },
         { item: 2, partNumber: "1019224", description: "Strap, Nyl", category: "Soportes", qty: 1, hotspots: [{ x: 85.7, y: 75.8 }] },
         { item: 3, partNumber: "09010", description: "Screw, Hex, M8 x 1.25 x 25, SS (Disk Brush)", category: "Tornillería", qty: 4, hotspots: [{ x: 32.3, y: 40.2 }] },
         { item: 3, partNumber: "09026", description: "Screw, Hex, M8 x 1.25 x 40, SS (Cylindrical Brush)", category: "Tornillería", qty: 4, hotspots: [] },
@@ -296,6 +296,23 @@
         { item: 15, partNumber: "1064972", description: "Bracket, Cord", category: "Soportes", qty: 2, hotspots: [{ x: 8.3, y: 63.8 }, { x: 24, y: 44.1 }] },
         { item: 16, partNumber: "02938", description: "Washer, Lock, Int, 08, SS", category: "Tornillería", qty: 2, hotspots: [{ x: 19, y: 43.3 }, { x: 4.9, y: 60.7 }] },
         { item: 17, partNumber: "33931", description: "Screw, Pan, Phl, M4 x 0.70 x 30, SS", category: "Tornillería", qty: 2, hotspots: [{ x: 5, y: 46.2 }] }
+      ]
+    },
+    "data/steering_control.json": {
+      machine: "Tennant T7",
+      group: "Steering Control Breakdown, 1019724",
+      figure: "Fig. 1",
+      image: "assets/steering_control.png",
+      categories: ["Eje y pasador", "Piñones y poleas", "Rodamientos", "Cadena"],
+      parts: [
+        { item: 1, partNumber: "372874", description: "Bearing, Steering", category: "Rodamientos", qty: 1, note: "Componente del conjunto 1019724", hotspots: [{ x: 29.4, y: 56.8 }] },
+        { item: 2, partNumber: "372875", description: "Chain, Steering", category: "Cadena", qty: 1, note: "Componente del conjunto 1019724", hotspots: [{ x: 75, y: 70.1 }] },
+        { item: 3, partNumber: "372876", description: "Link, Master", category: "Cadena", qty: 1, note: "Eslabón de unión de la cadena 372875", hotspots: [{ x: 75.6, y: 72.8 }] },
+        { item: 4, partNumber: "372881", description: "Sprocket", category: "Piñones y poleas", qty: 1, note: "Componente del conjunto 1019724", hotspots: [{ x: 73.6, y: 49.8 }] },
+        { item: 5, partNumber: "1029229", description: "Shaft, Steering", category: "Eje y pasador", qty: 1, note: "Componente del conjunto 1019724", hotspots: [{ x: 72, y: 17.2 }] },
+        { item: 6, partNumber: "1038313", description: "Pin, Roll, 06Mm X 28MmL", category: "Eje y pasador", qty: 1, note: "Componente del conjunto 1019724", hotspots: [{ x: 84.5, y: 43.2 }] },
+        { item: 7, partNumber: "1043371", description: "Pulley, Tens [T7/R14 Steering Assy]", category: "Piñones y poleas", qty: 1, note: "Polea tensora de la cadena", hotspots: [{ x: 72.6, y: 78 }] },
+        { item: 8, partNumber: "9008719", description: "Vr, Bearing [6003 2rs]", category: "Rodamientos", qty: 2, note: "Componente del conjunto 1019724", hotspots: [{ x: 72.2, y: 55.4 }] }
       ]
     },
     "data/instrument_panel.json": {
@@ -3111,7 +3128,19 @@
     slogan: "Ingeniería para un Mantenimiento Integral"
   };
 
-  const LOGO_URL = "assets/logo.png";
+  // Logo oficial (Omega azul con el rayo): cabecera, PDF y Excel
+  const LOGO_URL = "assets/LOGOINGPAR.png";
+  const LOGO_SIZE = { w: 370, h: 271 };
+
+  // Bytes del logo para incrustarlo en el .xlsx; null si no se puede leer (p. ej. abierto con file://)
+  async function logoBytes() {
+    try {
+      const res = await fetch(LOGO_URL);
+      return res.ok ? new Uint8Array(await res.arrayBuffer()) : null;
+    } catch {
+      return null;
+    }
+  }
 
   // html2pdf.js (html2canvas + jsPDF) se carga solo la primera vez que se pide un PDF
   const HTML2PDF_URL = "https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js";
@@ -3553,16 +3582,18 @@
     },
 
     // ---------- Excel (.xlsx) ----------
-    downloadXlsx() {
+    async downloadXlsx() {
       if (!this.items.length) return;
       const now = new Date();
       const name = this.fileName(now, ".xlsx");
-      this.saveBlob(buildXlsx(this.sheetRows(now)), name);
+      const logo = await logoBytes();
+      this.saveBlob(buildXlsx({ ...this.sheetRows(now, !!logo), logo }), name);
       showToast(`Excel descargado: ${name}`);
     },
 
     // Filas de la hoja (columnas A–F); s = índice de estilo en XLSX_STYLES
-    sheetRows(now) {
+    // withLogo: el logo ocupa A1:B3 y los datos de la empresa pasan a C:D
+    sheetRows(now, withLogo) {
       const { refs, units } = this.totals();
       const rows = [], merges = [];
       const add = (cells, height) => rows.push({ cells, height });
@@ -3571,12 +3602,14 @@
       // Celda combinada: todas las celdas del rango llevan el estilo (bordes y relleno completos)
       const fill = (v, s, count) => [{ v, s }, ...Array(count - 1).fill({ v: "", s })];
 
-      // Encabezado formal: empresa a la izquierda, documento a la derecha
-      let r = add([{ v: COMPANY.name, s: 1 }, null, null, null, ...fill("SOLICITUD DE REPUESTOS", 7, 2)], 26);
-      span(r, "A", "D"); span(r, "E", "F");
-      r = add([{ v: COMPANY.nit, s: 13 }, null, null, null, ...fill(`Fecha: ${dateShort(now)}`, 14, 2)]);
-      span(r, "A", "D"); span(r, "E", "F");
-      span(add([{ v: COMPANY.slogan, s: 11 }]), "A", "D");
+      // Encabezado formal: logo y empresa a la izquierda, documento a la derecha
+      const from = withLogo ? "C" : "A";
+      const company = (cell) => (withLogo ? [null, null, cell, null] : [cell, null, null, null]);
+      let r = add([...company({ v: COMPANY.name, s: 1 }), ...fill("SOLICITUD DE REPUESTOS", 7, 2)], 26);
+      span(r, from, "D"); span(r, "E", "F");
+      r = add([...company({ v: COMPANY.nit, s: 13 }), ...fill(`Fecha: ${dateShort(now)}`, 14, 2)], withLogo ? 18 : undefined);
+      span(r, from, "D"); span(r, "E", "F");
+      span(add(company({ v: COMPANY.slogan, s: 11 }), withLogo ? 18 : undefined), from, "D");
       add([]);
       const meta = (label, value) => {
         const row = add([...fill(label, 3, 2), ...fill(value, 12, 4)], 20);
@@ -3648,7 +3681,7 @@
       .replace(/[\x00-\x08\x0b\x0c\x0e-\x1f]/g, "")
       .replace(/[<>&"]/g, (c) => ({ "<": "&lt;", ">": "&gt;", "&": "&amp;", '"': "&quot;" }[c]));
 
-  function buildXlsx({ rows, merges, widths }) {
+  function buildXlsx({ rows, merges, widths, logo }) {
     const NS = 'xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"';
     const head = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n';
     const col = (i) => String.fromCharCode(65 + i);
@@ -3668,7 +3701,7 @@
       })
       .join("");
 
-    const sheet = `${head}<worksheet ${NS}>
+    const sheet = `${head}<worksheet ${NS} xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">
 <sheetPr><pageSetUpPr fitToPage="1"/></sheetPr>
 <sheetViews><sheetView showGridLines="0" workbookViewId="0"/></sheetViews>
 <sheetFormatPr defaultRowHeight="15"/>
@@ -3677,6 +3710,7 @@
 ${merges.length ? `<mergeCells count="${merges.length}">${merges.map((m) => `<mergeCell ref="${m}"/>`).join("")}</mergeCells>` : ""}
 <pageMargins left="0.5" right="0.5" top="0.6" bottom="0.6" header="0.3" footer="0.3"/>
 <pageSetup paperSize="1" orientation="portrait" fitToWidth="1" fitToHeight="0"/>
+${logo ? '<drawing r:id="rId1"/>' : ""}
 </worksheet>`;
 
     const line = (side, rgb) => `<${side} style="thin"><color rgb="${rgb}"/></${side}>`;
@@ -3716,13 +3750,28 @@ ${merges.length ? `<mergeCells count="${merges.length}">${merges.map((m) => `<me
     const REL = "http://schemas.openxmlformats.org/officeDocument/2006/relationships";
     const PKG = "http://schemas.openxmlformats.org/package/2006/relationships";
     const CT = "application/vnd.openxmlformats-officedocument.spreadsheetml";
+    // Logo en A1:B3 (72 px de alto, proporción original); 1 px = 9525 EMU
+    const EMU = 9525, logoH = 72, logoW = Math.round((logoH * LOGO_SIZE.w) / LOGO_SIZE.h);
+    const DML = "http://schemas.openxmlformats.org/drawingml/2006";
+    const logoParts = logo
+      ? [
+          { name: "xl/worksheets/_rels/sheet1.xml.rels", data: `${head}<Relationships xmlns="${PKG}"><Relationship Id="rId1" Type="${REL}/drawing" Target="../drawings/drawing1.xml"/></Relationships>` },
+          { name: "xl/drawings/_rels/drawing1.xml.rels", data: `${head}<Relationships xmlns="${PKG}"><Relationship Id="rId1" Type="${REL}/image" Target="../media/logo.png"/></Relationships>` },
+          { name: "xl/drawings/drawing1.xml", data: `${head}<xdr:wsDr xmlns:xdr="${DML}/spreadsheetDrawing" xmlns:a="${DML}/main" xmlns:r="${REL}"><xdr:oneCellAnchor><xdr:from><xdr:col>0</xdr:col><xdr:colOff>${4 * EMU}</xdr:colOff><xdr:row>0</xdr:row><xdr:rowOff>${3 * EMU}</xdr:rowOff></xdr:from><xdr:ext cx="${logoW * EMU}" cy="${logoH * EMU}"/><xdr:pic><xdr:nvPicPr><xdr:cNvPr id="2" name="Logo ${xmlEscape(COMPANY.name)}" descr="${xmlEscape(COMPANY.name)}"/><xdr:cNvPicPr><a:picLocks noChangeAspect="1"/></xdr:cNvPicPr></xdr:nvPicPr><xdr:blipFill><a:blip r:embed="rId1"/><a:stretch><a:fillRect/></a:stretch></xdr:blipFill><xdr:spPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="${logoW * EMU}" cy="${logoH * EMU}"/></a:xfrm><a:prstGeom prst="rect"><a:avLst/></a:prstGeom></xdr:spPr></xdr:pic><xdr:clientData/></xdr:oneCellAnchor></xdr:wsDr>` },
+          { name: "xl/media/logo.png", data: logo }
+        ]
+      : [];
+    const logoTypes = logo
+      ? `<Default Extension="png" ContentType="image/png"/><Override PartName="/xl/drawings/drawing1.xml" ContentType="application/vnd.openxmlformats-officedocument.drawing+xml"/>`
+      : "";
     return zipStore([
-      { name: "[Content_Types].xml", data: `${head}<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="${CT}.sheet.main+xml"/><Override PartName="/xl/worksheets/sheet1.xml" ContentType="${CT}.worksheet+xml"/><Override PartName="/xl/styles.xml" ContentType="${CT}.styles+xml"/></Types>` },
+      { name: "[Content_Types].xml", data: `${head}<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/>${logoTypes}<Override PartName="/xl/workbook.xml" ContentType="${CT}.sheet.main+xml"/><Override PartName="/xl/worksheets/sheet1.xml" ContentType="${CT}.worksheet+xml"/><Override PartName="/xl/styles.xml" ContentType="${CT}.styles+xml"/></Types>` },
       { name: "_rels/.rels", data: `${head}<Relationships xmlns="${PKG}"><Relationship Id="rId1" Type="${REL}/officeDocument" Target="xl/workbook.xml"/></Relationships>` },
       { name: "xl/workbook.xml", data: `${head}<workbook ${NS} xmlns:r="${REL}"><sheets><sheet name="Lista de repuestos" sheetId="1" r:id="rId1"/></sheets></workbook>` },
       { name: "xl/_rels/workbook.xml.rels", data: `${head}<Relationships xmlns="${PKG}"><Relationship Id="rId1" Type="${REL}/worksheet" Target="worksheets/sheet1.xml"/><Relationship Id="rId2" Type="${REL}/styles" Target="styles.xml"/></Relationships>` },
       { name: "xl/worksheets/sheet1.xml", data: sheet },
-      { name: "xl/styles.xml", data: styles }
+      { name: "xl/styles.xml", data: styles },
+      ...logoParts
     ], `${CT}.sheet`);
   }
 
@@ -3755,7 +3804,7 @@ ${merges.length ? `<mergeCells count="${merges.length}">${merges.map((m) => `<me
     const local = [], central = [];
     let offset = 0;
     for (const f of files) {
-      const name = enc.encode(f.name), data = enc.encode(f.data), crc = crc32(data);
+      const name = enc.encode(f.name), data = typeof f.data === "string" ? enc.encode(f.data) : f.data, crc = crc32(data);
       local.push(header(30, (v) => {
         v.setUint32(0, 0x04034b50, true);
         v.setUint16(4, 20, true);

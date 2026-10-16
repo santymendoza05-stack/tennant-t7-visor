@@ -16,6 +16,7 @@
       "description": "Steer-Control Assy, Wheel Drive (See Breakdown)",
       "category": "Tracción",
       "qty": 1,
+      "note": "Despiece en Fig. 1 · Control de dirección (1019724)",
       "hotspots": [
         { "x": 58.1, "y": 39 }
       ]

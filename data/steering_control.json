@@ -1,0 +1,102 @@
+{
+  "machine": "Tennant T7",
+  "group": "Steering Control Breakdown, 1019724",
+  "figure": "Fig. 1",
+  "image": "assets/steering_control.png",
+  "categories": [
+    "Eje y pasador",
+    "Piñones y poleas",
+    "Rodamientos",
+    "Cadena"
+  ],
+  "parts": [
+    {
+      "item": 1,
+      "partNumber": "372874",
+      "description": "Bearing, Steering",
+      "category": "Rodamientos",
+      "qty": 1,
+      "note": "Componente del conjunto 1019724",
+      "hotspots": [
+        { "x": 29.4, "y": 56.8 }
+      ]
+    },
+    {
+      "item": 2,
+      "partNumber": "372875",
+      "description": "Chain, Steering",
+      "category": "Cadena",
+      "qty": 1,
+      "note": "Componente del conjunto 1019724",
+      "hotspots": [
+        { "x": 75, "y": 70.1 }
+      ]
+    },
+    {
+      "item": 3,
+      "partNumber": "372876",
+      "description": "Link, Master",
+      "category": "Cadena",
+      "qty": 1,
+      "note": "Eslabón de unión de la cadena 372875",
+      "hotspots": [
+        { "x": 75.6, "y": 72.8 }
+      ]
+    },
+    {
+      "item": 4,
+      "partNumber": "372881",
+      "description": "Sprocket",
+      "category": "Piñones y poleas",
+      "qty": 1,
+      "note": "Componente del conjunto 1019724",
+      "hotspots": [
+        { "x": 73.6, "y": 49.8 }
+      ]
+    },
+    {
+      "item": 5,
+      "partNumber": "1029229",
+      "description": "Shaft, Steering",
+      "category": "Eje y pasador",
+      "qty": 1,
+      "note": "Componente del conjunto 1019724",
+      "hotspots": [
+        { "x": 72, "y": 17.2 }
+      ]
+    },
+    {
+      "item": 6,
+      "partNumber": "1038313",
+      "description": "Pin, Roll, 06Mm X 28MmL",
+      "category": "Eje y pasador",
+      "qty": 1,
+      "note": "Componente del conjunto 1019724",
+      "hotspots": [
+        { "x": 84.5, "y": 43.2 }
+      ]
+    },
+    {
+      "item": 7,
+      "partNumber": "1043371",
+      "description": "Pulley, Tens [T7/R14 Steering Assy]",
+      "category": "Piñones y poleas",
+      "qty": 1,
+      "note": "Polea tensora de la cadena",
+      "hotspots": [
+        { "x": 72.6, "y": 78 }
+      ]
+    },
+    {
+      "item": 8,
+      "partNumber": "9008719",
+      "description": "Vr, Bearing [6003 2rs]",
+      "category": "Rodamientos",
+      "qty": 2,
+      "note": "Componente del conjunto 1019724",
+      "hotspots": [
+        { "x": 72.2, "y": 55.4 }
+      ]
+    }
+  ]
+}

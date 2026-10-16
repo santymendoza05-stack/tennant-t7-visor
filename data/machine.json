@@ -72,10 +72,19 @@
       "id": "rueda-motriz",
       "name": "Rueda Motriz / Tracción",
       "system": "traccion",
-      "description": "Front Drive Wheel Group (S/N 10518139-)",
-      "figure": "Fig. 11",
+      "description": "Front Drive Wheel Group (S/N 10518139-) / Steering Control Breakdown",
+      "figure": "Fig. 11 / 1",
       "status": "available",
-      "data": "data/front_drive_wheel.json",
+      "figures": [
+        {
+          "label": "Fig. 11 · Rueda motriz",
+          "data": "data/front_drive_wheel.json"
+        },
+        {
+          "label": "Fig. 1 · Control de dirección (1019724)",
+          "data": "data/steering_control.json"
+        }
+      ],
       "hotspot": { "x": 25.7, "y": 92.3 }
     },
     {
