@@ -38,6 +38,7 @@
       zones: [
         { id: "racleta-trasera", name: "Racleta Trasera", system: "lavado", description: "Rear Squeegee Group, 800 mm", figure: "Fig. 37", status: "available", data: "data/squeegee_parts.json", hotspot: { x: 91.9, y: 69.1 } },
         { id: "cabeza-cepillos", name: "Cabeza de Cepillos", system: "lavado", description: "Disk Scrub Head Drive Motor Group, 800 mm", figure: "Fig. 18", status: "available", data: "data/scrub_head_disk_800.json", hotspot: { x: 61.8, y: 85.9 } },
+        { id: "escobillas-laterales", name: "Escobillas Laterales del Cabezal", system: "lavado", description: "Disk Scrub Head Side Squeegee Group, Left", figure: "Fig. 20", status: "available", data: "data/side_squeegee_lh.json", hotspot: { x: 44.5, y: 94 } },
         { id: "tanques", name: "Tanques de Solución y Recuperación", system: "agua", description: "Recovery & Solution Tank Group", figure: "Fig. 27 / 29 / 30", status: "available", figures: [{ label: "Fig. 27 · Tanque de recuperación", data: "data/recovery_tank.json" }, { label: "Fig. 29 · Solución (disco)", data: "data/solution_tank_disk.json" }, { label: "Fig. 30 · Solución (cilíndrico)", data: "data/solution_tank_cyl.json" }], hotspot: { x: 76.5, y: 20.1 } },
         { id: "rueda-motriz", name: "Rueda Motriz / Tracción", system: "traccion", description: "Front Drive Wheel Group (S/N 10518139-) / Steering Control Breakdown", figure: "Fig. 11 / 1", status: "available", figures: [{ label: "Fig. 11 · Rueda motriz", data: "data/front_drive_wheel.json" }, { label: "Fig. 1 · Control de dirección (1019724)", data: "data/steering_control.json" }], hotspot: { x: 25.7, y: 92.3 } },
         { id: "panel-instrumentos", name: "Panel de Instrumentos / Consola", system: "electrico", description: "Instrument Panel & Circuit Board Group", figure: "Fig. 10 / 38", status: "available", figures: [{ label: "Fig. 10 · Panel de instrumentos", data: "data/instrument_panel.json" }, { label: "Fig. 38 · Tarjeta controladora", data: "data/circuit_board.json" }], hotspot: { x: 24, y: 38 } },
@@ -129,6 +130,35 @@
         { item: 29, partNumber: "08712", description: "Nut, Hex, Lock, M6 x 1.0, SS, NL", category: "Tornillería", qty: 8, hotspots: [{ x: 90.4, y: 77.7 }, { x: 64, y: 86.8 }] },
         { item: 30, partNumber: "1052298", description: "Bracket, Support, Hose [T7]", category: "Solución", qty: 2, note: "Modelo ec-H2O", hotspots: [{ x: 72.3, y: 71 }, { x: 64.7, y: 79.7 }] },
         { item: 31, partNumber: "1013821", description: "Plate, Sppt", category: "Cabezal", qty: 2, hotspots: [{ x: 45.8, y: 74.6 }, { x: 91.1, y: 67.3 }] }
+      ]
+    },
+    "data/side_squeegee_lh.json": {
+      machine: "Tennant T7",
+      group: "Disk Scrub Head Side Squeegee Group, Left",
+      figure: "Fig. 20",
+      image: "assets/side_squeegee_lh.png",
+      categories: ["Soporte y retenedor", "Láminas / racletas", "Pasadores y bujes", "Brazos de pivote", "Resortes de torsión", "Tornillería"],
+      parts: [
+        { item: 1, partNumber: "1017534", description: "Support Wldt, Sqge, Lh", category: "Soporte y retenedor", qty: 1, hotspots: [{ x: 59.6, y: 46.5 }] },
+        { item: 2, partNumber: "1017653", description: "Retainer, Sqge, Lh", category: "Soporte y retenedor", qty: 1, hotspots: [{ x: 73.6, y: 69.5 }] },
+        { item: 3, partNumber: "1015989", description: "Pin, Hitch, .312d X 1.62l", category: "Pasadores y bujes", qty: 2, hotspots: [{ x: 67.2, y: 16.3 }, { x: 57, y: 82.8 }] },
+        { item: 4, partNumber: "1017495", description: "Sleeve, P/M, 0.496d 0.318b 1.375 Ss", category: "Pasadores y bujes", qty: 1, hotspots: [{ x: 55, y: 96.6 }] },
+        { item: 5, partNumber: "1017462", description: "Block, Guard", category: "Soporte y retenedor", qty: 1, hotspots: [{ x: 60, y: 92.4 }] },
+        { item: 6, partNumber: "222504", description: "Screw, Hex, M8 X 1.25 X 55, Ss", category: "Tornillería", qty: 1, hotspots: [{ x: 38.2, y: 56.2 }] },
+        { item: 7, partNumber: "08713", description: "Nut, Hex, Lock, M8 X 1.25, Nl, Ss", category: "Tornillería", qty: 1, hotspots: [{ x: 37.4, y: 67.3 }] },
+        { item: 8, partNumber: "86859", description: "Squeegee Assy, Side [Linatex] (Standard)", category: "Láminas / racletas", qty: 1, note: "Estándar", hotspots: [{ x: 87, y: 84.2 }] },
+        { item: 8, partNumber: "1058731", description: "Squeegee Assy, Side, Disc, Ure (Optional)", category: "Láminas / racletas", qty: 1, note: "Opcional · uretano", hotspots: [] },
+        { item: 8, partNumber: "1058729", description: "Squeegee Assy, Side, Disc, Gum (Optional)", category: "Láminas / racletas", qty: 1, note: "Opcional · caucho (gum)", hotspots: [] },
+        { item: 9, partNumber: "1010876", description: "Link, Sqge", category: "Brazos de pivote", qty: 1, note: "Brazo de pivote inferior", hotspots: [{ x: 41, y: 73.7 }] },
+        { item: 10, partNumber: "1017785", description: "Link, Sqge", category: "Brazos de pivote", qty: 1, note: "Brazo de pivote superior", hotspots: [{ x: 51, y: 26.6 }] },
+        { item: 11, partNumber: "1011344", description: "Spring, Tors", category: "Resortes de torsión", qty: 1, hotspots: [{ x: 18, y: 52.2 }] },
+        { item: 12, partNumber: "1011334", description: "Spring, Tors", category: "Resortes de torsión", qty: 1, hotspots: [{ x: 69.6, y: 37.4 }] },
+        { item: 13, partNumber: "1011317", description: "Retainer, Spring", category: "Resortes de torsión", qty: 2, hotspots: [{ x: 73, y: 42.4 }, { x: 14.4, y: 52.5 }] },
+        { item: 14, partNumber: "1011717", description: "Sleeve, P/M, 0.625d 0.318b 1.00 L 430ss", category: "Pasadores y bujes", qty: 4, note: "Buje de los brazos de pivote", hotspots: [{ x: 52.3, y: 18.2 }, { x: 47.4, y: 21.7 }, { x: 49, y: 72.9 }, { x: 44.6, y: 76.6 }] },
+        { item: 15, partNumber: "1011719", description: "Washer, Flat, 0.33b 1.38d .075, Ss", category: "Tornillería", qty: 8, hotspots: [{ x: 49.8, y: 16.1 }, { x: 45.2, y: 19.5 }, { x: 61, y: 23.9 }, { x: 55.5, y: 29.3 }, { x: 42.1, y: 65.5 }, { x: 52.6, y: 74.2 }, { x: 37.4, y: 71.1 }, { x: 47.2, y: 78.6 }] },
+        { item: 16, partNumber: "49694", description: "Screw, Hex, M8 X 1.25 X 50, Ss", category: "Tornillería", qty: 2, hotspots: [{ x: 38.4, y: 3.7 }, { x: 50.2, y: 80.8 }] },
+        { item: 17, partNumber: "222505", description: "Screw, Hex, M8 X 1.25 X 45, Ss", category: "Tornillería", qty: 2, hotspots: [{ x: 45.2, y: 13.3 }, { x: 39.6, y: 50.7 }] },
+        { item: 18, partNumber: "08713", description: "Nut, Hex, Lock, M8 X 1.25, Nl, Ss", category: "Tornillería", qty: 2, hotspots: [{ x: 77.4, y: 29.1 }, { x: 53, y: 60.9 }] }
       ]
     },
     "data/recovery_tank.json": {

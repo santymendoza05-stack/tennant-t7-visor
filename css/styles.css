@@ -1229,7 +1229,9 @@ mark { background: var(--accent); color: var(--accent-ink); border-radius: 3px; 
 .chip[aria-pressed="true"] { background: var(--grad); border-color: transparent; color: var(--accent-ink); }
 
 /* ---------- Tabla ---------- */
-.table-wrapper { overflow-x: auto; }
+/* relative: el .sr-only absoluto de la cabecera queda recortado aquí y no
+   ensancha la página (si no, su bloque contenedor es la vista animada) */
+.table-wrapper { overflow-x: auto; position: relative; }
 .parts-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
 
 .parts-table th {
@@ -1758,6 +1760,23 @@ tr.is-active .item-num, tr:hover .item-num, .gr-item[aria-selected="true"] .item
   .figure-tab { flex: 1; text-align: center; }
 }
 
+/* El selector, la lista y el tema no dejan sitio al título: este pasa a una
+   segunda línea en vez de encogerse a cero y empujar el tema fuera de pantalla */
+@media (max-width: 960px) {
+  .topbar { flex-wrap: wrap; row-gap: 6px; }
+  .topbar-title { order: 1; flex-basis: 100%; }
+  .brand-divider { display: none; }
+  .machine-switch { margin-left: auto; }
+}
+
+/* Logo, selector, lista y tema en una sola fila */
+@media (max-width: 760px) {
+  .machine-option-brand { display: none; }
+}
+@media (max-width: 520px) {
+  .brand-text { display: none; }
+}
+
 @media (max-width: 720px) {
   .systems-grid { grid-template-columns: 1fr; }
   .assistant-card { max-width: none; width: 100%; }
@@ -1766,7 +1785,6 @@ tr.is-active .item-num, tr:hover .item-num, .gr-item[aria-selected="true"] .item
 @media (max-width: 640px) {
   .brand-text small, .brand-divider { display: none; }
   .topbar-title h1 span { display: none; }
-  .machine-option-brand { display: none; }
   .machine-option { padding: 7px 11px; }
   /* La máquina ya se ve en el selector: solo queda la ruta de navegación */
   .topbar-title h1 { display: none; }
@@ -1798,7 +1816,6 @@ tr.is-active .item-num, tr:hover .item-num, .gr-item[aria-selected="true"] .item
 }
 
 @media (max-width: 440px) {
-  .brand-text { display: none; }
   .hint { display: none; }
   .global-search-kbd { display: none; }
   .global-search-icon { width: 40px; height: 40px; font-size: 1.1rem; }
@@ -1812,11 +1829,12 @@ tr.is-active .item-num, tr:hover .item-num, .gr-item[aria-selected="true"] .item
   .title-block div:nth-child(n + 3) { border-top: 1px solid rgba(140, 190, 255, 0.25); }
   .parts-table th, .parts-table td { padding: 10px 8px; }
   .copy-btn { padding: 6px 9px; }
-  /* Con el botón de la lista no cabe la ruta: pasa a una segunda línea */
-  .topbar { flex-wrap: wrap; gap: 6px 8px; }
-  .topbar-title { order: 1; flex-basis: 100%; }
+  /* Logo y selector compactos para que logo, selector, lista y tema quepan en
+     una fila desde 360px; la ruta queda en la segunda */
+  .topbar { gap: 6px 8px; }
+  .brand-mark { height: 38px; }
+  .machine-option { padding: 7px 9px; }
   .breadcrumb { flex-wrap: nowrap; white-space: nowrap; overflow: hidden; }
-  .machine-switch { margin-left: auto; }
   .cart-add { padding: 6px 9px; }
   .gr-item .cart-add { margin-left: 42px; }
   .site-footer { padding: 14px 16px 20px; }

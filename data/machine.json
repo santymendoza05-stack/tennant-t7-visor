@@ -46,6 +46,16 @@
       "hotspot": { "x": 61.8, "y": 85.9 }
     },
     {
+      "id": "escobillas-laterales",
+      "name": "Escobillas Laterales del Cabezal",
+      "system": "lavado",
+      "description": "Disk Scrub Head Side Squeegee Group, Left",
+      "figure": "Fig. 20",
+      "status": "available",
+      "data": "data/side_squeegee_lh.json",
+      "hotspot": { "x": 44.5, "y": 94 }
+    },
+    {
       "id": "tanques",
       "name": "Tanques de Solución y Recuperación",
       "system": "agua",
