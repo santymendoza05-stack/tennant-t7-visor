@@ -1705,6 +1705,18 @@ tr.is-active .item-num, tr:hover .item-num, .gr-item[aria-selected="true"] .item
   text-transform: uppercase;
 }
 .ps-parts td { padding: 3px 6px; border-bottom: 1px solid var(--ing-line); vertical-align: top; }
+/* Gomas: especificación y alerta para bodega bajo la descripción */
+.ps-spec { display: block; margin-top: 1px; font-size: 7pt; font-weight: 600; color: #3a4350; }
+.ps-alert {
+  display: inline-block;
+  margin-top: 2px;
+  padding: 0 4px;
+  border: 1px solid #d64545;
+  border-radius: 3px;
+  color: #b42318;
+  font-size: 6.8pt;
+  font-weight: 700;
+}
 .ps-parts tr { break-inside: avoid; }
 /* Subensamble: rótulo fino en verde, sin bloque pesado */
 .ps-sub td {
@@ -1759,6 +1771,52 @@ tr.is-active .item-num, tr:hover .item-num, .gr-item[aria-selected="true"] .item
   .figure-tabs { margin-left: 0; width: 100%; }
   .figure-tab { flex: 1; text-align: center; }
 }
+
+/* ---------- Gomas / láminas de racleta: especificación + alerta de despacho ---------- */
+.blade-spec { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 5px; }
+.bs-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px 7px;
+  border-radius: 6px;
+  border: 1px solid var(--border-strong);
+  background: var(--surface-2);
+  color: var(--text);
+  font: 700 0.7rem var(--font);
+  line-height: 1.5;
+  white-space: nowrap;
+}
+.bs-model { background: #0d1117; border-color: #0d1117; color: var(--accent); letter-spacing: 0.03em; }
+.bs-size { font-family: var(--mono); font-size: 0.68rem; border-color: var(--accent-line); background: var(--accent-soft); }
+.bs-size.is-missing { font-family: var(--font); color: #c2410c; border-style: dashed; border-color: #f97316; background: transparent; }
+.bs-head { border-color: rgba(59, 130, 246, 0.5); background: rgba(59, 130, 246, 0.1); }
+.bs-mat { border-color: rgba(31, 157, 85, 0.5); background: rgba(31, 157, 85, 0.1); }
+.blade-alert {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 5px;
+  padding: 2px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(214, 69, 69, 0.55);
+  background: rgba(214, 69, 69, 0.10);
+  color: #b42318;
+  font: 700 0.7rem var(--font);
+  letter-spacing: 0.01em;
+}
+.blade-alert > span { font-size: 0.85rem; line-height: 1; }
+:root[data-theme="dark"] .bs-model { background: var(--accent); border-color: transparent; color: var(--accent-ink); }
+:root[data-theme="dark"] .blade-alert { color: #fca5a5; }
+:root[data-theme="dark"] .bs-size.is-missing { color: #fdba74; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .bs-model { background: var(--accent); border-color: transparent; color: var(--accent-ink); }
+  :root:not([data-theme="light"]) .blade-alert { color: #fca5a5; }
+  :root:not([data-theme="light"]) .bs-size.is-missing { color: #fdba74; }
+}
+/* En el buscador global y en frecuentes la descripción va en una línea: las etiquetas debajo */
+.gr-main .blade-spec, .freq-main .blade-spec { margin-top: 3px; }
+.gr-main .blade-alert, .freq-main .blade-alert { align-self: flex-start; margin-top: 3px; }
+.cart-table .blade-spec + .blade-alert { display: flex; width: fit-content; }
 
 /* ==========================================================
    Repuestos Frecuentes / Alta Rotación

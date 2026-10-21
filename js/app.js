@@ -2868,6 +2868,65 @@
     return escapeHtml(text.slice(0, idx)) + "<mark>" + escapeHtml(text.slice(idx, end)) + "</mark>" + escapeHtml(text.slice(end));
   }
 
+  /* ---------- Gomas / láminas de racleta (Squeegee Blade) ----------
+     Una goma de otra máquina o de otro cabezal es el error de despacho más
+     común: se muestra la máquina, la medida, el cabezal y el material que
+     trae la descripción del manual, más una alerta para verificar el cabezal. */
+  const isBlade = (d) =>
+    /\bblade\b/.test(d) || /^rubber\b.*squeegee/.test(d) || /^squeegee (assy )?kit\b|^squeegee assy\b/.test(d);
+  const BLADE_MATERIALS = [
+    [/\blinatex\b/, "Linatex"],
+    [/\blinx\b/, "Linatex (Linx)"],
+    [/\blinard\b/, "Linard"],
+    [/\b(ure|urethane|pyu)\b/, "Uretano"],
+    [/\bpu\b/, "Uretano (PU)"],
+    [/\bgum\b/, "Caucho (Gum)"],
+    [/\blatex\b/, "Látex"]
+  ];
+  // Cabezales Tennant: mm -> pulgadas (650 mm = 26 in, 700 mm = 28 in, 800 mm = 32 in)
+  const HEAD_IN = { 650: 26, 700: 28, 800: 32 };
+  const BLADE_ALERT = "Verificar medida de cabezal antes de solicitar";
+
+  // null si no es una goma; si no, { model, position, length, head, material, text }
+  function bladeSpec(description, machineName, group = "") {
+    const d = normalize(description);
+    if (!isBlade(d)) return null;
+    const position = /\bfront\b/.test(d) ? "Delantera" : /\brear\b/.test(d) ? "Trasera"
+      : /\bside\b/.test(d) ? "Lateral" : /cylrcl/.test(d) ? "Cabezal cilíndrico"
+      : /\bkit\b/.test(d) ? "Kit completo" : /rear/i.test(group) ? "Trasera" : "";
+    // Largo de la goma en pulgadas ("41.50l") con su equivalente en mm
+    const len = d.match(/(\d{2}\.\d{1,2})\s*l\b/);
+    const length = len ? `${Number(len[1]).toFixed(2)}" · ${Math.round(Number(len[1]) * 25.4)} mm` : null;
+    // Cabezal: "[800mm]" de la descripción y/o el del grupo ("Rear Squeegee Group, 650 mm (26 in)").
+    // La T7 de 650 mm usa gomas marcadas [700mm]: se muestran ambos cabezales.
+    const sizes = [Number((d.match(/(\d{3})\s*mm\b/) || [])[1]), Number((String(group).match(/(\d{3})\s*mm/) || [])[1])]
+      .filter((mm, i, all) => mm && all.indexOf(mm) === i);
+    const head = sizes.length
+      ? `Cabezal ${sizes.map((mm) => `${mm} mm${HEAD_IN[mm] ? ` (${HEAD_IN[mm]} in)` : ""}`).join(" / ")}`
+      : null;
+    const mat = BLADE_MATERIALS.find(([re]) => re.test(d));
+    const kit = /\bkit\b/.test(d);
+    const material = mat ? mat[1] : kit ? "Material: ver ítems del kit" : null;
+    const model = `Solo ${machineName}`;
+    // En los kits la medida es la del cabezal; en las gomas sueltas se avisa si el manual no trae el largo
+    const missing = !length && !(kit && head);
+    const text = [model, position, length || (missing ? "Medida no indicada en el manual" : null), head, material].filter(Boolean).join(" · ");
+    return { model, position, length, missing, head, material, text };
+  }
+
+  // Etiquetas de la goma + alerta (tabla, buscador, frecuentes y carrito)
+  function bladeSpecHtml(spec) {
+    if (!spec) return "";
+    const chip = (cls, v) => `<span class="bs-chip ${cls}">${escapeHtml(v)}</span>`;
+    return `<span class="blade-spec" aria-label="Especificación de la goma: ${escapeHtml(spec.text)}">${[
+        chip("bs-model", spec.model),
+        spec.position && chip("bs-pos", spec.position),
+        spec.length ? chip("bs-size", spec.length) : spec.missing && chip("bs-size is-missing", "Medida no indicada en el manual"),
+        spec.head && chip("bs-head", spec.head),
+        spec.material && chip("bs-mat", spec.material)
+      ].filter(Boolean).join("")}</span><span class="blade-alert" role="note"><span aria-hidden="true">⚠</span> ${BLADE_ALERT}</span>`;
+  }
+
   let toastTimer;
   function showToast(msg) {
     // Con el modal abierto (capa superior) el aviso se muestra dentro de él
@@ -3380,6 +3439,7 @@
         activeItem: null,
         zone,
         figure: data.figure || figure.label || "",
+        figureGroup: data.group || "",
         figureIndex: Math.max(0, figuresOf(zone).findIndex((f) => f.data === figure.data))
       });
       this.resetZoom();
@@ -3494,7 +3554,7 @@
           (p) => `<tr data-item="${p.item}" data-pn="${escapeHtml(p.partNumber)}" tabindex="0" class="${p.item === this.state.activeItem ? "is-active" : ""}">
             <td><span class="item-num">${p.item}</span></td>
             <td class="pn">${highlight(p.partNumber, q)}</td>
-            <td>${highlight(p.description, q)}<span class="desc-cat">${escapeHtml(p.category)}${p.note ? ` · ${highlight(p.note, q)}` : ""}</span></td>
+            <td>${highlight(p.description, q)}<span class="desc-cat">${escapeHtml(p.category)}${p.note ? ` · ${highlight(p.note, q)}` : ""}</span>${bladeSpecHtml(bladeSpec(p.description, current.name, this.state.figureGroup))}</td>
             <td class="num">${p.qty}</td>
             <td><div class="row-actions">${Cart.button(p.partNumber)}<button type="button" class="copy-btn" data-copy="${escapeHtml(p.partNumber)}">Copiar Ref</button></div></td>
           </tr>`
@@ -3578,7 +3638,7 @@
         if (add) {
           const tr = add.closest("tr");
           const p = this.state.parts.find((x) => x.item === Number(tr.dataset.item) && x.partNumber === tr.dataset.pn);
-          if (p) Cart.add(p, this.state.zone, this.state.figure, this.state.figureIndex);
+          if (p) Cart.add(p, this.state.zone, this.state.figure, this.state.figureIndex, this.state.figureGroup);
           return;
         }
         const btn = e.target.closest(".copy-btn");
@@ -3717,6 +3777,7 @@
               zone,
               figureIndex,
               figure: data.figure || figure.label || "",
+              group: data.group || "",
               part,
               haystack: normalize([part.partNumber, part.description, part.note || "", zone.name, data.figure || ""].join(" "))
             }));
@@ -3767,11 +3828,12 @@
           : `${this.results.length} resultado${this.results.length === 1 ? "" : "s"}`;
 
       els.globalResults.innerHTML = shown
-        .map(({ zone, figure, part }, i) => `<li role="option" id="gr-${i}" class="gr-item" data-index="${i}" aria-selected="${i === this.active}">
+        .map(({ zone, figure, group, part }, i) => `<li role="option" id="gr-${i}" class="gr-item" data-index="${i}" aria-selected="${i === this.active}">
             <span class="item-num" title="Ítem ${part.item}">${part.item}</span>
             <span class="gr-main">
               <span class="gr-line"><span class="pn">${highlight(part.partNumber, mark)}</span> <span class="gr-desc">${highlight(part.description, mark)}</span></span>
               ${part.note ? `<span class="gr-note">${highlight(part.note, mark)}</span>` : ""}
+              ${bladeSpecHtml(bladeSpec(part.description, current.name, group))}
             </span>
             <span class="gr-zone">${escapeHtml(zone.name)}<small>${escapeHtml(figure)}</small></span>
             ${Cart.button(part.partNumber, `data-index="${i}"`)}
@@ -3839,7 +3901,7 @@
         const add = e.target.closest(".cart-add");
         if (add) {
           const r = this.results[Number(add.dataset.index)];
-          if (r) Cart.add(r.part, r.zone, r.figure, r.figureIndex);
+          if (r) Cart.add(r.part, r.zone, r.figure, r.figureIndex, r.group);
           return;
         }
         const li = e.target.closest(".gr-item");
@@ -3894,7 +3956,7 @@
       hint: "Desgaste diario: revisar en cada mantenimiento y tener stock en bodega.",
       groups: [
         { id: "laminas", name: "Láminas / cuchillas de racleta",
-          test: (d) => /\bblade\b/.test(d) || /^rubber\b.*squeegee/.test(d) || /^squeegee (assy )?kit\b|^squeegee assy\b/.test(d) },
+          test: (d) => isBlade(d) },
         { id: "cepillos", name: "Cepillos y pads",
           test: (d) => (/^brush\b/.test(d) && !/cover|carbon|motor/.test(d)) ||
             /^pad, (strip|scb|scrub|buff|polish|surf)/.test(d) || /^driver assy, pad|^disk, driver, pad/.test(d) },
@@ -4060,7 +4122,7 @@
     },
 
     item(p) {
-      const { part, zone, figure, figureIndex } = p.entry;
+      const { part, zone, figure, figureIndex, group } = p.entry;
       const pn = part.partNumber;
       const pinned = this.mine.pinned.includes(pn);
       const params = new URLSearchParams({ item: part.item, pn });
@@ -4071,6 +4133,7 @@
           <span class="freq-main">
             <span class="freq-line"><span class="pn">${highlight(pn, this.query.trim())}</span> <span class="freq-desc">${highlight(part.description, this.query.trim())}</span></span>
             <span class="freq-meta">${tag}${escapeHtml(zone.name)}${figure ? ` · ${escapeHtml(figure)}` : ""}${uses}</span>
+            ${bladeSpecHtml(bladeSpec(part.description, current.name, group))}
           </span>
           <span class="freq-actions">
             ${Cart.button(pn)}
@@ -4210,7 +4273,7 @@
         const pn = li.dataset.pn;
         if (e.target.closest(".cart-add")) {
           const p = this.parts.get(pn);
-          if (p) Cart.add(p.entry.part, p.entry.zone, p.entry.figure, p.entry.figureIndex);
+          if (p) Cart.add(p.entry.part, p.entry.zone, p.entry.figure, p.entry.figureIndex, p.entry.group);
         } else if (e.target.closest(".freq-pin")) this.togglePin(pn);
         else if (e.target.closest(".freq-remove")) this.remove(pn);
       });
@@ -4408,7 +4471,7 @@
 
     // Si el Part Number ya está en la lista (de esa máquina), suma una unidad.
     // zoneIndex/figureIndex/item guardan el orden técnico del manual para la exportación.
-    add(part, zone, figure, figureIndex = 0) {
+    add(part, zone, figure, figureIndex = 0, figureGroup = "") {
       const it = this.find(part.partNumber);
       if (it) {
         this.setQty(it, it.qty + 1);
@@ -4424,6 +4487,7 @@
           zone: zone.name,
           zoneIndex: MachineView.data.zones.indexOf(zone),
           figure: figure || "",
+          figureGroup: figureGroup || "",
           figureIndex,
           qty: 1
         });
@@ -4438,6 +4502,23 @@
     setQty(it, n) {
       it.qty = Math.min(MAX_QTY, Math.max(1, Math.round(n) || 1));
       this.save();
+    },
+
+    // Especificación de la goma (máquina, medida, cabezal, material) para la lista y las exportaciones
+    spec(i) {
+      const m = machines.find((x) => x.id === i.machine);
+      return bladeSpec(i.description, m ? m.name : i.machineName || i.machine, i.figureGroup);
+    },
+    // Descripción con la especificación y la alerta, en texto plano (CSV y Excel)
+    fullDescription(i, sep = " — ") {
+      const spec = this.spec(i);
+      return spec ? [i.description, spec.text, `⚠ ${BLADE_ALERT.toUpperCase()}`].join(sep) : i.description;
+    },
+
+    // Especificación y alerta en el PDF
+    printSpec(i) {
+      const spec = this.spec(i);
+      return spec ? `<span class="ps-spec">${escapeHtml(spec.text)}</span><span class="ps-alert">⚠ ${BLADE_ALERT}</span>` : "";
     },
 
     totals() {
@@ -4548,7 +4629,7 @@
               </tr></thead>
               <tbody>${g.items.map((i) => `<tr data-key="${escapeHtml(this.key(i.machine, i.pn))}">
                   <td class="pn">${escapeHtml(i.pn)}</td>
-                  <td>${escapeHtml(i.description)}<span class="desc-cat"><span class="cart-cat-inline">${escapeHtml(i.category)} · </span>${escapeHtml([i.zone, i.figure].filter(Boolean).join(" · "))}</span></td>
+                  <td>${escapeHtml(i.description)}${bladeSpecHtml(this.spec(i))}<span class="desc-cat"><span class="cart-cat-inline">${escapeHtml(i.category)} · </span>${escapeHtml([i.zone, i.figure].filter(Boolean).join(" · "))}</span></td>
                   <td class="cart-col-cat"><span class="cart-cat">${escapeHtml(i.category)}</span></td>
                   <td class="num"><div class="qty">
                     <button type="button" class="qty-btn" data-step="-1" aria-label="Restar una unidad">−</button>
@@ -4652,7 +4733,7 @@
       for (const g of this.groups()) {
         for (const sub of this.subassemblies(g.items)) {
           for (const i of sub.items) {
-            lines.push([cell(g.name), cell(sub.name), ++n, i.item ?? "", pn(i.pn), cell(i.description), cell(i.category), i.qty].join(";"));
+            lines.push([cell(g.name), cell(sub.name), ++n, i.item ?? "", pn(i.pn), cell(this.fullDescription(i)), cell(i.category), i.qty].join(";"));
           }
         }
       }
@@ -4698,7 +4779,7 @@
                   <td class="ps-n">${++n}</td>
                   <td class="ps-item">${i.item ?? "—"}</td>
                   <td class="ps-pn">${escapeHtml(i.pn)}</td>
-                  <td>${escapeHtml(i.description)}</td>
+                  <td>${escapeHtml(i.description)}${this.printSpec(i)}</td>
                   <td>${escapeHtml(i.category)}</td>
                   <td class="ps-qty">${i.qty}</td>
                 </tr>`).join("")}`).join("")}</tbody>
@@ -4765,7 +4846,7 @@
               { v: ++n, s: 6 },
               Number.isFinite(i.item) ? { v: i.item, s: 6 } : { v: "—", s: 6 },
               { v: i.pn, s: 8 },
-              { v: i.description, s: 5 },
+              { v: this.fullDescription(i, "\n"), s: 5 },
               { v: i.category, s: 5 },
               { v: i.qty, s: 6 }
             ]);

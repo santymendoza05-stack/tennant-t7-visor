@@ -23,6 +23,12 @@ El **selector de la cabecera** (Tennant T7 / Tennant T12 / IPC CT110) cambia el 
 - El PDF y el .xlsx usan la plantilla formal de INGPAR S.A.S. (NIT 900.919.023-1, "Ingeniería para un Mantenimiento Integral", azul y verde del logo) con el orden técnico **máquina → subensamble (orden del plano general) → ítem del manual**, y firmas de **Solicitante** y **Bodega**. Los datos de la empresa están en `COMPANY`; los colores en `.print-sheet` (CSS) y `XLSX_STYLES` (JS).
 - La lista y los campos se guardan en este navegador (`localStorage`) y se sincronizan entre pestañas abiertas del visor.
 
+### Gomas / láminas de racleta (Squeegee Blade)
+
+Para evitar errores de despacho, cada goma, kit o ensamble de racleta muestra bajo su descripción la máquina exclusiva (**Solo Tennant T7 / T12 / IPC CT110**), la posición (delantera, trasera, lateral), el **largo en pulgadas y mm** (p. ej. `41.50" · 1054 mm`), el **cabezal** (p. ej. `Cabezal 800 mm (32 in)`) y el **material** (Linatex, Linard, Uretano, Caucho/Gum, Látex), más la alerta **⚠ Verificar medida de cabezal antes de solicitar**. Se ve en la tabla del despiece, el buscador global, Repuestos Frecuentes y Mi Lista, y sale también en el PDF, el .xlsx y el .csv.
+
+Todo se lee de la descripción del manual (`bladeSpec()` en `js/app.js`). En la T7, el valor entre corchetes (`[800mm]`) es el cabezal, no el largo de la goma; el largo es el número con `l` (`41.50l` = 41.50 in). Si el manual no trae el largo (p. ej. gomas traseras de la T12 o de la CT110), la etiqueta dice *Medida no indicada en el manual*.
+
 ### 🔥 Repuestos Frecuentes / Alta Rotación
 
 La pestaña **🔥 Repuestos Frecuentes** de la cabecera (y el acceso bajo el buscador de la portada) abre `#/<máquina>/frecuentes` con los repuestos de desgaste de la máquina activa (T7, T12 o CT110). Al cambiar de máquina en el selector se queda en esta vista.
