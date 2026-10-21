@@ -6,6 +6,7 @@
      #/                        -> Nivel 1 de la última máquina elegida
      #/<máquina>/              -> Nivel 1 (p. ej. #/t12/)
      #/<máquina>/zona/<id>     -> Nivel 2 (p. ej. #/t12/zona/racleta-trasera)
+     #/<máquina>/frecuentes    -> Repuestos Frecuentes / Alta Rotación de esa máquina
      #/zona/<id>               -> enlaces antiguos: Nivel 2 de la máquina por defecto (T7)
    ========================================================== */
 (() => {
@@ -2781,6 +2782,8 @@
     crumbAssembly: $("#crumb-assembly"),
     machineSwitch: $("#machine-switch"),
     titleMachine: $("#title-machine"),
+    frequentTab: $("#frequent-tab"),
+    heroFrequent: $("#hero-frequent"),
     // Lista de selección
     cartToggle: $("#cart-toggle"),
     cartCount: $("#cart-count"),
@@ -2831,7 +2834,22 @@
     count: $("#result-count"),
     figureTabs: $("#figure-tabs"),
     figureLabel: $("#figure-label"),
-    groupLabel: $("#group-label")
+    groupLabel: $("#group-label"),
+    // Repuestos Frecuentes
+    frequentView: $("#view-frequent"),
+    frequentBack: $("#frequent-back"),
+    frequentBackLabel: $("#frequent-back-label"),
+    frequentMachine: $("#freq-machine"),
+    frequentIntro: $("#freq-intro"),
+    frequentStats: $("#freq-stats"),
+    frequentCount: $("#freq-count"),
+    frequentSearch: $("#freq-search"),
+    frequentAddInput: $("#freq-add-input"),
+    frequentAddResults: $("#freq-add-results"),
+    frequentFilters: $("#freq-filters"),
+    frequentBody: $("#freq-body"),
+    frequentEmpty: $("#freq-empty"),
+    frequentRestore: $("#freq-restore")
   };
 
   // ---------- Utilidades ----------
@@ -2962,6 +2980,7 @@
     els.crumbMachine.href = home(m);
     els.backBtn.href = home(m);
     els.backLabel.textContent = `Volver a la ${short} Completa`;
+    els.frequentTab.href = els.heroFrequent.href = `${home(m)}frecuentes`;
     els.heroEyebrow.textContent = `${name} · Manual de partes ${m.manual || ""}`;
     els.tbMachine.textContent = name;
     els.tbManual.textContent = m.manual || "—";
@@ -3626,7 +3645,9 @@
      Navegación entre niveles
      ========================================================== */
   function showView(view) {
-    const views = [els.machineView, els.assemblyView];
+    const views = [els.machineView, els.assemblyView, els.frequentView];
+    if (view === els.frequentView) els.frequentTab.setAttribute("aria-current", "page");
+    else els.frequentTab.removeAttribute("aria-current");
     if (!view.hidden) return;
     views.forEach((v) => {
       v.hidden = v !== view;
@@ -3853,6 +3874,374 @@
         if (els.machineView.hidden || els.cartDialog.open || e.key !== "/" || document.activeElement === els.globalSearch) return;
         e.preventDefault();
         els.globalSearch.focus();
+      });
+    }
+  };
+
+  /* ==========================================================
+     Repuestos Frecuentes / Alta Rotación (#/<máquina>/frecuentes)
+     Sugeridos a partir del índice del buscador global: cada repuesto se
+     clasifica por su descripción en un nivel de frecuencia de reemplazo.
+     El usuario puede fijar (pin), quitar y agregar repuestos; se guarda
+     por máquina en este navegador.
+     ========================================================== */
+  const FREQ_KEY = "t7-frequent";
+
+  // d = descripción normalizada, c = categoría normalizada
+  const FREQ_TIERS = [
+    {
+      id: "alta", name: "Frecuencia Alta", flames: 3,
+      hint: "Desgaste diario: revisar en cada mantenimiento y tener stock en bodega.",
+      groups: [
+        { id: "laminas", name: "Láminas / cuchillas de racleta",
+          test: (d) => /\bblade\b/.test(d) || /^rubber\b.*squeegee/.test(d) || /^squeegee (assy )?kit\b|^squeegee assy\b/.test(d) },
+        { id: "cepillos", name: "Cepillos y pads",
+          test: (d) => (/^brush\b/.test(d) && !/cover|carbon|motor/.test(d)) ||
+            /^pad, (strip|scb|scrub|buff|polish|surf)/.test(d) || /^driver assy, pad|^disk, driver, pad/.test(d) },
+        { id: "mangueras", name: "Mangueras",
+          test: (d, c) => /^hose\b/.test(d) ||
+            (/^tube\b/.test(d) && /manguera/.test(c) && !/guard|column|bumper|spray|distribution|^tube, 0\./.test(d)) }
+      ]
+    },
+    {
+      id: "media", name: "Frecuencia Media", flames: 2,
+      hint: "Reemplazo periódico según horas de uso o al detectar fugas, ruido o juego.",
+      groups: [
+        { id: "filtros", name: "Filtros", test: (d) => /^(vr, )?filter\b/.test(d) },
+        { id: "empaques", name: "Empaques y sellos",
+          test: (d) => (/^(gasket|seal|o.?ring)\b|^assy, seal/.test(d)) && !/wire/.test(d) },
+        { id: "ruedas", name: "Ruedas paragolpes y rodillos",
+          test: (d) => /^wheel,? (bmpr|bumper|\d|d\.\d+x)|^roller\b|paracolpi|antiribaltamento|^bumper, ure/.test(d) && !/^spacer/.test(d) },
+        { id: "pasadores", name: "Pasadores", test: (d) => /^pin\b/.test(d) }
+      ]
+    },
+    {
+      id: "preventiva", name: "Frecuencia Preventiva", flames: 1,
+      hint: "Mantenimiento preventivo: inspeccionar en cada revisión programada y cambiar antes de la falla.",
+      groups: [
+        { id: "carbones", name: "Carbones de motor",
+          test: (d, c) => /\bcarbon\b/.test(d) ||
+            (/\bbrush(es)?\b/.test(d) && (/\bmotor\b/.test(d) || /motor|electri/.test(c)) &&
+              !/cover|holder|shaft|hub|door|plug|bearing|spring|drive/.test(d)) },
+        { id: "electrovalvulas", name: "Electroválvulas", test: (d) => /solenoid/.test(d) },
+        { id: "fusibles", name: "Fusibles", test: (d) => /\bfuse\b/.test(d) && !/holder|carrier|door/.test(d) }
+      ]
+    }
+  ];
+  // Orden de evaluación: los carbones ("Brush Kit, Carbon") antes que los cepillos
+  const FREQ_RULES = ["preventiva", "alta", "media"].flatMap((id) => {
+    const tier = FREQ_TIERS.find((t) => t.id === id);
+    return tier.groups.map((group) => ({ tier, group }));
+  });
+  const classify = (part) => {
+    const d = normalize(part.description), c = normalize(part.category || "");
+    return FREQ_RULES.find((r) => r.group.test(d, c)) || null;
+  };
+
+  const Frequent = {
+    prefs: {},        // { [máquina]: { pinned: [pn], added: [pn], hidden: [pn] } }
+    filter: "all",
+    query: "",
+    parts: new Map(), // pn -> { entry, uses, rule } de la máquina activa
+    builtFor: null,
+    addResults: [],
+
+    init() {
+      this.load();
+      this.bindEvents();
+      window.addEventListener("storage", (e) => {
+        if (e.key !== FREQ_KEY) return;
+        this.load();
+        if (!els.frequentView.hidden) this.render();
+      });
+    },
+
+    load() {
+      let saved = null;
+      try { saved = JSON.parse(localStorage.getItem(FREQ_KEY)); } catch {}
+      this.prefs = saved && typeof saved === "object" ? saved : {};
+    },
+
+    save() {
+      try { localStorage.setItem(FREQ_KEY, JSON.stringify(this.prefs)); } catch {}
+    },
+
+    // Preferencias de la máquina activa
+    get mine() {
+      const p = this.prefs[current.id] || (this.prefs[current.id] = {});
+      for (const k of ["pinned", "added", "hidden"]) if (!Array.isArray(p[k])) p[k] = [];
+      return p;
+    },
+
+    // Un repuesto por Part Number; "uses" cuenta en cuántas figuras aparece
+    async build() {
+      await GlobalSearch.ready;
+      if (this.builtFor === current.id) return;
+      this.parts = new Map();
+      for (const entry of GlobalSearch.index) {
+        const pn = entry.part.partNumber;
+        const known = this.parts.get(pn);
+        if (known) known.uses.add(`${entry.zone.id}|${entry.figureIndex}`);
+        else this.parts.set(pn, { entry, uses: new Set([`${entry.zone.id}|${entry.figureIndex}`]), rule: classify(entry.part) });
+      }
+      this.builtFor = current.id;
+    },
+
+    async show() {
+      const m = current;
+      els.frequentMachine.textContent = m.name;
+      els.frequentBackLabel.textContent = `Volver a la ${m.short || m.name} Completa`;
+      els.frequentBack.href = home(m);
+      els.frequentIntro.textContent = `${m.name} · Manual de partes ${m.manual || ""}. Repuestos de desgaste organizados según su frecuencia de reemplazo.`;
+      els.frequentSearch.value = this.query = "";
+      els.frequentAddInput.value = "";
+      this.closeAdd();
+      this.renderFilters();
+      els.frequentBody.innerHTML = `<p class="empty-state">Cargando repuestos de la ${escapeHtml(m.short || m.name)}…</p>`;
+      await this.build();
+      if (m === current) this.render();
+    },
+
+    // Repuestos visibles agrupados en secciones: fijados, niveles de frecuencia y agregados
+    sections() {
+      const { pinned, added, hidden } = this.mine;
+      const q = normalize(this.query.trim());
+      const matches = (p) => !q || normalize(`${p.entry.part.partNumber} ${p.entry.part.description} ${p.entry.zone.name}`).includes(q);
+      const sortParts = (list) => list.sort((a, b) => b.uses.size - a.uses.size || a.entry.part.description.localeCompare(b.entry.part.description));
+
+      const pinnedParts = pinned.map((pn) => this.parts.get(pn)).filter(Boolean);
+      const pinnedSet = new Set(pinnedParts.map((p) => p.entry.part.partNumber));
+      const isListed = (p) => !pinnedSet.has(p.entry.part.partNumber) && !hidden.includes(p.entry.part.partNumber);
+
+      const sections = [];
+      sections.push({ id: "fijados", name: "Fijados", icon: "pin", hint: "Tus repuestos de uso constante, siempre arriba.", groups: [{ name: null, items: pinnedParts }] });
+      for (const tier of FREQ_TIERS) {
+        sections.push({
+          id: tier.id, name: tier.name, flames: tier.flames, hint: tier.hint,
+          groups: tier.groups.map((g) => ({
+            name: g.name,
+            items: sortParts([...this.parts.values()].filter((p) => p.rule && p.rule.group === g && isListed(p)))
+          }))
+        });
+      }
+      const addedParts = added.map((pn) => this.parts.get(pn)).filter((p) => p && !p.rule && isListed(p));
+      sections.push({ id: "agregados", name: "Agregados por ti", icon: "star", hint: "Repuestos que sumaste a esta lista.", groups: [{ name: null, items: addedParts }] });
+
+      return sections
+        .filter((s) => this.filter === "all" || this.filter === s.id)
+        .map((s) => ({ ...s, groups: s.groups.map((g) => ({ ...g, items: g.items.filter(matches) })).filter((g) => g.items.length) }))
+        .filter((s) => s.groups.length);
+    },
+
+    // Totales por sección sin filtros (chips y tarjetas de la cabecera)
+    counts() {
+      const saved = { filter: this.filter, query: this.query };
+      this.filter = "all";
+      this.query = "";
+      const counts = Object.fromEntries(this.sections().map((s) => [s.id, s.groups.reduce((n, g) => n + g.items.length, 0)]));
+      Object.assign(this, saved);
+      return counts;
+    },
+
+    renderFilters(counts = {}) {
+      const opts = [
+        { id: "all", name: "Todos" },
+        { id: "fijados", name: "📌 Fijados" },
+        ...FREQ_TIERS.map((t) => ({ id: t.id, name: t.name.replace("Frecuencia ", "") })),
+        { id: "agregados", name: "⭐ Agregados" }
+      ];
+      const total = Object.values(counts).reduce((a, b) => a + b, 0);
+      els.frequentFilters.innerHTML = opts
+        .map((o) => {
+          const n = o.id === "all" ? total : counts[o.id] || 0;
+          return `<button type="button" class="chip" data-filter="${o.id}" aria-pressed="${this.filter === o.id}">${escapeHtml(o.name)} <small>${n}</small></button>`;
+        })
+        .join("");
+    },
+
+    item(p) {
+      const { part, zone, figure, figureIndex } = p.entry;
+      const pn = part.partNumber;
+      const pinned = this.mine.pinned.includes(pn);
+      const params = new URLSearchParams({ item: part.item, pn });
+      const uses = p.uses.size > 1 ? ` · <b>en ${p.uses.size} figuras</b>` : "";
+      const tag = p.rule && pinned ? `<span class="freq-tag tier-${p.rule.tier.id}">${escapeHtml(p.rule.group.name)}</span>` : "";
+      return `<li class="freq-item${pinned ? " is-pinned" : ""}" data-pn="${escapeHtml(pn)}">
+          <button type="button" class="freq-pin" aria-pressed="${pinned}" title="${pinned ? "Desfijar" : "Fijar arriba"}" aria-label="${pinned ? "Desfijar" : "Fijar"} ${escapeHtml(pn)}"><svg aria-hidden="true"><use href="#i-pin"/></svg></button>
+          <span class="freq-main">
+            <span class="freq-line"><span class="pn">${highlight(pn, this.query.trim())}</span> <span class="freq-desc">${highlight(part.description, this.query.trim())}</span></span>
+            <span class="freq-meta">${tag}${escapeHtml(zone.name)}${figure ? ` · ${escapeHtml(figure)}` : ""}${uses}</span>
+          </span>
+          <span class="freq-actions">
+            ${Cart.button(pn)}
+            <a class="copy-btn freq-view" href="${zoneHref(zone, figureIndex + 1)}?${params}" title="Ver en el despiece">Ver</a>
+            <button type="button" class="cart-remove freq-remove" title="Quitar de frecuentes" aria-label="Quitar ${escapeHtml(pn)} de frecuentes">&times;</button>
+          </span>
+        </li>`;
+    },
+
+    render() {
+      if (this.builtFor !== current.id) return;
+      const counts = this.counts();
+      this.renderFilters(counts);
+      const total = Object.values(counts).reduce((a, b) => a + b, 0);
+      els.frequentCount.textContent = total;
+
+      els.frequentStats.innerHTML = [["fijados", "📌 Fijados"], ...FREQ_TIERS.map((t) => [t.id, t.name.replace("Frecuencia ", "")])]
+        .map(([id, name]) => `<div class="freq-stat stat-${id}"><dt>${escapeHtml(name)}</dt><dd>${counts[id] || 0}</dd></div>`)
+        .join("");
+
+      const flames = (n) => `<span class="freq-flames" aria-hidden="true">${"🔥".repeat(n)}</span>`;
+      const icons = { pin: `<svg class="freq-sec-icon" aria-hidden="true"><use href="#i-pin"/></svg>`, star: `<span class="freq-flames" aria-hidden="true">⭐</span>` };
+      const sections = this.sections();
+      els.frequentBody.innerHTML = sections
+        .map((s) => `<section class="freq-tier tier-${s.id}">
+            <header class="freq-tier-head">
+              ${s.flames ? flames(s.flames) : icons[s.icon] || ""}
+              <h3>${escapeHtml(s.name)}</h3>
+              <span class="count-badge">${s.groups.reduce((n, g) => n + g.items.length, 0)}</span>
+              <p>${escapeHtml(s.hint)}</p>
+            </header>
+            ${s.groups.map((g) => g.name
+              ? `<details class="freq-group" open>
+                  <summary>${escapeHtml(g.name)} <small>${g.items.length}</small></summary>
+                  <ul class="freq-list">${g.items.map((p) => this.item(p)).join("")}</ul>
+                </details>`
+              : `<ul class="freq-list">${g.items.map((p) => this.item(p)).join("")}</ul>`).join("")}
+          </section>`)
+        .join("");
+      els.frequentEmpty.hidden = sections.length > 0;
+      if (!sections.length) {
+        els.frequentEmpty.textContent = this.filter === "fijados" && !this.query
+          ? "Aún no has fijado repuestos. Usa el botón 📌 de cualquier ítem para dejarlo arriba."
+          : this.filter === "agregados" && !this.query
+            ? "Aún no has agregado repuestos. Búscalos en «Agregar otro repuesto»."
+            : "No hay repuestos que coincidan con el filtro.";
+      }
+
+      const hiddenCount = this.mine.hidden.filter((pn) => this.parts.get(pn)?.rule).length;
+      els.frequentRestore.hidden = !hiddenCount;
+      els.frequentRestore.textContent = `Restaurar ${plural(hiddenCount, "sugerido oculto", "sugeridos ocultos")}`;
+    },
+
+    // ¿El repuesto ya se ve en la lista (sugerido, fijado o agregado)?
+    isListed(pn) {
+      const p = this.parts.get(pn), { pinned, added, hidden } = this.mine;
+      if (!p || hidden.includes(pn)) return false;
+      return pinned.includes(pn) || added.includes(pn) || !!p.rule;
+    },
+
+    togglePin(pn) {
+      const mine = this.mine, i = mine.pinned.indexOf(pn);
+      if (i === -1) {
+        mine.pinned.unshift(pn);
+        mine.hidden = mine.hidden.filter((x) => x !== pn);
+        showToast(`${pn} fijado en Repuestos Frecuentes`);
+      } else {
+        mine.pinned.splice(i, 1);
+        showToast(`${pn} desfijado`);
+      }
+      this.save();
+      this.render();
+    },
+
+    remove(pn) {
+      const mine = this.mine;
+      mine.pinned = mine.pinned.filter((x) => x !== pn);
+      mine.added = mine.added.filter((x) => x !== pn);
+      if (this.parts.get(pn)?.rule && !mine.hidden.includes(pn)) mine.hidden.push(pn);
+      this.save();
+      this.render();
+      showToast(`${pn} quitado de Repuestos Frecuentes`);
+    },
+
+    addFavorite(pn) {
+      const mine = this.mine;
+      mine.hidden = mine.hidden.filter((x) => x !== pn);
+      if (!this.parts.get(pn)?.rule && !mine.added.includes(pn)) mine.added.push(pn);
+      this.save();
+      this.render();
+      showToast(`${pn} agregado a Repuestos Frecuentes`);
+    },
+
+    // Buscador para sumar cualquier repuesto de la máquina a la lista
+    updateAdd() {
+      const q = els.frequentAddInput.value;
+      if (!q.trim()) return this.closeAdd();
+      const seen = new Set();
+      this.addResults = GlobalSearch.search(q).filter((e) => !seen.has(e.part.partNumber) && seen.add(e.part.partNumber)).slice(0, 8);
+      const mark = q.trim().split(/\s+/).sort((a, b) => b.length - a.length)[0];
+      els.frequentAddResults.innerHTML = this.addResults.length
+        ? this.addResults.map(({ part, zone }, i) => {
+            const listed = this.isListed(part.partNumber);
+            return `<li class="freq-add-item">
+                <span class="freq-main">
+                  <span class="freq-line"><span class="pn">${highlight(part.partNumber, mark)}</span> <span class="freq-desc">${highlight(part.description, mark)}</span></span>
+                  <span class="freq-meta">${escapeHtml(zone.name)}</span>
+                </span>
+                <button type="button" class="cart-add${listed ? " is-in" : ""}" data-add-index="${i}" ${listed ? "disabled" : ""}>${listed ? "✓ En frecuentes" : "+ A frecuentes"}</button>
+              </li>`;
+          }).join("")
+        : `<li class="freq-add-empty">Sin resultados para «${escapeHtml(q.trim())}»</li>`;
+      els.frequentAddResults.hidden = false;
+      els.frequentAddInput.setAttribute("aria-expanded", "true");
+    },
+
+    closeAdd() {
+      els.frequentAddResults.hidden = true;
+      els.frequentAddInput.setAttribute("aria-expanded", "false");
+    },
+
+    bindEvents() {
+      els.frequentFilters.addEventListener("click", (e) => {
+        const btn = e.target.closest("[data-filter]");
+        if (!btn) return;
+        this.filter = btn.dataset.filter;
+        this.render();
+      });
+      els.frequentSearch.addEventListener("input", () => {
+        this.query = els.frequentSearch.value;
+        this.render();
+      });
+
+      els.frequentBody.addEventListener("click", (e) => {
+        const li = e.target.closest(".freq-item");
+        if (!li) return;
+        const pn = li.dataset.pn;
+        if (e.target.closest(".cart-add")) {
+          const p = this.parts.get(pn);
+          if (p) Cart.add(p.entry.part, p.entry.zone, p.entry.figure, p.entry.figureIndex);
+        } else if (e.target.closest(".freq-pin")) this.togglePin(pn);
+        else if (e.target.closest(".freq-remove")) this.remove(pn);
+      });
+
+      els.frequentAddInput.addEventListener("input", () => this.updateAdd());
+      els.frequentAddInput.addEventListener("focus", () => els.frequentAddInput.value.trim() && this.updateAdd());
+      els.frequentAddInput.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") this.closeAdd();
+        else if (e.key === "Enter" && this.addResults.length && !this.isListed(this.addResults[0].part.partNumber)) {
+          e.preventDefault();
+          this.addFavorite(this.addResults[0].part.partNumber);
+          this.updateAdd();
+        }
+      });
+      els.frequentAddResults.addEventListener("click", (e) => {
+        const btn = e.target.closest("[data-add-index]");
+        const r = btn && this.addResults[Number(btn.dataset.addIndex)];
+        if (!r) return;
+        this.addFavorite(r.part.partNumber);
+        this.updateAdd();
+      });
+      document.addEventListener("click", (e) => {
+        if (!e.target.closest(".freq-add")) this.closeAdd();
+      });
+
+      els.frequentRestore.addEventListener("click", () => {
+        const mine = this.mine;
+        mine.hidden = mine.hidden.filter((pn) => !this.parts.get(pn)?.rule);
+        this.save();
+        this.render();
+        showToast("Sugeridos restaurados");
       });
     }
   };
@@ -4605,6 +4994,15 @@ ${logo ? '<drawing r:id="rId1"/>' : ""}
       return;
     }
 
+    if (segs[0] === "frecuentes") {
+      // La pestaña activa ya indica la vista: la ruta queda en "<máquina> Completa"
+      setBreadcrumb(null);
+      document.title = `${current.name} · Repuestos Frecuentes`;
+      showView(els.frequentView);
+      await Frequent.show();
+      return;
+    }
+
     const match = segs[0] === "zona" && segs[1] ? [null, segs[1], segs[2]] : null;
     const zone = match && MachineView.zone(match[1]);
 
@@ -4672,18 +5070,21 @@ ${logo ? '<drawing r:id="rId1"/>' : ""}
     MachineView.init();
     GlobalSearch.init();
     Cart.init();
+    Frequent.init();
 
     // Selector de máquina en la cabecera: abre la portada de la máquina elegida
+    // (o sus Repuestos Frecuentes si se está en esa vista)
+    const switchHash = (id) => `#/${id}/${els.frequentView.hidden ? "" : "frecuentes"}`;
     els.machineSwitch.addEventListener("click", (e) => {
       const btn = e.target.closest("[data-machine]");
-      if (btn && btn.dataset.machine !== current.id) location.hash = `#/${btn.dataset.machine}/`;
+      if (btn && btn.dataset.machine !== current.id) location.hash = switchHash(btn.dataset.machine);
     });
     els.machineSwitch.addEventListener("keydown", (e) => {
       if (!["ArrowLeft", "ArrowRight"].includes(e.key)) return;
       e.preventDefault();
       const i = machines.indexOf(current) + (e.key === "ArrowRight" ? 1 : -1);
       const next = machines[(i + machines.length) % machines.length];
-      location.hash = `#/${next.id}/`;
+      location.hash = switchHash(next.id);
       setTimeout(() => els.machineSwitch.querySelector(`[data-machine="${next.id}"]`)?.focus(), 150);
     });
 

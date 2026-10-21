@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" />
   <!-- ?v= evita que el navegador use un CSS/JS viejo en caché tras publicar cambios -->
-  <link rel="stylesheet" href="css/styles.css?v=2026-10-15k" />
+  <link rel="stylesheet" href="css/styles.css?v=2026-10-21a" />
 </head>
 <body>
   <!-- Íconos SVG reutilizables -->
@@ -18,6 +18,7 @@
     <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
     <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
     <symbol id="i-cart" viewBox="0 0 24 24"><path d="M3 4h2.2l2.1 10.2a1.5 1.5 0 0 0 1.5 1.2h8.4a1.5 1.5 0 0 0 1.4-1.1L20.5 8H6.1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="19.5" r="1.5" fill="currentColor"/><circle cx="17" cy="19.5" r="1.5" fill="currentColor"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M9 3h6l-1 6 3 3v2H7v-2l3-3-1-6Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 14v7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
     <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M19 12H5m6-6-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   </svg>
 
@@ -32,11 +33,15 @@
     <span class="brand-divider" aria-hidden="true"></span>
     <div class="topbar-title">
       <h1><span id="title-machine">Tennant T7</span> <span>· Visor de despiece</span></h1>
-      <nav class="breadcrumb" aria-label="Ruta de navegación">
-        <a href="#/" id="crumb-machine">T7 Completa</a>
-        <span id="crumb-sep" class="crumb-sep" hidden>›</span>
-        <span id="crumb-assembly" hidden></span>
-      </nav>
+      <div class="topbar-sub">
+        <nav class="breadcrumb" aria-label="Ruta de navegación">
+          <a href="#/" id="crumb-machine">T7 Completa</a>
+          <span id="crumb-sep" class="crumb-sep" hidden>›</span>
+          <span id="crumb-assembly" hidden></span>
+        </nav>
+        <!-- Acceso rápido a los repuestos de alta rotación de la máquina activa -->
+        <a href="#/t7/frecuentes" id="frequent-tab" class="frequent-tab" title="Repuestos de alta rotación de esta máquina"><span aria-hidden="true">🔥</span> Repuestos Frecuentes</a>
+      </div>
     </div>
     <!-- Selector de máquina: cambia planos, repuestos y datos del manual -->
     <div id="machine-switch" class="machine-switch" role="radiogroup" aria-label="Máquina"></div>
@@ -74,6 +79,10 @@
       </section>
 
       <p class="hero-examples" id="hero-examples"></p>
+      <a href="#/t7/frecuentes" id="hero-frequent" class="hero-frequent">
+        <span class="hero-frequent-icon" aria-hidden="true">🔥</span>
+        <span><strong>Repuestos Frecuentes</strong><small>Láminas, cepillos, filtros, carbones y más: los de alta rotación a un clic</small></span>
+      </a>
     </section>
 
     <div class="home-grid">
@@ -205,6 +214,54 @@
     </section>
   </main>
 
+  <!-- ============ Repuestos Frecuentes / Alta Rotación (por máquina) ============ -->
+  <main id="view-frequent" class="view frequent" data-level="2" hidden>
+    <div class="view-toolbar">
+      <a href="#/" id="frequent-back" class="back-btn"><svg aria-hidden="true"><use href="#i-arrow-left"/></svg> <span id="frequent-back-label">Volver a la T7 Completa</span></a>
+    </div>
+
+    <section class="freq-hero" aria-labelledby="freq-title">
+      <img class="freq-logo" src="assets/LOGOINGPAR.png" alt="INGPAR S.A.S." width="370" height="271" decoding="async" />
+      <div class="freq-hero-text">
+        <p class="eyebrow">INGPAR S.A.S. · Alta rotación</p>
+        <h2 id="freq-title"><span aria-hidden="true">🔥</span> Repuestos Frecuentes · <span id="freq-machine">Tennant T7</span></h2>
+        <p id="freq-intro" class="freq-intro"></p>
+      </div>
+      <dl id="freq-stats" class="freq-stats"></dl>
+    </section>
+
+    <section class="panel freq-panel" aria-label="Lista de repuestos frecuentes">
+      <div class="panel-header">
+        <h2>Lista de frecuentes</h2>
+        <span id="freq-count" class="count-badge">0</span>
+      </div>
+      <div class="controls freq-controls">
+        <div class="freq-search-row">
+          <label class="search">
+            <svg class="search-icon" aria-hidden="true"><use href="#i-search"/></svg>
+            <input id="freq-search" type="search" placeholder="Filtrar esta lista…" autocomplete="off" />
+          </label>
+          <!-- Agrega cualquier repuesto de la máquina a la lista de frecuentes -->
+          <div class="freq-add">
+            <label class="search freq-add-box">
+              <span class="freq-add-plus" aria-hidden="true">+</span>
+              <input id="freq-add-input" type="search" placeholder="Agregar otro repuesto: Part Number o descripción…" autocomplete="off"
+                     aria-controls="freq-add-results" aria-expanded="false" />
+            </label>
+            <ul id="freq-add-results" class="freq-add-results" hidden></ul>
+          </div>
+        </div>
+        <div id="freq-filters" class="filters" role="group" aria-label="Filtrar por frecuencia"></div>
+      </div>
+      <div id="freq-body" class="freq-body"></div>
+      <p id="freq-empty" class="empty-state" hidden>No hay repuestos que coincidan con el filtro.</p>
+      <footer class="freq-foot">
+        <p class="freq-note">Clasificación sugerida a partir de la descripción del manual y del desgaste típico de cada pieza. Fija (📌) los que más pides, quita los que no usas y agrega los que falten: los cambios se guardan en este navegador.</p>
+        <button type="button" id="freq-restore" class="cart-btn cart-btn-ghost" hidden></button>
+      </footer>
+    </section>
+  </main>
+
   <footer class="site-footer">
     <span>INGPAR S.A.S. · Visor de despiece Tennant T7 · T12 · IPC CT110</span>
     <span>Diagramas y referencias © Tennant Company e IPC · Herramienta de consulta no afiliada a los fabricantes</span>
@@ -244,6 +301,6 @@
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
-  <script src="js/app.js?v=2026-10-15k"></script>
+  <script src="js/app.js?v=2026-10-21a"></script>
 </body>
 </html>

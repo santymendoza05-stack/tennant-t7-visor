@@ -23,6 +23,19 @@ El **selector de la cabecera** (Tennant T7 / Tennant T12 / IPC CT110) cambia el 
 - El PDF y el .xlsx usan la plantilla formal de INGPAR S.A.S. (NIT 900.919.023-1, "Ingeniería para un Mantenimiento Integral", azul y verde del logo) con el orden técnico **máquina → subensamble (orden del plano general) → ítem del manual**, y firmas de **Solicitante** y **Bodega**. Los datos de la empresa están en `COMPANY`; los colores en `.print-sheet` (CSS) y `XLSX_STYLES` (JS).
 - La lista y los campos se guardan en este navegador (`localStorage`) y se sincronizan entre pestañas abiertas del visor.
 
+### 🔥 Repuestos Frecuentes / Alta Rotación
+
+La pestaña **🔥 Repuestos Frecuentes** de la cabecera (y el acceso bajo el buscador de la portada) abre `#/<máquina>/frecuentes` con los repuestos de desgaste de la máquina activa (T7, T12 o CT110). Al cambiar de máquina en el selector se queda en esta vista.
+
+- **Clasificación automática** a partir de la descripción del manual (reglas en `FREQ_TIERS`, `js/app.js`):
+  - **Frecuencia Alta:** láminas / cuchillas de racleta, cepillos y pads, mangueras.
+  - **Frecuencia Media:** filtros, empaques y sellos, ruedas paragolpes y rodillos, pasadores.
+  - **Frecuencia Preventiva:** carbones de motor, electroválvulas, fusibles.
+  Cada repuesto aparece una vez por Part Number; dentro de cada grupo van primero los que se repiten en más figuras.
+- Cada ítem tiene **+ Agregar a la lista** (el mismo carrito de **🛒 Mi Lista**), **Ver** (abre el despiece con el punto iluminado), **📌 Fijar** (sube el repuesto a la sección *Fijados*) y **×** (lo quita de los frecuentes; *Restaurar sugeridos ocultos* lo devuelve).
+- **Agregar otro repuesto:** busca en todas las zonas de la máquina y suma el repuesto a *Agregados por ti*.
+- Fijados, agregados y ocultos se guardan por máquina en este navegador (`localStorage`, clave `t7-frequent`).
+
 ### Puntos del diagrama
 
 Para no tapar los números del manual, los puntos del despiece están **ocultos por defecto** y son solo un anillo fino; se rellenan al pasar el cursor o al seleccionarlos.
