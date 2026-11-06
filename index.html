@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" />
   <!-- ?v= evita que el navegador use un CSS/JS viejo en caché tras publicar cambios -->
-  <link rel="stylesheet" href="css/styles.css?v=2026-10-21b" />
+  <link rel="stylesheet" href="css/styles.css?v=2026-11-06" />
 </head>
 <body>
   <!-- Íconos SVG reutilizables -->
@@ -41,6 +41,8 @@
         </nav>
         <!-- Acceso rápido a los repuestos de alta rotación de la máquina activa -->
         <a href="#/t7/frecuentes" id="frequent-tab" class="frequent-tab" title="Repuestos de alta rotación de esta máquina"><span aria-hidden="true">🔥</span> Repuestos Frecuentes</a>
+        <a href="#/bitacora" id="log-tab" class="frequent-tab" aria-label="Bitácora Interna" title="Registro interno de solicitudes de repuestos"><span aria-hidden="true">📋</span> <span class="tab-label">Bitácora Interna</span></a>
+        <button type="button" id="qr-tab" class="frequent-tab" aria-haspopup="dialog" aria-label="Códigos QR" title="Stickers QR que abren el visor de cada máquina"><span aria-hidden="true">📲</span> <span class="tab-label">Códigos QR</span></button>
       </div>
     </div>
     <!-- Selector de máquina: cambia planos, repuestos y datos del manual -->
@@ -83,6 +85,16 @@
         <span class="hero-frequent-icon" aria-hidden="true">🔥</span>
         <span><strong>Repuestos Frecuentes</strong><small>Láminas, cepillos, filtros, carbones y más: los de alta rotación a un clic</small></span>
       </a>
+      <div class="hero-links">
+        <a href="#/bitacora" class="hero-frequent hero-link">
+          <span class="hero-frequent-icon" aria-hidden="true">📋</span>
+          <span><strong>Bitácora Interna</strong><small>Registro de solicitudes: técnico, sede, OP, máquina y repuestos</small></span>
+        </a>
+        <button type="button" id="hero-qr" class="hero-frequent hero-link" aria-haspopup="dialog">
+          <span class="hero-frequent-icon" aria-hidden="true">📲</span>
+          <span><strong>Códigos QR para Máquinas</strong><small>Stickers que abren el visor de la T7, T12 o CT110</small></span>
+        </button>
+      </div>
     </section>
 
     <div class="home-grid">
@@ -262,6 +274,83 @@
     </section>
   </main>
 
+  <!-- ================= Bitácora Interna de Solicitudes ================= -->
+  <main id="view-log" class="view frequent log" data-level="2" hidden>
+    <div class="view-toolbar">
+      <a href="#/" id="log-back" class="back-btn"><svg aria-hidden="true"><use href="#i-arrow-left"/></svg> <span id="log-back-label">Volver a la T7 Completa</span></a>
+    </div>
+
+    <section class="freq-hero" aria-labelledby="log-title">
+      <img class="freq-logo" src="assets/LOGOINGPAR.png" alt="INGPAR S.A.S." width="370" height="271" decoding="async" />
+      <div class="freq-hero-text">
+        <p class="eyebrow">INGPAR S.A.S. · Uso interno</p>
+        <h2 id="log-title"><span aria-hidden="true">📋</span> Bitácora Interna de Solicitudes</h2>
+        <p class="freq-intro">Registra cada pedido de repuestos: quién lo pidió, dónde, para qué OP y en qué máquina. Los registros se guardan en este navegador<span id="log-api-note"></span>.</p>
+      </div>
+      <dl id="log-stats" class="freq-stats"></dl>
+    </section>
+
+    <section class="panel log-form-panel" aria-labelledby="log-form-title">
+      <div class="panel-header">
+        <h2 id="log-form-title">Nueva solicitud</h2>
+        <span class="hint">La fecha y la hora se llenan solas</span>
+      </div>
+      <form id="log-form" class="log-form" autocomplete="off">
+        <label class="cart-field"><span>Fecha</span><input id="log-date" type="date" required /></label>
+        <label class="cart-field"><span>Hora</span><input id="log-time" type="time" required /></label>
+        <label class="cart-field"><span>Técnico</span><input id="log-tech" type="text" maxlength="80" required placeholder="Nombre y apellido" autocomplete="name" /></label>
+        <label class="cart-field">
+          <span>Sede / Lugar <em>(opcional)</em></span>
+          <input id="log-site" type="text" maxlength="80" list="log-sites" placeholder="Ej. Planta Funza" />
+          <datalist id="log-sites"></datalist>
+        </label>
+        <label class="cart-field"><span>OP</span><input id="log-op" type="text" maxlength="40" placeholder="Ej. OP-2026-0153" /></label>
+        <label class="cart-field"><span>Máquina</span><select id="log-machine"></select></label>
+        <label class="cart-field log-parts-field">
+          <span>Repuestos solicitados</span>
+          <textarea id="log-parts" rows="4" maxlength="4000" required placeholder="Un repuesto por línea: Part Number · descripción × cantidad"></textarea>
+        </label>
+        <div class="log-form-actions">
+          <button type="button" id="log-import" class="cart-btn" title="Copia los repuestos de 🛒 Mi Lista para la máquina elegida">🛒 Traer de Mi Lista</button>
+          <button type="reset" class="cart-btn cart-btn-ghost">Limpiar</button>
+          <button type="submit" class="cart-btn cart-btn-primary">Guardar en la bitácora</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel log-list-panel" aria-labelledby="log-list-title">
+      <div class="panel-header">
+        <h2 id="log-list-title">Registros</h2>
+        <span id="log-count" class="count-badge">0</span>
+      </div>
+      <div class="controls log-controls">
+        <label class="search">
+          <svg class="search-icon" aria-hidden="true"><use href="#i-search"/></svg>
+          <input id="log-search" type="search" placeholder="Filtrar por técnico, sede, OP, máquina o repuesto…" autocomplete="off" />
+        </label>
+        <button type="button" id="log-csv" class="cart-btn">Exportar a Excel (.csv)</button>
+      </div>
+      <div class="table-wrapper">
+        <table class="parts-table log-table">
+          <thead>
+            <tr>
+              <th scope="col">Fecha</th>
+              <th scope="col">Hora</th>
+              <th scope="col">Técnico</th>
+              <th scope="col">Sede / Lugar</th>
+              <th scope="col">OP</th>
+              <th scope="col">Máquina</th>
+              <th scope="col">Repuestos solicitados</th>
+              <th scope="col"><span class="sr-only">Acciones</span></th>
+            </tr>
+          </thead>
+          <tbody id="log-body"></tbody>
+        </table>
+        <p id="log-empty" class="empty-state" hidden>Aún no hay registros.</p>
+      </div>
+    </section>
+  </main>
+
   <footer class="site-footer">
     <span>INGPAR S.A.S. · Visor de despiece Tennant T7 · T12 · IPC CT110</span>
     <span>Diagramas y referencias © Tennant Company e IPC · Herramienta de consulta no afiliada a los fabricantes</span>
@@ -292,6 +381,7 @@
       <p id="cart-totals" class="cart-totals"></p>
       <div class="cart-actions">
         <button type="button" id="cart-clear" class="cart-btn cart-btn-ghost">Vaciar lista</button>
+        <button type="button" id="cart-log" class="cart-btn" title="Lleva esta solicitud a la Bitácora Interna">📋 Registrar en bitácora</button>
         <button type="button" id="cart-csv" class="cart-btn" title="Tabla de repuestos en texto separado por ;">Exportar a Excel (.csv)</button>
         <button type="button" id="cart-xlsx" class="cart-btn" title="Formato completo con encabezado y firmas">Descargar Excel (.xlsx)</button>
         <button type="button" id="cart-pdf" class="cart-btn cart-btn-primary">Descargar PDF</button>
@@ -299,8 +389,34 @@
     </footer>
   </dialog>
 
+  <!-- Stickers QR: cada código abre el visor directamente en su máquina -->
+  <dialog id="qr-dialog" class="cart-dialog qr-dialog" aria-labelledby="qr-title">
+    <header class="cart-head">
+      <div>
+        <p class="eyebrow">INGPAR S.A.S. · Stickers de máquina</p>
+        <h2 id="qr-title"><span aria-hidden="true">📲</span> Generar Códigos QR para Máquinas</h2>
+        <p class="cart-date">Pega el sticker en la máquina: al escanearlo se abre su despiece.</p>
+      </div>
+      <button type="button" id="qr-close" class="cart-close" aria-label="Cerrar">&times;</button>
+    </header>
+    <div class="qr-fields">
+      <label class="cart-field">
+        <span>Dirección del visor publicado (Vercel / GitHub Pages)</span>
+        <input id="qr-base" type="url" inputmode="url" spellcheck="false" placeholder="https://tu-proyecto.vercel.app/" />
+      </label>
+    </div>
+    <div id="qr-body" class="cart-body qr-grid"></div>
+    <footer class="cart-foot">
+      <p id="qr-status" class="cart-totals"></p>
+      <div class="cart-actions">
+        <button type="button" id="qr-print" class="cart-btn">Imprimir stickers</button>
+        <button type="button" id="qr-all" class="cart-btn cart-btn-primary">Descargar todos (PNG)</button>
+      </div>
+    </footer>
+  </dialog>
+
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
-  <script src="js/app.js?v=2026-10-21b"></script>
+  <script src="js/app.js?v=2026-11-06"></script>
 </body>
 </html>

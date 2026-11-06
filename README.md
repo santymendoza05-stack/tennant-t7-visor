@@ -42,6 +42,27 @@ La pestaña **🔥 Repuestos Frecuentes** de la cabecera (y el acceso bajo el bu
 - **Agregar otro repuesto:** busca en todas las zonas de la máquina y suma el repuesto a *Agregados por ti*.
 - Fijados, agregados y ocultos se guardan por máquina en este navegador (`localStorage`, clave `t7-frequent`).
 
+### 📋 Bitácora Interna de Solicitudes
+
+La pestaña **📋 Bitácora Interna** de la cabecera (y el acceso en la portada) abre `#/bitacora`: un registro interno de pedidos de repuestos con **Fecha, Hora, Técnico, Sede / Lugar, OP, Máquina y Repuestos solicitados**.
+
+- La fecha y la hora se llenan solas (se pueden corregir). La **sede es opcional** y solo vive en la bitácora: la solicitud de 🛒 Mi Lista (PDF / Excel) no la incluye.
+- **🛒 Traer de Mi Lista** copia los repuestos del carrito de la máquina elegida (y el técnico y la OP si están vacíos). En Mi Lista, **📋 Registrar en bitácora** hace lo mismo desde el modal.
+- Filtro de texto, borrado por registro y **Exportar a Excel (.csv)**.
+- Se guarda en este navegador (`localStorage`, clave `t7-log`). Para centralizarla, pon en `LOG_API_URL` (`js/app.js`) un endpoint que reciba cada registro por `POST` en JSON; si falla, el registro queda guardado localmente y marcado como pendiente.
+
+### 📲 Códigos QR para Máquinas
+
+El botón **📲 Códigos QR** abre un modal con un sticker por máquina (Tennant T7, Tennant T12, IPC CT110). Cada QR abre `<dirección del visor>#/<máquina>/`, es decir, el plano general de esa máquina.
+
+- **Dirección del visor:** por defecto, la de la página publicada (Vercel o GitHub Pages); en local usa la de GitHub Pages. Se puede cambiar y queda guardada.
+- **Descargar PNG** (800 × 1080 px, con logo), **Descargar todos**, **Copiar enlace**, **Probar** e **Imprimir stickers** (hoja carta, 85 mm de ancho cada uno).
+- El generador [qrcode-generator](https://github.com/kazuhikoarase/qrcode-generator) 1.4.4 se carga desde cdnjs al abrir el modal (requiere internet).
+
+### Despliegue en Vercel
+
+`vercel.json` publica la carpeta raíz como sitio estático, sin build: importa el repositorio en Vercel con *Framework Preset: Other* y deja vacíos los comandos de build e instalación. Las rutas que no son archivos (`assets/`, `css/`, `js/`, `data/`) vuelven a `index.html`. GitHub Pages sigue funcionando en paralelo con `.github/workflows/pages.yml`.
+
 ### Puntos del diagrama
 
 Para no tapar los números del manual, los puntos del despiece están **ocultos por defecto** y son solo un anillo fino; se rellenan al pasar el cursor o al seleccionarlos.

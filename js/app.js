@@ -2849,7 +2849,40 @@
     frequentFilters: $("#freq-filters"),
     frequentBody: $("#freq-body"),
     frequentEmpty: $("#freq-empty"),
-    frequentRestore: $("#freq-restore")
+    frequentRestore: $("#freq-restore"),
+    // Bitácora Interna
+    logView: $("#view-log"),
+    logTab: $("#log-tab"),
+    logBack: $("#log-back"),
+    logBackLabel: $("#log-back-label"),
+    logApiNote: $("#log-api-note"),
+    logStats: $("#log-stats"),
+    logForm: $("#log-form"),
+    logDate: $("#log-date"),
+    logTime: $("#log-time"),
+    logTech: $("#log-tech"),
+    logSite: $("#log-site"),
+    logSites: $("#log-sites"),
+    logOp: $("#log-op"),
+    logMachine: $("#log-machine"),
+    logParts: $("#log-parts"),
+    logImport: $("#log-import"),
+    logSearch: $("#log-search"),
+    logCsv: $("#log-csv"),
+    logCount: $("#log-count"),
+    logBody: $("#log-body"),
+    logEmpty: $("#log-empty"),
+    cartLog: $("#cart-log"),
+    // Códigos QR
+    qrTab: $("#qr-tab"),
+    heroQr: $("#hero-qr"),
+    qrDialog: $("#qr-dialog"),
+    qrClose: $("#qr-close"),
+    qrBase: $("#qr-base"),
+    qrBody: $("#qr-body"),
+    qrStatus: $("#qr-status"),
+    qrPrint: $("#qr-print"),
+    qrAll: $("#qr-all")
   };
 
   // ---------- Utilidades ----------
@@ -2930,7 +2963,7 @@
   let toastTimer;
   function showToast(msg) {
     // Con el modal abierto (capa superior) el aviso se muestra dentro de él
-    const host = els.cartDialog.open ? els.cartDialog : document.body;
+    const host = els.cartDialog.open ? els.cartDialog : els.qrDialog.open ? els.qrDialog : document.body;
     if (els.toast.parentElement !== host) host.appendChild(els.toast);
     els.toast.textContent = msg;
     els.toast.classList.add("show");
@@ -3038,7 +3071,8 @@
     els.crumbMachine.textContent = `${short} Completa`;
     els.crumbMachine.href = home(m);
     els.backBtn.href = home(m);
-    els.backLabel.textContent = `Volver a la ${short} Completa`;
+    els.backLabel.textContent = els.logBackLabel.textContent = `Volver a la ${short} Completa`;
+    els.logBack.href = home(m);
     els.frequentTab.href = els.heroFrequent.href = `${home(m)}frecuentes`;
     els.heroEyebrow.textContent = `${name} · Manual de partes ${m.manual || ""}`;
     els.tbMachine.textContent = name;
@@ -3705,9 +3739,11 @@
      Navegación entre niveles
      ========================================================== */
   function showView(view) {
-    const views = [els.machineView, els.assemblyView, els.frequentView];
-    if (view === els.frequentView) els.frequentTab.setAttribute("aria-current", "page");
-    else els.frequentTab.removeAttribute("aria-current");
+    const views = [els.machineView, els.assemblyView, els.frequentView, els.logView];
+    [[els.frequentTab, els.frequentView], [els.logTab, els.logView]].forEach(([tab, v]) => {
+      if (view === v) tab.setAttribute("aria-current", "page");
+      else tab.removeAttribute("aria-current");
+    });
     if (!view.hidden) return;
     views.forEach((v) => {
       v.hidden = v !== view;
@@ -4603,7 +4639,7 @@
       els.cartTotals.innerHTML = refs
         ? `<strong>${refs}</strong> referencia${refs === 1 ? "" : "s"} · <strong>${units}</strong> unidad${units === 1 ? "" : "es"}`
         : "";
-      [els.cartClear, els.cartCsv, els.cartXlsx, els.cartPdf].forEach((b) => (b.disabled = !refs || (b === els.cartPdf && this.pdfBusy)));
+      [els.cartClear, els.cartLog, els.cartCsv, els.cartXlsx, els.cartPdf].forEach((b) => (b.disabled = !refs || (b === els.cartPdf && this.pdfBusy)));
     },
 
     render() {
@@ -5056,6 +5092,548 @@ ${logo ? '<drawing r:id="rId1"/>' : ""}
     return new Blob([...local, ...central, end], { type });
   }
 
+  /* ==========================================================
+     📋 Bitácora Interna de Solicitudes
+     Registro interno (Fecha, Hora, Técnico, Sede/Lugar, OP, Máquina,
+     Repuestos). Se guarda en este navegador; si LOG_API_URL tiene una
+     dirección, cada registro también se envía por POST (JSON).
+     La sede es opcional y no se agrega a la solicitud de Mi Lista
+     (PDF / Excel), que sigue igual.
+     ========================================================== */
+  const LOG_KEY = "t7-log";
+  const LOG_API_URL = ""; // p. ej. "https://mi-api.vercel.app/api/bitacora"
+  const LOG_GENERAL = { id: "general", name: "Varias / General" };
+
+  const Log = {
+    entries: [], // { id, date: "AAAA-MM-DD", time: "HH:MM", tech, site, op, machine, machineName, parts, createdAt, synced }
+    autoStamp: true, // fecha/hora sin tocar: se actualizan al guardar
+    pendingImport: false,
+
+    init() {
+      this.load();
+      els.logApiNote.textContent = LOG_API_URL ? " y se envían al servidor de INGPAR" : "";
+      els.logMachine.innerHTML = [...machines, LOG_GENERAL]
+        .map((m) => `<option value="${escapeHtml(m.id)}">${escapeHtml(m.name)}</option>`)
+        .join("");
+
+      const touched = () => (this.autoStamp = false);
+      els.logDate.addEventListener("input", touched);
+      els.logTime.addEventListener("input", touched);
+      els.logForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        this.submit();
+      });
+      els.logForm.addEventListener("reset", () => setTimeout(() => this.resetForm(), 0));
+      els.logImport.addEventListener("click", () => this.importCart());
+      els.logSearch.addEventListener("input", () => this.render());
+      els.logCsv.addEventListener("click", () => this.downloadCsv());
+      els.logBody.addEventListener("click", (e) => {
+        const btn = e.target.closest("[data-log-delete]");
+        if (!btn) return;
+        const entry = this.entries.find((x) => x.id === btn.dataset.logDelete);
+        if (!entry || !confirm(`¿Eliminar el registro de ${entry.tech} del ${this.dateText(entry.date)} ${entry.time}?`)) return;
+        this.entries = this.entries.filter((x) => x !== entry);
+        this.save();
+        this.render();
+        showToast("Registro eliminado de la bitácora");
+      });
+
+      // Desde 🛒 Mi Lista: lleva la solicitud al formulario de la bitácora
+      els.cartLog.addEventListener("click", () => {
+        els.cartDialog.close();
+        if (els.logView.hidden) {
+          this.pendingImport = true;
+          location.hash = "#/bitacora";
+        } else {
+          this.importCart();
+        }
+      });
+
+      window.addEventListener("storage", (e) => {
+        if (e.key !== LOG_KEY) return;
+        this.load();
+        if (!els.logView.hidden) this.render();
+      });
+      this.resetForm();
+    },
+
+    load() {
+      let saved = null;
+      try { saved = JSON.parse(localStorage.getItem(LOG_KEY)); } catch {}
+      this.entries = Array.isArray(saved) ? saved.filter((x) => x && x.id && x.tech) : [];
+    },
+
+    save() {
+      try {
+        localStorage.setItem(LOG_KEY, JSON.stringify(this.entries));
+        return true;
+      } catch {
+        showToast("No se pudo guardar en este navegador");
+        return false;
+      }
+    },
+
+    show() {
+      if (this.autoStamp) this.stamp();
+      this.syncMachine();
+      this.render();
+      if (this.pendingImport) {
+        this.pendingImport = false;
+        this.importCart();
+      }
+    },
+
+    stamp() {
+      const now = new Date();
+      els.logDate.value = dateIso(now);
+      els.logTime.value = `${pad2(now.getHours())}:${pad2(now.getMinutes())}`;
+    },
+
+    syncMachine() {
+      if (current) els.logMachine.value = current.id;
+    },
+
+    resetForm() {
+      this.autoStamp = true;
+      this.stamp();
+      this.syncMachine();
+      els.logSite.value = els.logOp.value = els.logParts.value = "";
+      // Técnico: el del último registro o el de Mi Lista
+      els.logTech.value = (this.entries[0] && this.entries[0].tech) || Cart.info.requester || "";
+    },
+
+    // Copia los repuestos de 🛒 Mi Lista (de la máquina elegida, o todos si no hay de esa)
+    importCart() {
+      if (!Cart.items.length) {
+        showToast("🛒 Mi Lista está vacía");
+        return;
+      }
+      let items = Cart.items.filter((i) => i.machine === els.logMachine.value);
+      if (!items.length) {
+        const ids = [...new Set(Cart.items.map((i) => i.machine))];
+        els.logMachine.value = ids.length === 1 ? ids[0] : LOG_GENERAL.id;
+        items = Cart.items;
+      }
+      const multi = new Set(items.map((i) => i.machine)).size > 1;
+      els.logParts.value = items
+        .map((i) => {
+          const m = machines.find((x) => x.id === i.machine);
+          return `${multi ? `[${(m && m.short) || i.machineName}] ` : ""}${i.pn} · ${i.description} × ${i.qty}`;
+        })
+        .join("\n");
+      if (!els.logTech.value.trim() && Cart.info.requester) els.logTech.value = Cart.info.requester;
+      if (!els.logOp.value.trim() && Cart.info.project) els.logOp.value = Cart.info.project;
+      showToast(`${plural(items.length, "repuesto traído", "repuestos traídos")} de Mi Lista`);
+      (els.logTech.value.trim() ? els.logSite : els.logTech).focus();
+    },
+
+    submit() {
+      if (this.autoStamp) this.stamp();
+      const m = machines.find((x) => x.id === els.logMachine.value) || LOG_GENERAL;
+      const entry = {
+        id: `${Date.now().toString(36)}${Math.random().toString(36).slice(2, 6)}`,
+        date: els.logDate.value,
+        time: els.logTime.value,
+        tech: els.logTech.value.trim(),
+        site: els.logSite.value.trim(),
+        op: els.logOp.value.trim(),
+        machine: m.id,
+        machineName: m.name,
+        parts: els.logParts.value.trim(),
+        createdAt: new Date().toISOString(),
+        synced: false
+      };
+      if (!entry.tech || !entry.parts) {
+        showToast("Completa el técnico y los repuestos solicitados");
+        return;
+      }
+      this.entries.unshift(entry);
+      if (!this.save()) {
+        this.entries.shift();
+        return;
+      }
+      const tech = entry.tech;
+      this.resetForm();
+      els.logTech.value = tech;
+      this.render();
+      showToast("Solicitud registrada en la bitácora");
+      if (LOG_API_URL) this.send(entry);
+    },
+
+    async send(entry) {
+      try {
+        const res = await fetch(LOG_API_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(entry)
+        });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        entry.synced = true;
+        this.save();
+        this.render();
+      } catch (err) {
+        console.error(err);
+        showToast("Guardado solo en este navegador: no se pudo enviar al servidor");
+      }
+    },
+
+    dateText(iso) {
+      const [y, mo, d] = String(iso || "").split("-");
+      return d ? `${d}/${mo}/${y}` : String(iso || "");
+    },
+
+    sorted() {
+      return [...this.entries].sort((a, b) => `${b.date}${b.time}${b.createdAt}`.localeCompare(`${a.date}${a.time}${a.createdAt}`));
+    },
+
+    filtered() {
+      const q = normalize(els.logSearch.value.trim());
+      const list = this.sorted();
+      if (!q) return list;
+      return list.filter((x) =>
+        normalize([this.dateText(x.date), x.tech, x.site, x.op, x.machineName, x.parts].join(" ")).includes(q)
+      );
+    },
+
+    render() {
+      const list = this.filtered();
+      const month = dateIso(new Date()).slice(0, 7);
+      const stats = [
+        ["Registros", this.entries.length],
+        ["Este mes", this.entries.filter((x) => String(x.date).startsWith(month)).length],
+        ["Técnicos", new Set(this.entries.map((x) => normalize(x.tech))).size]
+      ];
+      els.logStats.innerHTML = stats.map(([k, v]) => `<div class="freq-stat"><dt>${k}</dt><dd>${v}</dd></div>`).join("");
+      els.logCount.textContent = list.length;
+      els.logCsv.disabled = !this.entries.length;
+
+      const sites = [...new Set(this.entries.map((x) => x.site).filter(Boolean))];
+      els.logSites.innerHTML = sites.map((s) => `<option value="${escapeHtml(s)}"></option>`).join("");
+
+      const dash = '<span class="log-none">—</span>';
+      els.logBody.innerHTML = list
+        .map((x) => `<tr>
+            <td class="log-nowrap">${escapeHtml(this.dateText(x.date))}</td>
+            <td class="log-nowrap">${escapeHtml(x.time)}</td>
+            <td>${escapeHtml(x.tech)}</td>
+            <td>${x.site ? escapeHtml(x.site) : dash}</td>
+            <td class="log-nowrap">${x.op ? escapeHtml(x.op) : dash}</td>
+            <td class="log-nowrap">${escapeHtml(x.machineName)}${LOG_API_URL && !x.synced ? ' <span class="log-pending" title="Pendiente de enviar al servidor">●</span>' : ""}</td>
+            <td class="log-parts">${escapeHtml(x.parts)}</td>
+            <td><button type="button" class="cart-remove" data-log-delete="${escapeHtml(x.id)}" aria-label="Eliminar registro" title="Eliminar registro">&times;</button></td>
+          </tr>`)
+        .join("");
+      els.logEmpty.hidden = list.length > 0;
+      els.logEmpty.textContent = this.entries.length ? "No hay registros que coincidan con el filtro." : "Aún no hay registros.";
+    },
+
+    downloadCsv() {
+      if (!this.entries.length) return;
+      const cell = (v) => {
+        let s = String(v ?? "").replace(/\r?\n/g, " | ");
+        if (/^[=+\-@]/.test(s)) s = `'${s}`; // texto escrito a mano: no es fórmula
+        return /[";]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+      };
+      const lines = [
+        [COMPANY.name, COMPANY.nit, "Bitácora Interna de Solicitudes"].map(cell).join(";"),
+        "",
+        ["Fecha", "Hora", "Técnico", "Sede / Lugar", "OP", "Máquina", "Repuestos solicitados"].map(cell).join(";"),
+        ...this.sorted().map((x) => [this.dateText(x.date), x.time, x.tech, x.site, x.op, x.machineName, x.parts].map(cell).join(";"))
+      ];
+      const name = `Bitacora_INGPAR_${dateIso(new Date())}.csv`;
+      Cart.saveBlob(new Blob(["﻿" + lines.join("\r\n") + "\r\n"], { type: "text/csv;charset=utf-8" }), name);
+      showToast(`CSV descargado: ${name}`);
+    }
+  };
+
+  /* ==========================================================
+     📲 Códigos QR para Máquinas
+     Un sticker por máquina (T7, T12, CT110) que abre #/<máquina>/ en el
+     visor publicado. Usa qrcode-generator (cdnjs), cargado al abrir.
+     ========================================================== */
+  const QR_LIB_URL = "https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js";
+  const QR_BASE_KEY = "t7-qr-base";
+  const QR_FALLBACK_BASE = "https://santymendoza05-stack.github.io/tennant-t7-visor/";
+  const STICKER = { w: 800, h: 1080, qr: 580 };
+
+  let qrLoading = null;
+  function loadQrLib() {
+    if (window.qrcode) return Promise.resolve(window.qrcode);
+    qrLoading = qrLoading || new Promise((resolve, reject) => {
+      const s = document.createElement("script");
+      s.src = QR_LIB_URL;
+      s.crossOrigin = "anonymous";
+      s.onload = () => (window.qrcode ? resolve(window.qrcode) : reject(new Error("qrcode-generator no disponible")));
+      s.onerror = () => {
+        qrLoading = null; // permite reintentar
+        s.remove();
+        reject(new Error(`No se pudo cargar ${QR_LIB_URL}`));
+      };
+      document.head.appendChild(s);
+    });
+    return qrLoading;
+  }
+
+  const QR = {
+    canvases: {}, // id de máquina → canvas del sticker
+    logo: undefined,
+    timer: 0,
+    renderId: 0,
+
+    init() {
+      const open = () => this.open();
+      els.qrTab.addEventListener("click", open);
+      els.heroQr.addEventListener("click", open);
+      els.qrClose.addEventListener("click", () => els.qrDialog.close());
+      els.qrDialog.addEventListener("click", (e) => {
+        if (e.target === els.qrDialog) els.qrDialog.close();
+      });
+      els.qrBase.addEventListener("input", () => {
+        clearTimeout(this.timer);
+        this.timer = setTimeout(() => {
+          const base = this.normalizeBase(els.qrBase.value);
+          if (!base) {
+            els.qrStatus.textContent = "Escribe una dirección completa que empiece por https://";
+            return;
+          }
+          try { localStorage.setItem(QR_BASE_KEY, base); } catch {}
+          this.render();
+        }, 350);
+      });
+      els.qrBody.addEventListener("click", (e) => {
+        const btn = e.target.closest("[data-qr]");
+        const m = btn && machines.find((x) => x.id === btn.dataset.machine);
+        if (!m) return;
+        if (btn.dataset.qr === "png") this.download(m);
+        else if (btn.dataset.qr === "copy") copyText(this.url(m));
+      });
+      els.qrAll.addEventListener("click", () => this.downloadAll());
+      els.qrPrint.addEventListener("click", () => this.print());
+    },
+
+    // Dirección pública del visor: la guardada; si no, la página actual si ya está publicada; si no, GitHub Pages
+    defaultBase() {
+      let saved = null;
+      try { saved = localStorage.getItem(QR_BASE_KEY); } catch {}
+      if (saved) return saved;
+      const { protocol, hostname } = location;
+      const local = !/^https?:$/.test(protocol) || /^(localhost|127\.|0\.0\.0\.0|\[::1\]|192\.168\.|10\.)/.test(hostname);
+      return (!local && this.normalizeBase(location.href)) || QR_FALLBACK_BASE;
+    },
+
+    normalizeBase(value) {
+      try {
+        const u = new URL(String(value).trim());
+        if (!/^https?:$/.test(u.protocol) || !u.hostname.includes(".") && u.hostname !== "localhost") return null;
+        u.hash = u.search = "";
+        u.pathname = u.pathname.replace(/index\.html$/, "");
+        if (!u.pathname.endsWith("/")) u.pathname += "/";
+        return u.href;
+      } catch {
+        return null;
+      }
+    },
+
+    base() {
+      return this.normalizeBase(els.qrBase.value) || this.defaultBase();
+    },
+
+    url(m) {
+      return `${this.base()}#/${m.id}/`;
+    },
+
+    open() {
+      if (!els.qrBase.value) els.qrBase.value = this.defaultBase();
+      els.qrDialog.showModal();
+      this.render();
+    },
+
+    async loadLogo() {
+      if (this.logo !== undefined) return this.logo;
+      const img = new Image();
+      await new Promise((resolve) => {
+        img.onload = img.onerror = resolve;
+        img.src = LOGO_URL;
+      });
+      this.logo = null;
+      if (img.naturalWidth) {
+        // En file:// el logo "ensucia" el canvas y no se podría descargar: se omite
+        try {
+          const c = document.createElement("canvas");
+          c.getContext("2d").drawImage(img, 0, 0, 1, 1);
+          c.toDataURL();
+          this.logo = img;
+        } catch {}
+      }
+      return this.logo;
+    },
+
+    async render() {
+      const id = ++this.renderId;
+      els.qrBody.innerHTML = machines
+        .map((m) => `<article class="qr-card">
+            <div class="qr-sticker" data-sticker="${m.id}"><span class="qr-loading">Generando…</span></div>
+            <h3>${escapeHtml(m.name)}</h3>
+            <p class="qr-url" title="${escapeHtml(this.url(m))}">${escapeHtml(this.url(m))}</p>
+            <div class="qr-card-actions">
+              <button type="button" class="cart-btn cart-btn-primary" data-qr="png" data-machine="${m.id}">Descargar PNG</button>
+              <button type="button" class="cart-btn" data-qr="copy" data-machine="${m.id}">Copiar enlace</button>
+              <a class="cart-btn" href="${escapeHtml(this.url(m))}" target="_blank" rel="noopener">Probar</a>
+            </div>
+          </article>`)
+        .join("");
+      els.qrStatus.textContent = "Cargando generador de QR…";
+      [els.qrAll, els.qrPrint].forEach((b) => (b.disabled = true));
+      try {
+        const [lib, logo] = await Promise.all([loadQrLib(), this.loadLogo()]);
+        if (document.fonts) await document.fonts.ready;
+        if (id !== this.renderId) return; // ya hay otra generación en curso
+        this.canvases = {};
+        for (const m of machines) {
+          const canvas = this.draw(lib, m, this.url(m), logo);
+          this.canvases[m.id] = canvas;
+          canvas.setAttribute("role", "img");
+          canvas.setAttribute("aria-label", `Sticker QR de ${m.name}`);
+          const slot = els.qrBody.querySelector(`[data-sticker="${m.id}"]`);
+          if (slot) slot.replaceChildren(canvas);
+        }
+        els.qrStatus.textContent = `${plural(machines.length, "sticker listo", "stickers listos")} · apuntan a ${this.base()}`;
+        [els.qrAll, els.qrPrint].forEach((b) => (b.disabled = false));
+      } catch (err) {
+        console.error(err);
+        if (id !== this.renderId) return;
+        els.qrStatus.textContent = "No se pudo cargar el generador de QR (requiere conexión a internet).";
+        els.qrBody.querySelectorAll(".qr-loading").forEach((x) => (x.textContent = "Sin conexión"));
+      }
+    },
+
+    // Sticker: franja corporativa, nombre de la máquina, QR y llamado a escanear
+    draw(lib, m, url, logo) {
+      const { w, h } = STICKER;
+      const c = document.createElement("canvas");
+      c.width = w;
+      c.height = h;
+      const ctx = c.getContext("2d");
+      const display = "'Barlow Condensed', 'Barlow', Arial, sans-serif";
+      const round = (x, y, rw, rh, r) => {
+        ctx.beginPath();
+        ctx.moveTo(x + r, y);
+        ctx.arcTo(x + rw, y, x + rw, y + rh, r);
+        ctx.arcTo(x + rw, y + rh, x, y + rh, r);
+        ctx.arcTo(x, y + rh, x, y, r);
+        ctx.arcTo(x, y, x + rw, y, r);
+        ctx.closePath();
+      };
+
+      ctx.fillStyle = "#ffffff";
+      ctx.fillRect(0, 0, w, h);
+
+      // Franja superior amarillo → naranja con el logo
+      const band = 180;
+      ctx.save();
+      round(14, 14, w - 28, h - 28, 36);
+      ctx.clip();
+      const grad = ctx.createLinearGradient(0, 0, w, band);
+      grad.addColorStop(0, "#f5b301");
+      grad.addColorStop(1, "#ff7a1a");
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, w, band);
+      ctx.restore();
+
+      let textX = 60;
+      if (logo) {
+        const lh = 110, lw = (lh * LOGO_SIZE.w) / LOGO_SIZE.h, lx = 52, ly = 14 + (band - 14 - lh) / 2;
+        ctx.fillStyle = "#ffffff";
+        round(lx - 8, ly - 8, lw + 16, lh + 16, 18);
+        ctx.fill();
+        ctx.drawImage(logo, lx, ly, lw, lh);
+        textX = lx + lw + 34;
+      }
+      ctx.fillStyle = "#1b1300";
+      ctx.textBaseline = "alphabetic";
+      ctx.textAlign = "left";
+      ctx.font = `800 62px ${display}`;
+      ctx.fillText(COMPANY.name, textX, 104);
+      ctx.font = `600 26px ${display}`;
+      ctx.fillText("Soporte técnico industrial", textX, 142);
+
+      // Máquina
+      ctx.textAlign = "center";
+      ctx.fillStyle = "#141920";
+      ctx.font = `800 80px ${display}`;
+      ctx.fillText(m.name, w / 2, 276);
+      ctx.fillStyle = "#5a6474";
+      ctx.font = `600 28px ${display}`;
+      ctx.fillText(`Visor de despiece · Manual de partes ${m.manual || ""}`.trim(), w / 2, 318);
+
+      // Código QR (zona de silencio de 4 módulos)
+      const qr = lib(0, "M");
+      qr.addData(url);
+      qr.make();
+      const n = qr.getModuleCount(), total = n + 8;
+      const cell = Math.floor(STICKER.qr / total), size = cell * total;
+      const x0 = Math.round((w - size) / 2), y0 = 340;
+      ctx.fillStyle = "#000000";
+      for (let r = 0; r < n; r++) {
+        for (let col = 0; col < n; col++) {
+          if (qr.isDark(r, col)) ctx.fillRect(x0 + (col + 4) * cell, y0 + (r + 4) * cell, cell, cell);
+        }
+      }
+
+      // Llamado y dirección
+      const yText = y0 + size + 56;
+      ctx.fillStyle = "#141920";
+      ctx.font = `800 44px ${display}`;
+      ctx.fillText("Escanea para ver el despiece", w / 2, yText);
+      ctx.fillStyle = "#5a6474";
+      ctx.font = "500 20px 'JetBrains Mono', Consolas, monospace";
+      const full = url.replace(/^https?:\/\//, "");
+      let shown = full;
+      while (ctx.measureText(shown + "…").width > w - 120 && shown.length > 10) shown = shown.slice(0, -1);
+      ctx.fillText(shown === full ? full : shown + "…", w / 2, yText + 40);
+
+      // Borde del sticker
+      ctx.strokeStyle = "#141920";
+      ctx.lineWidth = 6;
+      round(14, 14, w - 28, h - 28, 36);
+      ctx.stroke();
+      return c;
+    },
+
+    fileName(m) {
+      return `QR_INGPAR_${(m.short || m.id).replace(/[^\w-]+/g, "_")}.png`;
+    },
+
+    download(m) {
+      const canvas = this.canvases[m.id];
+      if (!canvas) return;
+      canvas.toBlob((blob) => {
+        if (!blob) return showToast("No se pudo generar la imagen");
+        Cart.saveBlob(blob, this.fileName(m));
+        showToast(`Sticker descargado: ${this.fileName(m)}`);
+      }, "image/png");
+    },
+
+    downloadAll() {
+      // Separadas un poco: algunos navegadores bloquean varias descargas simultáneas
+      machines.forEach((m, i) => setTimeout(() => this.download(m), i * 450));
+    },
+
+    print() {
+      const imgs = machines
+        .filter((m) => this.canvases[m.id])
+        .map((m) => `<figure><img src="${this.canvases[m.id].toDataURL("image/png")}" alt="QR ${escapeHtml(m.name)}"></figure>`)
+        .join("");
+      const w = window.open("", "_blank");
+      if (!w) return showToast("Permite las ventanas emergentes para imprimir");
+      w.document.write(`<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Stickers QR · INGPAR S.A.S.</title>
+        <style>@page{size:letter;margin:12mm}body{margin:0;display:flex;flex-wrap:wrap;gap:8mm;justify-content:center;font-family:sans-serif}
+        figure{margin:0;width:85mm;break-inside:avoid}img{width:100%;display:block}</style></head>
+        <body>${imgs}<script>window.onload=function(){window.print()}<\/script></body></html>`);
+      w.document.close();
+    }
+  };
+
   async function route() {
     // #/<máquina>/zona/<id>  o  #/<máquina>/zona/<id>/<n.º de figura, desde 1>
     // Opcional: ?item=<n>&pn=<part number> selecciona ese repuesto (lo usa el buscador global)
@@ -5066,12 +5644,21 @@ ${logo ? '<drawing r:id="rId1"/>' : ""}
     let machineId = null;
     if (segs.length && machines.some((m) => m.id === segs[0])) machineId = segs.shift();
     // Sin máquina en la ruta: la portada abre la última elegida; los enlaces antiguos #/zona/... son de la T7
-    if (!machineId) machineId = segs.length ? defaultId : savedMachineId() || defaultId;
+    // #/bitacora no es de una máquina: conserva la última elegida
+    if (!machineId) machineId = segs.length && segs[0] !== "bitacora" ? defaultId : savedMachineId() || defaultId;
     try {
       await setMachine(machineId);
     } catch (err) {
       console.error(err);
       showToast("No se pudieron cargar los datos de la máquina");
+      return;
+    }
+
+    if (segs[0] === "bitacora") {
+      setBreadcrumb(null);
+      document.title = "INGPAR S.A.S. · Bitácora Interna";
+      showView(els.logView);
+      Log.show();
       return;
     }
 
@@ -5152,10 +5739,19 @@ ${logo ? '<drawing r:id="rId1"/>' : ""}
     GlobalSearch.init();
     Cart.init();
     Frequent.init();
+    Log.init();
+    QR.init();
 
     // Selector de máquina en la cabecera: abre la portada de la máquina elegida
     // (o sus Repuestos Frecuentes si se está en esa vista)
     const switchHash = (id) => `#/${id}/${els.frequentView.hidden ? "" : "frecuentes"}`;
+    els.machineSwitch.addEventListener("click", (e) => {
+      // En la bitácora el selector solo cambia la máquina activa (y la del formulario)
+      const btn = e.target.closest("[data-machine]");
+      if (!btn || els.logView.hidden) return;
+      e.stopImmediatePropagation();
+      setMachine(btn.dataset.machine).then(() => Log.syncMachine()).catch(console.error);
+    }, true);
     els.machineSwitch.addEventListener("click", (e) => {
       const btn = e.target.closest("[data-machine]");
       if (btn && btn.dataset.machine !== current.id) location.hash = switchHash(btn.dataset.machine);

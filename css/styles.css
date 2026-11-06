@@ -2170,3 +2170,102 @@ tr.is-active .item-num, tr:hover .item-num, .gr-item[aria-selected="true"] .item
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* ==========================================================
+   📋 Bitácora Interna de Solicitudes · 📲 Códigos QR
+   ========================================================== */
+button.frequent-tab { cursor: pointer; }
+
+.hero-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 10px; }
+.hero-links .hero-frequent { margin-top: 0; font: inherit; cursor: pointer; }
+.hero-link { border-color: var(--border-strong); background: var(--surface); }
+
+/* Vista */
+.log .freq-stats { grid-template-columns: repeat(3, minmax(72px, 1fr)); }
+.log-form {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px 16px;
+  padding: 16px 20px 18px;
+}
+.log-form .cart-field em { font-style: normal; text-transform: none; letter-spacing: 0; font-weight: 500; opacity: 0.8; }
+.log-form select,
+.log-form textarea {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--text);
+  font: 500 0.95rem var(--font);
+}
+.log-form textarea { resize: vertical; min-height: 96px; line-height: 1.45; }
+.log-form select:focus,
+.log-form textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+.log-parts-field { grid-column: 1 / -1; }
+.log-form-actions { grid-column: 1 / -1; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+.log-form-actions .cart-btn:first-child { margin-right: auto; }
+
+.log > * { min-width: 0; }
+.log-controls { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 10px; }
+.log-controls .search { flex: 1; min-width: 220px; }
+.log-table { min-width: 860px; }
+.log-table td { vertical-align: top; }
+.log-nowrap { white-space: nowrap; }
+.log-parts { white-space: pre-line; font-size: 0.85rem; min-width: 260px; }
+.log-none { color: var(--text-muted); }
+.log-pending { color: var(--accent-2); font-size: 0.7rem; vertical-align: middle; }
+
+/* Modal de stickers QR */
+.qr-fields { padding: 14px 24px; background: var(--surface-2); border-bottom: 1px solid var(--border); }
+.qr-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 16px;
+  padding-top: 18px;
+}
+.qr-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface-2);
+  min-width: 0;
+}
+.qr-sticker {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 800 / 1080;
+  border-radius: 10px;
+  background: #ffffff;
+  overflow: hidden;
+}
+.qr-sticker canvas { width: 100%; height: auto; display: block; }
+.qr-loading { color: #5a6474; font-size: 0.85rem; }
+.qr-card h3 { margin: 2px 0 0; font: 800 1.15rem var(--font-display); letter-spacing: 0.03em; }
+.qr-url {
+  margin: 0;
+  font: 500 0.72rem var(--mono);
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.qr-card-actions { display: flex; flex-wrap: wrap; gap: 6px; }
+.qr-card-actions .cart-btn { flex: 1 1 auto; padding: 8px 10px; font-size: 0.8rem; text-align: center; text-decoration: none; }
+
+@media (max-width: 820px) {
+  .log-form { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .log-form { grid-template-columns: 1fr; padding: 14px 16px 16px; }
+  .log-form-actions { display: grid; grid-template-columns: 1fr 1fr; }
+  .log-form-actions .cart-btn:first-child { grid-column: 1 / -1; margin-right: 0; }
+  .log-form-actions .cart-btn-primary { grid-column: 1 / -1; }
+  .log .freq-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); width: 100%; }
+  .qr-fields { padding: 12px 16px; }
+  .tab-label { display: none; }
+  .hero-links { flex-direction: column; align-items: stretch; }
+}
