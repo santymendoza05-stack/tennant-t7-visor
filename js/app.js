@@ -2855,7 +2855,7 @@
     logTab: $("#log-tab"),
     logBack: $("#log-back"),
     logBackLabel: $("#log-back-label"),
-    logApiNote: $("#log-api-note"),
+    logSync: $("#log-sync"),
     logStats: $("#log-stats"),
     logForm: $("#log-form"),
     logDate: $("#log-date"),
@@ -5095,23 +5095,34 @@ ${logo ? '<drawing r:id="rId1"/>' : ""}
   /* ==========================================================
      📋 Bitácora Interna de Solicitudes
      Registro interno (Fecha, Hora, Técnico, Sede/Lugar, OP, Máquina,
-     Repuestos). Se guarda en este navegador; si LOG_API_URL tiene una
-     dirección, cada registro también se envía por POST (JSON).
+     Repuestos) centralizada en Google Sheets: el visor habla con
+     /api/bitacora (función de Vercel, api/bitacora.js) y esta con el
+     Apps Script de la hoja (tools/bitacora-apps-script.gs).
+     Cada registro se guarda primero en el teléfono (localStorage) y se
+     envía en cuanto hay conexión; los pendientes se reintentan solos.
      La sede es opcional y no se agrega a la solicitud de Mi Lista
      (PDF / Excel), que sigue igual.
      ========================================================== */
+  // Dirección pública definitiva del visor en Vercel: la usan los QR y la bitácora central
+  const PUBLIC_URL = "https://tennant-t7-visor.vercel.app/";
+  const LOG_API_URL = `${PUBLIC_URL}api/bitacora`;
   const LOG_KEY = "t7-log";
-  const LOG_API_URL = ""; // p. ej. "https://mi-api.vercel.app/api/bitacora"
+  const LOG_DELETED_KEY = "t7-log-deleted"; // borrados pendientes de aplicar en la hoja
+  const LOG_SYNC_MS = 60000;
+  const LOG_TIMEOUT_MS = 20000;
   const LOG_GENERAL = { id: "general", name: "Varias / General" };
 
   const Log = {
     entries: [], // { id, date: "AAAA-MM-DD", time: "HH:MM", tech, site, op, machine, machineName, parts, createdAt, synced }
+    deleted: [], // ids ya enviados que se borraron aquí y faltan por borrar en la hoja
     autoStamp: true, // fecha/hora sin tocar: se actualizan al guardar
     pendingImport: false,
+    syncing: null, // promesa de la sincronización en curso
+    again: false, // hubo cambios durante la sincronización: repetir al terminar
+    status: { state: "idle", at: null },
 
     init() {
       this.load();
-      els.logApiNote.textContent = LOG_API_URL ? " y se envían al servidor de INGPAR" : "";
       els.logMachine.innerHTML = [...machines, LOG_GENERAL]
         .map((m) => `<option value="${escapeHtml(m.id)}">${escapeHtml(m.name)}</option>`)
         .join("");
@@ -5131,12 +5142,17 @@ ${logo ? '<drawing r:id="rId1"/>' : ""}
         const btn = e.target.closest("[data-log-delete]");
         if (!btn) return;
         const entry = this.entries.find((x) => x.id === btn.dataset.logDelete);
-        if (!entry || !confirm(`¿Eliminar el registro de ${entry.tech} del ${this.dateText(entry.date)} ${entry.time}?`)) return;
+        if (!entry) return;
+        const where = entry.synced ? "\nSe borrará también de la bitácora central (Google Sheets)." : "";
+        if (!confirm(`¿Eliminar el registro de ${entry.tech} del ${this.dateText(entry.date)} ${entry.time}?${where}`)) return;
         this.entries = this.entries.filter((x) => x !== entry);
+        if (entry.synced) this.deleted.push(entry.id);
         this.save();
         this.render();
         showToast("Registro eliminado de la bitácora");
+        this.sync();
       });
+      els.logSync.addEventListener("click", () => this.sync({ notify: true }));
 
       // Desde 🛒 Mi Lista: lleva la solicitud al formulario de la bitácora
       els.cartLog.addEventListener("click", () => {
@@ -5150,22 +5166,37 @@ ${logo ? '<drawing r:id="rId1"/>' : ""}
       });
 
       window.addEventListener("storage", (e) => {
-        if (e.key !== LOG_KEY) return;
+        if (e.key !== LOG_KEY && e.key !== LOG_DELETED_KEY) return;
         this.load();
         if (!els.logView.hidden) this.render();
       });
+      // Reintenta al recuperar la señal, al volver a la app y cada minuto con la bitácora abierta
+      window.addEventListener("online", () => this.sync());
+      document.addEventListener("visibilitychange", () => {
+        if (document.visibilityState === "visible" && this.hasPending()) this.sync();
+      });
+      setInterval(() => {
+        if (document.visibilityState !== "visible") return;
+        if (!els.logView.hidden || this.hasPending()) this.sync();
+      }, LOG_SYNC_MS);
       this.resetForm();
+      this.renderStatus();
+      if (this.hasPending()) this.sync();
     },
 
     load() {
       let saved = null;
       try { saved = JSON.parse(localStorage.getItem(LOG_KEY)); } catch {}
       this.entries = Array.isArray(saved) ? saved.filter((x) => x && x.id && x.tech) : [];
+      let deleted = null;
+      try { deleted = JSON.parse(localStorage.getItem(LOG_DELETED_KEY)); } catch {}
+      this.deleted = Array.isArray(deleted) ? deleted.filter((x) => typeof x === "string") : [];
     },
 
     save() {
       try {
         localStorage.setItem(LOG_KEY, JSON.stringify(this.entries));
+        localStorage.setItem(LOG_DELETED_KEY, JSON.stringify(this.deleted));
         return true;
       } catch {
         showToast("No se pudo guardar en este navegador");
@@ -5181,6 +5212,7 @@ ${logo ? '<drawing r:id="rId1"/>' : ""}
         this.pendingImport = false;
         this.importCart();
       }
+      this.sync();
     },
 
     stamp() {
@@ -5256,25 +5288,102 @@ ${logo ? '<drawing r:id="rId1"/>' : ""}
       this.resetForm();
       els.logTech.value = tech;
       this.render();
-      showToast("Solicitud registrada en la bitácora");
-      if (LOG_API_URL) this.send(entry);
+      showToast("Solicitud guardada · enviando a la bitácora central…");
+      this.sync().then(() => {
+        if (entry.synced) showToast("Solicitud registrada en la bitácora central");
+        else if (this.status.state === "offline") showToast("Sin conexión: la solicitud queda en el teléfono y se enviará sola");
+      });
     },
 
-    async send(entry) {
+    hasPending() {
+      return this.deleted.length > 0 || this.entries.some((x) => !x.synced);
+    },
+
+    async api(method, body) {
+      const ctrl = new AbortController();
+      const timer = setTimeout(() => ctrl.abort(), LOG_TIMEOUT_MS);
       try {
         const res = await fetch(LOG_API_URL, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(entry)
+          method,
+          headers: body ? { "Content-Type": "application/json" } : undefined,
+          body: body ? JSON.stringify(body) : undefined,
+          cache: "no-store",
+          signal: ctrl.signal
         });
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        entry.synced = true;
-        this.save();
-        this.render();
-      } catch (err) {
-        console.error(err);
-        showToast("Guardado solo en este navegador: no se pudo enviar al servidor");
+        let data = null;
+        try { data = await res.json(); } catch {}
+        if (!res.ok || !data || !data.ok) {
+          const err = new Error((data && data.error) || `HTTP ${res.status}`);
+          err.code = (data && data.error) || "http_error";
+          throw err;
+        }
+        return data;
+      } finally {
+        clearTimeout(timer);
       }
+    },
+
+    // Envía pendientes (altas y borrados) y trae la bitácora completa de la hoja
+    sync({ notify = false } = {}) {
+      if (this.syncing) {
+        this.again = true;
+        return this.syncing;
+      }
+      this.status = { ...this.status, state: "syncing" };
+      this.renderStatus();
+      this.syncing = (async () => {
+        try {
+          do {
+            this.again = false;
+            for (const entry of this.entries.filter((x) => !x.synced)) {
+              const { synced, ...data } = entry;
+              await this.api("POST", { action: "add", entry: data });
+              entry.synced = true;
+              this.save();
+            }
+            for (const id of [...this.deleted]) {
+              await this.api("POST", { action: "delete", id });
+              this.deleted = this.deleted.filter((x) => x !== id);
+              this.save();
+            }
+            const { entries } = await this.api("GET");
+            // La hoja manda; se conservan solo los locales que aún no han subido
+            const remote = (entries || []).filter((x) => x && x.id && !this.deleted.includes(x.id)).map((x) => ({ ...x, synced: true }));
+            const ids = new Set(remote.map((x) => x.id));
+            this.entries = [...remote, ...this.entries.filter((x) => !x.synced && !ids.has(x.id))];
+            this.save();
+          } while (this.again);
+          this.status = { state: "online", at: new Date() };
+          if (notify) showToast("Bitácora sincronizada con Google Sheets");
+        } catch (err) {
+          console.warn("Bitácora central:", err);
+          this.status = { state: err.code === "not_configured" ? "unconfigured" : "offline", at: this.status.at };
+          if (notify) showToast(this.statusText());
+        } finally {
+          this.syncing = null;
+          if (!els.logView.hidden) this.render();
+          this.renderStatus();
+        }
+      })();
+      return this.syncing;
+    },
+
+    statusText() {
+      const pending = this.entries.filter((x) => !x.synced).length + this.deleted.length;
+      const queued = pending ? ` · ${plural(pending, "cambio pendiente", "cambios pendientes")}` : "";
+      switch (this.status.state) {
+        case "syncing": return "Sincronizando con Google Sheets…";
+        case "online": return `Conectada a Google Sheets · ${timeShort(this.status.at)}${queued}`;
+        case "unconfigured": return `Bitácora central sin configurar: se guarda solo en este teléfono${queued}`;
+        case "offline": return `Sin conexión con la bitácora central${queued}`;
+        default: return pending ? `${plural(pending, "cambio pendiente", "cambios pendientes")} por enviar` : "Bitácora central";
+      }
+    },
+
+    renderStatus() {
+      els.logSync.textContent = this.statusText();
+      els.logSync.dataset.state = this.status.state;
+      els.logSync.disabled = this.status.state === "syncing";
     },
 
     dateText(iso) {
@@ -5318,7 +5427,7 @@ ${logo ? '<drawing r:id="rId1"/>' : ""}
             <td>${escapeHtml(x.tech)}</td>
             <td>${x.site ? escapeHtml(x.site) : dash}</td>
             <td class="log-nowrap">${x.op ? escapeHtml(x.op) : dash}</td>
-            <td class="log-nowrap">${escapeHtml(x.machineName)}${LOG_API_URL && !x.synced ? ' <span class="log-pending" title="Pendiente de enviar al servidor">●</span>' : ""}</td>
+            <td class="log-nowrap">${escapeHtml(x.machineName)}${!x.synced ? ' <span class="log-pending" title="Pendiente de enviar a la bitácora central">● pendiente</span>' : ""}</td>
             <td class="log-parts">${escapeHtml(x.parts)}</td>
             <td><button type="button" class="cart-remove" data-log-delete="${escapeHtml(x.id)}" aria-label="Eliminar registro" title="Eliminar registro">&times;</button></td>
           </tr>`)
@@ -5352,8 +5461,6 @@ ${logo ? '<drawing r:id="rId1"/>' : ""}
      visor publicado. Usa qrcode-generator (cdnjs), cargado al abrir.
      ========================================================== */
   const QR_LIB_URL = "https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js";
-  const QR_BASE_KEY = "t7-qr-base";
-  const QR_FALLBACK_BASE = "https://santymendoza05-stack.github.io/tennant-t7-visor/";
   const STICKER = { w: 800, h: 1080, qr: 580 };
 
   let qrLoading = null;
@@ -5396,7 +5503,6 @@ ${logo ? '<drawing r:id="rId1"/>' : ""}
             els.qrStatus.textContent = "Escribe una dirección completa que empiece por https://";
             return;
           }
-          try { localStorage.setItem(QR_BASE_KEY, base); } catch {}
           this.render();
         }, 350);
       });
@@ -5411,14 +5517,9 @@ ${logo ? '<drawing r:id="rId1"/>' : ""}
       els.qrPrint.addEventListener("click", () => this.print());
     },
 
-    // Dirección pública del visor: la guardada; si no, la página actual si ya está publicada; si no, GitHub Pages
+    // Los stickers siempre apuntan al visor definitivo en Vercel, se abran desde donde se abran
     defaultBase() {
-      let saved = null;
-      try { saved = localStorage.getItem(QR_BASE_KEY); } catch {}
-      if (saved) return saved;
-      const { protocol, hostname } = location;
-      const local = !/^https?:$/.test(protocol) || /^(localhost|127\.|0\.0\.0\.0|\[::1\]|192\.168\.|10\.)/.test(hostname);
-      return (!local && this.normalizeBase(location.href)) || QR_FALLBACK_BASE;
+      return PUBLIC_URL;
     },
 
     normalizeBase(value) {
@@ -5443,7 +5544,7 @@ ${logo ? '<drawing r:id="rId1"/>' : ""}
     },
 
     open() {
-      if (!els.qrBase.value) els.qrBase.value = this.defaultBase();
+      els.qrBase.value = this.defaultBase();
       els.qrDialog.showModal();
       this.render();
     },

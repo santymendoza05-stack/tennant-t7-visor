@@ -2269,3 +2269,24 @@ button.frequent-tab { cursor: pointer; }
   .tab-label { display: none; }
   .hero-links { flex-direction: column; align-items: stretch; }
 }
+
+/* Estado de la sincronización con la bitácora central */
+.log-sync {
+  margin-left: auto;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text-muted);
+  font: 600 0.75rem var(--font);
+  cursor: pointer;
+  text-align: right;
+}
+.log-sync::before { content: "●"; margin-right: 6px; color: var(--text-muted); }
+.log-sync[data-state="online"]::before { color: #22a35a; }
+.log-sync[data-state="syncing"]::before { color: var(--accent); }
+.log-sync[data-state="offline"]::before,
+.log-sync[data-state="unconfigured"]::before { color: var(--accent-2); }
+.log-sync:hover:not(:disabled), .log-sync:focus-visible { border-color: var(--accent); outline: none; }
+.log-sync:disabled { cursor: progress; }
+.log-list-panel .panel-header { flex-wrap: wrap; }

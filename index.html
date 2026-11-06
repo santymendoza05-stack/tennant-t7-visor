@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" />
   <!-- ?v= evita que el navegador use un CSS/JS viejo en caché tras publicar cambios -->
-  <link rel="stylesheet" href="css/styles.css?v=2026-11-06" />
+  <link rel="stylesheet" href="css/styles.css?v=2026-11-06b" />
 </head>
 <body>
   <!-- Íconos SVG reutilizables -->
@@ -285,7 +285,7 @@
       <div class="freq-hero-text">
         <p class="eyebrow">INGPAR S.A.S. · Uso interno</p>
         <h2 id="log-title"><span aria-hidden="true">📋</span> Bitácora Interna de Solicitudes</h2>
-        <p class="freq-intro">Registra cada pedido de repuestos: quién lo pidió, dónde, para qué OP y en qué máquina. Los registros se guardan en este navegador<span id="log-api-note"></span>.</p>
+        <p class="freq-intro">Registra cada pedido de repuestos: quién lo pidió, dónde, para qué OP y en qué máquina. Todo queda en la bitácora central de INGPAR (Google Sheets); sin señal, el registro se guarda en el teléfono y se envía solo al volver la conexión.</p>
       </div>
       <dl id="log-stats" class="freq-stats"></dl>
     </section>
@@ -322,6 +322,7 @@
       <div class="panel-header">
         <h2 id="log-list-title">Registros</h2>
         <span id="log-count" class="count-badge">0</span>
+        <button type="button" id="log-sync" class="log-sync" title="Sincronizar ahora con la bitácora central"></button>
       </div>
       <div class="controls log-controls">
         <label class="search">
@@ -401,8 +402,8 @@
     </header>
     <div class="qr-fields">
       <label class="cart-field">
-        <span>Dirección del visor publicado (Vercel / GitHub Pages)</span>
-        <input id="qr-base" type="url" inputmode="url" spellcheck="false" placeholder="https://tu-proyecto.vercel.app/" />
+        <span>Dirección del visor en Vercel (los QR apuntan aquí)</span>
+        <input id="qr-base" type="url" inputmode="url" spellcheck="false" placeholder="https://tennant-t7-visor.vercel.app/" />
       </label>
     </div>
     <div id="qr-body" class="cart-body qr-grid"></div>
@@ -417,6 +418,6 @@
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
-  <script src="js/app.js?v=2026-11-06"></script>
+  <script src="js/app.js?v=2026-11-06b"></script>
 </body>
 </html>

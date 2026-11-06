@@ -6,8 +6,8 @@
   "trailingSlash": false,
   "rewrites": [
     {
-      "source": "/((?!assets/|css/|js/|data/|favicon).*)",
-      "destination": "/index.html"
+      "source": "/((?!api/|assets/|css/|js/|data/).*)",
+      "destination": "/"
     }
   ],
   "headers": [

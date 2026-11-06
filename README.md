@@ -2,7 +2,7 @@
 
 Visor web interactivo de repuestos para las fregadoras Tennant **T7** (manual de partes 9013606), Tennant **T12** (manual 9012729) e IPC **CT110** (catálogo LPTB02378), basado en los diagramas 2D de cada manual.
 
-**Sitio:** https://santymendoza05-stack.github.io/tennant-t7-visor/
+**Sitio (Vercel, definitivo):** https://tennant-t7-visor.vercel.app/ · espejo en GitHub Pages: https://santymendoza05-stack.github.io/tennant-t7-visor/
 
 ## Navegación
 
@@ -49,19 +49,29 @@ La pestaña **📋 Bitácora Interna** de la cabecera (y el acceso en la portada
 - La fecha y la hora se llenan solas (se pueden corregir). La **sede es opcional** y solo vive en la bitácora: la solicitud de 🛒 Mi Lista (PDF / Excel) no la incluye.
 - **🛒 Traer de Mi Lista** copia los repuestos del carrito de la máquina elegida (y el técnico y la OP si están vacíos). En Mi Lista, **📋 Registrar en bitácora** hace lo mismo desde el modal.
 - Filtro de texto, borrado por registro y **Exportar a Excel (.csv)**.
-- Se guarda en este navegador (`localStorage`, clave `t7-log`). Para centralizarla, pon en `LOG_API_URL` (`js/app.js`) un endpoint que reciba cada registro por `POST` en JSON; si falla, el registro queda guardado localmente y marcado como pendiente.
+- **Centralizada en Google Sheets:** todos los técnicos escriben y leen la misma hoja. Flujo: visor → `/api/bitacora` (función de Vercel, `api/bitacora.js`) → Apps Script de la hoja (`tools/bitacora-apps-script.gs`). La URL del script y el token compartido solo están en las variables de entorno de Vercel, no en el código público.
+- **Sin señal:** el registro se guarda primero en el teléfono (`localStorage`, claves `t7-log` y `t7-log-deleted`), se marca **● pendiente** y se envía solo al volver la conexión, al regresar a la app o cada minuto con la bitácora abierta. El indicador de la tabla muestra el estado y, al tocarlo, sincroniza en el momento.
+- Borrar un registro ya enviado lo borra también de la hoja.
+
+#### Configurar la hoja (una sola vez)
+
+1. Crea una hoja de cálculo en Google Drive y abre **Extensiones → Apps Script**. Pega `tools/bitacora-apps-script.gs`.
+2. **Configuración del proyecto → Propiedades del script:** agrega `TOKEN` con el mismo valor de `BITACORA_TOKEN` en Vercel (*Settings → Environment Variables*; ya está creada).
+3. Ejecuta `setup()` una vez y acepta los permisos.
+4. **Implementar → Nueva implementación → Aplicación web**, *Ejecutar como: Yo*, *Acceso: Cualquier usuario*. Copia la URL `/exec`.
+5. En Vercel agrega `BITACORA_SHEET_URL` = esa URL (Production) y vuelve a publicar (*Redeploy*). Mientras falte, la bitácora dice *sin configurar* y guarda solo en el teléfono.
 
 ### 📲 Códigos QR para Máquinas
 
 El botón **📲 Códigos QR** abre un modal con un sticker por máquina (Tennant T7, Tennant T12, IPC CT110). Cada QR abre `<dirección del visor>#/<máquina>/`, es decir, el plano general de esa máquina.
 
-- **Dirección del visor:** por defecto, la de la página publicada (Vercel o GitHub Pages); en local usa la de GitHub Pages. Se puede cambiar y queda guardada.
+- **Dirección del visor:** siempre `https://tennant-t7-visor.vercel.app/` (constante `PUBLIC_URL` en `js/app.js`), se abra el modal desde Vercel, GitHub Pages o en local. Si más adelante usan un dominio propio, cambia `PUBLIC_URL` (el campo del modal permite probar otra dirección sin guardarla).
 - **Descargar PNG** (800 × 1080 px, con logo), **Descargar todos**, **Copiar enlace**, **Probar** e **Imprimir stickers** (hoja carta, 85 mm de ancho cada uno).
 - El generador [qrcode-generator](https://github.com/kazuhikoarase/qrcode-generator) 1.4.4 se carga desde cdnjs al abrir el modal (requiere internet).
 
 ### Despliegue en Vercel
 
-`vercel.json` publica la carpeta raíz como sitio estático, sin build: importa el repositorio en Vercel con *Framework Preset: Other* y deja vacíos los comandos de build e instalación. Las rutas que no son archivos (`assets/`, `css/`, `js/`, `data/`) vuelven a `index.html`. GitHub Pages sigue funcionando en paralelo con `.github/workflows/pages.yml`.
+Proyecto `tennant-t7-visor` del equipo *ingpar-taller* en Vercel, producción en https://tennant-t7-visor.vercel.app/. `vercel.json` publica la carpeta raíz como sitio estático, sin build, más la función `api/bitacora.js`; las rutas que no son archivos (`api/`, `assets/`, `css/`, `js/`, `data/`) vuelven a la portada. `.vercelignore` deja fuera `tools/` y `.github/`. Publicación manual: `vercel deploy --prod`. GitHub Pages sigue funcionando en paralelo con `.github/workflows/pages.yml` (sin la bitácora central de forma directa: usa la API de Vercel).
 
 ### Puntos del diagrama
 
